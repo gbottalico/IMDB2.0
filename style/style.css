@@ -1,11 +1,11 @@
 #wrapper{
-	width: 1000px;
+	width: 80%;
 	margin: 0 auto;
 }
 
 .menu{
   width: 100%;
-  margin: 100px auto; padding: 15px;	  
+  padding: 15px;	  
   list-style: none;
   counter-reset: li;
   background: #eee;
@@ -37,8 +37,9 @@
   position: relative;
   float: left;
   cursor: pointer;
-  height: 120px; width: 200px;
-  margin: 10px 0 0 10px;
+  height: 33%; 
+  width: 32%;
+  margin: 5px 0 0 5px;
   color: #fff;
 } 
 
