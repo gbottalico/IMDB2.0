@@ -1,10 +1,12 @@
 <?php
 
-class RigaClassifica {
-	var $nomeSquadra;
+class RigaClassifica{
+	var $squadra;
 
 	function RigaClassifica() {
 	}
+	
+	
 }
 
 $lines = file('../../js/fcmClassificaDati.js');
@@ -14,7 +16,7 @@ foreach($lines as $line_num => $line) {
     	$riga = explode(",", $line);
     	if ($riga[1] == '14'){
     		$rigaClas = new RigaClassifica();
-    		$rigaClas->nomeSquadra = $riga[4];
+    		$rigaClas->squadra = str_replace('"',"",$riga[4]);
     		echo json_encode($rigaClas);
     	}
     	
