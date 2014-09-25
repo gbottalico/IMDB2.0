@@ -10,6 +10,8 @@ class RigaClassifica{
 }
 
 $lines = file('../../js/fcmClassificaDati.js');
+$squadraClassifica = array();
+
 // Ciclo attraverso l'array, si visualizzerà il sorgente come html ed i numeri di linea
 foreach($lines as $line_num => $line) {
     if (strpos($line,']=new C(') !== false){
@@ -17,11 +19,11 @@ foreach($lines as $line_num => $line) {
     	if ($riga[1] == '14'){
     		$rigaClas = new RigaClassifica();
     		$rigaClas->squadra = str_replace('"',"",$riga[4]);
-    		echo json_encode($rigaClas);
+    		array_push($squadraClassifica, $rigaClas);
     	}
-    	
-    	
     }
 }
+
+echo json_encode($squadraClassifica);
 
 ?>
