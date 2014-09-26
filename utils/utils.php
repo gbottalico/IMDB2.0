@@ -1,6 +1,7 @@
+<?php require '../utils/costanti.php' ?>
 <?php
 
-class Competizione {    
+class ImdbUtils {    
 
     	private static $initialized = false;
     	private static $idCampionato = "";
@@ -9,7 +10,7 @@ class Competizione {
 	    	if (self::$initialized) {
 	    		return;
 	    	}
-	    	$lines = file('http://imalatidelbari.netsons.org/js/fcmCompetizioniDati.js');
+	    	$lines = file(host . js_folder . competizioni_file);
 
 			// Ciclo per trovare l'id del campionato
 			foreach($lines as $line_num => $line) {
