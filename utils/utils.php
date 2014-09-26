@@ -2,8 +2,38 @@
 
 <?php
 
+class RigaNome {
+    var $codice;
+    var $nome;
+
+    function RigaNome() {                
+    }
+}
+
 class ImdbUtils {    
-    	    	   
+
+        private static $initialized = false;
+        private static $nomi = array();        
+
+        private static function initialize() {
+            if (self::$initialized) {
+              return;
+            }
+            $lines = file(host . js_folder . competizioni_file);
+
+            // Ciclo per trovare l'id del campionato
+            foreach($lines as $line_num => $line) {
+                if (strpos($line,']=new Competizione(') !== false) {
+                    $riga = explode("=", $line);
+                    $nom = new RigaNome();
+                    $nom->codice = $riga[0];
+                    $nom->nome = str_replace('"', '', $riga[1]);
+                    array_push(self::$nomi, $nom);
+                }
+            }           
+            self::$initialized = true;
+        }
+
         /*
         *	Restituisce l'id del campionato
         */        
@@ -36,6 +66,18 @@ class ImdbUtils {
     	public static function getCoachImageUrl($squadra) {
     		return host . img_folder . allenatori_folder . $squadra . '.png';
     	}
+
+        /*
+        *   Restituisce il nome del giocatore identificato dal codice passato in input
+        */
+        public static function getPlayerNameByCode($code) {
+            self::initialize();
+            foreach (self::$nomi as $nome) {
+                if ($nome->codice == $code) {
+                    return $nome->nome;
+                }
+            }            
+        }
 }
 
 ?>

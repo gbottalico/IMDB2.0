@@ -8,4 +8,5 @@
 	define('competizioni_file', 'fcmCompetizioniDati.js');
 	define('classifica_file', 'fcmClassificaDati.js');
 	define('squadre_file', 'fcmFantasquadreDati.js');
+	define('serie_a_file', 'fcmSerieADati.js');
 ?>
