@@ -26,9 +26,9 @@ class ClassificaBusiness {
         $lines = file(host . js_folder . classifica_file);
         $counter = 0;
         foreach($lines as $line_num => $line) {
-            if (strpos($line,']=new C(') !== false){
+            if (strpos($line,']=new C(') !== false) {
                 $riga = explode(",", $line);        
-                if ($riga[1] == ImdbUtils::getIdCampionato()){            
+                if ($riga[1] == ImdbUtils::getIdCampionato()) {            
                     $rigaClas = new RigaClassifica();             
                     $rigaClas->squadra = str_replace('"',"",$riga[4]);            
                     $rigaClas->allenatore = str_replace('"', "", $riga[5]);            
