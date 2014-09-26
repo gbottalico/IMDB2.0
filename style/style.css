@@ -60,7 +60,11 @@
 
 /* -------------------------------- */
 .menu li::after {
-	content: url("../../img/foto/10899.jpg");
+	background: url("http://imalatidelbari.netsons.org/img/I_Malati_Del_Bari.gif") no-repeat 0 0;
+    content:"";
+    background-size: 100%;
+    height: 100px;
+    width: 40px;   
 	counter-increment: li;
 	font: italic bold 10px serif, georgia;
 	position: absolute;
