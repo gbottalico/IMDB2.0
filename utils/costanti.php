@@ -7,4 +7,5 @@
 	define('allenatori_folder', 'allenatori/');
 	define('competizioni_file', 'fcmCompetizioniDati.js');
 	define('classifica_file', 'fcmClassificaDati.js');
+	define('squadre_file', 'fcmFantasquadreDati.js');
 ?>

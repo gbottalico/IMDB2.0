@@ -2,7 +2,7 @@
 
 <?php
 
-class RigaClassifica{
+class RigaClassifica {
 
 	var $squadra;
     var $allenatore;
@@ -44,4 +44,3 @@ class ClassificaBusiness {
 }
 
 ?>
-
