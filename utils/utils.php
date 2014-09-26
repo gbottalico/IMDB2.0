@@ -6,6 +6,9 @@ class ImdbUtils {
     	private static $initialized = false;
     	private static $idCampionato = "";
 
+    	/*
+    	*	Recupera l'id del campionato
+    	*/
 	    private static function initialize() {
 	    	if (self::$initialized) {
 	    		return;
@@ -25,9 +28,26 @@ class ImdbUtils {
 	    	self::$initialized = true;
 	    }
         
+        /*
+        *	Restituisce l'id del campionato
+        */        
         public static function getIdCampionato() {
         	self::initialize();				
 			return self::$idCampionato;
+    	}
+
+    	/*
+    	*	Restituisce l'url del logo della squadra passata in input
+    	*/
+    	public static function getLogoImageUrl($squadra) {
+    		return host . img_folder . loghi_folder . $squadra . '.gif';
+    	}    
+
+    	/*
+    	*	Restituisce l'url della foto dell' allenatore della squadra passata in input
+    	*/
+    	public static function getCoachImageUrl($squadra) {
+    		return host . img_folder . allenatori_folder . $squadra . '.png';
     	}
 }
 

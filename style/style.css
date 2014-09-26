@@ -221,3 +221,8 @@
 .menu .cover .close {
 	display: block;
 }
+
+/* TABELLE */
+.class_table {
+	text-align: center;	
+}
