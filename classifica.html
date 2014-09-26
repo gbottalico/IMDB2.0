@@ -2,16 +2,25 @@
 	<head>
 		<meta charset="utf-8">
 		<title>IMDB</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/interface.js"></script>
+		<script src="js/controller/classificaController.js"></script>
 		<link rel="stylesheet" href="style/style.css">
 		
 		<script type="text/javascript">
 			
 		</script>
 	</head>
-	<body>		
-		<h1>FUNZIONA</h1>
+	<body ng-controller="classificaCtrl">		
+		<table class="container">
+		    <tbody>
+			    <tr ng-repeat="squadra in squadre">
+			      <td><img class="logo" alt="" src="{{squadra.logo}}"></td>	
+			      <td>{{squadra.squadra}}</td>
+			      <td>{{squadra.punti}}</td>
+			    </tr>
+		    </tbody>
+		</table>
 	</body>
 </html>
