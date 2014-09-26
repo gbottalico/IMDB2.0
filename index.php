@@ -5,14 +5,10 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/angular.min.js"></script>
 		<script src="js/homeController.js"></script>
-		 <link rel="stylesheet" href="style/style.css">
-		
-		
-		<script type="text/javascript">
-			
-		</script>
+		<link rel="stylesheet" href="style/style.css">
 	</head>
-	<body>
+	<?php require 'business/classificaBusiness.php' ?>
+	<body>		
 		<div id="wrapper">
 			<ul class="menu">
 				<li tabindex="1" class="">
