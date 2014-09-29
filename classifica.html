@@ -12,15 +12,39 @@
 			
 		</script>
 	</head>
-	<body ng-controller="classificaCtrl">		
-		<table class="container">
-		    <tbody>
-			    <tr ng-repeat="squadra in squadre">
-			      <td><img class="logo" alt="" src="{{squadra.logo}}"></td>	
-			      <td>{{squadra.squadra}}</td>
-			      <td>{{squadra.punti}}</td>
-			    </tr>
-		    </tbody>
-		</table>
+	<body ng-controller="classificaCtrl">
+		<div id="wrapper">
+			<div class="imdb-results__loading" data-ng-show="loading"></div>
+			<table class="container" data-ng-hide="loading">
+				<thead>
+					<tr >
+				      <th></th>	
+				      <th></th>	
+				      <th></th>
+				      <th>Pt</th>
+				      <th>V</th>
+				      <th>N</th>
+				      <th>P</th>
+				      <th>Gf</th>
+				      <th>Gs</th>
+				      <th>PTotali</th>
+				    </tr>
+				</thead>
+			    <tbody>
+				    <tr ng-repeat="squadra in squadre">
+				      <td><img class="logo" alt="" src="{{squadra.foto}}"></td>		
+				      <td><img class="logo" alt="" src="{{squadra.logo}}"></td>	
+				      <td>{{squadra.squadra}}</td>
+				      <td>{{squadra.punti}}</td>
+				      <td>{{squadra.vinte}}</td>
+				      <td>{{squadra.perse}}</td>
+				      <td>{{squadra.pareggiate}}</td>
+				      <td>{{squadra.golFatti}}</td>
+				      <td>{{squadra.golSubiti}}</td>
+				      <td>{{squadra.totPunti}}</td>
+				    </tr>
+			    </tbody>
+			</table>
+		</div>
 	</body>
 </html>

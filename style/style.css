@@ -1,3 +1,16 @@
+body {
+	 background: url('../images/background.jpg');
+}
+
+.imdb-results__loading {
+  background: white url('../images/preloader-results.gif?1384796714') no-repeat 50% 50%;
+  -webkit-background-size: 64px 64px;
+  -moz-background-size: 64px 64px;
+  -o-background-size: 64px 64px;
+  background-size: 64px 64px;
+  height: 300px;
+}
+
 #wrapper {
 	width: 80%;
 	margin: 0 auto;
@@ -233,7 +246,7 @@
 	width: 20px;
 }
 
-tainer th h1 {
+.container th h1 {
 	font-weight: bold;
 	font-size: 1em;
 	text-align: left;
@@ -289,18 +302,6 @@ tainer th h1 {
 	box-shadow: 0 6px 6px -6px #0E1119;
 }
 
-.container td:hover {
-	background-color: #FFF842;
-	color: #403E10;
-	font-weight: bold;
-	box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px,
-		#7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-	transform: translate3d(6px, -6px, 0);
-	transition-delay: 0s;
-	transition-duration: 0.4s;
-	transition-property: all;
-	transition-timing-function: line;
-}
 
 @media ( max-width : 800px) {
 	.container td:nth-child(4),.container th:nth-child(4) {
