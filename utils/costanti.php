@@ -9,4 +9,5 @@
 	define('classifica_file', 'fcmClassificaDati.js');
 	define('squadre_file', 'fcmFantasquadreDati.js');
 	define('serie_a_file', 'fcmSerieADati.js');
+	define('calendario_file', 'fcmCalendarioDati.js');
 ?>

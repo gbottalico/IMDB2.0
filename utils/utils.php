@@ -12,11 +12,16 @@ class RigaNome {
 
 class ImdbUtils {    
 
-        private static $initialized = false;
-        private static $nomi = array();        
+        private static $initializedSerieA = false;
+        private static $initializedCalendario = false;
+        private static $nomi = array();
+        private static $turni = array();        
 
-        private static function initialize() {
-            if (self::$initialized) {
+        /*
+        *   Inizializza l'array dei nomi di squadre e giocatori una sola volta per sessione
+        */
+        private static function initializeSerieA() {
+            if (self::$initializedSerieA) {
               return;
             }
             $lines = file(host . js_folder . serie_a_file);
@@ -33,7 +38,28 @@ class ImdbUtils {
                     break;
                 }                
             }           
-            self::$initialized = true;
+            self::$initializedSerieA = true;
+        }
+
+        /*
+        *   Inizializza l'array dei nomi di competizioni e giornate una sola volta per sessione
+        */
+        private static function initializeCalendario() {
+            if (self::$initializedCalendario) {
+              return;
+            }
+            $lines = file(host . js_folder . calendario_file);
+            
+            foreach($lines as $line_num => $line) {
+                if (strpos($line,'var x') !== false) {                
+                    $riga = explode("=", $line);                
+                    $nom = new RigaNome();
+                    $nom->codice = str_replace('var ', '', $riga[0]);
+                    $nom->nome = str_replace('"', '', $riga[1]);
+                    array_push(self::$turni, $nom);                              
+                }              
+            }           
+            self::$initializedCalendario = true;
         }
 
         /*
@@ -73,8 +99,20 @@ class ImdbUtils {
         *   Restituisce il nome del giocatore identificato dal codice passato in input
         */
         public static function getPlayerNameByCode($code) {
-            self::initialize();
+            self::initializeSerieA();
             foreach (self::$nomi as $nome) {
+                if ($nome->codice == $code) {
+                    return $nome->nome;
+                }
+            }            
+        }
+
+        /*
+        *   Restituisce il nome della competizione/turno identificato dal codice passato in input
+        */
+        public static function getTurnoByCode($code) {
+            self::initializeCalendario();
+            foreach (self::$turni as $nome) {
                 if ($nome->codice == $code) {
                     return $nome->nome;
                 }
