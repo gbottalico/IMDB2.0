@@ -19,17 +19,19 @@ class ImdbUtils {
             if (self::$initialized) {
               return;
             }
-            $lines = file(host . js_folder . competizioni_file);
+            $lines = file(host . js_folder . serie_a_file);
 
             // Ciclo per trovare l'id del campionato
-            foreach($lines as $line_num => $line) {
-                if (strpos($line,']=new Competizione(') !== false) {
-                    $riga = explode("=", $line);
-                    $nom = new RigaNome();
+            foreach($lines as $line_num => $line) {                
+                $riga = explode("=", $line);
+                if ($riga[0] != 'MaxA') {
+                    $nom = new RigaNome();                
                     $nom->codice = $riga[0];
                     $nom->nome = str_replace('"', '', $riga[1]);
-                    array_push(self::$nomi, $nom);
-                }
+                    array_push(self::$nomi, $nom);                
+                } else {
+                    break;
+                }                
             }           
             self::$initialized = true;
         }
