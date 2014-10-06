@@ -24,8 +24,6 @@ body {
 	counter-reset: li;
 	border-radius: 10px;
 	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
 }
 
 .menu:before,.menu:after {
@@ -43,6 +41,8 @@ body {
 
 /* -------------------------------- */
 .menu li {
+	width: 32%;
+	height:32%;
 	position: relative;
 	float: left;
 	cursor: pointer;
@@ -210,7 +210,7 @@ body {
 	height: 100%;
 	width: 100%;
 	text-align: center;
-	font: italic bold 1vw/120px 'trebuchet MS', Arial, helvetica;
+	font: italic bold 1em/120px 'trebuchet MS', Arial, helvetica;
 }
 
 .menu li:hover .title {
@@ -263,7 +263,7 @@ body {
 }
 
 .container th {
-	font: bold 1.1vw 'trebuchet MS', Arial, helvetica;
+	font: bold 1.1em 'trebuchet MS', Arial, helvetica;
 }
 
 .container {
@@ -309,8 +309,34 @@ body {
 }
 
 
-@media ( max-width : 800px) {
+@media only screen and (max-width: 800px), only screen and (max-device-width: 800px) {
+	
+	#wrapper {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
 	.container td:nth-child(4),.container th:nth-child(4) {
 		display: none;
 	}
+	
+	.container{
+		width:100%;
+	}
+	
+	li {
+		width: 100% !important;
+		height: 20% !important;
+		margin: 2px 0px !important;
+	}
+	
+	.menu .title {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		font: italic bold 2em/120px 'trebuchet MS', Arial, helvetica;
+	}
+	
 }
