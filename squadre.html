@@ -1,0 +1,42 @@
+<html ng-app="IMDB">
+	<head>
+		<meta charset="utf-8">
+		<title>IMDB</title>
+		<script src="js/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/interface.js"></script>
+		<script src="js/controller/squadreController.js"></script>
+		<link rel="stylesheet" href="style/style.css">
+		
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body ng-controller="squadreCtrl">
+		<div id="wrapper">
+			<div class="imdb-results__loading" data-ng-show="loading"></div>
+			<div data-ng-hide="loading">
+				<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select>
+				<div class="imdb-results__loading" data-ng-show="loadingRosa"></div>
+				<table class="container" data-ng-hide="loadingRosa">
+				<thead>
+					<tr >
+				      <th>Nome</th>	
+				      <th>Squadra</th>
+				      <th>Ruolo</th>
+				      <th>Prezzo</th>					      
+				    </tr>
+				</thead>
+			    <tbody>
+				    <tr ng-repeat="calciatore in rosa.rosa">
+				      <td>{{calciatore.nome}}</td>		
+				      <td>{{calciatore.squadraDiA}}</td>	
+				      <td>{{getDescrizioneRuolo(calciatore.ruolo)}}</td>
+				      <td>{{calciatore.prezzo}}</td>
+				    </tr>
+			    </tbody>
+			</table>
+			</div>
+		</div>
+	</body>
+</html>

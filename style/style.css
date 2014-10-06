@@ -256,7 +256,7 @@ body {
 }
 
 .container td {
-	font: bold 1.4vw 'trebuchet MS', Arial, helvetica;
+	font: bold 1em 'trebuchet MS', Arial, helvetica;
 	-webkit-box-shadow: 0 2px 2px -2px #0E1119;
 	-moz-box-shadow: 0 2px 2px -2px #0E1119;
 	box-shadow: 0 2px 2px -2px #0E1119;
@@ -270,7 +270,7 @@ body {
 	height: 100%;
 	text-align: left;
 	overflow: hidden;
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 	display: table;
 	/*padding: 0 0 8em 0;*/
@@ -339,4 +339,24 @@ body {
 		font: italic bold 2em/120px 'trebuchet MS', Arial, helvetica;
 	}
 	
+
+	
+	.container {
+		height: auto;
+		text-align: center;
+		overflow: hidden;
+		width: 100%;
+		margin: 0 auto;
+		display: table;
+		/*padding: 0 0 8em 0;*/
+		color: white
+	}
+	
+	.logo{
+		width: 50px;
+	}
+	
+	.container td, .container th {
+		padding: 1%; 
+	}
 }
