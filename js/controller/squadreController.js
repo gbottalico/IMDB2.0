@@ -8,7 +8,6 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 	});
 
 	$scope.visualizzaSquadra = function() {
-		$scope.loadingRosa = true;
 		var infoSquadra = $scope.squadre.filter(function(row) {
 			if (row.idSquadra == $scope.squadraSelected) {
 				return true
@@ -19,7 +18,6 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 		
 		if (infoSquadra.length != 0){
 			$scope.rosa = infoSquadra[0];
-			$scope.loadingRosa = false;
 		}
 	},
 	

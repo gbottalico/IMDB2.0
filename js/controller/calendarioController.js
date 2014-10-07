@@ -6,5 +6,15 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 		$scope.calendario = data;
 	});
 
+	$scope.visualizzaGiornata = function() {
+		$scope.loadingGiornata = true;
+		$scope.infoGiornata = $scope.calendario.filter(function(row) {
+			if (row.idGiornata == $scope.giornataSelected) {
+				return true
+			} else {
+				return false;
+			}
+		});
+	}
 	
 });

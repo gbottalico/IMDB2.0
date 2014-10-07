@@ -255,6 +255,14 @@ body {
 	width: 50px;
 }
 
+#calendarioTable{
+	text-align: center!important;
+}
+
+#calendarioTable td{
+	color:white!important;
+}
+
 .container th h1 {
 	font-weight: bold;
 	font-size: 1em;
@@ -278,11 +286,11 @@ body {
 	}
 
 .portiere{
-	background-color: rgb(147, 188, 250)!important; 	
+	background-color: rgb(121, 165, 233)!important; 	
 }
 
 .difensore{
-	background-color: rgb(105, 151, 221)!important;	
+	background-color: rgb(79, 128, 204)!important;	
 }
 
 .centrocampista{
@@ -294,7 +302,6 @@ body {
 }
 
 .container {
-	height: 100%;
 	text-align: left;
 	overflow: hidden;
 	width: 100%;
