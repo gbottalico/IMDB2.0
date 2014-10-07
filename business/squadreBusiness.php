@@ -12,6 +12,7 @@
 		var $prezzo;
 		var $idSquadra;
 		var $foto;
+		var $squadraDiAfoto;
 
 		function RigaGiocatore() {
 		}		
@@ -54,12 +55,13 @@
 	            	if ($riga[5] == 0) { // Aggiungo solo i giocatori non svincolati
 	            		$rigaPl = new RigaGiocatore();
 	            		$rigaPl->codice = $riga[2];
-	            		$rigaPl->nome = ImdbUtils::getPlayerNameByCode($rigaPl->codice);
+	            		$rigaPl->nome = trim(ImdbUtils::getPlayerNameByCode($rigaPl->codice));
 	            		$rigaPl->ruolo = $riga[1];
 	            		$rigaPl->prezzo = $riga[7];
 	            		$rigaPl->idFcm = ImdbUtils::getPlayerIdByCode($riga[2]);
 	            		$rigaPl->foto = ImdbUtils::getPlayerImageUrl($rigaPl->idFcm);
-	            		$rigaPl->squadraDiA = ImdbUtils::getPlayerNameByCode($riga[3]);
+	            		$rigaPl->squadraDiA = trim(ImdbUtils::getPlayerNameByCode($riga[3]));
+	            		$rigaPl->squadraDiAfoto = ImdbUtils::getSquadraImageUrl(strtolower($rigaPl->squadraDiA));
 	            		$rigaPl->idSquadra = substr($riga[0], strpos($riga[0], '(') + 1);
 	            		array_push($giocatori, $rigaPl);
 	            	}            	

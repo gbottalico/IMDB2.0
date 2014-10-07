@@ -4,6 +4,7 @@
 	define('js_folder', 'js/');
 	define('img_folder', 'img/');
 	define('loghi_folder', 'loghi/');
+	define('scudetti_folder', 'scudetti/');
 	define('allenatori_folder', 'allenatori/');
 	define('foto_folder', 'foto/');
 	define('competizioni_file', 'fcmCompetizioniDati.js');

@@ -126,6 +126,13 @@ class ImdbUtils {
         }
 
         /*
+        *   Restituisce l'url del logo della squadra passata in input
+        */
+        public static function getSquadraImageUrl($squadra) {
+            return host . img_folder . loghi_folder . scudetti_folder . $squadra . '.png';
+        } 
+
+        /*
         *   Restituisce il nome del giocatore identificato dal codice passato in input
         */
         public static function getPlayerNameByCode($code) {
