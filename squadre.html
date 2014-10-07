@@ -14,23 +14,28 @@
 	</head>
 	<body ng-controller="squadreCtrl">
 		<div id="wrapper">
+			<div class="backHome" onclick="window.location='index.html'"><img class="logo" alt="" src="images/football.png"></div>
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select>
 				<div class="imdb-results__loading" data-ng-show="loadingRosa"></div>
-				<table class="container" data-ng-hide="loadingRosa">
+				<table class="container" data-ng-hide="!rosa">
 				<thead>
 					<tr >
 				      <th>Nome</th>	
 				      <th>Squadra</th>
+				      <th></th>
 				      <th>Ruolo</th>
-				      <th>Prezzo</th>					      
+				      <th>Prezzo</th>
+				      <th></th>					      
 				    </tr>
 				</thead>
 			    <tbody>
-				    <tr ng-repeat="calciatore in rosa.rosa">
+				    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{portiere : calciatore.ruolo==1, difensore : calciatore.ruolo==2 , centrocampista : calciatore.ruolo==3 , attaccante : calciatore.ruolo==4 }">
+				      <td  style="text-align:center"><img class="logo" alt="" src="{{calciatore.foto}}"></td>
 				      <td>{{calciatore.nome}}</td>		
 				      <td>{{calciatore.squadraDiA}}</td>	
+				      <td style="text-align:center"><img class="logo" alt="" src="{{calciatore.squadraDiAfoto}}"></td>
 				      <td>{{getDescrizioneRuolo(calciatore.ruolo)}}</td>
 				      <td>{{calciatore.prezzo}}</td>
 				    </tr>

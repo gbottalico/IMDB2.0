@@ -2,6 +2,13 @@ body {
 	 background: url('../images/background.jpg');
 }
 
+.backHome{
+	position: fixed;
+    top: 20px;
+    right: 0px;
+    crsor:pointer;
+}
+
 .imdb-results__loading {
   background: white url('../images/preloader-results.gif?1384796714') no-repeat 50% 50%;
   -webkit-background-size: 64px 64px;
@@ -42,7 +49,7 @@ body {
 /* -------------------------------- */
 .menu li {
 	width: 32%;
-	height:32%;
+	height:45%;
 	position: relative;
 	float: left;
 	cursor: pointer;
@@ -245,7 +252,7 @@ body {
 }
 
 .logo {
-	width: 20px;
+	width: 50px;
 }
 
 .container th h1 {
@@ -266,6 +273,26 @@ body {
 	font: bold 1.1em 'trebuchet MS', Arial, helvetica;
 }
 
+.container td, .container th {
+		padding: 1%; 
+	}
+
+.portiere{
+	background-color: rgb(147, 188, 250)!important; 	
+}
+
+.difensore{
+	background-color: rgb(105, 151, 221)!important;	
+}
+
+.centrocampista{
+	background-color: 	rgb(52, 64, 209)!important;
+}
+
+.attaccante{
+	background-color: 	rgb(0, 0, 156)!important;
+}
+
 .container {
 	height: 100%;
 	text-align: left;
@@ -277,11 +304,6 @@ body {
 	color: white
 }
 
-.container td,.container th {
-	/*padding-bottom: 2%;*/
-	padding-top: 2%;
-	padding-left: 2%;
-}
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
@@ -317,9 +339,6 @@ body {
 		margin: 0 auto;
 	}
 	
-	.container td:nth-child(4),.container th:nth-child(4) {
-		display: none;
-	}
 	
 	.container{
 		width:100%;
@@ -352,11 +371,4 @@ body {
 		color: white
 	}
 	
-	.logo{
-		width: 50px;
-	}
-	
-	.container td, .container th {
-		padding: 1%; 
-	}
 }
