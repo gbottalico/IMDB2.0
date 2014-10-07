@@ -19,7 +19,7 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 		if (infoSquadra.length != 0){
 			$scope.rosa = infoSquadra[0];
 		}
-	},
+	}
 	
 	$scope.getDescrizioneRuolo = function(idRuolo){
 		return $scope.ruolo[idRuolo-1];

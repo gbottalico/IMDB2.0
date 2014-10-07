@@ -1,0 +1,40 @@
+<html ng-app="IMDB">
+	<head>
+		<meta charset="utf-8">
+		<title>IMDB</title>
+		<script src="js/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/interface.js"></script>
+		<script src="js/controller/invFormController.js"></script>
+		<link rel="stylesheet" href="style/style.css">		
+	</head>
+	<body ng-controller="invFormCtrl">
+		<div id="wrapper">
+			<div class="imdb-results__loading" data-ng-show="loading"></div>
+			<div data-ng-hide="loading">
+				<div id="listaGiocatori" style="float: left; width: 40%">
+					<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select>
+					<div class="imdb-results__loading" data-ng-show="loadingRosa"></div>
+					<table class="container" data-ng-hide="loadingRosa">
+						<thead>
+							<tr >
+						      <th>Nome</th>	
+						      <th>Squadra</th>
+						      <th>Ruolo</th>						      					     
+						    </tr>
+						</thead>
+					    <tbody>
+						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }">
+						      <td style="cursor: pointer;" data-ng-click="clickGiocatore(calciatore)">{{calciatore.nome}}</td>		
+						      <td>{{calciatore.squadraDiA}}</td>	
+						      <td>{{getDescrizioneRuolo(calciatore.ruolo)}}</td>						      
+						    </tr>
+					    </tbody>
+					</table>					
+				</div>			
+				<div id="campo" class="campo">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
