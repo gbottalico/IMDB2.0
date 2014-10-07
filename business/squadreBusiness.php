@@ -4,12 +4,14 @@
 	
 	class RigaGiocatore {
 
+		var $idFcm;
 		var $codice;
 		var $nome;
 		var $ruolo;
 		var $squadraDiA;		
 		var $prezzo;
 		var $idSquadra;
+		var $foto;
 
 		function RigaGiocatore() {
 		}		
@@ -55,6 +57,8 @@
 	            		$rigaPl->nome = ImdbUtils::getPlayerNameByCode($rigaPl->codice);
 	            		$rigaPl->ruolo = $riga[1];
 	            		$rigaPl->prezzo = $riga[7];
+	            		$rigaPl->idFcm = ImdbUtils::getPlayerIdByCode($riga[2]);
+	            		$rigaPl->foto = ImdbUtils::getPlayerImageUrl($rigaPl->idFcm);
 	            		$rigaPl->squadraDiA = ImdbUtils::getPlayerNameByCode($riga[3]);
 	            		$rigaPl->idSquadra = substr($riga[0], strpos($riga[0], '(') + 1);
 	            		array_push($giocatori, $rigaPl);

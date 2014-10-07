@@ -13,8 +13,10 @@ class RigaNome {
 class ImdbUtils {    
 
         private static $initializedSerieA = false;
+        private static $initializedDettSerieA = false;
         private static $initializedCalendario = false;
         private static $nomi = array();
+        private static $giocatori = array();
         private static $turni = array();        
 
         /*
@@ -39,6 +41,27 @@ class ImdbUtils {
                 }                
             }           
             self::$initializedSerieA = true;
+        }
+
+        /*
+        *   Inizializza l'array dei codici dei giocatori
+        */
+        private static function initializeDettSerieA() {
+            if (self::$initializedDettSerieA) {
+              return;
+            }
+            $lines = file(host . js_folder . serie_a_dett_file);
+            
+            foreach($lines as $line_num => $line) {
+                if (strpos($line, 'GiocatoreA') !== false) {
+                    $riga = explode(",", $line);                    
+                    $nom = new RigaNome();                
+                    $nom->codice = substr($riga[0], strpos($riga[0], '(') + 1);
+                    $nom->nome = $riga[3];                    
+                    array_push(self::$giocatori, $nom);                                    
+                }                        
+            }           
+            self::$initializedDettSerieA = true;
         }
 
         /*
@@ -96,6 +119,13 @@ class ImdbUtils {
     	}
 
         /*
+        *   Restituisce l'url della foto del giocatore passato in input
+        */
+        public static function getPlayerImageUrl($player) {
+            return host . img_folder . foto_folder . $player . '.jpg';
+        }
+
+        /*
         *   Restituisce il nome del giocatore identificato dal codice passato in input
         */
         public static function getPlayerNameByCode($code) {
@@ -106,6 +136,18 @@ class ImdbUtils {
                 }
             }            
         }
+
+        /*
+        *   Restituisce l'id FCM del giocatore in base al suo codice
+        */
+        public static function getPlayerIdByCode($code) {            
+            self::initializeDettSerieA();
+            foreach (self::$giocatori as $nome) {                
+                if ($nome->codice == str_replace('xg', '', $code)) {
+                    return $nome->nome;
+                }
+            }
+        }   
 
         /*
         *   Restituisce il nome della competizione/turno identificato dal codice passato in input
