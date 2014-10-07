@@ -2,6 +2,7 @@ function initializeMenu(){
 	$('#menuClassifica').click(loadPageClassifica);
 	$('#menuSquadre').click(loadPageSquadre);
 	$('#menuCalendario').click(loadPageCalendario);
+	$('#menuInvForm').click(loadPageInvForm);
 }
 
 
@@ -15,4 +16,8 @@ function loadPageSquadre(){
 
 function loadPageCalendario(){
 	window.location = "calendario.html";
+}
+
+function loadPageInvForm(){
+	window.location = "inva_formazione.html";
 }
