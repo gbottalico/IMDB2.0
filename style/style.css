@@ -357,7 +357,7 @@ body {
 
 .maglia {
 	background: url('../images/maglia.png') no-repeat;
-	background-size: 50px 50px;	
+	background-size: 45px 45px;	
 }
 
 .campo-portiere {
@@ -365,8 +365,8 @@ body {
 	width: 100%;
 	height: 100%;
 	top: 530px;
-	left: 192px;
-	display: none;
+	left: 195px;
+	/*display: none;*/
 	color: white;
 	font-weight: bold;
 	text-align: left;
@@ -376,21 +376,131 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top: 420px;
-	left: 150px;
-	display: none;
+	top: 455px;
+	left: 195px;
+	/*display: none;*/
 	color: white;
 	font-weight: bold;
 	text-align: left;
 }
 
+.campo-difensore-2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 435px;
+	left: 128px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-difensore-3 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 435px;
+	left: 263px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-difensore-4 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 410px;
+	left: 53px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-difensore-5 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 410px;
+	left: 333px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-difensore-6 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 395px;
+	left: 195px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
 .campo-centrocampista-1 {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top: 320px;
-	left: 150px;
-	display: none;
+	top: 325px;
+	left: 195px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-centrocampista-2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 265px;
+	left: 118px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-centrocampista-3 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 265px;
+	left: 263px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-centrocampista-4 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 205px;
+	left: 195px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-centrocampista-5 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 205px;
+	left: 53px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-centrocampista-6 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 205px;
+	left: 333px;
+	/*display: none;*/
 	color: white;
 	font-weight: bold;
 	text-align: left;
@@ -400,9 +510,31 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top: 120px;
-	left: 150px;
-	display: none;
+	top: 55px;
+	left: 195px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-attaccante-2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 90px;
+	left: 93px;
+	/*display: none;*/
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+.campo-attaccante-3 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 90px;
+	left: 293px;
+	/*display: none;*/
 	color: white;
 	font-weight: bold;
 	text-align: left;
