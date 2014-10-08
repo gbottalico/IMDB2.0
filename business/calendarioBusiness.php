@@ -6,6 +6,7 @@ class RigaCalendario {
 
 	var $idCompetizione;
 	var $competizione;
+    var $logoCompetizione;
 	var $idGiornata;
 	var $giornata;
 	var $idTurno;
@@ -44,8 +45,9 @@ class CalendarioBusiness {
                 $rigaCal->giocata = $riga[3];
                 $rigaCal->idGiornata = $riga[5];                
                 $rigaCal->giornata = ImdbUtils::getTurnoByCode($rigaCal->idGiornata);
-                $rigaCal->idCompetizione = $riga[7];
-                $rigaCal->competizione = trim(ImdbUtils::getTurnoByCode($rigaCal->idCompetizione));
+                $rigaCal->idCompetizione = $riga[8];
+                $rigaCal->competizione = trim(ImdbUtils::getTurnoByCode($riga[7]));
+                $rigaCal->logoCompetizione = ImdbUtils::getCompetizioneImageUrl($rigaCal->idCompetizione);
                 $rigaCal->idTurno = str_replace('"',"",$riga[9]);
                 $rigaCal->turno = trim(ImdbUtils::getTurnoByCode($rigaCal->idTurno));
                 $rigaCal->squadraCasa = trim(ImdbUtils::getTurnoByCode($riga[15]));

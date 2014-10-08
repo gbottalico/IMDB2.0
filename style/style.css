@@ -334,6 +334,22 @@ body {
 	-moz-box-shadow: 0 6px 6px -6px #0E1119;
 	box-shadow: 0 6px 6px -6px #0E1119;
 }
+.menuItem {
+	float: left;
+	margin: 10px;
+	opacity: .7;
+}
+
+
+.menuItem.selected{
+	opacity: 1;
+	margin: 0;
+	height: 80px;
+}
+
+.backHome{
+	margin: 10px;
+}
 
 /* INVIO FOMRAZIONE */
 .inv-rose {
@@ -356,203 +372,105 @@ body {
 .maglia {
 	background: url('../images/maglia.png') no-repeat;
 	background-size: 45px 45px;	
-}
-
-.menuItem {
-	float: left;
-	margin: 10px;
-	opacity: .7;
-}
-
-
-.menuItem.selected{
-	opacity: 1;
-	margin: 0;
-	height: 80px;
-}
-
-.backHome{
-	margin: 10px;
-}
-
-.campo-portiere {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	color: white;
+	font-weight: bold;	
+}
+
+.label-maglia {
+	font-size: small;
+	margin-top: 30px;	
+}
+
+.menuSquadre {
+	float: left;
+	cursor: pointer;
+}
+
+.campo-portiere {	
 	top: 530px;
 	left: 195px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
 
-.campo-difensore-1 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.campo-difensore-1 {	
 	top: 455px;
 	left: 195px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
 
-.campo-difensore-2 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.campo-difensore-2 {	
 	top: 435px;
 	left: 128px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
-.campo-difensore-3 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.campo-difensore-3 {	
 	top: 435px;
 	left: 263px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
-.campo-difensore-4 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.campo-difensore-4 {	
 	top: 410px;
 	left: 53px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
-.campo-difensore-5 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.campo-difensore-5 {	
 	top: 410px;
 	left: 333px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
-.campo-difensore-6 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.campo-difensore-6 {	
 	top: 395px;
 	left: 195px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
-.campo-centrocampista-1 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
+.campo-centrocampista-1 {	
 	top: 325px;
 	left: 195px;
-	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
+	/*display: none;*/	
 }
 .campo-centrocampista-2 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 265px;
 	left: 118px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 .campo-centrocampista-3 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 265px;
 	left: 263px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 .campo-centrocampista-4 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 205px;
 	left: 195px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 .campo-centrocampista-5 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 205px;
 	left: 53px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 .campo-centrocampista-6 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 205px;
 	left: 333px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 
 .campo-attaccante-1 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 55px;
 	left: 195px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 .campo-attaccante-2 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 90px;
 	left: 93px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 .campo-attaccante-3 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
 	top: 90px;
 	left: 293px;
 	/*display: none;*/
-	color: white;
-	font-weight: bold;
-	text-align: left;
 }
 
 .imdb-disabled {

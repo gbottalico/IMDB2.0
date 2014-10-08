@@ -37,13 +37,17 @@ imdbFanta.controller('invFormCtrl', function($scope, $http) {
 		var cognome = calciatore.nome.split(" ")[0];
 		if (calciatore.selected) {
 			if (calciatore.ruolo == 1) {
-				$('.campo-portiere').text(cognome).show();
+				$('.campo-portiere > p').text(cognome).css('margin-left', (cognome.length > 5 ? 3 - cognome.length : cognome.length));
+				$('.campo-portiere').show();
 			} else if (calciatore.ruolo == 2) {
-				$('.campo-difensore-1').text(cognome).show();				
+				$('.campo-difensore-1 > p').text(cognome).css('margin-left', (cognome.length > 5 ? 3 - cognome.length : cognome.length));
+				$('.campo-difensore-1').show();
 			} else if (calciatore.ruolo == 3) {
-				$('.campo-centrocampista-1').text(cognome).show();
+				$('.campo-centrocampista-1 > p').text(cognome).css('margin-left', (cognome.length > 5 ? 3 - cognome.length : cognome.length));
+				$('.campo-centrocampista-1').show();
 			} else if (calciatore.ruolo == 4) {
-				$('.campo-attaccante-1').text(cognome).show();
+				$('.campo-attaccante-1 > p').text(cognome).css('margin-left', (cognome.length > 5 ? 3 - cognome.length : cognome.length));
+				$('.campo-attaccante-1').show();
 			}
 		} else {
 			if (calciatore.ruolo == 1) {

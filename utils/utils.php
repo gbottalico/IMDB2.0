@@ -15,6 +15,7 @@ class ImdbUtils {
         private static $initializedSerieA = false;
         private static $initializedDettSerieA = false;
         private static $initializedCalendario = false;
+        private static $idCampionato = 0;
         private static $nomi = array();
         private static $giocatori = array();
         private static $turni = array();        
@@ -89,19 +90,22 @@ class ImdbUtils {
         *	Restituisce l'id del campionato
         */        
         public static function getIdCampionato() {
-        	$lines = file(host . js_folder . competizioni_file);
 
-			// Ciclo per trovare l'id del campionato
-			foreach($lines as $line_num => $line) {
-			    if (strpos($line,']=new Competizione(') !== false) {
-			    	$riga = explode(",", $line);    	
-			    	if ($riga[1] == '"Campionato"') {
-			    		$idCampionato = $riga[3];
-			    		break;
-			    	}
-			    }
-			}
-			return $idCampionato;
+            if (self::$idCampionato == 0) {
+            	$lines = file(host . js_folder . competizioni_file);
+
+    			// Ciclo per trovare l'id del campionato
+    			foreach($lines as $line_num => $line) {
+    			    if (strpos($line,']=new Competizione(') !== false) {
+    			    	$riga = explode(",", $line);    	
+    			    	if ($riga[1] == '"Campionato"') {
+    			    		self::$idCampionato = $riga[3];
+    			    		break;
+    			    	}
+    			    }
+    			}
+            }
+			return self::$idCampionato;
     	}
 
     	/*
@@ -131,6 +135,17 @@ class ImdbUtils {
         public static function getSquadraImageUrl($squadra) {
             return host . img_folder . loghi_folder . scudetti_folder . $squadra . '.png';
         } 
+
+        /*
+        *   Restituisce l'url dell'immagine della competizione
+        */        
+        public static function getCompetizioneImageUrl($comp) {            
+            if ($comp == self::getIdCampionato()) {
+                return '/images/Scudetto.png';               
+            } else {
+                return '/images/Coppa.png';
+            }
+        }
 
         /*
         *   Restituisce il nome del giocatore identificato dal codice passato in input
