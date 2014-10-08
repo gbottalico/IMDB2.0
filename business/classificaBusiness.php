@@ -41,7 +41,7 @@ class ClassificaBusiness {
                     $rigaClas->squadra = str_replace('"',"",$riga[4]);            
                     $rigaClas->allenatore = str_replace('"', "", $riga[5]);            
                     $rigaClas->punti = str_replace('"', "", $riga[6]);            
-                    $rigaClas->logo = ImdbUtils::getLogoImageUrl($rigaClas->squadra);            
+                    $rigaClas->logo = ImdbUtils::getLogoImageUrl($rigaClas->squadra);
                     $rigaClas->foto = ImdbUtils::getCoachImageUrl($rigaClas->squadra);
                     $rigaClas->vinte = $riga[7] + $riga[10];
                     $rigaClas->perse = $riga[9] + $riga[12];            

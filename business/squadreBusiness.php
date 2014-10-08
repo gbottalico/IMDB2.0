@@ -22,6 +22,7 @@
 
 		var $idSquadra;
 		var $nome;
+		var $logo;
 		var $presidente;
 		var $mail;
 		var $creditiResidui;
@@ -44,8 +45,9 @@
 	        	if (strpos($line,']=new F(') !== false) {
 	                $riga = explode(",", $line);
 	                $rigaSq = new RigaSquadra();
-	                $rigaSq->idSquadra = substr($riga[0], strpos($riga[0], '(') + 1);
-	                $rigaSq->nome = str_replace('"',"",$riga[1]);
+	                $rigaSq->idSquadra = substr($riga[0], strpos($riga[0], '(') + 1);	                
+	                $rigaSq->nome = trim(str_replace('"',"",$riga[1]));
+	                $rigaSq->logo = ImdbUtils::getLogoImageUrl($rigaSq->nome);
 	                $rigaSq->presidente = str_replace('"',"",$riga[2]);
 	                $rigaSq->mail = str_replace('"',"",$riga[6]);
 	                $rigaSq->creditiResidui = substr($riga[8], 0, strlen($riga[8]) - 2);                
