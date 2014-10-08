@@ -2,13 +2,6 @@ body {
 	background: url('../images/background.jpg');	 
 }
 
-.backHome{
-	position: fixed;
-    top: 20px;
-    right: 0px;
-    crsor:pointer;
-}
-
 .imdb-results__loading {
   background: white url('../images/preloader-results.gif?1384796714') no-repeat 50% 50%;
   -webkit-background-size: 64px 64px;
@@ -253,6 +246,7 @@ body {
 
 .logo {
 	width: 50px;
+	cursor:pointer;
 }
 
 #calendarioTable{
@@ -358,6 +352,11 @@ body {
 .maglia {
 	background: url('../images/maglia.png') no-repeat;
 	background-size: 45px 45px;	
+}
+
+.menuSquadre {
+	float: left;
+	cursor: pointer;
 }
 
 .campo-portiere {

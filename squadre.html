@@ -10,10 +10,13 @@
 	</head>
 	<body ng-controller="squadreCtrl">
 		<div id="wrapper">
-			<div class="backHome" onclick="window.location='index.html'"><img class="logo" style="cursor:pointer" alt="" src="images/football.png"></div>
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
-				<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select>
+<!-- 				<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select> -->
+				<div class="menuContainer">
+					<img class="logo menuSquadre" ng-repeat="squadra in squadre" alt="" src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">
+					<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
+				</div>
 				<table class="container" data-ng-hide="!rosa">
 					<thead>
 						<tr >

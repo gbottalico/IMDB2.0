@@ -14,9 +14,11 @@
 	</head>
 	<body ng-controller="calendarioCtrl">
 		<div id="wrapper">
-			<div class="backHome" onclick="window.location='index.html'"><img class="logo" style="cursor:pointer" alt="" src="images/football.png"></div>
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
+				<div class="menuContainer">
+					<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
+				</div>
 				<select ng-model="giornataSelected" ng-change="visualizzaGiornata()" ng-options="cal.idGiornata as cal.giornata for cal in calendario | unique:'idGiornata'"></select>
 				<table class="container" id="calendarioTable" data-ng-hide="!infoGiornata">
 					<tbody>

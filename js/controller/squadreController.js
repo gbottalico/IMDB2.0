@@ -7,9 +7,9 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 		$scope.squadre = data;
 	});
 
-	$scope.visualizzaSquadra = function() {
+	$scope.visualizzaSquadra = function(squadraSelected) {
 		var infoSquadra = $scope.squadre.filter(function(row) {
-			if (row.idSquadra == $scope.squadraSelected) {
+			if (row.idSquadra == squadraSelected) {
 				return true
 			} else {
 				return false;
