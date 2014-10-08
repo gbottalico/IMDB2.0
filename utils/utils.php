@@ -141,9 +141,9 @@ class ImdbUtils {
         */        
         public static function getCompetizioneImageUrl($comp) {            
             if ($comp == self::getIdCampionato()) {
-                return '/images/Scudetto.png';               
+                return 'images/Scudetto.png';               
             } else {
-                return '/images/Coppa.png';
+                return 'images/Coppa.png';
             }
         }
 
