@@ -19,5 +19,5 @@ function loadPageCalendario(){
 }
 
 function loadPageInvForm(){
-	window.location = "inva_formazione.html";
+	window.location = "invia_formazione.html";
 }

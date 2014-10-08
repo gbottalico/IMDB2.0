@@ -337,17 +337,86 @@ body {
 	box-shadow: 0 6px 6px -6px #0E1119;
 }
 
+/* INVIO FOMRAZIONE */
+.inv-rose {
+	float: left;
+	width: 40%;
+	height: 580px;
+	overflow: hidden;
+}
+
 .campo {
+	overflow: hidden;
+	position: relative;
 	float: right; 
 	width: 40%; 
 	background: url('../images/campo.jpg') no-repeat;
-	background-size: cover;
-	height: 100%;	
+	background-size: 100% 100%;
+	height: 580px;	
+}
+
+.maglia {
+	background: url('../images/maglia.png') no-repeat;
+	background-size: 50px 50px;	
+}
+
+.campo-portiere {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 530px;
+	left: 192px;
+	display: none;
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+
+.campo-difensore-1 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 420px;
+	left: 150px;
+	display: none;
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+
+.campo-centrocampista-1 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 320px;
+	left: 150px;
+	display: none;
+	color: white;
+	font-weight: bold;
+	text-align: left;
+}
+
+.campo-attaccante-1 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 120px;
+	left: 150px;
+	display: none;
+	color: white;
+	font-weight: bold;
+	text-align: left;
 }
 
 .imdb-disabled {
 	color: #332E2E !important;
 	background-color: white;
+}
+
+.invia-form-table {
+	height: 95%;
+	color: white;
+	background-color: #332E2E;
 }
 
 @media only screen and (max-width: 800px), only screen and (max-device-width: 800px) {

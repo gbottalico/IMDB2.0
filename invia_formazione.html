@@ -12,12 +12,11 @@
 		<div id="wrapper">
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
-				<div id="listaGiocatori" style="float: left; width: 40%">
-					<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select>
-					<div class="imdb-results__loading" data-ng-show="loadingRosa"></div>
-					<table class="container" data-ng-hide="loadingRosa">
+				<div id="listaGiocatori" class="inv-rose">
+					<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select>					
+					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
-							<tr >
+							<tr>
 						      <th>Nome</th>	
 						      <th>Squadra</th>
 						      <th>Ruolo</th>						      					     
@@ -33,6 +32,21 @@
 					</table>					
 				</div>			
 				<div id="campo" class="campo">
+					<div class="maglia campo-portiere"></div>
+					<div class="maglia campo-difensore-1"></div>
+					<div class="maglia campo-difensore-2"></div>
+					<div class="maglia campo-difensore-3"></div>
+					<div class="maglia campo-difensore-4"></div>
+					<div class="maglia campo-difensore-5"></div>
+					<div class="maglia campo-difensore-6"></div>
+					<div class="maglia campo-centrocampista-1"></div>
+					<div class="maglia campo-centrocampista-2"></div>
+					<div class="maglia campo-centrocampista-3"></div>
+					<div class="maglia campo-centrocampista-4"></div>
+					<div class="maglia campo-centrocampista-5"></div>
+					<div class="maglia campo-attaccante-1"></div>
+					<div class="maglia campo-attaccante-2"></div>
+					<div class="maglia campo-attaccante-3"></div>
 				</div>
 			</div>
 		</div>
