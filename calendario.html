@@ -12,12 +12,12 @@
 			
 		</script>
 	</head>
-	<body ng-controller="calendarioCtrl">
+	<body ng-controller="calendarioCtrl" ng-init="caricaCompetizione('xc2');">
 		<div id="wrapper">
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<div class="menuContainer">
-					<img class="logo menuItem" src="images/Scudetto.png" ng-click="">
+					<img class="logo menuItem selected" src="images/Scudetto.png" ng-click="">
 					<img class="logo menuItem" src="images/Coppa.png" ng-click="">
 					<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
 				</div>
