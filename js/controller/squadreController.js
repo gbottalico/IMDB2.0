@@ -5,9 +5,11 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 	$http.get('service/squadreService.php').success(function(data) {
 		$scope.loading = false;
 		$scope.squadre = data;
+		$scope.visualizzaSquadra('1');
 	});
 
 	$scope.visualizzaSquadra = function(squadraSelected) {
+		$('.menuItem').removeClass('selected');
 		var infoSquadra = $scope.squadre.filter(function(row) {
 			if (row.idSquadra == squadraSelected) {
 				return true
@@ -19,6 +21,7 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 		if (infoSquadra.length != 0){
 			$scope.rosa = infoSquadra[0];
 		}
+		$('#squadra-'+squadraSelected).addClass('selected');
 	}
 	
 	$scope.getDescrizioneRuolo = function(idRuolo){
