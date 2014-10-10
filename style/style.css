@@ -512,6 +512,65 @@ body {
 	padding: 0px 10px;
 }
 
+.riepilogoTableContainer{
+	width: 90%;
+	margin: 10px auto;
+}
+
+.riepilogoContainer{
+	background: rgb(234, 233, 233);
+	overflow: auto;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.panchina{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.panchina tr:nth-child(1){
+	background:black;
+	color:white;
+}
+
+.panchina td{
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+.titolari{
+	width: 80%;
+	margin: 0 auto;
+}
+
+
+.titolari td{
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+.riepilogo{
+	width: 80%;
+	margin: 0 auto;
+}
+
+
+.riepilogo td{
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+.riepilogoCasa{
+	text-align:right;
+}
+
+.riepilogoFuori{
+	
+}
+
 @media only screen and (max-width: 800px) , only screen and
 	(max-device-width: 800px) {
 	#wrapper {

@@ -17,7 +17,8 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 	}
 	
 	$scope.caricaCompetizione =  function(competizione){
-		
+		$scope.infoGiornata = new Object();
+		$('.menuItem').removeClass('selected');
 		$scope.competizioneSelected = competizione;
 		$scope.calendarioComp = $scope.calendario.filter(function(row) {
 			if (row.competizione == $scope.competizioneSelected) {
@@ -26,6 +27,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 				return false;
 			}
 		});
+		$('#'+competizione).addClass('selected');
 	}
 	
 	$scope.visualizzaGiornata = function(idComp) {
