@@ -1,14 +1,15 @@
 body {
-	background: url('../images/background.jpg');	 
+	background: url('../images/background.jpg');
 }
 
 .imdb-results__loading {
-  background: white url('../images/preloader-results.gif?1384796714') no-repeat 50% 50%;
-  -webkit-background-size: 64px 64px;
-  -moz-background-size: 64px 64px;
-  -o-background-size: 64px 64px;
-  background-size: 64px 64px;
-  height: 300px;
+	background: white url('../images/preloader-results.gif?1384796714')
+		no-repeat 50% 50%;
+	-webkit-background-size: 64px 64px;
+	-moz-background-size: 64px 64px;
+	-o-background-size: 64px 64px;
+	background-size: 64px 64px;
+	height: 300px;
 }
 
 #wrapper {
@@ -46,7 +47,7 @@ body {
 /* -------------------------------- */
 .menu li {
 	width: 32%;
-	height:45%;
+	height: 45%;
 	position: relative;
 	float: left;
 	cursor: pointer;
@@ -250,15 +251,15 @@ body {
 
 .logo {
 	height: 50px;
-	cursor:pointer;
+	cursor: pointer;
 }
 
-#calendarioTable{
-	text-align: center!important;
+#calendarioTable {
+	text-align: center !important;
 }
 
-#calendarioTable td{
-	color:white!important;
+#calendarioTable td {
+	color: white !important;
 }
 
 .container th h1 {
@@ -279,24 +280,24 @@ body {
 	font: bold 1.1em 'trebuchet MS', Arial, helvetica;
 }
 
-.container td, .container th {
-		padding: 1%; 
-	}
-
-.portiere{
-	background-color: rgb(121, 165, 233)!important; 	
+.container td,.container th {
+	padding: 1%;
 }
 
-.difensore{
-	background-color: rgb(79, 128, 204)!important;	
+.portiere {
+	background-color: rgb(121, 165, 233) !important;
 }
 
-.centrocampista{
-	background-color: 	rgb(52, 64, 209)!important;
+.difensore {
+	background-color: rgb(79, 128, 204) !important;
 }
 
-.attaccante{
-	background-color: 	rgb(0, 0, 156)!important;
+.centrocampista {
+	background-color: rgb(52, 64, 209) !important;
+}
+
+.attaccante {
+	background-color: rgb(0, 0, 156) !important;
 }
 
 .container {
@@ -308,7 +309,6 @@ body {
 	/*padding: 0 0 8em 0;*/
 	color: white
 }
-
 
 /* Background-color of the odd rows */
 .container tr:nth-child(odd) {
@@ -334,20 +334,20 @@ body {
 	-moz-box-shadow: 0 6px 6px -6px #0E1119;
 	box-shadow: 0 6px 6px -6px #0E1119;
 }
+
 .menuItem {
 	float: left;
 	margin: 10px;
 	opacity: .7;
 }
 
-
-.menuItem.selected{
+.menuItem.selected {
 	opacity: 1;
 	margin: 0;
 	height: 80px;
 }
 
-.backHome{
+.backHome {
 	margin: 10px;
 }
 
@@ -362,26 +362,26 @@ body {
 .campo {
 	overflow: hidden;
 	position: relative;
-	float: right; 
-	width: 40%; 
+	float: right;
+	width: 40%;
 	background: url('../images/campo.jpg') no-repeat;
 	background-size: 100% 100%;
-	height: 580px;	
+	height: 580px;
 }
 
 .maglia {
 	background: url('../images/maglia.png') no-repeat;
-	background-size: 45px 45px;	
+	background-size: 45px 45px;
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	color: white;
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 .label-maglia {
 	font-size: small;
-	margin-top: 30px;	
+	margin-top: 30px;
 }
 
 .menuSquadre {
@@ -389,68 +389,78 @@ body {
 	cursor: pointer;
 }
 
-.campo-portiere {	
+.campo-portiere {
 	top: 530px;
 	left: 195px;
-	/*display: none;*/	
+	/*display: none;*/
 }
 
-.campo-difensore-1 {	
+.campo-difensore-1 {
 	top: 455px;
 	left: 195px;
-	/*display: none;*/	
+	/*display: none;*/
 }
 
-.campo-difensore-2 {	
+.campo-difensore-2 {
 	top: 435px;
 	left: 128px;
-	/*display: none;*/	
+	/*display: none;*/
 }
-.campo-difensore-3 {	
+
+.campo-difensore-3 {
 	top: 435px;
 	left: 263px;
-	/*display: none;*/	
+	/*display: none;*/
 }
-.campo-difensore-4 {	
+
+.campo-difensore-4 {
 	top: 410px;
 	left: 53px;
-	/*display: none;*/	
+	/*display: none;*/
 }
-.campo-difensore-5 {	
+
+.campo-difensore-5 {
 	top: 410px;
 	left: 333px;
-	/*display: none;*/	
+	/*display: none;*/
 }
-.campo-difensore-6 {	
+
+.campo-difensore-6 {
 	top: 395px;
 	left: 195px;
-	/*display: none;*/	
+	/*display: none;*/
 }
-.campo-centrocampista-1 {	
+
+.campo-centrocampista-1 {
 	top: 325px;
 	left: 195px;
-	/*display: none;*/	
+	/*display: none;*/
 }
+
 .campo-centrocampista-2 {
 	top: 265px;
 	left: 118px;
 	/*display: none;*/
 }
+
 .campo-centrocampista-3 {
 	top: 265px;
 	left: 263px;
 	/*display: none;*/
 }
+
 .campo-centrocampista-4 {
 	top: 205px;
 	left: 195px;
 	/*display: none;*/
 }
+
 .campo-centrocampista-5 {
 	top: 205px;
 	left: 53px;
 	/*display: none;*/
 }
+
 .campo-centrocampista-6 {
 	top: 205px;
 	left: 333px;
@@ -462,11 +472,13 @@ body {
 	left: 195px;
 	/*display: none;*/
 }
+
 .campo-attaccante-2 {
 	top: 90px;
 	left: 93px;
 	/*display: none;*/
 }
+
 .campo-attaccante-3 {
 	top: 90px;
 	left: 293px;
@@ -484,25 +496,37 @@ body {
 	background-color: #332E2E;
 }
 
-@media only screen and (max-width: 800px), only screen and (max-device-width: 800px) {
-	
+#elencoGiornate ul {
+	overflow: auto;
+	padding: 0px;
+}
+
+#elencoGiornate li {
+	color: white;
+	float: left;
+	background: gray;
+	border: 1px solid;
+	text-align: center;
+	margin: 0;
+	cursor: pointer;
+	padding: 0px 10px;
+}
+
+@media only screen and (max-width: 800px) , only screen and
+	(max-device-width: 800px) {
 	#wrapper {
 		width: 100%;
 		height: 100%;
-		margin: 0 auto;		
+		margin: 0 auto;
 	}
-	
-	
-	.container{
-		width:100%;
+	.container {
+		width: 100%;
 	}
-	
 	li {
 		width: 100% !important;
 		height: 20% !important;
 		margin: 2px 0px !important;
 	}
-	
 	.menu .title {
 		position: absolute;
 		height: 100%;
@@ -510,9 +534,6 @@ body {
 		text-align: center;
 		font: italic bold 2em/120px 'trebuchet MS', Arial, helvetica;
 	}
-	
-
-	
 	.container {
 		height: auto;
 		text-align: center;
@@ -523,5 +544,4 @@ body {
 		/*padding: 0 0 8em 0;*/
 		color: white
 	}
-	
 }

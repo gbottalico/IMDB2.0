@@ -4,6 +4,9 @@
 		<title>IMDB</title>
 		<script src="js/angular.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<link rel="stylesheet" href="style/jquery-ui.structure.css">
+		<link rel="stylesheet" href="style/jquery-ui.theme.css">
 		<script src="js/interface.js"></script>
 		<script src="js/controller/calendarioController.js"></script>
 		<link rel="stylesheet" href="style/style.css">
@@ -12,27 +15,33 @@
 			
 		</script>
 	</head>
-	<body ng-controller="calendarioCtrl" ng-init="caricaCompetizione('xc2');">
+	<body ng-controller="calendarioCtrl" ng-init="initCompetizione()">
 		<div id="wrapper">
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<div class="menuContainer">
-					<img class="logo menuItem selected" src="images/Scudetto.png" ng-click="">
-					<img class="logo menuItem" src="images/Coppa.png" ng-click="">
+					<img id="{{comp.idCompetizione}}" class="logo menuItem" ng-class="{selected : $index==0}"  ng-repeat="comp in calendario | unique:'competizione'" ng-src="{{comp.logoCompetizione}}" ng-click="caricaCompetizione(comp.competizione)">
 					<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
 				</div>
-				<select ng-model="giornataSelected" ng-change="visualizzaGiornata()" ng-options="cal.idGiornata as cal.giornata for cal in calendario | unique:'idGiornata'"></select>
-				<table class="container" id="calendarioTable" data-ng-hide="!infoGiornata">
-					<tbody>
-					    <tr ng-repeat="partita in infoGiornata">
-					      <td style="text-align: center"><img class="logo" src="{{partita.logoCasa}}"/></td>		
-					      <td>{{partita.squadraCasa}}</td>
-					      <td>{{partita.golCasa}} - {{partita.golFuori}}</td>
-   					      <td>{{partita.squadraFuori}}</td>
-					      <td style="text-align: center"><img class="logo" src="{{partita.logoFuori}}"/></td>		
-					    </tr>
-				    </tbody>
-				</table>
+<!-- 				<select ng-model="giornataSelected" ng-change="visualizzaGiornata()" ng-options="cal.idGiornata as cal.giornata for cal in calendarioComp | unique:'idGiornata'"></select>
+ -->			<div id="elencoGiornate">
+				  <ul>
+				    <li ng-repeat="cal in calendarioComp | unique:'idGiornata'" ng-click="visualizzaGiornata(cal.idGiornata)">{{cal.turno || cal.giornata}}</li>
+				  </ul>
+				  <div>
+				  	<table class="container" id="calendarioTable" data-ng-hide="!infoGiornata">
+						<tbody>
+						    <tr ng-repeat="partita in infoGiornata">
+						      <td style="text-align: center"><img class="logo" src="{{partita.logoCasa}}"/></td>		
+						      <td>{{partita.squadraCasa}}</td>
+						      <td>{{partita.golCasa}} - {{partita.golFuori}}</td>
+		  					      <td>{{partita.squadraFuori}}</td>
+						      <td style="text-align: center"><img class="logo" src="{{partita.logoFuori}}"/></td>		
+						    </tr>
+					    </tbody>
+					</table>
+				  </div>
+				</div>
 			</div>	
 		</div>
 	</body>
