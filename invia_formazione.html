@@ -16,7 +16,10 @@
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<div id="listaGiocatori" class="inv-rose">
-					<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select>					
+					<div class="menuContainer">
+						<img class="logoInv menuItemInv" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">
+						<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
+					</div>				
 					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
 							<tr>
@@ -35,7 +38,7 @@
 					</table>					
 				</div>			
 				<div id="campo" class="campo">
-					<div class="maglia campo-portiere"><p class="label-maglia"></p></div>
+					<div class="maglia campo-portiere-1"><p class="label-maglia"></p></div>
 					<div class="maglia campo-difensore-1"><p class="label-maglia"></p></div>
 					<div class="maglia campo-difensore-2"><p class="label-maglia"></p></div>
 					<div class="maglia campo-difensore-3"><p class="label-maglia"></p></div>
