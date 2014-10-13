@@ -1,3 +1,8 @@
 <?php require (__DIR__.'/../business/tabellinoBusiness.php') ?>
 
-<?php echo TabellinoBusiness::getFormazioniGiornata(570, 2, 1) ?>
+<?php 
+	$partita = $_REQUEST['partita'];
+	$giornata = $_REQUEST['giornata'];
+	$giocata = $_REQUEST['giocata'];
+	echo TabellinoBusiness::getFormazioniGiornata($partita, $giornata, $giocata);
+?>
