@@ -354,8 +354,7 @@ body {
 /* INVIO FOMRAZIONE */
 .inv-rose {
 	float: left;
-	width: 40%;
-	height: 580px;
+	width: 45%;	
 	overflow: hidden;
 }
 
@@ -369,7 +368,7 @@ body {
 	height: 580px;
 }
 .logoInv {
-	height: 30px;
+	height: 27px;
 	cursor: pointer;
 }
 .menuItemInv {
@@ -381,7 +380,7 @@ body {
 .menuItemInv.selected {
 	opacity: 1;
 	margin: 0;
-	height: 50px;
+	height: 45px;
 }
 
 .maglia {
@@ -507,6 +506,7 @@ body {
 
 .invia-form-table {
 	height: 100%;
+	width: 100%;
 	color: white;
 	background-color: #332E2E;
 }

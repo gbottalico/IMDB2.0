@@ -1,4 +1,4 @@
-imdbFanta.controller('invFormCtrl', function($scope, $http) {
+	imdbFanta.controller('invFormCtrl', function($scope, $http) {
 
 	$scope.loading = true;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
@@ -141,18 +141,21 @@ imdbFanta.controller('invFormCtrl', function($scope, $http) {
 	$scope.ridisegnaModulo = function(calciatore) {
 		var cognome = calciatore.nome.split(" ")[0];		
 		var num = $scope.moduloInserito[calciatore.ruolo - 1];
-		var nomi = [];				
+		var nomi = [];
+		var foto = [];				
 		$('div[class*=campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + ']').hide();
 		$scope.titolari.filter(function(tit) {
 			if (tit.ruolo == calciatore.ruolo) {
 				nomi.push(tit.nome.split(" ")[0]);
+				foto.push(tit.foto);
 			}
 		});
 		$scope.disegnoCampo.filter(function(row) {
 			if (row.ruolo == calciatore.ruolo && row.num == num) {
 				var ids = row.ids.split(',');
 				for (var i = 0; i < ids.length; i++) {						
-					$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i] + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 5 ? 3 - nomi[i].length : nomi[i].length));
+					//$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i] + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 5 ? 3 - nomi[i].length : nomi[i].length));
+					$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i]).css("background-image", "url(" + foto[i] + ")");
 					$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i]).show();
 				}
 			}

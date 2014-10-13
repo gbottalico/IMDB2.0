@@ -26,15 +26,32 @@ class RigaFormazione {
     }
 }
 
+class RigaIncontroA {
+    var $giornata;
+    var $squadra;
+    var $avversario;
+}
+
+class RigaMedie {
+    var $codiceGiocatore;
+    var $media;
+    var $fantamedia;
+}
+
 class ImdbUtils {    
 
         private static $initializedSerieA = false;
         private static $initializedDettSerieA = false;
         private static $initializedCalendario = false;
+        private static $initializedIncontri = false;
         private static $idCampionato = 0;
+        private static $prossimaGiornata = 0;
         private static $nomi = array();
         private static $giocatori = array();
-        private static $turni = array();        
+        private static $turni = array();
+        private static $passwords = array();
+        private static $incontri = array();        
+        private static $medie = array();
 
         /*
         *   Inizializza l'array dei nomi di squadre e giocatori una sola volta per sessione
@@ -101,6 +118,48 @@ class ImdbUtils {
             }           
             self::$initializedCalendario = true;
         }        
+
+        /*
+        *   Inizializza l'array dei prossimi incontri
+        */
+        private static function initializeIncontri() {
+            if (self::$initializedIncontri) {
+              return;
+            }
+            $lines = file(host . js_folder . incontri_file);
+            
+            foreach($lines as $line_num => $line) {
+                // passwords
+                if (strpos($line,']="') !== false) {                
+                    $pwd = explode("=", $line);
+                    array_push(self::$passwords, substr($pwd[1], 1, strlen($pwd[1]) - 2));
+                }
+                // calendario serie A
+                if (strpos($line, 'new Array') !== false) {
+                    $riga = explode(",", $line);
+                    if (count($riga) > 7) {
+                        for ($i = 1; $i < 39; $i++) {
+                            $inc = new RigaIncontroA();
+                            $inc->giornata = $i;
+                            $inc->squadra = substr($riga[0], 2, (strpos($riga[0], ']') - 2));
+                            $inc->avversario = $riga[$i];
+                            array_push(self::$incontri, $inc);
+                        }                        
+                    }
+                }
+                // fantamedie
+                if (strpos($line, 'new ifG') !== false) {
+                    $riga = explode(",", $line);
+                    $dati = explode("%", $riga[5]);                                        
+                    $med = new RigaMedie();
+                    $med->codiceGiocatore = 'xg' . $riga[1];
+                    $med->media = substr($dati[0], 1);
+                    $med->fantamedia = $dati[2];
+                    array_push(self::$medie, $med);                    
+                }
+            }           
+            self::$initializedIncontri = true;
+        } 
 
         /*
         *	Restituisce l'id del campionato
@@ -197,6 +256,74 @@ class ImdbUtils {
                     return $nome->nome;
                 }
             }            
+        }
+
+        /*
+        *   Restituisce il nome del giocatore abbreviato (COGNOME + INIZIALI NOMI)
+        */
+        public static function getNomeAbbreviato($nome) {
+            $riga = explode(" ", $nome);
+            $nomeAbbreviato = $riga[0];            
+            for ($i = 1; $i < count($riga); $i++) {
+                $nomeAbbreviato .= ' ' . substr($riga[$i], 0, 1);
+            }
+            return $nomeAbbreviato;
+        }
+
+        /*
+        *   Restituisce il nome dell'avversario della prossima giornata
+        */
+        public static function getAvversario($giornata, $squadra) {
+            self::initializeIncontri();            
+            foreach (self::$incontri as $incontro) {                            
+                if ($incontro->giornata == $giornata && 'xa' . $incontro->squadra == $squadra) {
+                    $nomeAvversario = ImdbUtils::getPlayerNameByCode('xa' . $incontro->avversario % 100);
+                    return $incontro->avversario >= 100 ? $nomeAvversario : strtoupper($nomeAvversario);
+                }
+            }
+        }
+
+        /*
+        *   Calcola la prossima giornata da giocare
+        */  
+        public static function getProssimaGiornata() {
+            if (self::$prossimaGiornata == 0) {            
+                $lines = file(host . js_folder . calendario_file);            
+                foreach($lines as $line_num => $line) {
+                    if (strpos($line,'new I') !== false) {                
+                        $riga = explode(",", $line);
+                        if ($riga[3] == 0) {
+                            self::$prossimaGiornata = $riga[10];
+                            break;
+                        }
+                    }
+                }
+            }
+            return self::$prossimaGiornata;
+        }
+
+        /*
+        *   Recupera la media voto del giocatore
+        */
+        public static function getMediaVoto($giocatore) {
+            self::initializeIncontri();            
+            foreach (self::$medie as $media) {                            
+                if ($media->codiceGiocatore == $giocatore) {                    
+                    return $media->media;
+                }
+            }
+        }
+
+         /*
+        *   Recupera la fantamedia voto del giocatore
+        */
+        public static function getFantamediaVoto($giocatore) {
+            self::initializeIncontri();            
+            foreach (self::$medie as $media) {                            
+                if ($media->codiceGiocatore == $giocatore) {                    
+                    return $media->fantamedia;
+                }
+            }
         }
 }
 

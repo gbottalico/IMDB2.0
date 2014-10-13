@@ -23,16 +23,20 @@
 					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
 							<tr>
-						      <th>Nome</th>	
-						      <th>Squadra</th>
-						      <th>Ruolo</th>						      					     
+							  <th></th>
+						      <th>Nome (Squadra)</th>	
+						      <th>MVt</th>
+						      <th>FMt</th>						      					     
+						      <th>Avv</th>
 						    </tr>
 						</thead>
 					    <tbody>
-						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }">
-						      <td style="cursor: pointer;" data-ng-click="clickGiocatore(calciatore)">{{calciatore.nome}}</td>		
-						      <td>{{calciatore.squadraDiA}}</td>	
-						      <td>{{getDescrizioneRuolo(calciatore.ruolo)}}</td>						      
+						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
+						      <td><img class="logoInv" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
+						      <td>{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
+						      <td>{{calciatore.mediaVoto}}</td>	
+						      <td>{{calciatore.fantamediaVoto}}</td>						      
+						      <td>{{calciatore.prossimoAvversario}}</td>
 						    </tr>
 					    </tbody>
 					</table>					

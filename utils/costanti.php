@@ -15,4 +15,5 @@
 	define('calendario_file', 'fcmCalendarioDati.js');
 	define('formazioni_file', 'fcmFormazioniDatiXXX.js');
 	define('tabellini_file', 'fcmRisultatiDatiXXX.js');
+	define('incontri_file', 'fcmInvioFormazioneDati.js');
 ?>
