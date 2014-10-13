@@ -17,8 +17,7 @@
 			<div data-ng-hide="loading">
 				<div id="listaGiocatori" class="inv-rose">
 					<div class="menuContainer">
-						<img class="logoInv menuItemInv" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">
-						<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
+						<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">						
 					</div>				
 					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
@@ -31,7 +30,7 @@
 						    </tr>
 						</thead>
 					    <tbody>
-						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
+						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
 						      <td><img class="logoInv" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
 						      <td>{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
 						      <td>{{calciatore.mediaVoto}}</td>	
@@ -59,6 +58,7 @@
 					<div class="maglia campo-attaccante-2"><p class="label-maglia"></p></div>
 					<div class="maglia campo-attaccante-3"><p class="label-maglia"></p></div>
 				</div>
+				<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
 			</div>
 		</div>
 	</body>

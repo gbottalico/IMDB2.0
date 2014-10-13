@@ -501,7 +501,7 @@ body {
 
 .imdb-disabled {
 	color: #332E2E !important;
-	background-color: white;
+	background-color: lightgrey !important;
 }
 
 .invia-form-table {
@@ -509,6 +509,42 @@ body {
 	width: 100%;
 	color: white;
 	background-color: #332E2E;
+}
+
+.invform-riga {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: white;
+	font-weight: bold;
+}
+
+.invform-portiere {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #999900;
+	font-weight: bold;
+}
+
+.invform-difensore {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #336600;
+	font-weight: bold;
+}
+
+.invform-centrocampista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #CC0000;
+	font-weight: bold;
+}
+
+.invform-attaccante {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #3300FF;
+	font-weight: bold;
 }
 
 #elencoGiornate ul {
