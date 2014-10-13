@@ -13,4 +13,6 @@
 	define('serie_a_file', 'fcmSerieADati.js');
 	define('serie_a_dett_file', 'fcmSerieADatiDettaglio.js');
 	define('calendario_file', 'fcmCalendarioDati.js');
+	define('formazioni_file', 'fcmFormazioniDatiXXX.js');
+	define('tabellini_file', 'fcmRisultatiDatiXXX.js');
 ?>

@@ -410,19 +410,19 @@ body {
 	display: none;
 }
 
-.campo-difensore-1 {
+.campo-difensore-3 {
 	top: 455px;
 	left: 195px;
 	display: none;
 }
 
-.campo-difensore-2 {
+.campo-difensore-1 {
 	top: 435px;
 	left: 128px;
 	display: none;
 }
 
-.campo-difensore-3 {
+.campo-difensore-2 {
 	top: 435px;
 	left: 263px;
 	display: none;
@@ -506,7 +506,7 @@ body {
 }
 
 .invia-form-table {
-	height: 95%;
+	height: 100%;
 	color: white;
 	background-color: #332E2E;
 }

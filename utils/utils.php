@@ -10,6 +10,22 @@ class RigaNome {
     }
 }
 
+class RigaFormazione {
+    var $partita;
+    var $codice;
+    var $squadra;
+    var $nome;    
+    var $squadraDiA;
+    var $ruolo;
+    var $titolare;
+    var $voto;
+    var $bonusMalus;
+    var $votoTotale;
+
+    function RigaFormazione() {        
+    }
+}
+
 class ImdbUtils {    
 
         private static $initializedSerieA = false;
@@ -84,7 +100,7 @@ class ImdbUtils {
                 }              
             }           
             self::$initializedCalendario = true;
-        }
+        }        
 
         /*
         *	Restituisce l'id del campionato
@@ -154,7 +170,7 @@ class ImdbUtils {
             self::initializeSerieA();
             foreach (self::$nomi as $nome) {
                 if ($nome->codice == $code) {
-                    return $nome->nome;
+                    return trim($nome->nome);
                 }
             }            
         }
