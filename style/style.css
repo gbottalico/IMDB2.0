@@ -510,7 +510,9 @@ body {
 	color: white;
 	background-color: #332E2E;
 }
-
+.invform-logo {
+	height: 20px;
+}
 .invform-riga {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 10px;

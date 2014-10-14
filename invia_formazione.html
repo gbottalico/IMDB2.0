@@ -31,7 +31,7 @@
 						</thead>
 					    <tbody>
 						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
-						      <td><img class="logoInv" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
+						      <td><img class="invform-logo" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
 						      <td>{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
 						      <td>{{calciatore.mediaVoto}}</td>	
 						      <td>{{calciatore.fantamediaVoto}}</td>						      
