@@ -63,6 +63,7 @@
         	} else {
         		calciatore.disabled = !calciatore.disabled;
 				calciatore.selected = !calciatore.selected;
+				alert('Formazione completata! Per cambiare qualche giocatore, deseleziona prima il giocatore da sostituire');
         	}						
 		} else {			
 			$scope.rimuoviGiocatore(calciatore);
@@ -87,12 +88,9 @@
 	/*
 	*	Inserisce una riserva
 	*/
-	$scope.inserisciRiserva = function(calciatore) {
-		var indice = 7 - $scope.riserve.length;
+	$scope.inserisciRiserva = function(calciatore) {		
 		$scope.riserve.push(calciatore);
-		var cognome = calciatore.nome.split(" ")[0];		
-		$('.campo-riserva' + indice + ' > p').text(cognome).css('margin-left', (cognome.length > 5 ? 3 - cognome.length : cognome.length));
-		$('.campo-riserva' + indice).show();
+		$scope.ridisegnaPanchina(calciatore);		
 	}
 
 	/*
@@ -108,8 +106,9 @@
 		    }
 		}
 		for (var i = $scope.riserve.length - 1; i >= 0; i--) {
-		    if ($scope.riserve[i].idFcm == calciatore.idFcm) {
+		    if ($scope.riserve[i].idFcm == calciatore.idFcm) {		    	
 		        $scope.riserve.splice(i, 1);
+		        $scope.ridisegnaPanchina(calciatore);
 		        break;
 		    }
 		}
@@ -160,5 +159,22 @@
 				}
 			}
 		});		
+	}
+
+	/*
+	*	Ridisegna i giocatori in panchina a seconda del giocatore selezionato
+	*/
+	$scope.ridisegnaPanchina = function(calciatore) {
+		var cognome = calciatore.nome.split(" ")[0];
+		var num = $scope.riserve.length;
+		var nomi = [];
+		$('div[class*=campo-riserva]').hide();
+		$scope.riserve.filter(function(ris) {
+			nomi.push(ris.nome.split(" ")[0]);
+		});
+		for (var i = 0; i < $scope.riserve.length; i++) {
+			$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 6 ? -4 - nomi[i].length : -nomi[i].length));
+			$('.campo-riserva-' + (i+1)).show();
+		}		
 	}
 });
