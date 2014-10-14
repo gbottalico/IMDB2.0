@@ -12,6 +12,10 @@ body {
 	height: 300px;
 }
 
+.center {
+	text-align: center;
+}
+
 #wrapper {
 	width: 80%;
 	height: 100%;

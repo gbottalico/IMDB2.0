@@ -309,7 +309,7 @@ class ImdbUtils {
             self::initializeIncontri();            
             foreach (self::$medie as $media) {                            
                 if ($media->codiceGiocatore == $giocatore) {                    
-                    return $media->media;
+                    return str_replace('"', '', $media->media);
                 }
             }
         }
