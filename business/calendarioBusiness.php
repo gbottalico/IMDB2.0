@@ -46,7 +46,7 @@ class CalendarioBusiness {
                 $rigaCal->idPartita = substr($riga[0], strpos($riga[0], '(') + 1);
                 $rigaCal->giocata = $riga[3];
                 $rigaCal->idGiornata = $riga[5];                
-                $rigaCal->giornata = ImdbUtils::getTurnoByCode($rigaCal->idGiornata);
+                $rigaCal->giornata = $riga[10];
                 $rigaCal->idCompetizione = $riga[8];
                 $rigaCal->competizione = trim(ImdbUtils::getTurnoByCode($riga[7]));
                 $rigaCal->logoCompetizione = ImdbUtils::getCompetizioneImageUrl($rigaCal->idCompetizione);
