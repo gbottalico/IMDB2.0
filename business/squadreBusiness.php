@@ -7,12 +7,16 @@
 		var $idFcm;
 		var $codice;
 		var $nome;
+		var $nomeAbbr;
 		var $ruolo;
 		var $squadraDiA;		
 		var $prezzo;
 		var $idSquadra;
 		var $foto;
 		var $squadraDiAfoto;
+		var $mediaVoto;
+		var $fantamediaVoto;
+		var $prossimoAvversario;
 
 		function RigaGiocatore() {
 		}		
@@ -46,7 +50,7 @@
 	                $riga = explode(",", $line);
 	                $rigaSq = new RigaSquadra();
 	                $rigaSq->idSquadra = substr($riga[0], strpos($riga[0], '(') + 1);	                
-	                $rigaSq->nome = trim(str_replace('"',"",$riga[1]));
+	                $rigaSq->nome = trim(str_replace('"',"",$riga[1]));	                
 	                $rigaSq->logo = ImdbUtils::getLogoImageUrl($rigaSq->nome);
 	                $rigaSq->presidente = str_replace('"',"",$riga[2]);
 	                $rigaSq->mail = str_replace('"',"",$riga[6]);
@@ -58,6 +62,7 @@
 	            		$rigaPl = new RigaGiocatore();
 	            		$rigaPl->codice = $riga[2];
 	            		$rigaPl->nome = trim(ImdbUtils::getPlayerNameByCode($rigaPl->codice));
+	            		$rigaPl->nomeAbbr = ImdbUtils::getNomeAbbreviato($rigaPl->nome);
 	            		$rigaPl->ruolo = $riga[1];
 	            		$rigaPl->prezzo = $riga[7];
 	            		$rigaPl->idFcm = ImdbUtils::getPlayerIdByCode($riga[2]);
@@ -65,6 +70,9 @@
 	            		$rigaPl->squadraDiA = trim(ImdbUtils::getPlayerNameByCode($riga[3]));
 	            		$rigaPl->squadraDiAfoto = ImdbUtils::getSquadraImageUrl(strtolower($rigaPl->squadraDiA));
 	            		$rigaPl->idSquadra = substr($riga[0], strpos($riga[0], '(') + 1);
+	            		$rigaPl->mediaVoto = ImdbUtils::getMediaVoto($rigaPl->codice);
+	            		$rigaPl->fantamediaVoto = ImdbUtils::getFantamediaVoto($rigaPl->codice);
+	            		$rigaPl->prossimoAvversario = ImdbUtils::getAvversario(ImdbUtils::getProssimaGiornata(), $riga[3]);
 	            		array_push($giocatori, $rigaPl);
 	            	}            	
 	            }

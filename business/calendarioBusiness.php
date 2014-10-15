@@ -4,6 +4,7 @@
 
 class RigaCalendario {
 
+    var $idPartita;
 	var $idCompetizione;
 	var $competizione;
     var $logoCompetizione;
@@ -23,7 +24,7 @@ class RigaCalendario {
 	var $modCasa;
 	var $modFuori;
 	var $totaleCasa;
-	var $totaleFuori;	
+	var $totaleFuori;    
 
 	function RigaCalendario() {		
 	}
@@ -42,6 +43,7 @@ class CalendarioBusiness {
             if (strpos($line,']=new I(') !== false) {                
                 $riga = explode(",", $line);                
                 $rigaCal = new RigaCalendario();
+                $rigaCal->idPartita = substr($riga[0], strpos($riga[0], '(') + 1);
                 $rigaCal->giocata = $riga[3];
                 $rigaCal->idGiornata = $riga[5];                
                 $rigaCal->giornata = ImdbUtils::getTurnoByCode($rigaCal->idGiornata);
@@ -59,7 +61,7 @@ class CalendarioBusiness {
                 $rigaCal->puntiCasa = $riga[19];
                 $rigaCal->puntiFuori = $riga[20];
                 $rigaCal->totaleCasa = $riga[21];
-                $rigaCal->totaleFuori = $riga[22];
+                $rigaCal->totaleFuori = $riga[22];                
                 $rigaCal->modCasa = $rigaCal->totaleCasa - $rigaCal->puntiCasa;
                 $rigaCal->modFuori = $rigaCal->totaleFuori - $rigaCal->puntiFuori;
                 array_push($calendario, $rigaCal);

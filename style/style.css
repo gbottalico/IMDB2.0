@@ -12,6 +12,10 @@ body {
 	height: 300px;
 }
 
+.center {
+	text-align: center;
+}
+
 #wrapper {
 	width: 80%;
 	height: 100%;
@@ -354,13 +358,11 @@ body {
 /* INVIO FOMRAZIONE */
 .inv-rose {
 	float: left;
-	width: 40%;
-	height: 580px;
+	width: 45%;	
 	overflow: hidden;
 }
 
-.campo {
-	overflow: hidden;
+.campo {	
 	position: relative;
 	float: right;
 	width: 40%;
@@ -370,7 +372,7 @@ body {
 }
 
 .logoInv {
-	height: 30px;
+	height: 27px;
 	cursor: pointer;
 }
 
@@ -383,15 +385,30 @@ body {
 .menuItemInv.selected {
 	opacity: 1;
 	margin: 0;
-	height: 50px;
+	height: 45px;
 }
 
 .maglia {
 	background: url('../images/maglia.png') no-repeat;
 	background-size: 45px 45px;
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	width: 45px;
+	height: 45px;
+	color: white;
+	font-weight: bold;
+}
+
+.label-maglia-panchina {
+	font-size: xx-small;
+	margin-top: 20px;
+}
+
+.maglia-panchina {
+	background: url('../images/maglia.png') no-repeat;
+	background-size: 30px 30px;
+	position: absolute;
+	width: 30px;
+	height: 30px;
 	color: white;
 	font-weight: bold;
 }
@@ -412,19 +429,19 @@ body {
 	display: none;
 }
 
-.campo-difensore-1 {
+.campo-difensore-3 {
 	top: 455px;
 	left: 195px;
 	display: none;
 }
 
-.campo-difensore-2 {
+.campo-difensore-1 {
 	top: 435px;
 	left: 128px;
 	display: none;
 }
 
-.campo-difensore-3 {
+.campo-difensore-2 {
 	top: 435px;
 	left: 263px;
 	display: none;
@@ -449,37 +466,37 @@ body {
 }
 
 .campo-centrocampista-1 {
-	top: 325px;
+	top: 315px;
 	left: 195px;
 	display: none;
 }
 
 .campo-centrocampista-2 {
-	top: 265px;
+	top: 255px;
 	left: 118px;
 	display: none;
 }
 
 .campo-centrocampista-3 {
-	top: 265px;
+	top: 255px;
 	left: 263px;
 	display: none;
 }
 
 .campo-centrocampista-4 {
-	top: 205px;
+	top: 195px;
 	left: 195px;
 	display: none;
 }
 
 .campo-centrocampista-5 {
-	top: 205px;
+	top: 195px;
 	left: 53px;
 	display: none;
 }
 
 .campo-centrocampista-6 {
-	top: 205px;
+	top: 195px;
 	left: 333px;
 	display: none;
 }
@@ -502,15 +519,101 @@ body {
 	display: none;
 }
 
+.campo-riserva-1 {
+	top: 150px;
+	left: 400px;
+	display: none;
+}
+
+.campo-riserva-2 {
+	top: 185px;
+	left: 400px;
+	display: none;
+}
+
+.campo-riserva-3 {
+	top: 220px;
+	left: 400px;
+	display: none;
+}
+
+.campo-riserva-4 {
+	top: 255px;
+	left: 400px;
+	display: none;
+}
+
+.campo-riserva-5 {
+	top: 290px;
+	left: 400px;
+	display: none;
+}
+
+.campo-riserva-6 {
+	top: 325px;
+	left: 400px;
+	display: none;
+}
+
+.campo-riserva-7 {
+	top: 360px;
+	left: 400px;
+	display: none;
+}
+
 .imdb-disabled {
 	color: #332E2E !important;
-	background-color: white;
+	background-color: lightgrey !important;
 }
 
 .invia-form-table {
-	height: 95%;
+	height: 100%;
+	width: 100%;
 	color: white;
 	background-color: #332E2E;
+}
+.invform-logo {
+	height: 20px;
+}
+.invform-riga {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: white;
+	font-weight: bold;
+}
+
+.invform-portiere {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #999900;
+	font-weight: bold;
+}
+
+.invform-difensore {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #336600;
+	font-weight: bold;
+}
+
+.invform-centrocampista {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #CC0000;
+	font-weight: bold;
+}
+
+.invform-attaccante {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: #3300FF;
+	font-weight: bold;
+}
+
+.invform-password-div {
+	position: absolute;
+	top: 600px;
 }
 
 #elencoGiornate ul {

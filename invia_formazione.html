@@ -17,22 +17,25 @@
 			<div data-ng-hide="loading">
 				<div id="listaGiocatori" class="inv-rose">
 					<div class="menuContainer">
-						<img class="logoInv menuItemInv" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">
-						<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
+						<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">						
 					</div>				
 					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
 							<tr>
-						      <th>Nome</th>	
-						      <th>Squadra</th>
-						      <th>Ruolo</th>						      					     
+							  <th></th>
+						      <th>Nome (Squadra)</th>	
+						      <th>MVt</th>
+						      <th>FMt</th>						      					     
+						      <th>Avv</th>
 						    </tr>
 						</thead>
 					    <tbody>
-						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }">
-						      <td style="cursor: pointer;" data-ng-click="clickGiocatore(calciatore)">{{calciatore.nome}}</td>		
-						      <td>{{calciatore.squadraDiA}}</td>	
-						      <td>{{getDescrizioneRuolo(calciatore.ruolo)}}</td>						      
+						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
+						      <td><img class="invform-logo" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
+						      <td>{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
+						      <td class="center">{{calciatore.mediaVoto}}</td>	
+						      <td class="center">{{calciatore.fantamediaVoto}}</td>						      
+						      <td class="center">{{calciatore.prossimoAvversario}}</td>
 						    </tr>
 					    </tbody>
 					</table>					
@@ -54,7 +57,18 @@
 					<div class="maglia campo-attaccante-1"><p class="label-maglia"></p></div>
 					<div class="maglia campo-attaccante-2"><p class="label-maglia"></p></div>
 					<div class="maglia campo-attaccante-3"><p class="label-maglia"></p></div>
+					<div class="maglia-panchina campo-riserva-1"><p class="label-maglia-panchina"></p></div>
+					<div class="maglia-panchina campo-riserva-2"><p class="label-maglia-panchina"></p></div>
+					<div class="maglia-panchina campo-riserva-3"><p class="label-maglia-panchina"></p></div>
+					<div class="maglia-panchina campo-riserva-4"><p class="label-maglia-panchina"></p></div>
+					<div class="maglia-panchina campo-riserva-5"><p class="label-maglia-panchina"></p></div>
+					<div class="maglia-panchina campo-riserva-6"><p class="label-maglia-panchina"></p></div>
+					<div class="maglia-panchina campo-riserva-7"><p class="label-maglia-panchina"></p></div>
+					<div class="invform-password-div">
+						Password: <input type="password" name="password" style="margin-left: 20px" />
+					</div>
 				</div>
+				<img class="logo backHome" onclick="window.location='index.html'" alt="" src="images/football.png">
 			</div>
 		</div>
 	</body>
