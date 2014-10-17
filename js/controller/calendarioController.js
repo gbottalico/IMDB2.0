@@ -41,7 +41,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 		});
 	}
 	
-	$scope.caricaDettaglio = function(idPartita, idGiornata, giocata, idCasa, idFuori){
+	$scope.caricaDettaglio = function(idPartita, idGiornata, giocata, idCasa, idFuori, event){
 		$http.get('service/tabellinoService.php?partita='+idPartita+'&giornata='+idGiornata+'&giocata='+giocata).success(function(data) {
 			$scope.loading = false;
 			$scope.infoPartita = $scope.infoGiornata.filter(function(row) {
@@ -67,6 +67,12 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 					return false;
 				}
 			});
+			
+			$('.riepilogoContainer').css('position','absolute');
+			$('.riepilogoContainer').css('top',$('#'+idPartita).height()+$('#'+idPartita).offset().top);
+			$('.riepilogoContainer').css('width',$('#elencoGiornate').width());
+			$('.riepilogoContainer').css('display','block');
+			
 		});
 	}
 	

@@ -29,8 +29,6 @@
 					class="logo backHome" onclick="window.location='index.html'" alt=""
 					src="images/football.png">
 			</div>
-			<!-- 				<select ng-model="giornataSelected" ng-change="visualizzaGiornata()" ng-options="cal.idGiornata as cal.giornata for cal in calendarioComp | unique:'idGiornata'"></select>
- -->
 			<div id="elencoGiornate">
 				<ul>
 					<li ng-repeat="cal in calendarioComp | unique:'idGiornata'"
@@ -41,7 +39,7 @@
 					<table class="container" id="calendarioTable"
 						data-ng-hide="!infoGiornata">
 						<tbody>
-							<tr ng-repeat="partita in infoGiornata" ng-click="caricaDettaglio(partita.idPartita, partita.giornata, partita.giocata, partita.idSquadraCasa, partita.idSquadraFuori)">
+							<tr ng-repeat="partita in infoGiornata" id="{{partita.idPartita}}" ng-click="caricaDettaglio(partita.idPartita, partita.giornata, partita.giocata, partita.idSquadraCasa, partita.idSquadraFuori, $event)">
 								<td style="text-align: center"><img class="logo"
 									ng-src="{{partita.logoCasa}}" /></td>
 								<td>{{partita.squadraCasa}}</td>
@@ -53,16 +51,18 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="riepilogoContainer">
+				<div class="riepilogoContainer" style="display:none">
 					<table class="riepilogoTableContainer" id="{{infoPart.idPartita}}-{{infoPart.giornata}}">
 						<tbody>
 							<tr>
 								<td style="vertical-align: top;">
 									<table class="panchinaCasa panchina">
 										<tr>
-											<th colspan="3">Partita</th>
+											<th colspan="3">
+												<img ng-src="images/panchina.png" class="logo"/>
+											</th>
 										</tr>
-										<tr ng-repeat="riservaCasa in squadraCasa" ng-if="riservaCasa.titolare == '0'">
+										<tr ng-repeat="riservaCasa in squadraCasa" ng-if="riservaCasa.titolare != '0' && riservaFuori.titolare != '-1'">
 											<td>{{riservaCasa.ruolo}}</td>
 											<td>{{riservaCasa.nomeAbbreviato}}</td>
 											<td>{{riservaCasa.votoTotale}}</td>
@@ -71,7 +71,7 @@
 								</td>
 								<td style="border-radius: 35px; background: white;">
 									<table class="titolariCasa titolari">
-										<tr ng-repeat="titolareCasa in squadraCasa" ng-if="titolareCasa.titolare == '1'">
+										<tr ng-repeat="titolareCasa in squadraCasa" ng-if="titolareCasa.titolare == '0'">
 											<td>{{titolareCasa.ruolo}}</td>
 											<td>{{titolareCasa.nomeAbbreviato}}</td>
 											<td>{{titolareCasa.voto}}</td>
@@ -83,7 +83,7 @@
 								<td></td>
 								<td style="border-radius:35px; background: white;">
 									<table class="titolariFuori titolari">
-										<tr ng-repeat="titolareFuori in squadraFuori" ng-if="titolareFuori.titolare == '1'">
+										<tr ng-repeat="titolareFuori in squadraFuori" ng-if="titolareFuori.titolare == '0'">
 											<td>{{titolareFuori.ruolo}}</td>
 											<td>{{titolareFuori.nomeAbbreviato}}</td>
 											<td>{{titolareFuori.voto}}</td>
@@ -95,9 +95,11 @@
 								<td style="vertical-align: top;">
 									<table class="panchinaFuori panchina">
 										<tr>
-											<th colspan="3">Partita</th>
+											<th colspan="3">
+												<img ng-src="images/panchina.png" class="logo"/>
+											</th>
 										</tr>
-										<tr ng-repeat="riservaFuori in squadraFuori" ng-if="riservaFuori.titolare == '0'">
+										<tr ng-repeat="riservaFuori in squadraFuori" ng-if="riservaFuori.titolare != '0' && riservaFuori.titolare != '-1'">
 											<td>{{riservaFuori.ruolo}}</td>
 											<td>{{riservaFuori.nomeAbbreviato}}</td>
 											<td>{{riservaFuori.votoTotale}}</td>
