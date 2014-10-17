@@ -30,6 +30,7 @@
 		var $presidente;
 		var $mail;
 		var $creditiResidui;
+		var $password;
 		var $rosa;		
 
 		function RigaSquadra() {			
@@ -54,7 +55,8 @@
 	                $rigaSq->logo = ImdbUtils::getLogoImageUrl($rigaSq->nome);
 	                $rigaSq->presidente = str_replace('"',"",$riga[2]);
 	                $rigaSq->mail = str_replace('"',"",$riga[6]);
-	                $rigaSq->creditiResidui = substr($riga[8], 0, strlen($riga[8]) - 2);                
+	                $rigaSq->creditiResidui = substr($riga[8], 0, strlen($riga[8]) - 2); 
+	                $rigaSq->password = ImdbUtils::getPassword($rigaSq->idSquadra);
 	                array_push($squadre, $rigaSq);
 	            } else if (strpos($line,']=new R(') !== false) {
 	            	$riga = explode(",", $line);

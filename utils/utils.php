@@ -325,6 +325,15 @@ class ImdbUtils {
                 }
             }
         }
+
+        /*
+        *   Verifica che la password inserita sia corretta
+        */
+        public static function getPassword($squadra) {
+            self::initializeIncontri();
+            $password = self::$passwords[($squadra-1)];
+            return $password;
+        }
 }
 
 ?>
