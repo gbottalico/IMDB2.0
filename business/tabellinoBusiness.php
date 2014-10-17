@@ -19,6 +19,7 @@ class TabellinoBusiness {
                         $nom->partita = $partita;
                         $nom->codice = $riga[3];
                         $nom->nome = ImdbUtils::getPlayerNameByCode($riga[3]);
+                        $nom->nomeAbbreviato = ImdbUtils::getNomeAbbreviato($nom->nome);
                         $nom->squadra = $riga[1];
                         $nom->squadraDiA = ImdbUtils::getPlayerNameByCode($riga[4]);
                         $nom->ruolo = $riga[5];
