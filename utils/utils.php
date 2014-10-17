@@ -14,7 +14,8 @@ class RigaFormazione {
     var $partita;
     var $codice;
     var $squadra;
-    var $nome;    
+    var $nome;
+    var $nomeAbbreviato;    
     var $squadraDiA;
     var $ruolo;
     var $titolare;

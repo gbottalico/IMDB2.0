@@ -45,6 +45,7 @@ class TabellinoBusiness {
                             $nom->squadra = $riga[1];
                             $nom->codice = 'xg' . str_replace('"', '', $codiciGiocatori[$i]);
                             $nom->nome = ImdbUtils::getPlayerNameByCode($nom->codice);
+                            $nom->nomeAbbreviato = ImdbUtils::getNomeAbbreviato($nom->nome);
                             $nom->squadraDiA = ImdbUtils::getPlayerNameByCode('xa' . str_replace('"', '', $squadreGiocatori[$i]));
                             $nom->ruolo = str_replace('"', '', $ruoliGiocatori[$i]);
                             $nom->voto = str_replace('"', '', $votiGiocatori[$i]);
