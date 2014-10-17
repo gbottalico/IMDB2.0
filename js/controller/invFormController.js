@@ -1,6 +1,9 @@
-	imdbFanta.controller('invFormCtrl', function($scope, $http) {
+
+	imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout) {
 
 	$scope.loading = true;
+	$scope.showSquadra = false;
+	$scope.inviabile = false;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 	$scope.moduloInserito = new Array(0,0,0,0);
 	$scope.moduliAmmessi = [new Array(1,3,4,3), new Array(1,3,5,2), new Array(1,3,6,1), new Array(1,4,3,3), new Array(1,4,4,2),
@@ -26,10 +29,21 @@
 	$scope.titolari = [];
 	$scope.riserve = [];
 
-	$http.get('service/squadreService.php').success(function(data) {
+	$http.get('service/squadreService.php').success(function(data) {		
 		$scope.loading = false;
-		$scope.squadre = data;
+		$scope.squadre = data;		
 	});
+
+	$scope.inserisciPassword = function(squadraSelected) {
+		$('.imdb-overlay').show();
+		$('#divPassword').addClass('imdb-visible');
+		$scope.squadraSelected = squadraSelected;			
+	}
+
+	$scope.closePasswordDiv = function() {
+		$('.imdb-overlay').hide();
+		$('#divPassword').removeClass('imdb-visible');			
+	}
 
 	$scope.visualizzaSquadra = function(squadraSelected) {		
 		$('.menuItemInv').removeClass('selected');
@@ -176,5 +190,17 @@
 			$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 6 ? -4 - nomi[i].length : -nomi[i].length));
 			$('.campo-riserva-' + (i+1)).show();
 		}		
+	}
+
+	/*
+	*	Verifica la correttezza della password
+	*/
+	$scope.verificaPassword = function(inserita, originale) {		
+		var crypted = Javacrypt.crypt("jd", inserita);
+		if (crypted[0] != originale) {
+			alert("Impossibile inviare la formazione: password non valida");
+			$scope.inviabile = false;
+		}	
+		$scope.inviabile = true;
 	}
 });

@@ -8,18 +8,28 @@
 		<link rel="stylesheet" href="style/jquery-ui.structure.css">
 		<link rel="stylesheet" href="style/jquery-ui.theme.css">
 		<script src="js/interface.js"></script>
+		<script src="js/javacrypt.js"></script>
 		<script src="js/controller/invFormController.js"></script>
 		<link rel="stylesheet" href="style/style.css">		
 	</head>
 	<body ng-controller="invFormCtrl">
+		<div class="imdb-overlay"></div>
 		<div id="wrapper">
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<div id="listaGiocatori" class="inv-rose">
 					<div class="menuContainer">
-						<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">						
-					</div>				
-					<table class="invia-form-table" data-ng-hide="!rosa">
+						<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">						
+					</div>					
+					<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+						<div class="imdb-detail-overlay__close imdb-close-icon"
+							data-ng-click="closePasswordDiv()"></div>
+						<h2 class="imdb-detail-overlay__title">Autenticazione</h2>						
+						<div class="imdb-detail-overlay__content imdb-gutter-v">
+							<span>Password {{squadraSelected.nome}} </span><span class="hidden" id="originalPwd">{{squdraSelected.password}}</span><input type="password" name="password" /><input type="submit" onClick="verificaPassword()" />
+						</div>
+					</div>									
+					<table class="invia-form-table" data-ng-show="showSquadra">
 						<thead>
 							<tr>
 							  <th></th>
@@ -63,10 +73,7 @@
 					<div class="maglia-panchina campo-riserva-4"><p class="label-maglia-panchina"></p></div>
 					<div class="maglia-panchina campo-riserva-5"><p class="label-maglia-panchina"></p></div>
 					<div class="maglia-panchina campo-riserva-6"><p class="label-maglia-panchina"></p></div>
-					<div class="maglia-panchina campo-riserva-7"><p class="label-maglia-panchina"></p></div>
-					<div class="invform-password-div">
-						Password: <input type="password" name="password" style="margin-left: 20px" />
-					</div>
+					<div class="maglia-panchina campo-riserva-7"><p class="label-maglia-panchina"></p></div>					
 				</div>
 				<img class="logo backHome" onclick="window.location='index.html'" alt="" src="images/football.png">
 			</div>
