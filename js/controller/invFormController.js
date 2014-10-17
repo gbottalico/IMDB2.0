@@ -3,7 +3,7 @@
 
 	$scope.loading = true;
 	$scope.showSquadra = false;
-	$scope.inviabile = false;
+	$scope.inviabile = true;	
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 	$scope.moduloInserito = new Array(0,0,0,0);
 	$scope.moduliAmmessi = [new Array(1,3,4,3), new Array(1,3,5,2), new Array(1,3,6,1), new Array(1,4,3,3), new Array(1,4,4,2),
@@ -37,6 +37,8 @@
 	$scope.inserisciPassword = function(squadraSelected) {
 		$('.imdb-overlay').show();
 		$('#divPassword').addClass('imdb-visible');
+		$scope.inviabile = true;
+		$('input[name=password]').val('');
 		$scope.squadraSelected = squadraSelected;			
 	}
 
@@ -195,12 +197,14 @@
 	/*
 	*	Verifica la correttezza della password
 	*/
-	$scope.verificaPassword = function(inserita, originale) {		
-		var crypted = Javacrypt.crypt("jd", inserita);
-		if (crypted[0] != originale) {
-			alert("Impossibile inviare la formazione: password non valida");
+	$scope.verificaPassword = function(originale) {		
+		var crypted = Javacrypt.crypt("jd", $('input[name=password]').val());
+		if (crypted[0] != originale) {			
 			$scope.inviabile = false;
-		}	
-		$scope.inviabile = true;
+		} else {	
+			$scope.inviabile = true;		
+			$scope.visualizzaSquadra($scope.squadraSelected.idSquadra);
+			$scope.closePasswordDiv();
+		}
 	}
 });
