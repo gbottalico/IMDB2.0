@@ -359,9 +359,9 @@ body {
 .inv-rose {
 	float: left;
 	width: 45%;	
+	height: 580px;
 	overflow: hidden;
 }
-
 .campo {	
 	position: relative;
 	float: right;
@@ -796,6 +796,9 @@ body {
 	font-size: 11px;
 	text-transform: uppercase;
 	font-weight: bold;
+	float: left;
+	margin-left: 20%;
+	margin-top: 10px;
 }
 
 .imdb-gutter {

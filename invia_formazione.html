@@ -18,7 +18,7 @@
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<div id="listaGiocatori" class="inv-rose">
-					<div class="menuContainer">
+					<div class="menuContainer" ng-show="!rosa">
 						<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">						
 					</div>					
 					<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
@@ -26,7 +26,9 @@
 							data-ng-click="closePasswordDiv()"></div>
 						<h2 class="imdb-detail-overlay__title">{{squadraSelected.nome}}</h2>						
 						<div class="imdb-detail-overlay__content imdb-gutter-v">
-							<span class="imdb-left">Password: </span><input type="password" name="password" class="imdb-left imdb-password" /><input type="submit" data-ng-click="verificaPassword(squadraSelected.password)" class="imdb-right imdb-invia-btn" />
+							<span class="imdb-left">Password: </span>
+							<input type="password" name="password" class="imdb-left imdb-password" />
+							<input type="submit" data-ng-click="verificaPassword(squadraSelected.password)" class="imdb-right imdb-invia-btn" />
 							<br />
 							<span class="imdb-error" data-ng-hide="inviabile">Password non valida</span>
 						</div>
@@ -51,7 +53,7 @@
 						    </tr>
 					    </tbody>
 					</table>					
-				</div>			
+				</div>												
 				<div id="campo" class="campo">
 					<div class="maglia campo-portiere-1"><p class="label-maglia"></p></div>
 					<div class="maglia campo-difensore-1"><p class="label-maglia"></p></div>
@@ -78,6 +80,7 @@
 					<div class="maglia-panchina campo-riserva-7"><p class="label-maglia-panchina"></p></div>					
 				</div>
 				<img class="logo backHome" onclick="window.location='index.html'" alt="" src="images/football.png">
+				<input type="submit" class="imdb-inviaform-btn" name="sendForm"/>
 			</div>
 		</div>
 	</body>

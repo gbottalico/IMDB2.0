@@ -24,7 +24,7 @@
 						   {ruolo: 4, num: 1, ids: '1'},
 						   {ruolo: 4, num: 2, ids: '2,3'},
 						   {ruolo: 4, num: 3, ids: '1,2,3'}];	
-	$scope.moudloOk = false;
+	$scope.moduloOk = false;
 
 	$scope.titolari = [];
 	$scope.riserve = [];
