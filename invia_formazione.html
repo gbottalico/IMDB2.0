@@ -24,9 +24,9 @@
 					<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 						<div class="imdb-detail-overlay__close imdb-close-icon"
 							data-ng-click="closePasswordDiv()"></div>
-						<h2 class="imdb-detail-overlay__title">Autenticazione</h2>						
+						<h2 class="imdb-detail-overlay__title">{{squadraSelected.nome}}</h2>						
 						<div class="imdb-detail-overlay__content imdb-gutter-v">
-							<span>Password {{squadraSelected.nome}}: </span><input type="password" name="password"/><input type="submit" data-ng-click="verificaPassword(squadraSelected.password)" />
+							<span class="imdb-left">Password: </span><input type="password" name="password" class="imdb-left imdb-password" /><input type="submit" data-ng-click="verificaPassword(squadraSelected.password)" class="imdb-right imdb-invia-btn" />
 							<br />
 							<span class="imdb-error" data-ng-hide="inviabile">Password non valida</span>
 						</div>
