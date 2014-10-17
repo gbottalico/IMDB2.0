@@ -133,7 +133,7 @@ class ImdbUtils {
                 // passwords
                 if (strpos($line,']="') !== false) {                
                     $pwd = explode("=", $line);
-                    array_push(self::$passwords, substr($pwd[1], 1, strlen($pwd[1]) - 2));
+                    array_push(self::$passwords, substr($pwd[1], 1, strlen($pwd[1]) - 4));
                 }
                 // calendario serie A
                 if (strpos($line, 'new Array') !== false) {

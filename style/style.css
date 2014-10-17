@@ -768,6 +768,13 @@ body {
   }
 }
 
+.imdb-error {
+	color: #a90433;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
 .imdb-gutter {
   padding: 10px;
 }
