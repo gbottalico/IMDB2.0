@@ -264,9 +264,13 @@ class ImdbUtils {
         */
         public static function getNomeAbbreviato($nome) {
             $riga = explode(" ", $nome);
-            $nomeAbbreviato = $riga[0];            
-            for ($i = 1; $i < count($riga); $i++) {
-                $nomeAbbreviato .= ' ' . substr($riga[$i], 0, 1);
+            $nomeAbbreviato = "";
+            for ($i = 0; $i < count($riga); $i++) {
+                if (ctype_upper(str_replace("'", "", $riga[$i]))) {
+                    $nomeAbbreviato .= $riga[$i] . ' ';
+                } else {
+                    $nomeAbbreviato .= ' ' . substr($riga[$i], 0, 1);
+                }                
             }
             return $nomeAbbreviato;
         }
