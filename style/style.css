@@ -372,14 +372,12 @@ body {
 }
 
 .logoInv {
-	height: 27px;
+	height: 50px;
 	cursor: pointer;
 }
 
-.menuItemInv {
-	float: left;
-	margin: 10px;
-	opacity: .7;
+.menuItemInv {	
+	margin: 20px;	
 }
 
 .menuItemInv.selected {
@@ -930,4 +928,41 @@ table {
 		/*padding: 0 0 8em 0;*/
 		color: white
 	}
+}
+
+.invform-btn {
+	margin: 50px 10px 10px 55px;
+}
+
+.invform-loghi {
+	width: 100%;
+	text-align: center;
+}
+.schedina {
+	width: 90%;
+	margin: 10px;
+}
+.schedina td {
+	font: bold 0.8em 'trebuchet MS', Arial, helvetica;
+}
+.schedina-pron.selected {
+	background: url('../images/schedina_selected.png') !important;
+}
+.schedina-1 {
+	background: url('../images/schedina_1.png');
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+.schedina-x {
+	background: url('../images/schedina_X.png');
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}
+.schedina-2 {
+	background: url('../images/schedina_2.png');
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
 }

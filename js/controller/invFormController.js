@@ -34,6 +34,16 @@
 		$scope.squadre = data;		
 	});
 
+	$http.get('service/prossimaService.php').success(function(data) {											
+		$scope.listaIncontri = data.filter(function(row) {
+			if (row.competizione == 'Campionato') {
+				return true;
+			} else {
+				return false;
+			}
+		});
+	});
+
 	$scope.inserisciPassword = function(squadraSelected) {
 		$('.imdb-overlay').show();
 		$('#divPassword').addClass('imdb-visible');
@@ -45,6 +55,16 @@
 	$scope.closePasswordDiv = function() {
 		$('.imdb-overlay').hide();
 		$('#divPassword').removeClass('imdb-visible');			
+	}
+
+	$scope.closeSchedinaDiv = function() {
+		$('.imdb-overlay').hide();
+		$('#divSchedina').removeClass('imdb-visible');			
+	}
+
+	$scope.closeConfermaDiv = function() {
+		$('.imdb-overlay').hide();
+		$('#divConferma').removeClass('imdb-visible');			
 	}
 
 	$scope.visualizzaSquadra = function(squadraSelected) {		
@@ -206,5 +226,37 @@
 			$scope.visualizzaSquadra($scope.squadraSelected.idSquadra);
 			$scope.closePasswordDiv();
 		}
+	}
+
+	/*
+	*	Verifica che sia stata inserita la formazione correttamente e mostra il div per l'inserimento della schedina e invio della formazione
+	*/
+	$scope.inserisciSchedina = function() {
+		if ($scope.titolari.length == 11 && $scope.riserve.length == 7) {
+    		$('.imdb-overlay').show();
+			$('#divSchedina').addClass('imdb-visible');
+
+    	} else {    		
+			alert('Attenzione! Formazione incompleta');
+    	}						
+	}
+
+	/*
+	*	Invia la formazione
+	*/
+	$scope.inviaFormazione = function() {		
+		angular.forEach($scope.listaIncontri, function(inc) {			
+			inc.pronostico = $('.schedina-pron.' + inc.idPartita + '.selected').attr('id').replace(inc.idPartita + '-', '');
+		});
+		$scope.closeSchedinaDiv();
+		$('.imdb-overlay').show();
+		$('#divConferma').addClass('imdb-visible');
+		$('#confermaTitle').text('Invio Formazione');
+		$('#confermaText').text('Formazione inviata con successo!');
+	}
+
+	$scope.pronostico = function(idPartita, pronostico) {
+		$('.' + idPartita).removeClass('selected');
+		$('#' + idPartita + '-' + pronostico).addClass('selected');
 	}
 });

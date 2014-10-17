@@ -17,10 +17,10 @@
 		<div id="wrapper">
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
-				<div id="listaGiocatori" class="inv-rose">
-					<div class="menuContainer" ng-show="!rosa">
-						<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">						
-					</div>					
+				<div class="menuContainer invform-loghi" ng-show="!rosa">
+					<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">						
+				</div>
+				<div id="listaGiocatori" class="inv-rose">									
 					<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 						<div class="imdb-detail-overlay__close imdb-close-icon"
 							data-ng-click="closePasswordDiv()"></div>
@@ -32,7 +32,36 @@
 							<br />
 							<span class="imdb-error" data-ng-hide="inviabile">Password non valida</span>
 						</div>
-					</div>									
+					</div>
+					<div id="divSchedina" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+						<div class="imdb-detail-overlay__close imdb-close-icon"
+							data-ng-click="closeSchedinaDiv()"></div>
+						<h2 class="imdb-detail-overlay__title">Invia formazione</h2>						
+						<div class="imdb-detail-overlay__content imdb-gutter-v">
+							<table class="schedina">
+								<tr ng-repeat="incontro in listaIncontri">
+									<td>{{incontro.squadraCasa}}</td>
+									<td>{{incontro.squadraFuori}}</td>
+									<td style="text-align: right">
+										<img class="schedina-pron schedina-1 {{incontro.idPartita}}" id="{{incontro.idPartita}}-1" ng-click="pronostico(incontro.idPartita, '1')">&nbsp;
+										<img class="schedina-pron schedina-X {{incontro.idPartita}}" id="{{incontro.idPartita}}-X" ng-click="pronostico(incontro.idPartita, 'X')">&nbsp;
+										<img class="schedina-pron schedina-2 {{incontro.idPartita}}" id="{{incontro.idPartita}}-2" ng-click="pronostico(incontro.idPartita, '2')">
+									</td>
+								</tr>
+							</table>
+							<br />
+							<span class="imdb-error" data-ng-hide="inviabile">Schedina incompleta</span>
+							<input type="submit" data-ng-click="inviaFormazione()" class="imdb-right imdb-invia-btn" />				
+						</div>
+					</div>
+					<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+						<div class="imdb-detail-overlay__close imdb-close-icon"
+							data-ng-click="closeConfermaDiv()"></div>
+						<h2 class="imdb-detail-overlay__title" id="confermaTitle"></h2>						
+						<div class="imdb-detail-overlay__content imdb-gutter-v">
+							<span class="imdb-error" id="confermaText"></span>			
+						</div>
+					</div>						
 					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
 							<tr>
@@ -54,7 +83,7 @@
 					    </tbody>
 					</table>					
 				</div>												
-				<div id="campo" class="campo">
+				<div id="campo" class="campo" data-ng-hide="!rosa">
 					<div class="maglia campo-portiere-1"><p class="label-maglia"></p></div>
 					<div class="maglia campo-difensore-1"><p class="label-maglia"></p></div>
 					<div class="maglia campo-difensore-2"><p class="label-maglia"></p></div>
@@ -79,8 +108,8 @@
 					<div class="maglia-panchina campo-riserva-6"><p class="label-maglia-panchina"></p></div>
 					<div class="maglia-panchina campo-riserva-7"><p class="label-maglia-panchina"></p></div>					
 				</div>
-				<img class="logo backHome" onclick="window.location='index.html'" alt="" src="images/football.png">
-				<input type="submit" class="imdb-inviaform-btn" name="sendForm"/>
+				<img class="logo invform-btn" onclick="window.location='index.html'" alt="Torna alla home" src="images/football.png" />
+				<img class="logo invform-btn" ng-hide="!rosa" alt="Invia formazione" src="images/invia.png" ng-click="inserisciSchedina()" />
 			</div>
 		</div>
 	</body>

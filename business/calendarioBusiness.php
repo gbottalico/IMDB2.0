@@ -73,6 +73,49 @@ class CalendarioBusiness {
         }
         return json_encode($calendario);
     }
+
+    /*
+    *   Popolo la prossima giornata
+    */
+    public static function getProssimaGiornata() {
+        $calendario = array();
+        $lines = file(host . js_folder . calendario_file);
+        $prossima = ImdbUtils::getProssimaGiornata();
+            
+        foreach($lines as $line_num => $line) {
+            if (strpos($line,']=new I(') !== false) {                
+                $riga = explode(",", $line);
+                if ($prossima == $riga[10]) {
+                    $rigaCal = new RigaCalendario();
+                    $rigaCal->idPartita = substr($riga[0], strpos($riga[0], '(') + 1);
+                    $rigaCal->giocata = $riga[3];
+                    $rigaCal->idGiornata = $riga[5];                
+                    $rigaCal->giornata = $riga[10];
+                    $rigaCal->idCompetizione = $riga[8];
+                    $rigaCal->competizione = trim(ImdbUtils::getTurnoByCode($riga[7]));
+                    $rigaCal->logoCompetizione = ImdbUtils::getCompetizioneImageUrl($rigaCal->idCompetizione);
+                    $rigaCal->idTurno = str_replace('"',"",$riga[9]);
+                    $rigaCal->turno = trim(ImdbUtils::getTurnoByCode($rigaCal->idTurno));
+                    $rigaCal->idSquadraCasa = $riga[11];
+                    $rigaCal->idSquadraFuori = $riga[12];
+                    $rigaCal->squadraCasa = trim(ImdbUtils::getTurnoByCode($riga[15]));
+                    $rigaCal->squadraFuori = trim(ImdbUtils::getTurnoByCode($riga[16]));
+                    $rigaCal->logoCasa = ImdbUtils::getLogoImageUrl($rigaCal->squadraCasa);            
+                    $rigaCal->logoFuori = ImdbUtils::getLogoImageUrl($rigaCal->squadraFuori);            
+                    $rigaCal->golCasa = $riga[17];
+                    $rigaCal->golFuori = $riga[18];
+                    $rigaCal->puntiCasa = $riga[19];
+                    $rigaCal->puntiFuori = $riga[20];
+                    $rigaCal->totaleCasa = $riga[21];
+                    $rigaCal->totaleFuori = $riga[22];                
+                    $rigaCal->modCasa = $rigaCal->totaleCasa - $rigaCal->puntiCasa;
+                    $rigaCal->modFuori = $rigaCal->totaleFuori - $rigaCal->puntiFuori;
+                    array_push($calendario, $rigaCal);
+                }
+            }              
+        }
+        return json_encode($calendario);
+    }
 }	
 
 ?>
