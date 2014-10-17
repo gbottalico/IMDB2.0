@@ -41,4 +41,33 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 		});
 	}
 	
+	$scope.caricaDettaglio = function(idPartita, idGiornata, giocata, idCasa, idFuori){
+		$http.get('service/tabellinoService.php?partita='+idPartita+'&giornata='+idGiornata+'&giocata='+giocata).success(function(data) {
+			$scope.loading = false;
+			$scope.infoPartita = $scope.infoGiornata.filter(function(row) {
+				if (row.idPartita == idPartita) {
+					return true
+				} else {
+					return false;
+				}
+			});
+			$scope.infoPartita = $scope.infoPartita[0];
+			$scope.tabellino = data;
+			$scope.squadraCasa = $scope.tabellino.filter(function(row) {
+				if (row.squadra == idCasa) {
+					return true
+				} else {
+					return false;
+				}
+			});
+			$scope.squadraFuori = $scope.tabellino.filter(function(row) {
+				if (row.squadra == idFuori) {
+					return true
+				} else {
+					return false;
+				}
+			});
+		});
+	}
+	
 });

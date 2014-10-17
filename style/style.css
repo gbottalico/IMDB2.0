@@ -633,8 +633,9 @@ body {
 }
 
 .riepilogoTableContainer {
-	width: 90%;
+	width: 100%;
 	margin: 10px auto;
+	font: bold 0.8em 'trebuchet MS', Arial, helvetica;
 }
 
 .riepilogoContainer {
@@ -822,7 +823,7 @@ table {
 }
 
 .panchina {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 }
 

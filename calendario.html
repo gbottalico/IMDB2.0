@@ -41,20 +41,20 @@
 					<table class="container" id="calendarioTable"
 						data-ng-hide="!infoGiornata">
 						<tbody>
-							<tr ng-repeat="partita in infoGiornata">
+							<tr ng-repeat="partita in infoGiornata" ng-click="caricaDettaglio(partita.idPartita, partita.giornata, partita.giocata, partita.idSquadraCasa, partita.idSquadraFuori)">
 								<td style="text-align: center"><img class="logo"
-									src="{{partita.logoCasa}}" /></td>
+									ng-src="{{partita.logoCasa}}" /></td>
 								<td>{{partita.squadraCasa}}</td>
 								<td>{{partita.golCasa}} - {{partita.golFuori}}</td>
 								<td>{{partita.squadraFuori}}</td>
 								<td style="text-align: center"><img class="logo"
-									src="{{partita.logoFuori}}" /></td>
+									ng-src="{{partita.logoFuori}}" /></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="riepilogoContainer">
-					<table class="riepilogoTableContainer" id="{{infoPart.idCompetizione}}-{{infoPart.idGiornata}}-{{$index}}">
+					<table class="riepilogoTableContainer" id="{{infoPart.idPartita}}-{{infoPart.giornata}}">
 						<tbody>
 							<tr>
 								<td style="vertical-align: top;">
@@ -62,203 +62,33 @@
 										<tr>
 											<th colspan="3">Partita</th>
 										</tr>
-										<tr>
-											<td>A</td>
-											<td>Matri</td>
-											<td>8</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Matri</td>
-											<td>8</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Matri</td>
-											<td>8</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Matri</td>
-											<td>8</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Matri</td>
-											<td>8</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Matri</td>
-											<td>8</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Matri</td>
-											<td>8</td>
+										<tr ng-repeat="riservaCasa in squadraCasa" ng-if="riservaCasa.titolare == '0'">
+											<td>{{riservaCasa.ruolo}}</td>
+											<td>{{riservaCasa.nomeAbbreviato}}</td>
+											<td>{{riservaCasa.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
 								<td style="border-radius: 35px; background: white;">
 									<table class="titolariCasa titolari">
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-										</tr>
-										<tr>
-											<td>A</td>
-											<td>Pinilla</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
+										<tr ng-repeat="titolareCasa in squadraCasa" ng-if="titolareCasa.titolare == '1'">
+											<td>{{titolareCasa.ruolo}}</td>
+											<td>{{titolareCasa.nomeAbbreviato}}</td>
+											<td>{{titolareCasa.voto}}</td>
+											<td>{{titolareCasa.bonusMalus}}</td>
+											<td>{{titolareCasa.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
 								<td></td>
 								<td style="border-radius:35px; background: white;">
 									<table class="titolariFuori titolari">
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Pinilla</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>Tavano</td>
-											<td>A</td>
+										<tr ng-repeat="titolareFuori in squadraFuori" ng-if="titolareFuori.titolare == '1'">
+											<td>{{titolareFuori.ruolo}}</td>
+											<td>{{titolareFuori.nomeAbbreviato}}</td>
+											<td>{{titolareFuori.voto}}</td>
+											<td>{{titolareFuori.bonusMalus}}</td>
+											<td>{{titolareFuori.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
@@ -267,40 +97,10 @@
 										<tr>
 											<th colspan="3">Partita</th>
 										</tr>
-										<tr>
-											<td>8</td>
-											<td>Matri</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Matri</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Matri</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Matri</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Matri</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Matri</td>
-											<td>A</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Matri</td>
-											<td>A</td>
+										<tr ng-repeat="riservaFuori in squadraFuori" ng-if="riservaFuori.titolare == '0'">
+											<td>{{riservaFuori.ruolo}}</td>
+											<td>{{riservaFuori.nomeAbbreviato}}</td>
+											<td>{{riservaFuori.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
@@ -319,22 +119,17 @@
 										<tr>
 						    				<td></td>
 						    				<td>Parziale Squadra</td>
-						    				<td>8</td>
-						    			</tr>
-						    			<tr>
-						    				<td></td>
-						    				<td>Fattore Campo</td>
-						    				<td>8</td>
+						    				<td>{{infoPartita.puntiCasa}}</td>
 						    			</tr>
 						    			<tr>
 						    				<td></td>
 						    				<td>Modificatore dif</td>
-						    				<td>8</td>
+						    				<td>{{infoPartita.modCasa}}</td>
 						    			</tr>
 						    			<tr>
 						    				<td></td>
 						    				<td>Totale Squadra</td>
-						    				<td>8</td>
+						    				<td>{{infoPartita.totaleCasa}}</td>
 						    			</tr>
 									</table>	
 								</td>
@@ -343,23 +138,18 @@
 						    		<table class="riepilogoFuori riepilogo">
 										<tr>
 						    				<td></td>
-						    				<td>8</td>
 						    				<td>Parziale Squadra</td>
+						    				<td>{{infoPartita.puntiFuori}}</td>
 						    			</tr>
 						    			<tr>
 						    				<td></td>
-						    				<td>8</td>
-						    				<td>Fattore Campo</td>
-						    			</tr>
-						    			<tr>
-						    				<td></td>
-						    				<td>8</td>
 						    				<td>Modificatore dif</td>
+						    				<td>{{infoPartita.modFuori}}</td>
 						    			</tr>
 						    			<tr>
 						    				<td></td>
-						    				<td>8</td>
 						    				<td>Totale Squadra</td>
+						    				<td>{{infoPartita.totaleFuori}}</td>
 						    			</tr>
 									</table>	
 						    	</td>
