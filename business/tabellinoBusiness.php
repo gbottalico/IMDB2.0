@@ -50,6 +50,7 @@ class TabellinoBusiness {
                             $nom->voto = str_replace('"', '', $votiGiocatori[$i]);
                             $nom->bonusMalus = str_replace('"', '', $bonusMalusGiocatori[$i]);
                             $nom->votoTotale = str_replace('"', '', $totGiocatori[$i]);
+                            $nom->titolare = $i < 11 ? "1" : "0";
                             array_push($tabellino, $nom);
                         }                            
                     }                        
