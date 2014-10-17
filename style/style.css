@@ -266,6 +266,10 @@ body {
 	color: white !important;
 }
 
+#calendarioTable tr {
+	cursor: pointer;	
+}
+
 .container th h1 {
 	font-weight: bold;
 	font-size: 1em;
@@ -858,10 +862,6 @@ table {
 	margin: 0 auto;
 }
 
-.panchina tr:nth-child(1) {
-	background: black;
-	color: white;
-}
 
 .panchina td {
 	border-bottom: 1px solid black;
@@ -965,4 +965,9 @@ table {
 	width: 15px;
 	height: 15px;
 	cursor: pointer;
+}
+
+.closeButton{
+	float:right;
+	cursor:pointer;
 }

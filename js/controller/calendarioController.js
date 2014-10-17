@@ -31,6 +31,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 	}
 	
 	$scope.visualizzaGiornata = function(idComp) {
+		$scope.chiudiDettaglio();
 		$scope.loadingGiornata = true;
 		$scope.infoGiornata = $scope.calendario.filter(function(row) {
 			if (row.idGiornata == idComp && row.competizione == $scope.competizioneSelected) {
@@ -42,6 +43,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 	}
 	
 	$scope.caricaDettaglio = function(idPartita, idGiornata, giocata, idCasa, idFuori, event){
+		$scope.chiudiDettaglio();
 		$http.get('service/tabellinoService.php?partita='+idPartita+'&giornata='+idGiornata+'&giocata='+giocata).success(function(data) {
 			$scope.loading = false;
 			$scope.infoPartita = $scope.infoGiornata.filter(function(row) {
@@ -74,6 +76,10 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 			$('.riepilogoContainer').css('display','block');
 			
 		});
+	}
+	
+	$scope.chiudiDettaglio = function(){
+		$('.riepilogoContainer').css('display','none');
 	}
 	
 });
