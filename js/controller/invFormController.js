@@ -244,17 +244,31 @@
 	/*
 	*	Invia la formazione
 	*/
-	$scope.inviaFormazione = function() {		
-		angular.forEach($scope.listaIncontri, function(inc) {			
-			inc.pronostico = $('.schedina-pron.' + inc.idPartita + '.selected').attr('id').replace(inc.idPartita + '-', '');
+	$scope.inviaFormazione = function() {
+		var schedinaOk = true;
+		$scope.inviabile = true;
+		angular.forEach($scope.listaIncontri, function(inc) {
+			var idSch = $('.schedina-pron.' + inc.idPartita + '.selected').attr('id');
+			if (idSch == undefined) {
+				schedinaOk = false;
+			} else {
+				inc.pronostico = idSch.replace(inc.idPartita + '-', '');
+			}
 		});
-		$scope.closeSchedinaDiv();
-		$('.imdb-overlay').show();
-		$('#divConferma').addClass('imdb-visible');
-		$('#confermaTitle').text('Invio Formazione');
-		$('#confermaText').text('Formazione inviata con successo!');
+		if (schedinaOk) {
+			$scope.closeSchedinaDiv();
+			$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');
+			$('#confermaTitle').text('Invio Formazione');
+			$('#confermaText').text('Formazione inviata con successo!');
+		} else {
+			$scope.inviabile = false;
+		}
 	}
 
+	/*
+	*	Seleziona il pronostico per la partita 
+	*/
 	$scope.pronostico = function(idPartita, pronostico) {
 		$('.' + idPartita).removeClass('selected');
 		$('#' + idPartita + '-' + pronostico).addClass('selected');
