@@ -896,39 +896,6 @@ table {
 	
 }
 
-@media only screen and (max-width: 800px) , only screen and
-	(max-device-width: 800px) {
-	#wrapper {
-		width: 100%;
-		height: 100%;
-		margin: 0 auto;
-	}
-	.container {
-		width: 100%;
-	}
-	li {
-		width: 100% !important;
-		height: 20% !important;
-		margin: 2px 0px !important;
-	}
-	.menu .title {
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		text-align: center;
-		font: italic bold 2em/120px 'trebuchet MS', Arial, helvetica;
-	}
-	.container {
-		height: auto;
-		text-align: center;
-		overflow: hidden;
-		width: 100%;
-		margin: 0 auto;
-		display: table;
-		/*padding: 0 0 8em 0;*/
-		color: white
-	}
-}
 
 .invform-btn {
 	margin: 50px 10px 10px 55px;
@@ -970,4 +937,63 @@ table {
 .closeButton{
 	float:right;
 	cursor:pointer;
+}
+
+.nonConsegnata{
+	text-align: center;
+}
+
+.selectMobile{
+		display: none;
+}
+
+@media only screen and (max-width: 800px) , only screen and
+	(max-device-width: 800px) {
+	#wrapper {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	.container td{
+		font: bold .8em 'trebuchet MS', Arial, helvetica;
+	}
+	li {
+		width: 100% !important;
+		height: 20% !important;
+		margin: 2px 0px !important;
+	}
+	.menu .title {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		font: italic bold 2em/120px 'trebuchet MS', Arial, helvetica;
+	}
+	.container {
+		height: auto;
+		text-align: center;
+		overflow: hidden;
+		width: 100%;
+		margin: 0 auto;
+		display: table;
+		/*padding: 0 0 8em 0;*/
+		color: white;
+	}
+	
+	#elencoGiornate ul{
+		display: none;
+	}
+	
+	.selectMobile {
+		display: block;
+		height: 50px;
+		margin: 10px auto;
+		width: 100%;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		padding-left: 48%;
+	}
+	
+	
+	
 }

@@ -35,6 +35,8 @@
 						ng-click="visualizzaGiornata(cal.idGiornata)">{{cal.turno ||
 						cal.giornata}}</li>
 				</ul>
+				<select class="selectMobile" ng-model="giorSelected" ng-options="cal.idGiornata as cal.giornata for cal in calendarioComp | unique:'idGiornata'" ng-change="visualizzaGiornata(giorSelected)">
+				</select>
 				<div>
 					<table class="container" id="calendarioTable"
 						data-ng-hide="!infoGiornata">
@@ -63,14 +65,14 @@
 												<img ng-src="images/panchina.png" class="logo"/>
 											</th>
 										</tr>
-										<tr ng-repeat="riservaCasa in squadraCasa" ng-if="riservaCasa.titolare != '0' && riservaFuori.titolare != '-1'">
+										<tr ng-repeat="riservaCasa in squadraCasa" ng-if="riservaCasa.titolare != '0' && riservaCasa.titolare != '-1'">
 											<td>{{riservaCasa.ruolo}}</td>
 											<td>{{riservaCasa.nomeAbbreviato}}</td>
 											<td>{{riservaCasa.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
-								<td colspan="2" ng-hide="squadraCasa.length"> 
+								<td colspan="2" ng-hide="squadraCasa.length" class="nonConsegnata"> 
 									Squadra non consegnata
 								</td>
 								<td style="border-radius: 35px; background: white;" ng-show="squadraCasa.length">
@@ -96,7 +98,7 @@
 										</tr>
 									</table>
 								</td>
-								<td colspan="2" ng-hide="squadraFuori.length"> 
+								<td colspan="2" ng-hide="squadraFuori.length" class="nonConsegnata"> 
 									Squadra non consegnata
 								</td>
 								<td style="vertical-align: top;" ng-show="squadraFuori.length">
@@ -142,26 +144,28 @@
 						    			</tr>
 									</table>	
 								</td>
+								<td ng-hide="squadraCasa.length"></td>
 								<td></td>
 						    	<td style="background: white; border-radius: 35px;" ng-show="squadraFuori.length">
 						    		<table class="riepilogoFuori riepilogo">
 										<tr>
-						    				<td></td>
+											<td>{{infoPartita.puntiFuori}}</td>
 						    				<td>Parziale Squadra</td>
-						    				<td>{{infoPartita.puntiFuori}}</td>
+						    				<td></td>
 						    			</tr>
 						    			<tr>
-						    				<td></td>
-						    				<td>Modificatore dif</td>
 						    				<td>{{infoPartita.modFuori}}</td>
+						    				<td>Modificatore dif</td>
+						    				<td></td>
 						    			</tr>
 						    			<tr>
-						    				<td></td>
-						    				<td>Totale Squadra</td>
 						    				<td>{{infoPartita.totaleFuori}}</td>
+						    				<td>Totale Squadra</td>
+						    				<td></td>
 						    			</tr>
 									</table>	
 						    	</td>
+						    	<td ng-hide="squadraFuori.length"></td>
 						    	<td></td>
 						    </tr>
 							
