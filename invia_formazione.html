@@ -38,20 +38,29 @@
 							data-ng-click="closeSchedinaDiv()"></div>
 						<h2 class="imdb-detail-overlay__title">Invia formazione</h2>						
 						<div class="imdb-detail-overlay__content imdb-gutter-v">
-							<table class="schedina">
-								<tr ng-repeat="incontro in listaIncontri">
-									<td>{{incontro.squadraCasa}}</td>
-									<td>{{incontro.squadraFuori}}</td>
-									<td style="text-align: right">
-										<img class="schedina-pron schedina-1 {{incontro.idPartita}}" id="{{incontro.idPartita}}-1" ng-click="pronostico(incontro.idPartita, '1')">&nbsp;
-										<img class="schedina-pron schedina-X {{incontro.idPartita}}" id="{{incontro.idPartita}}-X" ng-click="pronostico(incontro.idPartita, 'X')">&nbsp;
-										<img class="schedina-pron schedina-2 {{incontro.idPartita}}" id="{{incontro.idPartita}}-2" ng-click="pronostico(incontro.idPartita, '2')">
-									</td>
-								</tr>
-							</table>
-							<br />
-							<span class="imdb-error" data-ng-hide="inviabile" style="font-size: 15px">Schedina incompleta</span>
-							<input type="submit" data-ng-click="inviaFormazione()" class="imdb-right imdb-invia-btn" />				
+							<form name="inviaForm" action="invform/sendmail.php">
+								<input type="hidden" name="sender" id="edSender" value="IMDB@ns145.altervista.org" />
+								<input type="hidden" name="recipient" id="edRecipient" value="" />
+								<input type="hidden" name="subject" id="edSubject" value="" />
+								<input type="hidden" name="body" id="edBody" value="" />
+								<input type="hidden" name="giornataDiA" id="edGiornataDiA" value="" />
+								<input type="hidden" name="idSquadra" id="edIdSquadra" value="" />
+								<input type="hidden" name="idIncontro" id="edIdIncontro" value="" />
+								<table class="schedina">
+									<tr ng-repeat="incontro in listaIncontri">
+										<td>{{incontro.squadraCasa}}</td>
+										<td>{{incontro.squadraFuori}}</td>
+										<td style="text-align: right">
+											<img class="schedina-pron schedina-1 {{incontro.idPartita}}" id="{{incontro.idPartita}}-1" ng-click="pronostico(incontro.idPartita, '1')">&nbsp;
+											<img class="schedina-pron schedina-X {{incontro.idPartita}}" id="{{incontro.idPartita}}-X" ng-click="pronostico(incontro.idPartita, 'X')">&nbsp;
+											<img class="schedina-pron schedina-2 {{incontro.idPartita}}" id="{{incontro.idPartita}}-2" ng-click="pronostico(incontro.idPartita, '2')">
+										</td>
+									</tr>
+								</table>
+								<br />
+								<span class="imdb-error" data-ng-hide="inviabile" style="font-size: 15px">Schedina incompleta</span>
+								<input type="submit" data-ng-click="inviaFormazione()" class="imdb-right imdb-invia-btn" />
+							</form>				
 						</div>
 					</div>
 					<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">

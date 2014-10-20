@@ -57,7 +57,7 @@
 		var data = new Date();		
 		var ora = "" + data.getFullYear() + formatNumber(data.getMonth() + 1) + formatNumber(data.getDate()) + 
 			formatNumber(data.getHours()) + formatNumber(data.getMinutes());
-		if (ora > termineInvio) {						
+		if (ora < termineInvio) {						
 			$('#divPassword').addClass('imdb-visible');
 			$scope.inviabile = true;
 			$('input[name=password]').val('');
@@ -265,15 +265,30 @@
 	$scope.inviaFormazione = function() {
 		var schedinaOk = true;
 		$scope.inviabile = true;
+		var idIncontro = 0;
 		angular.forEach($scope.listaIncontri, function(inc) {
 			var idSch = $('.schedina-pron.' + inc.idPartita + '.selected').attr('id');
 			if (idSch == undefined) {
 				schedinaOk = false;
 			} else {
 				inc.pronostico = idSch.replace(inc.idPartita + '-', '');
+				if (inc.idSquadraCasa == $scope.squadraSelected.idSquadra || inc.idSquadraFuori == $scope.squadraSelected.idSquadra) {
+					idIncontro = inc.idPartita;
+				}
 			}
 		});
 		if (schedinaOk) {
+			var form = $('form[name=inviaForm]');
+			var destinatari = "";
+			angular.forEach($scope.squadre, function(sq) {
+				destinatari += sq.mail + "; ";
+			});
+			$('#edRecipient').val(destinatari);
+			$('#edSubject').val('Formazioni ' + $scope.listaIncontri[0].giornata + 'a Giornata');
+			$('#edGiornataDiA').val($scope.listaIncontri[0].giornata);
+			$('#edIdSquadra').val($scope.squadraSelected.idSquadra);
+			$('#edIdIncontro').val(idIncontro);
+			$('#edBody').val();
 			$scope.closeSchedinaDiv();
 			$('.imdb-overlay').show();
 			$('#divConferma').addClass('imdb-visible');
