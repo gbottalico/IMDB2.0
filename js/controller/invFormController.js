@@ -1,5 +1,5 @@
 
-	imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout) {
+	imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
 
 	$scope.loading = true;
 	$scope.showSquadra = false;
@@ -34,6 +34,10 @@
 		$scope.squadre = data;		
 	});
 
+	$http.get('service/termineService.php').success(function(data) {		
+		$scope.termine = data.trim();			
+	});
+
 	$http.get('service/prossimaService.php').success(function(data) {											
 		$scope.listaIncontri = data.filter(function(row) {
 			if (row.competizione == 'Campionato') {
@@ -44,12 +48,26 @@
 		});
 	});
 
+	/*
+	*	Apre il pannellino per l'inserimento della password della squadra selezionata. Se il termine di invio è scaduto, mostra un messaggio di errore
+	*/
 	$scope.inserisciPassword = function(squadraSelected) {
+		var termineInvio = $scope.termine.substring(6, 10) + $scope.termine.substring(3,5) + 
+			$scope.termine.substring(0,2) + $scope.termine.substring(11,13) + $scope.termine.substring(14,16);
+		var data = new Date();		
+		var ora = "" + data.getFullYear() + formatNumber(data.getMonth() + 1) + formatNumber(data.getDate()) + 
+			formatNumber(data.getHours()) + formatNumber(data.getMinutes());
+		if (ora > termineInvio) {						
+			$('#divPassword').addClass('imdb-visible');
+			$scope.inviabile = true;
+			$('input[name=password]').val('');
+			$scope.squadraSelected = squadraSelected;
+		} else {
+			$('#divConferma').addClass('imdb-visible');
+			$('#confermaTitle').text('Termine invio scaduto');
+			$('#confermaText').text('Il termine per inviare la formazione è scaduto!');
+		}
 		$('.imdb-overlay').show();
-		$('#divPassword').addClass('imdb-visible');
-		$scope.inviabile = true;
-		$('input[name=password]').val('');
-		$scope.squadraSelected = squadraSelected;			
 	}
 
 	$scope.closePasswordDiv = function() {
@@ -260,6 +278,7 @@
 			$('.imdb-overlay').show();
 			$('#divConferma').addClass('imdb-visible');
 			$('#confermaTitle').text('Invio Formazione');
+			$('#confermaText').addClass('success');
 			$('#confermaText').text('Formazione inviata con successo!');
 		} else {
 			$scope.inviabile = false;

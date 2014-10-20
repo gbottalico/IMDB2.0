@@ -59,7 +59,7 @@
 							data-ng-click="closeConfermaDiv()"></div>
 						<h2 class="imdb-detail-overlay__title" id="confermaTitle"></h2>						
 						<div class="imdb-detail-overlay__content imdb-gutter-v">
-							<span class="imdb-error" id="confermaText"></span>			
+							<span class="imdb-singleerror" id="confermaText"></span>										
 						</div>
 					</div>						
 					<table class="invia-form-table" data-ng-hide="!rosa">
@@ -110,6 +110,7 @@
 				</div>
 				<img class="logo invform-btn" onclick="window.location='index.html'" alt="Torna alla home" src="images/football.png" />
 				<img class="logo invform-btn" ng-hide="!rosa" alt="Invia formazione" src="images/invia.png" ng-click="inserisciSchedina()" />
+				<div class="invform-scadenza invform-btn" ng-hide="!rosa"><span style="color:white">SCADENZA: </span><span style="color:red">{{termine}}</span></div>
 			</div>
 		</div>
 	</body>

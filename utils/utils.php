@@ -339,6 +339,40 @@ class ImdbUtils {
             $password = self::$passwords[($squadra-1)];
             return $password;
         }
+
+        /*
+        *   Recupera la data di scadenza per l'invio delle prossime formazioni
+        */
+        public static function getTermineInvio() {
+            $lines = file(host . js_folder . variabili_file);
+            $dataTermine = "";            
+            foreach($lines as $line_num => $line) {
+                if (strpos($line,'var TermineInviog') !== false) {                
+                    $riga = explode("=", $line);                    
+                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . '/';
+                } else if (strpos($line,'var TermineInviomm') === false && strpos($line,'var TermineInviom') !== false) {                
+                    $riga = explode("=", $line);                    
+                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . '/';
+                } else if (strpos($line,'var TermineInvioa') !== false) {                
+                    $riga = explode("=", $line);                    
+                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . ' ';
+                } else if (strpos($line,'var TermineInviohh') !== false) {                
+                    $riga = explode("=", $line);                    
+                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . ':';
+                } else if (strpos($line,'var TermineInviomm') !== false) {              
+                    $riga = explode("=", $line);                    
+                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4);
+                }
+            }            
+            return $dataTermine;
+        }
+
+        /*
+        *   Ritorna l'ora attuale nel formato dd/MM/yyyy hh:mm
+        */
+        public static function getNow() { 
+            return date('d').'/'.date('m').'/'.date('Y').' '.date('H').':'.date('i');
+        }
 }
 
 ?>

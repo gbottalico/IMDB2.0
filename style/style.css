@@ -802,6 +802,9 @@ body {
 	margin-left: 20%;
 	margin-top: 10px;
 }
+.imdb-error.success {
+	color: #458630;	
+}
 
 .imdb-gutter {
   padding: 10px;
@@ -993,7 +996,18 @@ table {
 		-moz-appearance: none;
 		padding-left: 48%;
 	}
-	
-	
-	
+}
+
+.invform-scadenza {
+	text-align: center;
+	font-size: x-large;
+}
+.imdb-singleerror {
+	color: #a90433;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;	
+}
+.imdb-singleerror.success {
+	color: #458630;	
 }

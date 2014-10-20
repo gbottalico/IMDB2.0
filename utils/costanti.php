@@ -16,4 +16,5 @@
 	define('formazioni_file', 'fcmFormazioniDatiXXX.js');
 	define('tabellini_file', 'fcmRisultatiDatiXXX.js');
 	define('incontri_file', 'fcmInvioFormazioneDati.js');
+	define('variabili_file', 'fcmVariabili.js');
 ?>

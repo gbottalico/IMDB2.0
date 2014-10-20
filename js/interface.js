@@ -23,3 +23,7 @@ function loadPageCalendario(){
 function loadPageInvForm(){
 	window.location = "invia_formazione.html";
 }
+
+function formatNumber(n) {
+	return n < 10 ? '0' + n : '' + n;
+}
