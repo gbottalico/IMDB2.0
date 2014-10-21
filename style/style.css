@@ -3,13 +3,13 @@ body {
 }
 
 .imdb-results__loading {
-	background: white url('../images/preloader-results.gif?1384796714')
+	background: url('../images/pallone_loading.gif?1384796714')
 		no-repeat 50% 50%;
 	-webkit-background-size: 64px 64px;
 	-moz-background-size: 64px 64px;
 	-o-background-size: 64px 64px;
 	background-size: 64px 64px;
-	height: 300px;
+	height: 200px;
 }
 
 .center {
