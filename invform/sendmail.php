@@ -29,9 +29,12 @@ $fantasquadra = '';
 $competizione = '';
 $lega = '';
 
-$result = gatherData();
 $result = sendMail();
-$result = saveLineUp();
+if ($result != '') {
+	return $result;
+} else {
+	$result = saveLineUp();
+}
 
 function saveLineUp()
 {
@@ -39,7 +42,7 @@ function saveLineUp()
 	$giornataDiA = $_REQUEST['giornataDiA'];
 	$idIncontro = $_REQUEST['idIncontro'];
 
-	if (($fp = fopen("../js/fcmFormazioniDati$giornataDiA.js", 'r+')) == false)
+	if (($fp = fopen("../../js/fcmFormazioniDati$giornataDiA.js", 'r+')) == false)
 		return 'Impossibile aprire il file formazioni!';
 	if (!flock($fp, LOCK_EX)) {
 		return 'Impossibile bloccare il file formazioni!';
@@ -74,64 +77,18 @@ function saveLineUp()
 	fclose($fp);
 }
 
-
-function gatherData()
-{
-	global $fantasquadra, $competizione, $lega;
-
-	$body = explode("\n", stripslashes($_REQUEST['body']));
-	list($null, $competizione, $null) = explode(', ', $_REQUEST['subject'], 3);
-	if (preg_match('/^Lega: (.+)$/', $body[0], $regs)) $lega = $regs[1];
-	if (preg_match('/^Squadra: (.+)$/', $body[1], $regs)) $fantasquadra = $regs[1];
-}
-
 function sendMail()
 {
 	global $fantasquadra, $competizione, $lega;
 
 	$mail = new PHPMailer();
-	$mail->From = $_REQUEST['sender'];
+	$mail->From = $_POST['sender'];
 	$mail->FromName = '';
-	$mail->Subject = $_REQUEST['subject'];
-	$mail->Body = stripslashes($_REQUEST['body']);
-	foreach (split('; ', $_REQUEST['recipient']) as $add) $mail->AddAddress($add);
+	$mail->Subject = $_POST['subject'];
+	$mail->Body = stripslashes($_POST['body']);
+	foreach (split('; ', $_POST['recipient']) as $add) $mail->AddAddress($add);
 
 	return $mail->Send() ? '' : 'Errore durante durante l\'invio della e-mail!';
-}
-
-function checkPassword()
-{
-	$username = $_REQUEST['username'];
-	$password = $_REQUEST['password'];
-
-	if (($fp = fopen('../js/fcmInvioFormazioneDati.js', 'rt')) == false)
-		return 'File password non trovato!';
-
-	$found = false;
-	while (!feof ($fp) && !$found) {
-		$buffer = fgets($fp, 4096);
-		$found = ereg('^a=passwords;', $buffer);
-	}
-
-	if (!$found)
-		return 'File password non valido!';
-
-	$found = false;
-	$passwords = array();
-	while (!feof ($fp) && !$found) {
-		$buffer = fgets($fp, 4096);
-		if ($buffer == "\n")
-			$found = true;
-		else {
-			$result = ereg('a\[(.+)\]=\"(.+)\"', $buffer, $regs);
-			if ($result) $passwords[$regs[1]] = $regs[2];
-		}
-	}
-
-	if (crypt($password, 'jd') != $passwords[$username])
-		return 'Password non valida!';
-
-	return '';
 }
 
 ?>

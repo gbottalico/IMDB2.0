@@ -9,6 +9,7 @@
 		var $nome;
 		var $nomeAbbr;
 		var $ruolo;
+		var $squadraDiACod;
 		var $squadraDiA;		
 		var $prezzo;
 		var $idSquadra;
@@ -69,6 +70,7 @@
 	            		$rigaPl->prezzo = $riga[7];
 	            		$rigaPl->idFcm = ImdbUtils::getPlayerIdByCode($riga[2]);
 	            		$rigaPl->foto = ImdbUtils::getPlayerImageUrl($rigaPl->idFcm);
+	            		$rigaPl->squadraDiACod = trim($riga[3]);
 	            		$rigaPl->squadraDiA = trim(ImdbUtils::getPlayerNameByCode($riga[3]));
 	            		$rigaPl->squadraDiAfoto = ImdbUtils::getSquadraImageUrl(strtolower($rigaPl->squadraDiA));
 	            		$rigaPl->idSquadra = substr($riga[0], strpos($riga[0], '(') + 1);

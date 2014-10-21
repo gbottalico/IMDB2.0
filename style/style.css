@@ -755,6 +755,10 @@ body {
 	-o-border-radius: 10;
 	border-radius: 10;
 }
+.imdb-invia-btn:hover {
+	color: red;	
+	border: 1px solid black;
+}
 .imdb-password {
 	-webkit-border-radius: 10;
 	-moz-border-radius: 10;
@@ -911,6 +915,7 @@ table {
 .schedina {
 	width: 90%;
 	margin: 10px;
+	outline: none;
 }
 .schedina td {
 	font: bold 0.8em 'trebuchet MS', Arial, helvetica;
@@ -922,19 +927,19 @@ table {
 	background: url('../images/schedina_1.png');
 	width: 15px;
 	height: 15px;
-	cursor: pointer;
+	cursor: pointer;	
 }
 .schedina-x {
 	background: url('../images/schedina_X.png');
 	width: 15px;
 	height: 15px;
-	cursor: pointer;
+	cursor: pointer;	
 }
 .schedina-2 {
 	background: url('../images/schedina_2.png');
 	width: 15px;
 	height: 15px;
-	cursor: pointer;
+	cursor: pointer;	
 }
 
 .closeButton{
@@ -947,7 +952,7 @@ table {
 }
 
 .selectMobile{
-		display: none;
+	display: none;
 }
 
 @media only screen and (max-width: 800px) , only screen and
@@ -1010,4 +1015,11 @@ table {
 }
 .imdb-singleerror.success {
 	color: #458630;	
+}
+input[type="password"], input[type="submit"] {
+	outline: none;
+	padding-left: 10px;
+}
+img {
+	border: 0;
 }

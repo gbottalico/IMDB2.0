@@ -4,7 +4,7 @@
 	$scope.loading = true;
 	$scope.showSquadra = false;
 	$scope.inviabile = true;	
-	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
+	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];	
 	$scope.moduloInserito = new Array(0,0,0,0);
 	$scope.moduliAmmessi = [new Array(1,3,4,3), new Array(1,3,5,2), new Array(1,3,6,1), new Array(1,4,3,3), new Array(1,4,4,2),
 		new Array(1,4,5,1), new Array(1,5,2,3), new Array(1,5,3,2), new Array(1,5,4,1), new Array(1,6,3,1)];
@@ -97,12 +97,19 @@
 		
 		if (infoSquadra.length != 0){
 			$scope.rosa = infoSquadra[0];
+			angular.forEach($scope.rosa.rosa, function(cal) {
+				cal.pos = -1;
+			});
 		}
 		$('#squadra-'+squadraSelected).addClass('selected');
 	}	
 
-	$scope.getDescrizioneRuolo = function(idRuolo){
+	$scope.getDescrizioneRuolo = function(idRuolo) {
 		return $scope.ruolo[idRuolo-1];
+	}
+
+	$scope.getAbbreviazioneRuolo = function(idRuolo) {
+		return $scope.ruolo[idRuolo-1].substring(0,1);
 	}
 
 	$scope.clickGiocatore = function(calciatore) {	
@@ -132,8 +139,10 @@
 		$scope.checkModulo(calciatore.ruolo - 1);		
 		if ($scope.moduloOk) {
 			$scope.titolari.push(calciatore);
+			calciatore.pos = 0;
 			$scope.ridisegnaModulo(calciatore);			
 		} else {
+			calciatore.pos = -1;
 			calciatore.disabled = !calciatore.disabled;
 			calciatore.selected = !calciatore.selected;
 		}       		
@@ -144,6 +153,7 @@
 	*/
 	$scope.inserisciRiserva = function(calciatore) {		
 		$scope.riserve.push(calciatore);
+		calciatore.pos = $scope.riserve.length + 11;
 		$scope.ridisegnaPanchina(calciatore);		
 	}
 
@@ -154,6 +164,7 @@
 		for (var i = $scope.titolari.length - 1; i >= 0; i--) {
 		    if ($scope.titolari[i].idFcm == calciatore.idFcm) {		    	
 		        $scope.titolari.splice(i, 1);
+		        calciatore.pos = -1;
 		        $scope.moduloInserito[calciatore.ruolo - 1]--;
 		        $scope.ridisegnaModulo(calciatore);		        
 		        break;
@@ -162,6 +173,7 @@
 		for (var i = $scope.riserve.length - 1; i >= 0; i--) {
 		    if ($scope.riserve[i].idFcm == calciatore.idFcm) {		    	
 		        $scope.riserve.splice(i, 1);
+		        calciatore.pos = -1;
 		        $scope.ridisegnaPanchina(calciatore);
 		        break;
 		    }
@@ -266,35 +278,76 @@
 		var schedinaOk = true;
 		$scope.inviabile = true;
 		var idIncontro = 0;
+		var sqCasa;
+		var sqFuori;
+		var schedinaMail = "";
 		angular.forEach($scope.listaIncontri, function(inc) {
 			var idSch = $('.schedina-pron.' + inc.idPartita + '.selected').attr('id');
 			if (idSch == undefined) {
 				schedinaOk = false;
 			} else {
 				inc.pronostico = idSch.replace(inc.idPartita + '-', '');
+				schedinaMail += inc.squadraCasa + " - " + inc.squadraFuori + "   " + inc.pronostico + "\n";
 				if (inc.idSquadraCasa == $scope.squadraSelected.idSquadra || inc.idSquadraFuori == $scope.squadraSelected.idSquadra) {
 					idIncontro = inc.idPartita;
+					sqCasa = inc.squadraCasa;
+					sqFuori = inc.squadraFuori;
 				}
 			}
 		});
-		if (schedinaOk) {
-			var form = $('form[name=inviaForm]');
+		if (schedinaOk) {			
 			var destinatari = "";
 			angular.forEach($scope.squadre, function(sq) {
 				destinatari += sq.mail + "; ";
-			});
-			$('#edRecipient').val(destinatari);
-			$('#edSubject').val('Formazioni ' + $scope.listaIncontri[0].giornata + 'a Giornata');
-			$('#edGiornataDiA').val($scope.listaIncontri[0].giornata);
-			$('#edIdSquadra').val($scope.squadraSelected.idSquadra);
-			$('#edIdIncontro').val(idIncontro);
-			$('#edBody').val();
-			$scope.closeSchedinaDiv();
-			$('.imdb-overlay').show();
-			$('#divConferma').addClass('imdb-visible');
-			$('#confermaTitle').text('Invio Formazione');
-			$('#confermaText').addClass('success');
-			$('#confermaText').text('Formazione inviata con successo!');
+			});			
+			var mailBody = "Lega: I Malati Del Bari \n";
+			mailBody += "Squadra: " + $scope.squadraSelected.nome + "\n";
+			mailBody += "Giornata: " + $scope.listaIncontri[0].giornata + "a\n";
+			mailBody += "Match: "+ sqCasa + " - "+ sqFuori +"\n";
+			mailBody += "Data e ora compilazione: " + DataOraCorrente() + "\n\n";
+			// Costruisce la parte del messaggio contenente la formazione
+			mailBody += "--- Titolari ---\n";
+			for (i = 0; i < 11; i++) {
+				mailBody += $scope.getAbbreviazioneRuolo($scope.titolari[i].ruolo) + " " + $scope.titolari[i].nome + " (" + $scope.titolari[i].squadraDiA + ") \n";
+			}
+			mailBody += "\n--- Riserve ---\n";
+			for (i = 0; i < 7; i++) {
+				mailBody += $scope.getAbbreviazioneRuolo($scope.riserve[i].ruolo) + " " + $scope.riserve[i].nome + " (" + $scope.riserve[i].squadraDiA + ") \n";
+			}
+			mailBody += "\nSchedina: \n" + schedinaMail;
+			// Costruisce la formazione da salvare sul sito			
+			var formazioneSalvata = new Array();
+			for (i = 0; i < $scope.rosa.rosa.length; i++) {
+				formazioneSalvata.push(idIncontro + "," + $scope.squadraSelected.idSquadra + ",0," + $scope.rosa.rosa[i].codice + "," + 
+					$scope.rosa.rosa[i].squadraDiACod + "," + $scope.rosa.rosa[i].ruolo + "," + $scope.rosa.rosa[i].pos + ",0");
+			}
+
+			$.post('invform/sendmail.php', {
+				recipient : destinatari,
+				subject : 'Formazioni ' + $scope.listaIncontri[0].giornata + 'a Giornata',
+				giornataDiA : $scope.listaIncontri[0].giornata,
+				idSquadra : $scope.squadraSelected.idSquadra,
+				idIncontro : idIncontro,
+				body : mailBody,
+				sender : 'formazioni@imdb.it',
+				saveData : formazioneSalvata.join("|")
+			})
+			.success(function(data) {
+				if (data != '') {
+					$('#confermaTitle').text('Errore Invio Formazione');					
+					$('#confermaText').text(data);
+				} else {
+					$('#confermaTitle').text('Invio Formazione');
+					$('#confermaText').addClass('success');
+					$('#confermaText').text('Formazione inviata con successo!');
+				}				
+				$scope.closeSchedinaDiv();
+				$('.imdb-overlay').show();
+				$('#divConferma').addClass('imdb-visible');				
+			})
+			.error(function(data) {
+				console.error('FUCK!');
+			});			
 		} else {
 			$scope.inviabile = false;
 		}
