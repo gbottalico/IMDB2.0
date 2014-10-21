@@ -20,6 +20,7 @@
 				<div class="menuContainer invform-loghi" ng-show="!rosa">
 					<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">						
 				</div>
+				<div class="invform-scadenza invform-btn imdb-no-desktop" ng-hide="!rosa"><span style="color:white">SCADENZA: </span><span style="color:red">{{termine}}</span></div>				
 				<div id="listaGiocatori" class="inv-rose">									
 					<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 						<div class="imdb-detail-overlay__close imdb-close-icon"
@@ -110,7 +111,7 @@
 				</div>
 				<img class="logo invform-btn" onclick="window.location='index.html'" alt="Torna alla home" src="images/football.png" />
 				<img class="logo invform-btn" ng-hide="!rosa" alt="Invia formazione" src="images/invia.png" ng-click="inserisciSchedina()" />
-				<div class="invform-scadenza invform-btn" ng-hide="!rosa"><span style="color:white">SCADENZA: </span><span style="color:red">{{termine}}</span></div>
+				<div class="invform-scadenza invform-btn imdb-no-mobile imdb-no-tablet" ng-hide="!rosa"><span style="color:white">SCADENZA: </span><span style="color:red">{{termine}}</span></div>
 			</div>
 		</div>
 	</body>

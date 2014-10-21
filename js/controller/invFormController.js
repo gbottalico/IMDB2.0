@@ -124,7 +124,10 @@
         	} else {
         		calciatore.disabled = !calciatore.disabled;
 				calciatore.selected = !calciatore.selected;
-				alert('Formazione completata! Per cambiare qualche giocatore, deseleziona prima il giocatore da sostituire');
+				$('.imdb-overlay').show();
+				$('#divConferma').addClass('imdb-visible');	
+				$('#confermaTitle').text('Errore Formazione');					
+				$('#confermaText').text('Formazione completata! Per cambiare qualche giocatore, deseleziona prima il giocatore da sostituire');				
         	}						
 		} else {			
 			$scope.rimuoviGiocatore(calciatore);
@@ -196,7 +199,10 @@
 		$scope.moduloOk = compatibile;
 		if (!compatibile) {
 			$scope.moduloInserito[idruolo]--;
-			alert("Impossibile inserire il giocatore in formazione: il modulo che ne deriverebbe non è ammesso nella competizione");
+			$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');	
+			$('#confermaTitle').text('Errore Formazione');					
+			$('#confermaText').text('Impossibile inserire il giocatore in formazione: il modulo che ne deriverebbe non è ammesso nella competizione');			
 		}
 	}
 
@@ -266,8 +272,11 @@
     		$('.imdb-overlay').show();
 			$('#divSchedina').addClass('imdb-visible');
 
-    	} else {    		
-			alert('Attenzione! Formazione incompleta');
+    	} else {
+    		$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');	
+			$('#confermaTitle').text('Errore Formazione');					
+			$('#confermaText').text('Attenzione! Formazione incompleta');			
     	}						
 	}
 
