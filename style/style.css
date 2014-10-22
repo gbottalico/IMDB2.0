@@ -935,8 +935,7 @@ table {
 	#wrapper {
 		width: 100%;
 		height: 100%;
-		margin: 0 auto;
-		position: fixed;
+		margin: 0 auto;		
 	}
 	.container td{
 		font: bold .8em 'trebuchet MS', Arial, helvetica;
