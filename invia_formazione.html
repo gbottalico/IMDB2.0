@@ -67,7 +67,7 @@
 						<span class="imdb-singleerror" id="confermaText"></span>										
 					</div>
 				</div>
-				<div class="invform-scadenza invform-btn imdb-no-desktop" ng-hide="!rosa"><span style="color:white">SCADENZA: </span><span style="color:red">{{termine}}</span></div>				
+				<div class="invform-scadenza imdb-no-desktop" ng-hide="!rosa"><span style="color:white">SCADENZA: </span><span style="color:red">{{termine}}</span></div>				
 				<div id="listaGiocatori" class="inv-rose imdb-no-mobile imdb-no-tablet">
 					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
@@ -90,7 +90,7 @@
 					    </tbody>
 					</table>					
 				</div>
-				<div id="listaGiocatori" class="inv-rose imdb-no-desktop" ng-swipe-left="difesa = false" ng-swipe-right="difesa = true"> 
+				<div id="listaGiocatoriMobile" class="inv-rose imdb-no-desktop" ng-swipe-left="difesa = false" ng-swipe-right="difesa = true"> 
 					<table class="invia-form-table" data-ng-hide="!rosa">
 						<thead>
 							<tr>
@@ -139,7 +139,7 @@
 					<div class="maglia-panchina campo-riserva-7"><p class="label-maglia-panchina"></p></div>					
 				</div>
 				<img class="logo invform-btn" ng-hide="!rosa" onclick="window.location='index.html'" alt="Torna alla home" src="images/football.png" />
-				<img class="logo invform-btn" ng-hide="!rosa" alt="Invia formazione" src="images/invia.png" ng-click="inserisciSchedina()" />
+				<img class="logo invform-btn schedina-btn" ng-hide="!rosa" alt="Invia formazione" src="images/invia.png" ng-click="inserisciSchedina()" />
 				<div class="invform-scadenza invform-btn imdb-no-mobile imdb-no-tablet" ng-hide="!rosa"><span style="color:white">SCADENZA: </span><span style="color:red">{{termine}}</span></div>
 			</div>
 		</div>

@@ -246,7 +246,11 @@
 			nomi.push(ris.nome.split(" ")[0]);
 		});
 		for (var i = 0; i < $scope.riserve.length; i++) {
-			$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 6 ? -4 - nomi[i].length : -nomi[i].length));
+			if ($('.maglia-panchina').width() == 20) { // Caso mobile
+				$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-top', (nomi[i].length > 8 ? 30 + nomi[i].length : 30 - nomi[i].length));
+			} else { // Caso desktop
+				$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 6 ? -4 - nomi[i].length : -nomi[i].length));
+			}			
 			$('.campo-riserva-' + (i+1)).show();
 		}		
 	}
@@ -339,7 +343,7 @@
 				idSquadra : $scope.squadraSelected.idSquadra,
 				idIncontro : idIncontro,
 				body : mailBody,
-				sender : 'formazioni@imdb.it',
+				sender : 'formazioni-fantacalcio@imdb.it',
 				saveData : formazioneSalvata.join("|")
 			})
 			.success(function(data) {
@@ -369,13 +373,5 @@
 	$scope.pronostico = function(idPartita, pronostico) {
 		$('.' + idPartita).removeClass('selected');
 		$('#' + idPartita + '-' + pronostico).addClass('selected');
-	}
-
-	$scope.swipeMobile = function(calciatore) {
-		if ($scope.difesa && calciatore.ruolo < 3) {
-			return true;
-		} else if (!$scope.difesa && calciatore.ruolo > 2) {
-			return false;
-		}		
 	}
 });

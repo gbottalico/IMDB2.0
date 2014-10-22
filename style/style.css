@@ -614,7 +614,7 @@ body {
 	}
 	.invia-form-table th {
 		font-size: x-small;
-	}
+	}	
 }
 .imdb-disabled {
 	color: #332E2E !important;
@@ -703,7 +703,7 @@ body {
   font-family: "HelveticaNeueBlack", Arial, Helvetica, sans-serif;  
   line-height: 1.5;
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: x-large;
   margin: 0;
   margin-bottom: 20px;
   display: block;
@@ -766,12 +766,11 @@ body {
 }
 .imdb-error {
 	color: #a90433;
-	font-size: 11px;
+	font-size: small;
 	text-transform: uppercase;
 	font-weight: bold;
 	float: left;
-	margin-left: 20%;
-	margin-top: 10px;
+	margin-left: 20%;	
 }
 .imdb-error.success {
 	color: #458630;	
@@ -1032,7 +1031,10 @@ table {
 		cursor: pointer;
 	}
 	.invform-btn {
-		margin: 20px 0 20px 15px;
+		margin-top: 50px;
+	}
+	.schedina-btn {
+		margin-left: 60%;
 	}
 	input[type="password"], input[type="submit"] {
 		outline: none;		
@@ -1051,7 +1053,7 @@ table {
 		color: black;
 		border: 1px solid darkgrey;
 		font-weight: bold;
-		font-size: 14px;
+		font-size: small;
 		text-transform: uppercase;	
 		margin-right: 5%;
 		width: 20%;
@@ -1173,32 +1175,32 @@ table {
 	}
 	.campo-riserva-2 {
 		top: 235px;
-		left: 400px;
+		left: 120px;
 		display: none;
 	}
 	.campo-riserva-3 {
 		top: 235px;
-		left: 400px;
+		left: 140px;
 		display: none;
 	}
 	.campo-riserva-4 {
 		top: 235px;
-		left: 400px;
+		left: 160px;
 		display: none;
 	}
 	.campo-riserva-5 {
 		top: 235px;
-		left: 400px;
+		left: 180px;
 		display: none;
 	}
 	.campo-riserva-6 {
 		top: 235px;
-		left: 400px;
+		left: 200px;
 		display: none;
 	}
 	.campo-riserva-7 {
 		top: 235px;
-		left: 400px;
+		left: 220px;
 		display: none;
 	}
 }
@@ -1220,6 +1222,7 @@ table {
 .invform-scadenza {
 	text-align: center;
 	font-size: x-large;
+	margin-bottom: 10px;
 }
 .imdb-singleerror {
 	color: #a90433;
