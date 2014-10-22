@@ -1,6 +1,7 @@
 
 	imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
 
+	$scope.difesa = true;
 	$scope.loading = true;
 	$scope.showSquadra = false;
 	$scope.inviabile = true;	
@@ -368,5 +369,13 @@
 	$scope.pronostico = function(idPartita, pronostico) {
 		$('.' + idPartita).removeClass('selected');
 		$('#' + idPartita + '-' + pronostico).addClass('selected');
+	}
+
+	$scope.swipeMobile = function(calciatore) {
+		if ($scope.difesa && calciatore.ruolo < 3) {
+			return true;
+		} else if (!$scope.difesa && calciatore.ruolo > 2) {
+			return false;
+		}		
 	}
 });
