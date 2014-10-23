@@ -247,7 +247,7 @@
 		});
 		for (var i = 0; i < $scope.riserve.length; i++) {
 			if ($('.maglia-panchina').width() == 20) { // Caso mobile
-				$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-top', (nomi[i].length > 8 ? 30 + nomi[i].length : 30 - nomi[i].length));
+				$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-top', (nomi[i].length > 6 ? 29 + nomi[i].length : 30 - nomi[i].length));
 			} else { // Caso desktop
 				$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 6 ? -4 - nomi[i].length : -nomi[i].length));
 			}			

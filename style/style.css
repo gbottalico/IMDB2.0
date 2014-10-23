@@ -977,22 +977,23 @@ table {
 	}
 	.campo {	
 		position: relative;	
-		width: 325px;
+		width: 315px;
 		height: 250px;
 		background: url('../images/campo-mobile.jpg') no-repeat;
 		background-size: 100% 100%;	
 	}
 	.inv-rose {		
-		width: 325px;	
-		height: 320px;
+		width: 315px;	
+		height: 325px;
 		overflow: hidden;
+		margin-bottom: 10px;
 	}
 	.logoInv {
 		height: 75px;
 		cursor: pointer;
 	}
 	.menuItemInv {	
-		margin: 15px;	
+		margin: 10px;	
 	}
 	.menuItemInv.selected {
 		opacity: 1;
