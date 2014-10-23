@@ -358,7 +358,7 @@ body {
 .menuItem.selected {
 	opacity: 1;
 	margin: 0;
-	height: 80px;
+	height: 70px;
 }
 
 .backHome {
