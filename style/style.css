@@ -614,7 +614,12 @@ body {
 	}
 	.invia-form-table th {
 		font-size: x-small;
-	}	
+	}
+	.invform-scadenza {
+		text-align: center;
+		font-size: x-large;
+		margin-bottom: 10px;
+	}
 }
 .imdb-disabled {
 	color: #332E2E !important;
@@ -1030,10 +1035,7 @@ table {
 	.menuSquadre {
 		float: left;
 		cursor: pointer;
-	}
-	.invform-btn {
-		margin-top: 50px;
-	}
+	}	
 	.schedina-btn {
 		margin-left: 60%;
 	}
@@ -1204,6 +1206,11 @@ table {
 		left: 220px;
 		display: none;
 	}
+	.invform-scadenza {
+		text-align: center;
+		font-size: x-large;
+		margin-top: 50px;
+	}
 }
 @media (max-width: 767px) {
   .imdb-no-mobile {
@@ -1219,11 +1226,6 @@ table {
   .imdb-no-desktop {
     display: none !important;
   }
-}
-.invform-scadenza {
-	text-align: center;
-	font-size: x-large;
-	margin-bottom: 10px;
 }
 .imdb-singleerror {
 	color: #a90433;
