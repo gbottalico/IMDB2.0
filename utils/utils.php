@@ -10,7 +10,7 @@ class RigaNome {
     }
 }
 
-class RigaGiocatore {
+class RigaPlayer {
     var $codice;
     var $nome;
     var $ruolo;
@@ -97,7 +97,7 @@ class ImdbUtils {
             foreach($lines as $line_num => $line) {
                 if (strpos($line, 'GiocatoreA') !== false) {
                     $riga = explode(",", $line);                    
-                    $nom = new RigaGiocatore();                
+                    $nom = new RigaPlayer();                
                     $nom->codice = substr($riga[0], strpos($riga[0], '(') + 1);
                     $nom->nome = $riga[3];
                     $nom->ruolo = $riga[2];
