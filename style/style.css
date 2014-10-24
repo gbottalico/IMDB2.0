@@ -963,6 +963,7 @@ table {
 		width: 315px;	
 		height: 325px;
 		overflow: hidden;
+		overflow-y: auto;
 		margin-bottom: 10px;
 	}
 	.logoInv {
@@ -1225,4 +1226,13 @@ img {
 
 .invform-attaccante {	
 	color: #3300FF;	
+}
+.bad {
+	color: red;
+}
+.good {
+	color: green;
+}
+.center {
+	text-align: center;
 }

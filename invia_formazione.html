@@ -101,7 +101,7 @@
 						    </tr>
 						</thead>
 					    <tbody>
-						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}" ng-show="(difesa && calciatore.ruolo < 3) || (!difesa && calciatore.ruolo > 2)">
+						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
 						      <td><img class="invform-logo" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
 						      <td>{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
 						      <td class="center">{{calciatore.mediaVoto}}</td>	

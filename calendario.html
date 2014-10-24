@@ -77,11 +77,11 @@
 								<td style="border-radius: 35px; background: white;" ng-show="squadraCasa.length">
 									<table class="titolariCasa titolari">
 										<tr ng-repeat="titolareCasa in squadraCasa" ng-if="titolareCasa.titolare == '0'">
-											<td>{{getAbbreviazioneRuolo(titolareCasa.ruoloGiocatore)}}</td>
+											<td class="invform-{{getDescrizioneRuolo(titolareCasa.ruoloGiocatore).toLowerCase()}}">{{getAbbreviazioneRuolo(titolareCasa.ruoloGiocatore)}}</td>
 											<td>{{titolareCasa.nomeAbbreviato}}</td>
-											<td>{{titolareCasa.voto}}</td>
-											<td>{{titolareCasa.bonusMalus}}</td>
-											<td>{{titolareCasa.votoTotale}}</td>
+											<td class="center">{{titolareCasa.voto}}</td>
+											<td class="center" ng-class="{'bad' : titolareCasa.bonusMalus < 0, 'good' : titolareCasa.bonusMalus > 0}">{{titolareCasa.bonusMalus}}</td>
+											<td class="center" ng-class="{'bad' : titolareCasa.votoTotale < 6, 'good' : !titolareCasa.votoTotale < 6}">{{titolareCasa.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
@@ -89,11 +89,11 @@
 								<td style="border-radius:35px; background: white;" ng-show="squadraFuori.length">
 									<table class="titolariFuori titolari">
 										<tr ng-repeat="titolareFuori in squadraFuori" ng-if="titolareFuori.titolare == '0'">
-											<td>{{getAbbreviazioneRuolo(titolareFuori.ruoloGiocatore)}}</td>
+											<td class="invform-{{getDescrizioneRuolo(titolareFuori.ruoloGiocatore).toLowerCase()}}">{{getAbbreviazioneRuolo(titolareFuori.ruoloGiocatore)}}</td>
 											<td>{{titolareFuori.nomeAbbreviato}}</td>
-											<td>{{titolareFuori.voto}}</td>
-											<td>{{titolareFuori.bonusMalus}}</td>
-											<td>{{titolareFuori.votoTotale}}</td>
+											<td class="center">{{titolareFuori.voto}}</td>
+											<td class="center" ng-class="{'bad' : titolareFuori.bonusMalus < 0, 'good' : titolareFuori.bonusMalus > 0}">{{titolareFuori.bonusMalus}}</td>
+											<td class="center" ng-class="{'bad' : titolareFuori.votoTotale < 6, 'good' : !titolareFuori.votoTotale < 6}">{{titolareFuori.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
@@ -128,18 +128,18 @@
 									<table class="riepilogoCasa riepilogo" >
 										<tr>
 						    				<td></td>
-						    				<td>Parziale Squadra</td>
+						    				<td class="center">Parziale Squadra</td>
 						    				<td>{{infoPartita.puntiCasa}}</td>
 						    			</tr>
 						    			<tr>
 						    				<td></td>
-						    				<td>Modificatore dif</td>
+						    				<td class="center">Modificatore dif</td>
 						    				<td>{{infoPartita.modCasa}}</td>
 						    			</tr>
 						    			<tr>
 						    				<td></td>
-						    				<td>Totale Squadra</td>
-						    				<td>{{infoPartita.totaleCasa}}</td>
+						    				<td class="center">Totale Squadra</td>
+						    				<td style="font-size: large">{{infoPartita.totaleCasa}}</td>
 						    			</tr>
 									</table>	
 								</td>
@@ -149,17 +149,17 @@
 						    		<table class="riepilogoFuori riepilogo">
 										<tr>
 											<td>{{infoPartita.puntiFuori}}</td>
-						    				<td>Parziale Squadra</td>
+						    				<td class="center">Parziale Squadra</td>
 						    				<td></td>
 						    			</tr>
 						    			<tr>
 						    				<td>{{infoPartita.modFuori}}</td>
-						    				<td>Modificatore dif</td>
+						    				<td class="center">Modificatore dif</td>
 						    				<td></td>
 						    			</tr>
 						    			<tr>
-						    				<td>{{infoPartita.totaleFuori}}</td>
-						    				<td>Totale Squadra</td>
+						    				<td style="font-size: large">{{infoPartita.totaleFuori}}</td>
+						    				<td class="center">Totale Squadra</td>
 						    				<td></td>
 						    			</tr>
 									</table>	

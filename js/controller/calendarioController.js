@@ -1,4 +1,4 @@
-imdbFanta.controller('calendarioCtrl', function($scope, $http) {
+imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo) {
 	$scope.loading = true;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 	
@@ -75,7 +75,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 			$('.riepilogoContainer').css('top',$('#'+idPartita).height()+$('#'+idPartita).offset().top);
 			$('.riepilogoContainer').css('width',$('#elencoGiornate').width());
 			$('.riepilogoContainer').css('display','block');
-			
+			scrollPageTo('#' + idPartita);
 		});
 	}
 	
@@ -83,6 +83,10 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 		$('.riepilogoContainer').css('display','none');
 	}
 	
+	$scope.getDescrizioneRuolo = function(idRuolo) {
+		return $scope.ruolo[idRuolo-1];
+	}
+
 	$scope.getAbbreviazioneRuolo = function(idRuolo) {
 		return $scope.ruolo[idRuolo-1].substring(0,1);
 	}
