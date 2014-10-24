@@ -1,5 +1,6 @@
 imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 	$scope.loading = true;
+	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 	
 	$scope.initCompetizione =  function(){
 		$http.get('service/calendarioService.php').success(function(data) {
@@ -82,4 +83,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http) {
 		$('.riepilogoContainer').css('display','none');
 	}
 	
+	$scope.getAbbreviazioneRuolo = function(idRuolo) {
+		return $scope.ruolo[idRuolo-1].substring(0,1);
+	}
 });

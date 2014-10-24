@@ -10,6 +10,12 @@ class RigaNome {
     }
 }
 
+class RigaGiocatore {
+    var $codice;
+    var $nome;
+    var $ruolo;
+}
+
 class RigaFormazione {
     var $partita;
     var $codice;
@@ -18,6 +24,7 @@ class RigaFormazione {
     var $nomeAbbreviato;    
     var $squadraDiA;
     var $ruolo;
+    var $ruoloGiocatore;
     var $titolare;
     var $voto;
     var $bonusMalus;
@@ -90,9 +97,10 @@ class ImdbUtils {
             foreach($lines as $line_num => $line) {
                 if (strpos($line, 'GiocatoreA') !== false) {
                     $riga = explode(",", $line);                    
-                    $nom = new RigaNome();                
+                    $nom = new RigaGiocatore();                
                     $nom->codice = substr($riga[0], strpos($riga[0], '(') + 1);
-                    $nom->nome = $riga[3];                    
+                    $nom->nome = $riga[3];
+                    $nom->ruolo = $riga[2];
                     array_push(self::$giocatori, $nom);                                    
                 }                        
             }           
@@ -373,6 +381,18 @@ class ImdbUtils {
         public static function getNow() { 
             return date('d').'/'.date('m').'/'.date('Y').' '.date('H').':'.date('i');
         }
+
+        /*
+        *   Restituisce il ruolo del giocatore in base al suo codice
+        */
+        public static function getPlayerRoleByCode($code) {            
+            self::initializeDettSerieA();
+            foreach (self::$giocatori as $nome) {                
+                if ($nome->codice == str_replace('xg', '', $code)) {
+                    return $nome->ruolo;
+                }
+            }
+        }   
 }
 
 ?>

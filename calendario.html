@@ -65,7 +65,7 @@
 											</th>
 										</tr>
 										<tr ng-repeat="riservaCasa in squadraCasa" ng-if="riservaCasa.titolare != '0' && riservaCasa.titolare != '-1'">
-											<td>{{riservaCasa.ruolo}}</td>
+											<td>{{getAbbreviazioneRuolo(riservaCasa.ruoloGiocatore)}}</td>
 											<td>{{riservaCasa.nomeAbbreviato}}</td>
 											<td>{{riservaCasa.votoTotale}}</td>
 										</tr>
@@ -77,7 +77,7 @@
 								<td style="border-radius: 35px; background: white;" ng-show="squadraCasa.length">
 									<table class="titolariCasa titolari">
 										<tr ng-repeat="titolareCasa in squadraCasa" ng-if="titolareCasa.titolare == '0'">
-											<td>{{titolareCasa.ruolo}}</td>
+											<td>{{getAbbreviazioneRuolo(titolareCasa.ruoloGiocatore)}}</td>
 											<td>{{titolareCasa.nomeAbbreviato}}</td>
 											<td>{{titolareCasa.voto}}</td>
 											<td>{{titolareCasa.bonusMalus}}</td>
@@ -89,7 +89,7 @@
 								<td style="border-radius:35px; background: white;" ng-show="squadraFuori.length">
 									<table class="titolariFuori titolari">
 										<tr ng-repeat="titolareFuori in squadraFuori" ng-if="titolareFuori.titolare == '0'">
-											<td>{{titolareFuori.ruolo}}</td>
+											<td>{{getAbbreviazioneRuolo(titolareFuori.ruoloGiocatore)}}</td>
 											<td>{{titolareFuori.nomeAbbreviato}}</td>
 											<td>{{titolareFuori.voto}}</td>
 											<td>{{titolareFuori.bonusMalus}}</td>
@@ -108,7 +108,7 @@
 											</th>
 										</tr>
 										<tr ng-repeat="riservaFuori in squadraFuori" ng-if="riservaFuori.titolare != '0' && riservaFuori.titolare != '-1'">
-											<td>{{riservaFuori.ruolo}}</td>
+											<td>{{getAbbreviazioneRuolo(riservaFuori.ruoloGiocatore)}}</td>
 											<td>{{riservaFuori.nomeAbbreviato}}</td>
 											<td>{{riservaFuori.votoTotale}}</td>
 										</tr>
@@ -124,7 +124,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td style="background: white; border-radius: 35px;" ng-show="squadraCasa.length">
+								<td style="background: white; border-radius: 35px;" ng-show="squadraCasa.length && infoPartita.totaleCasa > 0">
 									<table class="riepilogoCasa riepilogo" >
 										<tr>
 						    				<td></td>
@@ -145,7 +145,7 @@
 								</td>
 								<td ng-hide="squadraCasa.length"></td>
 								<td></td>
-						    	<td style="background: white; border-radius: 35px;" ng-show="squadraFuori.length">
+						    	<td style="background: white; border-radius: 35px;" ng-show="squadraFuori.length && infoPartita.totaleFuori > 0">
 						    		<table class="riepilogoFuori riepilogo">
 										<tr>
 											<td>{{infoPartita.puntiFuori}}</td>
