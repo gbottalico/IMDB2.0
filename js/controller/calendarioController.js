@@ -13,7 +13,16 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo) {
 				} else {
 					return false;
 				}
-			});			
+			});
+			//recupero la prima giornata non giocata
+			$scope.giorSelected = $scope.calendarioComp.filter(function(row) {
+				if (row.giocata == '0') {
+					return true
+				} else {
+					return false;
+				}
+			})[0].idGiornata;
+			$scope.visualizzaGiornata($scope.giorSelected);
 		});
 	}
 	
@@ -29,13 +38,23 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo) {
 			}
 		});
 		$('#'+competizione).addClass('selected');
+		
+		//recupero la prima giornata non giocata
+		$scope.giorSelected = $scope.calendarioComp.filter(function(row) {
+			if (row.giocata == '0') {
+				return true
+			} else {
+				return false;
+			}
+		})[0].idGiornata;
+		$scope.visualizzaGiornata($scope.giorSelected);
 	}
 	
-	$scope.visualizzaGiornata = function(idComp) {
+	$scope.visualizzaGiornata = function(idGiorn) {
 		$scope.chiudiDettaglio();
 		$scope.loadingGiornata = true;
 		$scope.infoGiornata = $scope.calendario.filter(function(row) {
-			if (row.idGiornata == idComp && row.competizione == $scope.competizioneSelected) {
+			if (row.idGiornata == idGiorn && row.competizione == $scope.competizioneSelected) {
 				return true
 			} else {
 				return false;
