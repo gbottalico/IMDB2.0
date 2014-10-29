@@ -30,9 +30,8 @@
 			</div>
 			<div id="elencoGiornate">
 				<ul>
-					<li ng-repeat="cal in calendarioComp | unique:'idGiornata'"
-						ng-click="visualizzaGiornata(cal.idGiornata)">{{cal.turno ||
-						cal.giornata}}</li>
+					<li ng-repeat="cal in calendarioComp | unique:'idGiornata'" id="giornata-{{cal.idGiornata}}"
+						ng-click="visualizzaGiornata(cal.idGiornata)">{{cal.turno || cal.giornata}}</li>
 				</ul>
 				<select class="selectMobile" ng-model="giorSelected" ng-options="cal.idGiornata as cal.giornata for cal in calendarioComp | unique:'idGiornata'" ng-change="visualizzaGiornata(giorSelected)">
 				</select>

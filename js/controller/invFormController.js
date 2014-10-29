@@ -314,17 +314,17 @@
 			angular.forEach($scope.squadre, function(sq) {
 				destinatari += sq.mail + "; ";
 			});			
-			var mailBody = "Lega: I Malati Del Bari \n";
-			mailBody += "Squadra: " + $scope.squadraSelected.nome + "\n";
+			var mailBody = "Squadra: " + $scope.squadraSelected.nome + "\n";
+			mailBody += "Data e ora: " + DataOraCorrente() + "\n";
+			mailBody += "Lega: I Malati Del Bari \n";
 			mailBody += "Giornata: " + $scope.listaIncontri[0].giornata + "a\n";
-			mailBody += "Match: "+ sqCasa + " - "+ sqFuori +"\n";
-			mailBody += "Data e ora compilazione: " + DataOraCorrente() + "\n\n";
+			mailBody += "Match: "+ sqCasa + " - "+ sqFuori +"\n\n";			
 			// Costruisce la parte del messaggio contenente la formazione
 			mailBody += "--- Titolari ---\n";
 			for (i = 0; i < 11; i++) {
 				mailBody += $scope.getAbbreviazioneRuolo($scope.titolari[i].ruolo) + " " + $scope.titolari[i].nome + " (" + $scope.titolari[i].squadraDiA + ") \n";
 			}
-			mailBody += "\n--- Riserve ---\n";
+			mailBody += "--- Riserve ---\n";
 			for (i = 0; i < 7; i++) {
 				mailBody += $scope.getAbbreviazioneRuolo($scope.riserve[i].ruolo) + " " + $scope.riserve[i].nome + " (" + $scope.riserve[i].squadraDiA + ") \n";
 			}
@@ -373,5 +373,23 @@
 	$scope.pronostico = function(idPartita, pronostico) {
 		$('.' + idPartita).removeClass('selected');
 		$('#' + idPartita + '-' + pronostico).addClass('selected');
+	}
+
+	$scope.probFantagazzetta = function(squadra) {		
+		var page = 'http://www.fantagazzetta.com/probabili-formazioni-serie-A#' + squadra.toUpperCase();
+		var $dialog = $('<div></div>')
+               .html('<iframe style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
+               .dialog({
+                   autoOpen: false,
+                   modal: true,
+                   height: 500,
+                   width: 600,
+                   scroll : false,
+                   position: 'top-right',
+	               draggable: true,
+	               resizable: true,                   
+                   title: "Probabili " + squadra.toUpperCase()
+               });
+		$dialog.dialog('open');	
 	}
 });

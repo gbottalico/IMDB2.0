@@ -1,4 +1,4 @@
-imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo) {
+imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $timeout) {
 	$scope.loading = true;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 	
@@ -60,6 +60,10 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo) {
 				return false;
 			}
 		});
+		$('li[id^=giornata]').removeClass('selected');
+		$timeout(function() {
+			$('#giornata-' + idGiorn).addClass('selected');
+		});		
 	}
 	
 	$scope.caricaDettaglio = function(idPartita, idGiornata, giocata, idCasa, idFuori, event){

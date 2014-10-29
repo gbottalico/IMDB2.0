@@ -76,15 +76,17 @@
 						      <th>MVt</th>
 						      <th>FMt</th>						      					     
 						      <th>Avv</th>
+						      <th></th>
 						    </tr>
 						</thead>
 					    <tbody>
-						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
+						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
 						      <td><img class="invform-logo" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
-						      <td>{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
+						      <td data-ng-click="clickGiocatore(calciatore)" style="cursor: pointer;">{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
 						      <td class="center">{{calciatore.mediaVoto}}</td>	
 						      <td class="center">{{calciatore.fantamediaVoto}}</td>						      
 						      <td class="center">{{calciatore.prossimoAvversario}}</td>
+						      <td><img class="invform-logo" ng-src="images/fantagazzetta.png" ng-click="probFantagazzetta(calciatore.squadraDiA)" /></td>
 						    </tr>
 					    </tbody>
 					</table>					

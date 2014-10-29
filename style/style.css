@@ -617,12 +617,15 @@ body {
 #elencoGiornate li {
 	color: white;
 	float: left;
-	background: gray;
+	/*background: gray;*/
 	border: 1px solid;
 	text-align: center;
 	margin: 0;
 	cursor: pointer;
 	padding: 0px 10px;
+}
+#elencoGiornate li.selected {
+	color: red;
 }
 .riepilogoTableContainer {
 	width: 100%;
