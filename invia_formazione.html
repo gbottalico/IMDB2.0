@@ -15,6 +15,8 @@
 		<script src="js/imdb.js"></script>
 		<script src="js/controller/invFormController.js"></script>
 		<link rel="stylesheet" href="style/style.css">		
+		<link rel="stylesheet" href="style/style_mobile.css">
+		<link rel="stylesheet" href="style/style_tablet.css">
 	</head>
 	<body ng-controller="invFormCtrl">
 		<div class="imdb-overlay"></div>
@@ -100,6 +102,7 @@
 						      <th>MVt</th>
 						      <th>FMt</th>						      					     
 						      <th>Avv</th>
+						      <th></th>
 						    </tr>
 						</thead>
 					    <tbody>
@@ -109,6 +112,7 @@
 						      <td class="center">{{calciatore.mediaVoto}}</td>	
 						      <td class="center">{{calciatore.fantamediaVoto}}</td>						      
 						      <td class="center">{{calciatore.prossimoAvversario}}</td>
+						      <td style="text-align: right"><img class="invform-logo" ng-src="images/fantagazzetta.png" ng-click="probabili(calciatore.squadraDiA, 'fantagazzetta')" /><img class="invform-logo" ng-src="images/gazzetta.jpg" ng-click="probabili(calciatore.squadraDiA, 'gazzetta')" /></td>
 						    </tr>
 					    </tbody>
 					</table>					
