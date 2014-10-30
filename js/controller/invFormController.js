@@ -58,7 +58,7 @@
 		var data = new Date();		
 		var ora = "" + data.getFullYear() + formatNumber(data.getMonth() + 1) + formatNumber(data.getDate()) + 
 			formatNumber(data.getHours()) + formatNumber(data.getMinutes());
-		if (ora < termineInvio) {						
+		if (ora > termineInvio) {						
 			$('#divPassword').addClass('imdb-visible');
 			$scope.inviabile = true;
 			$('input[name=password]').val('');
@@ -375,21 +375,37 @@
 		$('#' + idPartita + '-' + pronostico).addClass('selected');
 	}
 
-	$scope.probFantagazzetta = function(squadra) {		
-		var page = 'http://www.fantagazzetta.com/probabili-formazioni-serie-A#' + squadra.toUpperCase();
-		var $dialog = $('<div></div>')
-               .html('<iframe style="border: 0px; " src="' + page + '" width="100%" height="100%"></iframe>')
-               .dialog({
-                   autoOpen: false,
-                   modal: true,
-                   height: 500,
-                   width: 600,
-                   scroll : false,
-                   position: 'top-right',
+	$scope.probabili = function(squadra, giornale) {				
+		var $dialog = $('<div style="overflow: hidden"></div>');               
+        if (giornale == 'gazzetta') {
+        	$dialog.html('<object data="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf" type="application/x-shockwave-flash" width="580" height="250"><param name="quality" value="high"/><param name="wmode" value="transparent"/><param name="allowScriptAccess" value="always"/><param name="flashvars" value="xmlPath=http://www.gazzetta.it/ssi/2011/boxes/calcio/squadre/' + squadra.toLowerCase() + '/formazione/formazione.xml"/><param name="movie" value="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf"/></object>')
+           		.dialog({
+	               autoOpen: false,
+	               modal: true,
+	               height: 300,
+	               width: 580,
+	               scroll : false,               
 	               draggable: true,
-	               resizable: true,                   
-                   title: "Probabili " + squadra.toUpperCase()
-               });
-		$dialog.dialog('open');	
+	               resizable: false,                   
+	               title: "Probabile Formazione " + squadra.toUpperCase()
+        		});		
+        } else {
+        	var page = "";
+        	if (giornale == 'fantagazzetta') {
+	        	page = 'http://www.fantagazzetta.com/probabili-formazioni-serie-A#' + squadra.toUpperCase();	        	
+        	}
+        	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" width="500" height="600" seamless="seamless" scrolling="auto"></iframe>')
+        		.dialog({
+	                 autoOpen: false,
+	                 modal: true,
+	                 height: 600,
+	                 width: 500,
+	                 scroll : true,               
+	                 draggable: true,
+	                 resizable: false,                   
+	                 title: "Probabile Formazione " + squadra.toUpperCase()
+    		});
+        }  
+		$dialog.dialog('open');		
 	}
 });

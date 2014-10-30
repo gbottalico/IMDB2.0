@@ -605,6 +605,7 @@ body {
 }
 .invform-logo {
 	height: 20px;
+	cursor: pointer;
 }
 .invform-password-div {
 	position: absolute;
@@ -1238,4 +1239,14 @@ img {
 }
 .center {
 	text-align: center;
+}
+
+#fgazzetta {
+    -ms-zoom: 0.9;
+    -moz-transform: scale(0.9);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.9);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.9);
+    -webkit-transform-origin: 0 0;
 }
