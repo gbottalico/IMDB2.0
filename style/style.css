@@ -1,3 +1,272 @@
+@media (min-width: 992px) {  
+  .imdb-detail-overlay__content {
+    font-size: 20px;
+  }  
+  .imdb-detail-overlay__title h2 {
+    font-size: 50px;
+  }
+  .imdb-overlay-div {
+	width: 40% !important;
+  }
+  .itas-gutter {
+    padding: 30px;
+  }
+  .itas-gutter-h {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .itas-gutter-v {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  input[type="password"], input[type="submit"] {
+	outline: none;
+	padding-left: 10px;
+  }
+  .imdb-password {
+	-webkit-border-radius: 10;
+	-moz-border-radius: 10;
+	-ms-border-radius: 10;
+	-o-border-radius: 10;
+	border-radius: 10;
+	height: 25px;
+	margin-left: 15px;
+  }
+  .imdb-no-desktop {
+    display: none !important;
+  }
+  /* INVIO FOMRAZIONE */
+	.logo {
+		height: 50px;		
+	}
+	.logoInv {
+		height: 65px !important;
+		cursor: pointer;
+	}
+	.menuItemInv {	
+		margin: 20px;	
+	}
+	.menuItemInv.selected {
+		opacity: 1;
+		margin: 0;
+		height: 45px;
+	}
+	.inv-rose {
+		float: left;
+		width: 45%;	
+		height: 580px;
+		overflow: hidden;
+	}
+	.campo {	
+		position: relative;
+		float: right;
+		width: 425px;
+		background: url('../images/campo.jpg') no-repeat;
+		background-size: 100% 100%;
+		height: 580px;
+	}
+	.maglia {
+		background: url('../images/maglia.png') no-repeat;
+		background-size: 45px 45px;
+		position: absolute;
+		width: 45px;
+		height: 45px;
+		color: white;
+		font-weight: bold;
+	}
+	.label-maglia-panchina {
+		font-size: xx-small;
+		margin-top: 20px;
+	}
+	.maglia-panchina {
+		background: url('../images/maglia.png') no-repeat;
+		background-size: 30px 30px;
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		color: white;
+		font-weight: bold;
+	}
+	.label-maglia {
+		font-size: small;
+		margin-top: 30px;
+	}
+	.menuSquadre {
+		float: left;
+		cursor: pointer;
+	}
+	.campo-portiere-1 {
+		top: 530px;
+		left: 195px;
+		display: none;
+	}
+	.campo-difensore-3 {
+		top: 455px;
+		left: 195px;
+		display: none;
+	}
+	.campo-difensore-1 {
+		top: 435px;
+		left: 128px;
+		display: none;
+	}
+	.campo-difensore-2 {
+		top: 435px;
+		left: 263px;
+		display: none;
+	}
+	.campo-difensore-4 {
+		top: 410px;
+		left: 53px;
+		display: none;
+	}
+	.campo-difensore-5 {
+		top: 410px;
+		left: 333px;
+		display: none;
+	}
+	.campo-difensore-6 {
+		top: 395px;
+		left: 195px;
+		display: none;
+	}
+	.campo-centrocampista-1 {
+		top: 315px;
+		left: 195px;
+		display: none;
+	}
+	.campo-centrocampista-2 {
+		top: 255px;
+		left: 118px;
+		display: none;
+	}
+	.campo-centrocampista-3 {
+		top: 255px;
+		left: 263px;
+		display: none;
+	}
+	.campo-centrocampista-4 {
+		top: 195px;
+		left: 195px;
+		display: none;
+	}
+	.campo-centrocampista-5 {
+		top: 195px;
+		left: 53px;
+		display: none;
+	}
+	.campo-centrocampista-6 {
+		top: 195px;
+		left: 333px;
+		display: none;
+	}
+	.campo-attaccante-1 {
+		top: 55px;
+		left: 195px;
+		display: none;
+	}
+	.campo-attaccante-2 {
+		top: 90px;
+		left: 93px;
+		display: none;
+	}
+	.campo-attaccante-3 {
+		top: 90px;
+		left: 293px;
+		display: none;
+	}
+	.campo-riserva-1 {
+		top: 150px;
+		left: 400px;
+		display: none;
+	}
+	.campo-riserva-2 {
+		top: 185px;
+		left: 400px;
+		display: none;
+	}
+	.campo-riserva-3 {
+		top: 220px;
+		left: 400px;
+		display: none;
+	}
+	.campo-riserva-4 {
+		top: 255px;
+		left: 400px;
+		display: none;
+	}
+	.campo-riserva-5 {
+		top: 290px;
+		left: 400px;
+		display: none;
+	}
+	.campo-riserva-6 {
+		top: 325px;
+		left: 400px;
+		display: none;
+	}
+	.campo-riserva-7 {
+		top: 360px;
+		left: 400px;
+		display: none;
+	}
+	.invform-btn {
+		margin: 50px 10px 10px 55px;
+	}
+	.imdb-invia-btn {
+		display: block;
+		color: black;
+		border: 1px solid darkgrey;
+		font-weight: bold;
+		font-size: 17px;
+		text-transform: uppercase;	
+		margin-right: 15%;
+		width: 20%;
+		height: 30px;
+		cursor: pointer;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		-webkit-transition: all 300ms linear;
+		transition: all 300ms linear;
+		-webkit-transition-property: background-color, border-color, color;
+		transition-property: background-color, border-color, color;
+		-webkit-border-radius: 10;
+		-moz-border-radius: 10;
+		-ms-border-radius: 10;
+		-o-border-radius: 10;
+		border-radius: 10;
+	}
+	.imdb-invia-btn:hover {
+		color: red;	
+		border: 1px solid black;
+	}
+	.invform-riga {
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: x-small;
+		color: #000000;
+		background-color: white;
+		font-weight: bold;
+	}
+	.invia-form-table th {
+		font-size: x-small;
+	}
+	.invform-scadenza {
+		text-align: center;
+		font-size: x-large;
+		margin-bottom: 10px;
+	}
+	.probabiliGazzetta {
+		width: 580px;
+		height: 250px;
+	}
+	.probabiliFanta {
+		width: 500px;
+		height: 600px;
+	}
+}
 html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -627,19 +896,19 @@ img {
 	border: 0;
 }
 .invform-portiere {	
-	color: #999900;	
+	color: #999900 !important;	
 }
 
 .invform-difensore {		
-	color: #336600;	
+	color: #336600 !important; 	
 }
 
 .invform-centrocampista {
-	color: #CC0000;	
+	color: #CC0000 !important;	
 }
 
 .invform-attaccante {	
-	color: #3300FF;	
+	color: #3300FF !important;	
 }
 .bad {
 	color: red;
@@ -659,273 +928,4 @@ img {
     -o-transform-origin: 0 0;
     -webkit-transform: scale(0.9);
     -webkit-transform-origin: 0 0;
-}
-@media (min-width: 992px) {  
-  .imdb-detail-overlay__content {
-    font-size: 20px;
-  }  
-  .imdb-detail-overlay__title h2 {
-    font-size: 50px;
-  }
-  .imdb-overlay-div {
-	width: 40% !important;
-  }
-  .itas-gutter {
-    padding: 30px;
-  }
-  .itas-gutter-h {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  .itas-gutter-v {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  input[type="password"], input[type="submit"] {
-	outline: none;
-	padding-left: 10px;
-  }
-  .imdb-password {
-	-webkit-border-radius: 10;
-	-moz-border-radius: 10;
-	-ms-border-radius: 10;
-	-o-border-radius: 10;
-	border-radius: 10;
-	height: 25px;
-	margin-left: 15px;
-  }
-  .imdb-no-desktop {
-    display: none !important;
-  }
-  /* INVIO FOMRAZIONE */
-	.logo {
-		height: 50px;		
-	}
-	.logoInv {
-		height: 65px !important;
-		cursor: pointer;
-	}
-	.menuItemInv {	
-		margin: 20px;	
-	}
-	.menuItemInv.selected {
-		opacity: 1;
-		margin: 0;
-		height: 45px;
-	}
-	.inv-rose {
-		float: left;
-		width: 45%;	
-		height: 580px;
-		overflow: hidden;
-	}
-	.campo {	
-		position: relative;
-		float: right;
-		width: 425px;
-		background: url('../images/campo.jpg') no-repeat;
-		background-size: 100% 100%;
-		height: 580px;
-	}
-	.maglia {
-		background: url('../images/maglia.png') no-repeat;
-		background-size: 45px 45px;
-		position: absolute;
-		width: 45px;
-		height: 45px;
-		color: white;
-		font-weight: bold;
-	}
-	.label-maglia-panchina {
-		font-size: xx-small;
-		margin-top: 20px;
-	}
-	.maglia-panchina {
-		background: url('../images/maglia.png') no-repeat;
-		background-size: 30px 30px;
-		position: absolute;
-		width: 30px;
-		height: 30px;
-		color: white;
-		font-weight: bold;
-	}
-	.label-maglia {
-		font-size: small;
-		margin-top: 30px;
-	}
-	.menuSquadre {
-		float: left;
-		cursor: pointer;
-	}
-	.campo-portiere-1 {
-		top: 530px;
-		left: 195px;
-		display: none;
-	}
-	.campo-difensore-3 {
-		top: 455px;
-		left: 195px;
-		display: none;
-	}
-	.campo-difensore-1 {
-		top: 435px;
-		left: 128px;
-		display: none;
-	}
-	.campo-difensore-2 {
-		top: 435px;
-		left: 263px;
-		display: none;
-	}
-	.campo-difensore-4 {
-		top: 410px;
-		left: 53px;
-		display: none;
-	}
-	.campo-difensore-5 {
-		top: 410px;
-		left: 333px;
-		display: none;
-	}
-	.campo-difensore-6 {
-		top: 395px;
-		left: 195px;
-		display: none;
-	}
-	.campo-centrocampista-1 {
-		top: 315px;
-		left: 195px;
-		display: none;
-	}
-	.campo-centrocampista-2 {
-		top: 255px;
-		left: 118px;
-		display: none;
-	}
-	.campo-centrocampista-3 {
-		top: 255px;
-		left: 263px;
-		display: none;
-	}
-	.campo-centrocampista-4 {
-		top: 195px;
-		left: 195px;
-		display: none;
-	}
-	.campo-centrocampista-5 {
-		top: 195px;
-		left: 53px;
-		display: none;
-	}
-	.campo-centrocampista-6 {
-		top: 195px;
-		left: 333px;
-		display: none;
-	}
-	.campo-attaccante-1 {
-		top: 55px;
-		left: 195px;
-		display: none;
-	}
-	.campo-attaccante-2 {
-		top: 90px;
-		left: 93px;
-		display: none;
-	}
-	.campo-attaccante-3 {
-		top: 90px;
-		left: 293px;
-		display: none;
-	}
-	.campo-riserva-1 {
-		top: 150px;
-		left: 400px;
-		display: none;
-	}
-	.campo-riserva-2 {
-		top: 185px;
-		left: 400px;
-		display: none;
-	}
-	.campo-riserva-3 {
-		top: 220px;
-		left: 400px;
-		display: none;
-	}
-	.campo-riserva-4 {
-		top: 255px;
-		left: 400px;
-		display: none;
-	}
-	.campo-riserva-5 {
-		top: 290px;
-		left: 400px;
-		display: none;
-	}
-	.campo-riserva-6 {
-		top: 325px;
-		left: 400px;
-		display: none;
-	}
-	.campo-riserva-7 {
-		top: 360px;
-		left: 400px;
-		display: none;
-	}
-	.invform-btn {
-		margin: 50px 10px 10px 55px;
-	}
-	.imdb-invia-btn {
-		display: block;
-		color: black;
-		border: 1px solid darkgrey;
-		font-weight: bold;
-		font-size: 17px;
-		text-transform: uppercase;	
-		margin-right: 15%;
-		width: 20%;
-		height: 30px;
-		cursor: pointer;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		-webkit-transition: all 300ms linear;
-		transition: all 300ms linear;
-		-webkit-transition-property: background-color, border-color, color;
-		transition-property: background-color, border-color, color;
-		-webkit-border-radius: 10;
-		-moz-border-radius: 10;
-		-ms-border-radius: 10;
-		-o-border-radius: 10;
-		border-radius: 10;
-	}
-	.imdb-invia-btn:hover {
-		color: red;	
-		border: 1px solid black;
-	}
-	.invform-riga {
-		font-family: Verdana, Arial, Helvetica, sans-serif;
-		font-size: x-small;
-		color: #000000;
-		background-color: white;
-		font-weight: bold;
-	}
-	.invia-form-table th {
-		font-size: x-small;
-	}
-	.invform-scadenza {
-		text-align: center;
-		font-size: x-large;
-		margin-bottom: 10px;
-	}
-	.probabiliGazzetta {
-		width: 580px;
-		height: 250px;
-	}
-	.probabiliFanta {
-		width: 500px;
-		height: 600px;
-	}
 }

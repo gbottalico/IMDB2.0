@@ -58,7 +58,7 @@
 		var data = new Date();		
 		var ora = "" + data.getFullYear() + formatNumber(data.getMonth() + 1) + formatNumber(data.getDate()) + 
 			formatNumber(data.getHours()) + formatNumber(data.getMinutes());
-		if (ora > termineInvio) {						
+		if (ora < termineInvio) {						
 			$('#divPassword').addClass('imdb-visible');
 			$scope.inviabile = true;
 			$('input[name=password]').val('');
@@ -376,14 +376,16 @@
 	}
 
 	$scope.probabili = function(squadra, giornale) {				
-		var $dialog = $('<div style="overflow: hidden"></div>');               
+		var $dialog = $('<div style="overflow: hidden" class="probabiliGazzetta"></div>');               
         if (giornale == 'gazzetta') {
         	$dialog.html('<object data="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf" type="application/x-shockwave-flash" class="probabiliGazzetta"><param name="quality" value="high"/><param name="wmode" value="transparent"/><param name="allowScriptAccess" value="always"/><param name="flashvars" value="xmlPath=http://www.gazzetta.it/ssi/2011/boxes/calcio/squadre/' + squadra.toLowerCase() + '/formazione/formazione.xml"/><param name="movie" value="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf"/></object>')
            		.dialog({
 	               autoOpen: false,
-	               modal: true,
-	               height: 300,
-	               width: 580,
+	               modal: true,	  
+	               height: 'auto',
+	               width: 'auto',                          
+	               maxWidth: 580,
+	               maxHeight: 280,	               	              
 	               scroll : false,               
 	               draggable: true,
 	               resizable: false,                   
@@ -398,14 +400,16 @@
         		.dialog({
 	                 autoOpen: false,
 	                 modal: true,
-	                 height: 600,
-	                 width: 500,
+	                 height: 'auto',
+	                 width: 'auto',
+	                 maxWidth: 500,
+	                 maxHeight: 600,
 	                 scroll : true,               
 	                 draggable: true,
 	                 resizable: false,                   
 	                 title: "Probabile Formazione " + squadra.toUpperCase()
     		});
-        }  
+        }         
 		$dialog.dialog('open');		
 	}
 });
