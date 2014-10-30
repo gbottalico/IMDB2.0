@@ -378,7 +378,7 @@
 	$scope.probabili = function(squadra, giornale) {				
 		var $dialog = $('<div style="overflow: hidden"></div>');               
         if (giornale == 'gazzetta') {
-        	$dialog.html('<object data="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf" type="application/x-shockwave-flash" width="580" height="250"><param name="quality" value="high"/><param name="wmode" value="transparent"/><param name="allowScriptAccess" value="always"/><param name="flashvars" value="xmlPath=http://www.gazzetta.it/ssi/2011/boxes/calcio/squadre/' + squadra.toLowerCase() + '/formazione/formazione.xml"/><param name="movie" value="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf"/></object>')
+        	$dialog.html('<object data="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf" type="application/x-shockwave-flash" class="probabiliGazzetta"><param name="quality" value="high"/><param name="wmode" value="transparent"/><param name="allowScriptAccess" value="always"/><param name="flashvars" value="xmlPath=http://www.gazzetta.it/ssi/2011/boxes/calcio/squadre/' + squadra.toLowerCase() + '/formazione/formazione.xml"/><param name="movie" value="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf"/></object>')
            		.dialog({
 	               autoOpen: false,
 	               modal: true,
@@ -394,7 +394,7 @@
         	if (giornale == 'fantagazzetta') {
 	        	page = 'http://www.fantagazzetta.com/probabili-formazioni-serie-A#' + squadra.toUpperCase();	        	
         	}
-        	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" width="500" height="600" seamless="seamless" scrolling="auto"></iframe>')
+        	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" class="probabiliFanta" seamless="seamless" scrolling="auto"></iframe>')
         		.dialog({
 	                 autoOpen: false,
 	                 modal: true,

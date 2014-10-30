@@ -247,4 +247,12 @@
 		font-size: x-large;
 		margin-bottom: 10px;
 	}
+	.probabiliGazzetta {
+		width: 580px;
+		height: 250px;
+	}
+	.probabiliFanta {
+		width: 500px;
+		height: 600px;
+	}
 }
