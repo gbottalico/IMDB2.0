@@ -376,16 +376,14 @@
 	}
 
 	$scope.probabili = function(squadra, giornale) {				
-		var $dialog = $('<div style="overflow: hidden" class="probabiliGazzetta"></div>');               
+		var $dialog = $('<div style="overflow: hidden"></div>');               
         if (giornale == 'gazzetta') {
         	$dialog.html('<object data="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf" type="application/x-shockwave-flash" class="probabiliGazzetta"><param name="quality" value="high"/><param name="wmode" value="transparent"/><param name="allowScriptAccess" value="always"/><param name="flashvars" value="xmlPath=http://www.gazzetta.it/ssi/2011/boxes/calcio/squadre/' + squadra.toLowerCase() + '/formazione/formazione.xml"/><param name="movie" value="http://www.gazzetta.it/ssi/swf/campetto_oriz.swf"/></object>')
            		.dialog({
 	               autoOpen: false,
 	               modal: true,	  
-	               height: 'auto',
-	               width: 'auto',                          
-	               maxWidth: 580,
-	               maxHeight: 280,	               	              
+	               width: 580,
+	               height: 280,	               	              
 	               scroll : false,               
 	               draggable: true,
 	               resizable: false,                   
@@ -399,11 +397,9 @@
         	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" class="probabiliFanta" seamless="seamless" scrolling="auto"></iframe>')
         		.dialog({
 	                 autoOpen: false,
-	                 modal: true,
-	                 height: 'auto',
-	                 width: 'auto',
-	                 maxWidth: 500,
-	                 maxHeight: 600,
+	                 modal: true,	                 
+	                 width: 500,
+	                 height: 600,
 	                 scroll : true,               
 	                 draggable: true,
 	                 resizable: false,                   

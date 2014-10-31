@@ -279,13 +279,5 @@
 		text-align: center;
 		font-size: x-large;
 		margin-top: 50px;
-	}
-	.probabiliGazzetta {
-		width: 380px;
-		height: 200px;
-	}
-	.probabiliFanta {
-		width: 400px;
-		height: 500px;
-	}
+	}	
 }
