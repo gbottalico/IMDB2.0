@@ -242,9 +242,10 @@
 		var num = $scope.riserve.length;
 		var nomi = [];
 		$('div[class*=campo-riserva]').hide();
+		$scope.riserve = $filter('orderBy')($scope.riserve, 'ruolo');
 		$scope.riserve.filter(function(ris) {
 			nomi.push(ris.nome.split(" ")[0]);
-		});
+		});		
 		for (var i = 0; i < $scope.riserve.length; i++) {
 			if ($('.maglia-panchina').width() == 20) { // Caso mobile
 				$('.campo-riserva-' + (i+1) + ' > p').text(nomi[i]).css('margin-top', (nomi[i].length > 6 ? 29 + nomi[i].length : 28 - nomi[i].length));
