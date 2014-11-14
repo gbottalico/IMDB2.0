@@ -6,6 +6,7 @@ function initializeMenu(){
 	$('#menuCalendario').click(loadPageCalendario);
 	$('#menuInvForm').click(loadPageInvForm);
 	$('#menuVotiAssist').click(loadPageVoti);
+	$('#menuProbabili').click(loadPageProbabili);
 }
 
 
@@ -27,6 +28,10 @@ function loadPageInvForm(){
 
 function loadPageVoti() {
 	window.location = "voti_assist.html";
+}
+
+function loadPageProbabili() {
+	window.location = "probabili.html";
 }
 
 function formatNumber(n) {
