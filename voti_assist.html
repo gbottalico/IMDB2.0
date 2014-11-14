@@ -1,0 +1,35 @@
+<html ng-app="IMDB">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" viewport="">
+		<title>IMDB</title>
+		<script src="js/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<link rel="stylesheet" href="style/jquery-ui.structure.css">
+		<link rel="stylesheet" href="style/jquery-ui.theme.css">
+		<script src="js/interface.js"></script>
+		<script src="js/imdb.js"></script>
+		<script src="js/controller/votiAssistController.js"></script>		
+		<link rel="stylesheet" href="style/style.css">	
+		<link rel="stylesheet" href="style/style_mobile.css">
+		<link rel="stylesheet" href="style/style_tablet.css">		
+	</head>
+	<body ng-controller="votiAssistCtrl" data-ng-init="caricaSito('voti')">
+		<div id="wrapper">
+			<div class="imdb-results__loading" data-ng-show="loading"></div>
+			<div data-ng-hide="loading">
+				<div class="menuContainer center">
+					<img class="logo backHome" ng-click="caricaSito('voti')" alt="Voti Ufficiosi" ng-src="images/voti.png">
+					<img class="logo backHome" ng-click="caricaSito('assist')" alt="Voti Ufficiosi" ng-src="images/assist.png">
+					<img class="logo backHome" onclick="window.location='index.html'" alt="" src="images/football.png">
+				</div>				
+				<div class="center divVoti">				
+					<iframe id="frameSito" style="border: 0px;" class="votiAssist" seamless="seamless" scrolling="auto" sandbox="allow-same-origin"></iframe>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -27,7 +27,7 @@
 		font: italic bold 2em/120px 'trebuchet MS', Arial, helvetica;
 	}
 	.container {
-		height: auto;
+		height: 70%;
 		text-align: center;
 		overflow: hidden;
 		width: 100%;
@@ -279,5 +279,14 @@
 		text-align: center;
 		font-size: x-large;
 		margin-top: 50px;
-	}	
+	}
+	#frameSito {
+	 -ms-zoom: 0.8;
+    -moz-transform: scale(0.8);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.8);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.8);
+    -webkit-transform-origin: 0 0;
+}	
 }

@@ -5,6 +5,7 @@ function initializeMenu(){
 	$('#menuSquadre').click(loadPageSquadre);
 	$('#menuCalendario').click(loadPageCalendario);
 	$('#menuInvForm').click(loadPageInvForm);
+	$('#menuVotiAssist').click(loadPageVoti);
 }
 
 
@@ -22,6 +23,10 @@ function loadPageCalendario(){
 
 function loadPageInvForm(){
 	window.location = "invia_formazione.html";
+}
+
+function loadPageVoti() {
+	window.location = "voti_assist.html";
 }
 
 function formatNumber(n) {
