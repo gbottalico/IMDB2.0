@@ -681,6 +681,10 @@ body {
 	background: rgb(234, 233, 233);
 	overflow: auto;
 }
+.riepilogoContainer td {
+	white-space: nowrap;
+	font-size: xx-small;	
+}
 .hidden {
 	display: none;
 }

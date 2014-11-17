@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="style/style_tablet.css">	
 </head>
 <body ng-controller="calendarioCtrl" ng-init="initCompetizione()">
-	<div id="wrapper">
+	<div id="wrapper" ng-swipe-left="swipeGiornata('piu')" ng-swipe-right="swipeGiornata('meno')">
 		<div class="imdb-results__loading" data-ng-show="loading"></div>
 		<div data-ng-hide="loading">
 			<div class="menuContainer">
@@ -220,6 +220,7 @@
 						    	</td>
 						    	<td ng-hide="squadraFuori.length"></td>
 						    </tr>
+						    <tr style="heigth: 10px" />
 						    <tr>
 						    	<td style="background: white;" ng-show="squadraCasa.length">
 									<table class="titolariCasa titolari">

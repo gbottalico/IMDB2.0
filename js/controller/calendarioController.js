@@ -9,7 +9,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 			$scope.competizioneSelected = $scope.calendario[0].competizione;
 			$scope.calendarioComp = $scope.calendario.filter(function(row) {
 				if (row.competizione == $scope.competizioneSelected) {
-					return true
+					return true;
 				} else {
 					return false;
 				}
@@ -32,7 +32,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 		$scope.competizioneSelected = competizione;
 		$scope.calendarioComp = $scope.calendario.filter(function(row) {
 			if (row.competizione == $scope.competizioneSelected) {
-				return true
+				return true;
 			} else {
 				return false;
 			}
@@ -42,7 +42,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 		//recupero la prima giornata non giocata
 		$scope.giorSelected = $scope.calendarioComp.filter(function(row) {
 			if (row.giocata == '0') {
-				return true
+				return true;
 			} else {
 				return false;
 			}
@@ -55,11 +55,12 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 		$scope.loadingGiornata = true;
 		$scope.infoGiornata = $scope.calendario.filter(function(row) {
 			if (row.idGiornata == idGiorn && row.competizione == $scope.competizioneSelected) {
-				return true
+				return true;
 			} else {
 				return false;
 			}
 		});
+		$scope.numGiornata = parseInt($scope.infoGiornata[0].giornata);
 		$('li[id^=giornata]').removeClass('selected');
 		$timeout(function() {
 			$('#giornata-' + idGiorn).addClass('selected');
@@ -72,7 +73,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 			$scope.loading = false;
 			$scope.infoPartita = $scope.infoGiornata.filter(function(row) {
 				if (row.idPartita == idPartita) {
-					return true
+					return true;
 				} else {
 					return false;
 				}
@@ -81,14 +82,14 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 			$scope.tabellino = data;
 			$scope.squadraCasa = $scope.tabellino.filter(function(row) {
 				if (row.squadra == idCasa) {
-					return true
+					return true;
 				} else {
 					return false;
 				}
 			});
 			$scope.squadraFuori = $scope.tabellino.filter(function(row) {
 				if (row.squadra == idFuori) {
-					return true
+					return true;
 				} else {
 					return false;
 				}
@@ -111,6 +112,24 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 	}
 
 	$scope.getAbbreviazioneRuolo = function(idRuolo) {
-		return $scope.ruolo[idRuolo-1].substring(0,1);
+		if (idRuolo != undefined) {
+			return $scope.ruolo[idRuolo-1].substring(0,1);
+		}		
+	}
+
+	$scope.swipeGiornata = function(segno) {
+		if (segno == 'piu') {
+			$scope.numGiornata++;
+		} else {
+			$scope.numGiornata--;
+		}
+		$scope.giorSelected = $scope.calendarioComp.filter(function(row) {
+			if (row.giornata == $scope.numGiornata) {
+				return true;
+			} else {
+				return false;
+			}
+		})[0].idGiornata;
+		$scope.visualizzaGiornata($scope.giorSelected);
 	}
 });
