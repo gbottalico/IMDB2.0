@@ -14,11 +14,15 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http) {
 	}
 
 	$scope.caricaStat = function(stat) {
-		$scope.loading = true;		
-		$http.get('service/seavessiavutoService.php').success(function(data) {			
-			$scope.seavessi = data;
-			$scope.generaSeAvessi();						
-		});
+		$scope.loading = true;
+		if (stat == 'seavessiavuto') {
+			$http.get('service/seavessiavutoService.php').success(function(data) {			
+				$scope.seavessi = data;
+				$scope.generaSeAvessi();						
+			});
+		} else if (stat == 'schedina') {
+			
+		}
 		$scope.statistica = stat;
 		$scope.loading = false;
 	}
