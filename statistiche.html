@@ -27,26 +27,44 @@
 				</div>				
 				<div ng-show="statistica == 'seavessiavuto'">
 					<table class="container">
-					<thead>
-						<tr>
-					      <th>Squadre</th>	
-					      <th colspan="{{squadre.length}}" class="center">Punti con il calendario di...</th>					      
-					    </tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td></td>
-							<td data-ng-repeat="squadra in squadre">
-								{{squadra.nome}}
-							</td>
-						</tr>
-						<tr data-ng-repeat="se in seavessi">
-							<td>{{getSquadraNameById(se.squadraA)}}</td>
-							<td data-ng-repeat="ar in se.array" ng-class="{'red': getSquadraPuntiById(ar.squadraA) > ar.punti, 'green': getSquadraPuntiById(ar.squadraA) < ar.punti, 'white': getSquadraPuntiById(ar.squadraA) == ar.punti}">								
-								<span class="center">{{ar.punti}}</span>
-							</td>
-						</tr>
-					</tbody>
+						<thead>
+							<tr>
+						      <th>Squadre</th>	
+						      <th colspan="{{squadre.length}}" class="center">Punti con il calendario di...</th>					      
+						    </tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td data-ng-repeat="squadra in squadre">
+									{{squadra.nome}}
+								</td>
+							</tr>
+							<tr data-ng-repeat="se in seavessi">
+								<td>{{getSquadraNameById(se.squadraA)}}</td>
+								<td data-ng-repeat="ar in se.array" class="center" ng-class="{'white': ar.squadraA == ar.squadraB, 'red': getSquadraPuntiById(ar.squadraA) > ar.punti, 'green': getSquadraPuntiById(ar.squadraA) < ar.punti, 'yellow': getSquadraPuntiById(ar.squadraA) == ar.punti}">								
+									<span>{{ar.punti}}</span>
+								</td>
+							</tr>
+							<tr style="height: 20px" />
+							<tr class="center">
+								<td colspan="{{squadre.length - 2}}">Squadra pi&ugrave; fortunata nell'assegnazione calendario:</td>
+								<td colspan="3"></td>
+							</tr>
+							<tr class="center">
+								<td colspan="{{squadre.length - 2}}">Squadra pi&ugrave; sfortunata nell'assegnazione calendario:</td>
+								<td colspan="3"></td>
+							</tr>
+							<tr class="center">
+								<td colspan="{{squadre.length - 2}}">Calendario pi&ugrave; facile in assoluto</td>
+								<td colspan="3"></td>
+							</tr>
+							<tr class="center">
+								<td colspan="{{squadre.length - 2}}">Calendario pi&ugrave; difficile in assoluto</td>
+								<td colspan="3"></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

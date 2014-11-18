@@ -942,7 +942,7 @@ img {
 	height: 650px;
 }
 .white {
-	background-color: white;
+	background-color: white !important;
 	color: black;
 }
 .red {
@@ -951,5 +951,9 @@ img {
 }
 .green {
 	background-color: green;
+	color: black;
+}
+.yellow {
+	background-color: yellow;
 	color: black;
 }
