@@ -9,13 +9,15 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http) {
 		$http.get('service/classificaService.php').success(function(data) {		
 			$scope.classifica = data;
 		});
+
 		$scope.loading = false;
 	}
 
 	$scope.caricaStat = function(stat) {
 		$scope.loading = true;		
 		$http.get('service/seavessiavutoService.php').success(function(data) {			
-			$scope.seavessi = data;			
+			$scope.seavessi = data;
+			$scope.generaSeAvessi();						
 		});
 		$scope.statistica = stat;
 		$scope.loading = false;
@@ -35,5 +37,53 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http) {
 				return true;
 			}
 		})[0].punti);
+	}
+
+	$scope.generaSeAvessi = function() {
+		var i, j, stile, buffer1, buffer2;
+		var media = new Array();
+		var nomitassodisfiga = new Array();
+		var calendariokiller = new Array();
+		var nomicalendario = new Array();
+		for (i = 0; i < $scope.seavessi.length; i++) {
+				media[i] = 0;
+				nomitassodisfiga[i] = $scope.seavessi[i].squadraA;
+				nomicalendario[i] = $scope.seavessi[i].squadraA;
+				calendariokiller[i] = 0;
+		}
+		//generazione tasso di sfiga
+		for (i = 0; i < $scope.seavessi.length; i++) {
+			for (j = 0; j < $scope.seavessi.length; j++) {
+				media[i] = media[i] + parseInt($scope.seavessi[i].array[j].punti);
+				calendariokiller[i] = calendariokiller[i] + parseInt($scope.seavessi[j].array[i].punti);
+			}
+			media[i] = media[i] / ($scope.seavessi.length - 1);
+			media[i] = parseInt($scope.seavessi[i].array[i].punti) - media[i];
+			calendariokiller[i] = calendariokiller[i] / ($scope.seavessi.length - 1);
+		}
+		for (i = 0; i < $scope.seavessi.length; i++) {
+			for (j = i + 1; j < $scope.seavessi.length; j++) {
+				if (media[j] > media[i]) {
+					buffer1 = media[i];
+					media[i] = media[j];
+					media[j] = buffer1;
+					buffer2 = nomitassodisfiga[i];
+					nomitassodisfiga[i] = nomitassodisfiga[j];
+					nomitassodisfiga[j] = buffer2;
+				}
+				if (calendariokiller[j] > calendariokiller[i]) {
+					buffer1 = calendariokiller[i];
+					calendariokiller[i] = calendariokiller[j];
+					calendariokiller[j] = buffer1;
+					buffer2 = nomicalendario[i];
+					nomicalendario[i] = nomicalendario[j];
+					nomicalendario[j] = buffer2;
+				}	
+			}
+		}
+		$scope.squadraPiuFortunata = $scope.getSquadraNameById(nomitassodisfiga[0]);		
+		$scope.squadraPiuSfortunata = $scope.getSquadraNameById(nomitassodisfiga[$scope.seavessi.length - 1]);
+		$scope.calendarioPiuFacile = $scope.getSquadraNameById(nomicalendario[0]);
+		$scope.calendarioPiuDifficile = $scope.getSquadraNameById(nomicalendario[$scope.seavessi.length - 1]);
 	}
 });
