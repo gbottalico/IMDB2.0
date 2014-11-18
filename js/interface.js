@@ -7,6 +7,7 @@ function initializeMenu(){
 	$('#menuInvForm').click(loadPageInvForm);
 	$('#menuVotiAssist').click(loadPageVoti);
 	$('#menuProbabili').click(loadPageProbabili);
+	$('#menuStatistiche').click(loadPageStats);
 }
 
 
@@ -32,6 +33,10 @@ function loadPageVoti() {
 
 function loadPageProbabili() {
 	window.location = "probabili.html";
+}
+
+function loadPageStats() {
+	window.location = "statistiche.html";
 }
 
 function formatNumber(n) {

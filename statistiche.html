@@ -1,0 +1,54 @@
+<html ng-app="IMDB">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" viewport="">
+		<title>IMDB</title>
+		<script src="js/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<link rel="stylesheet" href="style/jquery-ui.structure.css">
+		<link rel="stylesheet" href="style/jquery-ui.theme.css">
+		<script src="js/interface.js"></script>
+		<script src="js/imdb.js"></script>
+		<script src="js/controller/statisticheController.js"></script>		
+		<link rel="stylesheet" href="style/style.css">	
+		<link rel="stylesheet" href="style/style_mobile.css">
+		<link rel="stylesheet" href="style/style_tablet.css">		
+	</head>
+	<body ng-controller="statisticheCtrl" data-ng-init="initData()">
+		<div id="wrapper">
+			<div class="imdb-results__loading" data-ng-show="loading"></div>
+			<div data-ng-hide="loading">
+				<div class="menuContainer center">
+					<img class="logo backHome" id="voti" ng-click="caricaStat('seavessiavuto')" alt="Se Avessi Avuto" ng-src="images/eight.gif">					
+					<img class="logo backHome" onclick="window.location='index.html'" alt="" src="images/football.png">
+				</div>				
+				<div ng-show="statistica == 'seavessiavuto'">
+					<table class="container">
+					<thead>
+						<tr>
+					      <th>Squadre</th>	
+					      <th colspan="{{squadre.length}}" class="center">Punti con il calendario di...</th>					      
+					    </tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td data-ng-repeat="squadra in squadre">
+								{{squadra.nome}}
+							</td>
+						</tr>
+						<tr data-ng-repeat="se in seavessi">
+							<td>{{getSquadraNameById(se.squadraA)}}</td>
+							<td data-ng-repeat="ar in se.array" ng-class="{'red': getSquadraPuntiById(ar.squadraA) > ar.punti, 'green': getSquadraPuntiById(ar.squadraA) < ar.punti, 'white': getSquadraPuntiById(ar.squadraA) == ar.punti}">								
+								<span class="center">{{ar.punti}}</span>
+							</td>
+						</tr>
+					</tbody>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

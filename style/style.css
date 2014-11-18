@@ -432,17 +432,17 @@ body {
 
 .menu li:nth-child(7),.menu li:nth-child(7) .content,.menu li:nth-child(7) .close
 	{
-	background-color: #5672b7;
+	background-color: #ff0000;
 }
 
 .menu li:nth-child(8),.menu li:nth-child(8) .content,.menu li:nth-child(8) .close
 	{
-	background-color: #69003f;
+	background-color: #ffffff;
 }
 
 .menu li:nth-child(9),.menu li:nth-child(9) .content,.menu li:nth-child(9) .close
 	{
-	background-color: #393043;
+	background-color: #ff0000;
 }
 
 /* -------------------------------- */
@@ -940,4 +940,16 @@ img {
 .votiAssist {
 	width: 100%;
 	height: 650px;
+}
+.white {
+	background-color: white;
+	color: black;
+}
+.red {
+	background-color: red;
+	color: black;
+}
+.green {
+	background-color: green;
+	color: black;
 }

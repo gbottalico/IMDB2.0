@@ -46,6 +46,17 @@ class RigaMedie {
     var $fantamedia;
 }
 
+class RigaSeAvessiAvuto {
+    var $squadraA;
+    var $array;
+}
+
+class ColonnaSeAvessiAvuto {
+    var $squadraA;
+    var $squadraB;
+    var $punti;
+}
+
 class ImdbUtils {    
 
         private static $initializedSerieA = false;
@@ -392,6 +403,53 @@ class ImdbUtils {
                     return $nome->ruolo;
                 }
             }
+        }
+
+        /*
+        *   Recupera i dati per la visualizzazione della pagina Se Avessi Avuto
+        */
+        public static function getSeAvessiAvuto() {
+            $lines = file(host . js_folder . seavessiavuto_file);
+            $parentArray = array();
+            $myarray = array();
+            $countSquadra = 0;
+            $rigaA = "";
+            $saa = null;
+            foreach($lines as $line_num => $line) {
+                 if (strpos($line,'][') !== false) {
+                    $riga = explode("=", $line);                    
+                    if (substr($riga[0], 2, (strpos($riga[0], ']') - 2)) == $rigaA) {
+                        $csa = new ColonnaSeAvessiAvuto();
+                        $csa->squadraA = $rigaA;
+                        $csa->squadraB = $countSquadra + 1;
+                        $csa->punti = str_replace("\n", '', $riga[1]);
+                        array_push($myarray, $csa);
+                        if ($rigaA == 10 && $countSquadra == 9) {
+                            $saa->array = $myarray;
+                            array_push($parentArray, $saa);
+                            $myarray = array();
+                        }
+                    } else {
+                        if ($saa != null) {
+                            $saa->array = $myarray;
+                            array_push($parentArray, $saa);
+                            $myarray = array();
+                        }
+                        $saa = new RigaSeAvessiAvuto();
+                        $saa->squadraA = substr($riga[0], 2, (strpos($riga[0], ']') - 2));
+                        $rigaA = $saa->squadraA;
+                        $csa = new ColonnaSeAvessiAvuto();
+                        $csa->squadraA = $rigaA;
+                        $csa->squadraB = $countSquadra + 1;
+                        $csa->punti = str_replace("\n", '', $riga[1]);
+                        array_push($myarray, $csa);                              
+                    }                    
+                    $countSquadra++;
+                 } else {
+                    $countSquadra = 0;
+                 }
+            }            
+            return $parentArray;
         }   
 }
 
