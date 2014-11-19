@@ -57,6 +57,14 @@ class ColonnaSeAvessiAvuto {
     var $punti;
 }
 
+class RigaGiocatoriLiberi {
+    var $nome;
+    var $squadra;
+    var $ruolo;
+    var $foto;
+    var $fmld;
+}
+
 class ImdbUtils {    
 
         private static $initializedSerieA = false;
@@ -450,7 +458,30 @@ class ImdbUtils {
                  }
             }            
             return $parentArray;
-        }   
+        }  
+
+        /*
+        *   Recupera i giocatori liberi da contratto  
+        */
+        public static function getGiocatoriLiberi() {            
+            $lines = file(host . js_folder . giocatori_liberi_file);
+            $giocatori = array();
+            foreach($lines as $line_num => $line) {
+                if (strpos($line,'new RisQuery') !== false) {                
+                    $riga = explode("%", $line);
+                    if ($riga[1] != 'Squadra') {
+                        $gioc = new RigaGiocatoriLiberi();
+                        $gioc->nome = html_entity_decode(str_replace('"', '', substr($riga[0], (strpos($riga[0], '(') + 1))));
+                        $gioc->squadra = $riga[1];
+                        $gioc->ruolo = $riga[2];
+                        $gioc->foto = ImdbUtils::getPlayerImageUrl($riga[3]);
+                        $gioc->fmld = intval(substr($riga[4], 0, strlen($riga[4] - 1)));
+                        array_push($giocatori, $gioc);
+                    }
+                }              
+            }           
+            return $giocatori;
+        }         
 }
 
 ?>

@@ -18,4 +18,5 @@
 	define('incontri_file', 'fcmInvioFormazioneDati.js');
 	define('variabili_file', 'fcmVariabili.js');
 	define('seavessiavuto_file', 'incrociacalendari.js');
+	define('giocatori_liberi_file', 'fcmQueryQ14.js');
 ?>

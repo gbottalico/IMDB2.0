@@ -969,3 +969,6 @@ img {
 	background-color: cyan;
 	color: black;
 }
+.titoloOrder td span {
+	cursor: pointer;
+}

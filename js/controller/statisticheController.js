@@ -26,6 +26,17 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http) {
 				$scope.schedina = data;
 				$scope.loading = false;							
 			});			
+		} else if (stat == 'mercato') {
+			$http.get('service/giocatoriLiberiService.php').success(function(data) {			
+				$scope.svincolati = data;
+				/*$('#giocatoriliberi').dataTable({
+					bDestroy : true,
+					sPaginationType : "full_numbers",
+					bAutoWidth : false,
+					sScrollX: "100%"
+				});*/
+				$scope.loading = false;							
+			});			
 		}
 		$scope.statistica = stat;		
 	}
