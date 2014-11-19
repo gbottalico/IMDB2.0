@@ -110,14 +110,14 @@
 						<thead>
 							<tr class="center titoloOrder">
 								<td></td>
-								<td><span ng-click="predicate = 'nome'; reverse=false">Nome</span> (<span ng-click="predicate = '-nome'; reverse=false">^</span>)</td>
-								<td><span ng-click="predicate = 'squadra'; reverse=false">Squadra</span> (<span ng-click="predicate = '-squadra'; reverse=false">^</span>)</td>
-								<td><span ng-click="predicate = 'ruolo'; reverse=false">Ruolo</span> (<span ng-click="predicate = '-ruolo'; reverse=false">^</span>)</td>								
-								<td><span ng-click="predicate = 'fmld'; reverse=false">FMld</span> (<span href="" ng-click="predicate = '-fmld'; reverse=false">^</span>)</td>
+								<td><span ng-click="reverse=!reverse; orderSvincolati('nome', reverse)">Nome</span></td>
+								<td><span ng-click="reverse=!reverse; orderSvincolati('squadra', reverse)">Squadra</span></td>
+								<td><span ng-click="reverse=!reverse; orderSvincolati('ruolo', reverse)">Ruolo</span></td>								
+								<td><span ng-click="reverse=!reverse; orderSvincolati('fmld', reverse)">FMld</span></td>
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="gioc in svincolati | orderBy:predicate:reverse" class="center" ng-class="{ 'portiere' : gioc.ruolo == 'P', 'difensore' : gioc.ruolo == 'D', 'centrocampista' : gioc.ruolo == 'C', 'attaccante' : gioc.ruolo == 'A' }">
+							<tr data-ng-repeat="gioc in svincolati" class="center" ng-class="{ 'portiere' : gioc.ruolo == 'P', 'difensore' : gioc.ruolo == 'D', 'centrocampista' : gioc.ruolo == 'C', 'attaccante' : gioc.ruolo == 'A' }">
 								<td><img ng-src="{{gioc.foto}}" class="logo" err-src="images/misterx.gif"/></td>
 								<td>{{gioc.nome}}</td>
 								<td>{{gioc.squadra}}</td>

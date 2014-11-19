@@ -1,4 +1,4 @@
-imdbFanta.controller('statisticheCtrl', function($scope, $http) {
+imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 	$scope.loading = true;	
 
 	$scope.initData = function() {
@@ -104,4 +104,8 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http) {
 		$scope.calendarioPiuFacile = $scope.getSquadraNameById(nomicalendario[0]);
 		$scope.calendarioPiuDifficile = $scope.getSquadraNameById(nomicalendario[$scope.seavessi.length - 1]);
 	}
+
+	$scope.orderSvincolati = function(predicate, reverse) {
+    	$scope.svincolati = $filter('orderBy')($scope.svincolati, predicate, reverse);
+  	};
 });
