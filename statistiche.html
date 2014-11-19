@@ -109,7 +109,7 @@
 					<table class="container" id="giocatoriliberi">
 						<thead>
 							<tr class="center titoloOrder">
-								<td></td>
+								<td>Cerca <input ng-model="search"> <img ng-src="images/cancella.gif" style="vertical-align: middle; cursor: pointer" ng-show="search.length" ng-click="search = ''"/></td>
 								<td><span ng-click="reverse=!reverse; orderSvincolati('nome', reverse)">Nome</span></td>
 								<td><span ng-click="reverse=!reverse; orderSvincolati('squadra', reverse)">Squadra</span></td>
 								<td><span ng-click="reverse=!reverse; orderSvincolati('ruolo', reverse)">Ruolo</span></td>								
@@ -117,7 +117,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="gioc in svincolati" class="center" ng-class="{ 'portiere' : gioc.ruolo == 'P', 'difensore' : gioc.ruolo == 'D', 'centrocampista' : gioc.ruolo == 'C', 'attaccante' : gioc.ruolo == 'A' }">
+							<tr data-ng-repeat="gioc in svincolati | filter:search" class="center" ng-class="{ 'portiere' : gioc.ruolo == 'P', 'difensore' : gioc.ruolo == 'D', 'centrocampista' : gioc.ruolo == 'C', 'attaccante' : gioc.ruolo == 'A' }">
 								<td><img ng-src="{{gioc.foto}}" class="logo" err-src="images/misterx.gif"/></td>
 								<td>{{gioc.nome}}</td>
 								<td>{{gioc.squadra}}</td>
