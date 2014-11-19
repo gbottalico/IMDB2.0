@@ -109,7 +109,11 @@
 					<table class="container" id="giocatoriliberi">
 						<thead>
 							<tr class="center titoloOrder">
-								<td>Cerca <input ng-model="search"> <img ng-src="images/cancella.gif" style="vertical-align: middle; cursor: pointer" ng-show="search.length" ng-click="search = ''"/></td>
+								<td style="position: relative">
+									<span>Cerca </span>									
+									<input ng-model="search" class="searchInput" id="search-svincolati">
+									<label for="search-svincolati" class="icon-invalid" ng-show="search.length" ng-click="search = ''" class="pointer"></label>									
+								</td>
 								<td><span ng-click="reverse=!reverse; orderSvincolati('nome', reverse)">Nome</span></td>
 								<td><span ng-click="reverse=!reverse; orderSvincolati('squadra', reverse)">Squadra</span></td>
 								<td><span ng-click="reverse=!reverse; orderSvincolati('ruolo', reverse)">Ruolo</span></td>								

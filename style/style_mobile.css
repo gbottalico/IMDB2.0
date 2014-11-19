@@ -289,4 +289,30 @@
 	    -webkit-transform: scale(0.8);
 	    -webkit-transform-origin: 0 0;
 	}*/	
+	.searchInput {
+		outline: none;
+		font-size: 12px;
+		-webkit-border-radius: 7;
+		-moz-border-radius: 7;
+		-ms-border-radius: 7;
+		-o-border-radius: 7;
+		border-radius: 7;
+		width: 100%;
+	}
+	.icon-invalid {	
+	  position: absolute;
+	  cursor: pointer;
+	  top: 50%;
+	  right: 10px;
+	  width: 10px;
+	  height: 10px;
+	  z-index: 3;
+	  background-position: 50% 50%;
+	  background-repeat: no-repeat;
+	  -webkit-background-size: 10px 10px;
+	  -moz-background-size: 10px 10px;
+	  -o-background-size: 10px 10px;
+	  background-size: 10px 10px;
+	  background-image: url('../images/field-invalid.png?1405069257');
+	}
 }
