@@ -8,7 +8,7 @@ var imdbFanta = angular.module('IMDB', ['ngTouch']);
                 $('html, body').animate({ scrollTop: $target.offset().top }, duration, 'easeInOutQuad');
             }
         };  
-    });
+    }); 
 }(window.angular, window.imdbFanta));
 imdbFanta.filter('unique', function() {
     return function(input, key) {

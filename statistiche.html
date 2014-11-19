@@ -9,7 +9,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>
 		<script src="js/jquery-ui.js"></script>
 		<link rel="stylesheet" href="style/jquery-ui.structure.css">
-		<link rel="stylesheet" href="style/jquery-ui.theme.css">
+		<link rel="stylesheet" href="style/jquery-ui.theme.css">		
 		<script src="js/interface.js"></script>
 		<script src="js/imdb.js"></script>
 		<script src="js/controller/statisticheController.js"></script>		
@@ -68,7 +68,41 @@
 					</table>
 				</div>
 				<div data-ng-show="statistica == 'schedina'">
-					mamt
+					<table class="container">
+						<thead>
+							<tr>
+						      <th>Squadra/Giornata</th>
+						      <th data-ng-repeat="gior in schedina[0].puntiGuadagnati">{{gior.giornata}}</th>
+						    </tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="sched in schedina" class="center">
+								<td>{{getSquadraNameById(sched.idSquadra)}}</td>
+								<td data-ng-repeat="gior in sched.puntiGuadagnati" ng-class="{'red': gior.punti == 0, 'orange' : gior.punti == 2, 'yellow' : gior.punti == 4, 'green' : gior.punti == 6, 'darkgreen' : gior.punti == 8, 'ciano' : gior.punti == 10}">
+									{{gior.punti}}
+								</td>
+							</tr>							
+						</tbody>
+					</table>
+					<br>
+					<table class="container">
+						<tr class="center">
+							<td></td>
+							<td data-ng-repeat="squad in squadre">{{squad.nome}}</td>
+						</tr>
+						<tr class="center">
+							<td>Crediti Residui</td>
+							<td data-ng-repeat="squad in schedina">{{squad.creditiResidui}}</td>
+						</tr>
+						<tr class="center">
+							<td>Crediti Acquisiti</td>
+							<td data-ng-repeat="squad in schedina">{{squad.creditiAcquisiti}}</td>
+						</tr>
+						<tr class="center">
+							<td>Totale crediti</td>
+							<td data-ng-repeat="squad in schedina">{{squad.totaleCrediti}}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>

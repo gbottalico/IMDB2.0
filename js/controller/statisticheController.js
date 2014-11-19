@@ -19,12 +19,15 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http) {
 			$http.get('service/seavessiavutoService.php').success(function(data) {			
 				$scope.seavessi = data;
 				$scope.generaSeAvessi();						
+				$scope.loading = false;
 			});
 		} else if (stat == 'schedina') {
-			
+			$http.get('service/schedinaService.php').success(function(data) {			
+				$scope.schedina = data;
+				$scope.loading = false;							
+			});			
 		}
-		$scope.statistica = stat;
-		$scope.loading = false;
+		$scope.statistica = stat;		
 	}
 
 	$scope.getSquadraNameById = function(idsquadra) {
