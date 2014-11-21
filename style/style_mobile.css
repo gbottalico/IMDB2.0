@@ -12,7 +12,7 @@
 		margin: 0 auto;		
 	}
 	.container td{
-		font: bold .8em 'trebuchet MS', Arial, helvetica;
+		font: bold xx-small 'trebuchet MS', Arial, helvetica;
 	}
 	li {
 		width: 100% !important;
@@ -24,7 +24,7 @@
 		height: 100%;
 		width: 100%;
 		text-align: center;
-		font: italic bold 2em/120px 'trebuchet MS', Arial, helvetica;
+		font: italic bold larger/120px 'trebuchet MS', Arial, helvetica;
 	}
 	.container {
 		height: 70%;

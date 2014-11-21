@@ -352,7 +352,7 @@ body {
 /* -------------------------------- */
 .menu li {
 	width: 32%;
-	height: 45%;
+	height: 30%;
 	position: relative;
 	float: left;
 	cursor: pointer;
@@ -576,24 +576,24 @@ body {
 
 .container th h1 {
 	font-weight: bold;
-	font-size: 1em;
+	font-size: x-small;
 	text-align: left;
 	color: #185875;
 }
 
 .container td {
-	font: bold 1em 'trebuchet MS', Arial, helvetica;
+	font: bold medium 'trebuchet MS', Arial, helvetica;
 	-webkit-box-shadow: 0 2px 2px -2px #0E1119;
 	-moz-box-shadow: 0 2px 2px -2px #0E1119;
 	box-shadow: 0 2px 2px -2px #0E1119;
 }
 
 .container th {
-	font: bold 1.1em 'trebuchet MS', Arial, helvetica;
+	font: bold larger 'trebuchet MS', Arial, helvetica;
 }
 
 .container td,.container th {
-	padding: 1%;
+	padding: 5px;
 }
 
 .portiere {
@@ -701,7 +701,7 @@ body {
 .riepilogoTableContainer {
 	width: 100%;
 	margin: 10px auto;
-	font: bold 0.8em 'trebuchet MS', Arial, helvetica;
+	font: bold xx-small 'trebuchet MS', Arial, helvetica;
 }
 .riepilogoContainer {
 	background: rgb(234, 233, 233);
