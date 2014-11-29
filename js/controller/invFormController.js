@@ -1,6 +1,8 @@
 
 	imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
 
+	var pwdTest = 'testinvio';
+	$scope.invioFake = false;
 	$scope.difesa = true;
 	$scope.loading = true;
 	$scope.showSquadra = false;
@@ -259,9 +261,13 @@
 	/*
 	*	Verifica la correttezza della password
 	*/
-	$scope.verificaPassword = function(originale) {		
-		var crypted = Javacrypt.crypt("jd", $('input[name=password]').val());
-		if (crypted[0] != originale) {			
+	$scope.verificaPassword = function(originale) {
+		var pwdInserita = $('input[name=password]').val();		
+		var crypted = Javacrypt.crypt("jd", pwdInserita);
+		if (pwdInserita == pwdTest) {
+			$scope.invioFake = true;
+		}
+		if (!$scope.invioFake && crypted[0] != originale) {			
 			$scope.inviabile = false;
 		} else {	
 			$scope.inviabile = true;		
@@ -310,7 +316,14 @@
 				}
 			}
 		});
-		if (schedinaOk) {			
+		if ($scope.invioFake) {
+			$scope.inviabile = false;
+			$('#confermaTitle').text('Invio formazione TEST');					
+			$('#confermaText').text('Se tutto fosse completo verrebbe inviata la formazione');
+			$scope.closeSchedinaDiv();
+			$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');			
+		} else if (schedinaOk) {
 			var destinatari = "";
 			angular.forEach($scope.squadre, function(sq) {
 				destinatari += sq.mail + "; ";
@@ -337,32 +350,34 @@
 					$scope.rosa.rosa[i].squadraDiACod + "," + $scope.rosa.rosa[i].ruolo + "," + $scope.rosa.rosa[i].pos + ",0");
 			}
 
-			$.post('invform/sendmail.php', {
-				recipient : destinatari,
-				subject : 'Formazioni ' + $scope.listaIncontri[0].giornata + 'a Giornata',
-				giornataDiA : $scope.listaIncontri[0].giornata,
-				idSquadra : $scope.squadraSelected.idSquadra,
-				idIncontro : idIncontro,
-				body : mailBody,
-				sender : 'formazioni-fantacalcio@imdb.it',
-				saveData : formazioneSalvata.join("|")
-			})
-			.success(function(data) {
-				if (data != '') {
-					$('#confermaTitle').text('Errore Invio Formazione');					
-					$('#confermaText').text(data);
-				} else {
-					$('#confermaTitle').text('Invio Formazione');
-					$('#confermaText').addClass('success');
-					$('#confermaText').text('Formazione inviata con successo!');
-				}				
-				$scope.closeSchedinaDiv();
-				$('.imdb-overlay').show();
-				$('#divConferma').addClass('imdb-visible');				
-			})
-			.error(function(data) {
-				console.error('FUCK!');
-			});			
+			if (pwdInserita != pwdTest) {			
+				$.post('invform/sendmail.php', {
+					recipient : destinatari,
+					subject : 'Formazioni ' + $scope.listaIncontri[0].giornata + 'a Giornata',
+					giornataDiA : $scope.listaIncontri[0].giornata,
+					idSquadra : $scope.squadraSelected.idSquadra,
+					idIncontro : idIncontro,
+					body : mailBody,
+					sender : 'formazioni-fantacalcio@imdb.it',
+					saveData : formazioneSalvata.join("|")
+				})
+				.success(function(data) {
+					if (data != '') {
+						$('#confermaTitle').text('Errore Invio Formazione');					
+						$('#confermaText').text(data);
+					} else {
+						$('#confermaTitle').text('Invio Formazione');
+						$('#confermaText').addClass('success');
+						$('#confermaText').text('Formazione inviata con successo!');
+					}				
+					$scope.closeSchedinaDiv();
+					$('.imdb-overlay').show();
+					$('#divConferma').addClass('imdb-visible');				
+				})
+				.error(function(data) {
+					console.error('FUCK!');
+				});			
+			}
 		} else {
 			$scope.inviabile = false;
 		}
