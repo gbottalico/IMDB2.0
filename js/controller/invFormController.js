@@ -350,7 +350,7 @@
 					$scope.rosa.rosa[i].squadraDiACod + "," + $scope.rosa.rosa[i].ruolo + "," + $scope.rosa.rosa[i].pos + ",0");
 			}
 
-			if (pwdInserita != pwdTest) {			
+			if (!$scope.invioFake) {			
 				$.post('invform/sendmail.php', {
 					recipient : destinatari,
 					subject : 'Formazioni ' + $scope.listaIncontri[0].giornata + 'a Giornata',
