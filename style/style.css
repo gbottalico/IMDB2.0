@@ -765,10 +765,10 @@ body {
   width: auto;
 }
 .imdb-detail-overlay__content {
-  font-size: 14px;
+  font-size: x-large;
 }
 .imdb-close-icon {
-  font-size: 25px;
+  font-size: x-large;
   cursor: pointer;
   color: #000;
   font-family: 'Glyphicons Halflings';
