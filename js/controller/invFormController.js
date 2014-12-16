@@ -5,6 +5,7 @@
 	$scope.invioFake = false;
 	$scope.difesa = true;
 	$scope.loading = true;
+	$scope.loadingForm = false;
 	$scope.showSquadra = false;
 	$scope.inviabile = true;	
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];	
@@ -296,6 +297,7 @@
 	*	Invia la formazione
 	*/
 	$scope.inviaFormazione = function() {
+		$scope.loadingForm = true;
 		var schedinaOk = true;
 		$scope.inviabile = true;
 		var idIncontro = 0;
@@ -320,6 +322,7 @@
 			$scope.inviabile = false;
 			$('#confermaTitle').text('Invio formazione TEST');					
 			$('#confermaText').text('Se tutto fosse completo verrebbe inviata la formazione');
+			$scope.loadingForm = false;
 			$scope.closeSchedinaDiv();
 			$('.imdb-overlay').show();
 			$('#divConferma').addClass('imdb-visible');			
@@ -369,7 +372,8 @@
 						$('#confermaTitle').text('Invio Formazione');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Formazione inviata con successo!');
-					}				
+					}
+					$scope.loadingForm = false;				
 					$scope.closeSchedinaDiv();
 					$('.imdb-overlay').show();
 					$('#divConferma').addClass('imdb-visible');				
@@ -379,6 +383,7 @@
 				});			
 			}
 		} else {
+			$scope.loadingForm = false;
 			$scope.inviabile = false;
 		}
 	}

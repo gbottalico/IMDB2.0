@@ -43,8 +43,9 @@
 				<div id="divSchedina" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 					<div class="imdb-detail-overlay__close imdb-close-icon"
 						data-ng-click="closeSchedinaDiv()"></div>
-					<h2 class="imdb-detail-overlay__title">Invia formazione</h2>						
-					<div class="imdb-detail-overlay__content imdb-gutter-v">							
+					<h2 class="imdb-detail-overlay__title">Invia formazione</h2>
+					<div class="imdb-results__loading" data-ng-show="loadingForm"></div>		
+					<div class="imdb-detail-overlay__content imdb-gutter-v" data-ng-hide="loadingForm">
 						<table class="schedina">
 							<tr ng-repeat="incontro in listaIncontri">
 								<td>{{incontro.squadraCasa}}</td>

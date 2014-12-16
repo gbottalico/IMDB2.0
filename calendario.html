@@ -82,7 +82,7 @@
 											<td>{{titolareCasa.nomeAbbreviato}}</td>
 											<td class="center">{{titolareCasa.voto}}</td>
 											<td class="center" ng-class="{'bad' : titolareCasa.bonusMalus < 0, 'good' : titolareCasa.bonusMalus > 0}">{{titolareCasa.bonusMalus}}</td>
-											<td class="center" ng-class="{'bad' : titolareCasa.votoTotale < 6, 'good' : !titolareCasa.votoTotale < 6}">{{titolareCasa.votoTotale}}</td>
+											<td class="center" ng-class="{'bad' : titolareCasa.votoTotale < 6, 'good' : titolareCasa.votoTotale >= 6}">{{titolareCasa.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
@@ -94,7 +94,7 @@
 											<td>{{titolareFuori.nomeAbbreviato}}</td>
 											<td class="center">{{titolareFuori.voto}}</td>
 											<td class="center" ng-class="{'bad' : titolareFuori.bonusMalus < 0, 'good' : titolareFuori.bonusMalus > 0}">{{titolareFuori.bonusMalus}}</td>
-											<td class="center" ng-class="{'bad' : titolareFuori.votoTotale < 6, 'good' : !titolareFuori.votoTotale < 6}">{{titolareFuori.votoTotale}}</td>
+											<td class="center" ng-class="{'bad' : titolareFuori.votoTotale < 6, 'good' : titolareFuori.votoTotale >= 6}">{{titolareFuori.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
@@ -229,7 +229,7 @@
 											<td>{{titolareCasa.nomeAbbreviato}}</td>
 											<td class="center">{{titolareCasa.voto}}</td>
 											<td class="center" ng-class="{'bad' : titolareCasa.bonusMalus < 0, 'good' : titolareCasa.bonusMalus > 0}">{{titolareCasa.bonusMalus}}</td>
-											<td class="center" ng-class="{'bad' : titolareCasa.votoTotale < 6, 'good' : !titolareCasa.votoTotale < 6}">{{titolareCasa.votoTotale}}</td>
+											<td class="center" ng-class="{'bad' : titolareCasa.votoTotale < 6, 'good' : !titolareCasa.votoTotale > 6}">{{titolareCasa.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
@@ -240,7 +240,7 @@
 											<td>{{titolareFuori.nomeAbbreviato}}</td>
 											<td class="center">{{titolareFuori.voto}}</td>
 											<td class="center" ng-class="{'bad' : titolareFuori.bonusMalus < 0, 'good' : titolareFuori.bonusMalus > 0}">{{titolareFuori.bonusMalus}}</td>
-											<td class="center" ng-class="{'bad' : titolareFuori.votoTotale < 6, 'good' : !titolareFuori.votoTotale < 6}">{{titolareFuori.votoTotale}}</td>
+											<td class="center" ng-class="{'bad' : titolareFuori.votoTotale < 6, 'good' : !titolareFuori.votoTotale > 6}">{{titolareFuori.votoTotale}}</td>
 										</tr>
 									</table>
 								</td>
