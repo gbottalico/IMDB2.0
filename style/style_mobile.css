@@ -315,4 +315,7 @@
 	  background-size: 10px 10px;
 	  background-image: url('../images/field-invalid.png?1405069257');
 	}
+	.schedina td {
+		font: bold small 'trebuchet MS', Arial, helvetica;
+	}
 }

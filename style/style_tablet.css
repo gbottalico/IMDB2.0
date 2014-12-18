@@ -288,4 +288,7 @@
 		width: 100%;
 		height: 800px;
 	}
+	.schedina td {
+		font: bold medium 'trebuchet MS', Arial, helvetica;
+	}
 }

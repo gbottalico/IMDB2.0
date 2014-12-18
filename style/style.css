@@ -292,6 +292,9 @@
 	  background-size: 15px 15px;
 	  background-image: url('../images/field-invalid.png?1405069257');
 	}
+	.schedina td {
+		font: bold large 'trebuchet MS', Arial, helvetica;
+	}	
 }
 html {
   font-size: 62.5%;
@@ -875,9 +878,6 @@ table {
 	width: 90%;
 	margin: 10px;
 	outline: none;
-}
-.schedina td {
-	font: bold 0.8em 'trebuchet MS', Arial, helvetica;
 }
 .schedina-pron.selected {
 	background: url('../images/schedina_selected.png') !important;
