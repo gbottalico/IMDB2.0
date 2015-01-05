@@ -372,25 +372,31 @@ class ImdbUtils {
         */
         public static function getTermineInvio() {
             $lines = file(host . js_folder . variabili_file);
-            $dataTermine = "";            
+            $dataTermine = "";
+            $giorno = "";
+            $mese = "";
+            $anno = "";
+            $ora = "";
+            $minuti = "";
             foreach($lines as $line_num => $line) {
                 if (strpos($line,'var TermineInviog') !== false) {                
                     $riga = explode("=", $line);                    
-                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . '/';
+                    $giorno = substr($riga[1], 2, strlen($riga[1]) - 4);
                 } else if (strpos($line,'var TermineInviomm') === false && strpos($line,'var TermineInviom') !== false) {                
                     $riga = explode("=", $line);                    
-                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . '/';
+                    $mese = substr($riga[1], 2, strlen($riga[1]) - 4);
                 } else if (strpos($line,'var TermineInvioa') !== false) {                
                     $riga = explode("=", $line);                    
-                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . ' ';
+                    $anno = substr($riga[1], 2, strlen($riga[1]) - 4);
                 } else if (strpos($line,'var TermineInviohh') !== false) {                
                     $riga = explode("=", $line);                    
-                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4) . ':';
+                    $ora = substr($riga[1], 2, strlen($riga[1]) - 4);
                 } else if (strpos($line,'var TermineInviomm') !== false) {              
                     $riga = explode("=", $line);                    
-                    $dataTermine .= substr($riga[1], 2, strlen($riga[1]) - 4);
+                    $minuti = substr($riga[1], 2, strlen($riga[1]) - 4);
                 }
-            }            
+            }
+            $dataTermine .= $giorno . '/' . $mese . '/' . $anno . ' ' . $ora . ':' . $minuti;            
             return $dataTermine;
         }
 
