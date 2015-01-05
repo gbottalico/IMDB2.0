@@ -12,31 +12,31 @@ function initializeMenu(){
 
 
 function loadPageClassifica(){
-	window.location = "classifica.html?a=" + Math.random();
+	window.location = "classifica.html";
 }
 
 function loadPageSquadre(){
-	window.location = "squadre.html?b=" + Math.random();
+	window.location = "squadre.html";
 }
 
 function loadPageCalendario(){
-	window.location = "calendario.html?c=" + Math.random();
+	window.location = "calendario.html";
 }
 
 function loadPageInvForm(){
-	window.location = "invia_formazione.html?d=" + Math.random();
+	window.location = "invia_formazione.html";
 }
 
 function loadPageVoti() {
-	window.location = "voti_assist.html?e=" + Math.random();
+	window.location = "voti_assist.html";
 }
 
 function loadPageProbabili() {
-	window.location = "probabili.html?f=" + Math.random();
+	window.location = "probabili.html";
 }
 
 function loadPageStats() {
-	window.location = "statistiche.html?g=" + Math.random();
+	window.location = "statistiche.html";
 }
 
 function formatNumber(n) {
