@@ -63,7 +63,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 		$scope.numGiornata = parseInt($scope.infoGiornata[0].giornata);
 		$('li[id^=giornata]').removeClass('selected');
 		$timeout(function() {
-			$('#giornata-' + idGiorn).addClass('selected');
+			$('.giornata-' + idGiorn).addClass('selected');
 		});		
 	}
 	
@@ -95,10 +95,28 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 				}
 			});
 			
+			$scope.panchinaCasa = $scope.tabellino.filter(function(row) {
+				if (row.squadra == idCasa) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			$scope.panchinaFuori = $scope.tabellino.filter(function(row) {
+				if (row.squadra == idFuori) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			
+			$scope.panchinaCasa = $scope.sortByKey($scope.panchinaCasa, 'titolare');
+			$scope.panchinaFuori = $scope.sortByKey($scope.panchinaFuori, 'titolare');
+			
 			$('.riepilogoContainer').css('position','absolute');
 			$('.riepilogoContainer').css('top',$('#'+idPartita).height()+$('#'+idPartita).offset().top);
-			$('.riepilogoContainer').css('width',$('#elencoGiornate').width());
 			$('.riepilogoContainer').css('display','block');
+			$('.riepilogoContainer').css('width',$('#elencoGiornate').width());
 			scrollPageTo('#' + idPartita);
 		});
 	}
@@ -131,5 +149,12 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 			}
 		})[0].idGiornata;
 		$scope.visualizzaGiornata($scope.giorSelected);
+	}
+	
+	$scope.sortByKey = function(array, key) {
+	    return array.sort(function(a, b) {
+	        var x = a[key]; var y = b[key];
+	        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+	    });
 	}
 });

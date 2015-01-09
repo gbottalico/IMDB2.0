@@ -32,8 +32,10 @@
 			</div>
 			<div id="elencoGiornate">
 				<ul>
-					<li ng-repeat="cal in calendarioComp | unique:'idGiornata'" id="giornata-{{cal.idGiornata}}"
-						ng-click="visualizzaGiornata(cal.idGiornata)">{{cal.turno || cal.giornata}}</li>
+					<li ng-repeat="cal in calendarioComp | unique:'idGiornata'" class="giornata-{{cal.idGiornata}}" id="giornata-{{cal.idGiornata}}" ng-show="cal.turno"
+						ng-click="visualizzaGiornata(cal.idGiornata)">{{cal.turno + ' - Giornata ' + cal.giornata}}</li>
+					<li ng-repeat="cal in calendarioComp | unique:'idGiornata'" class="giornata-{{cal.idGiornata}}" id="giornata-{{cal.idGiornata}}" ng-hide="cal.turno"
+					ng-click="visualizzaGiornata(cal.idGiornata)">{{cal.giornata}}</li>
 				</ul>
 				<select class="selectMobile" ng-model="giorSelected" ng-options="cal.idGiornata as cal.giornata for cal in calendarioComp | unique:'idGiornata'" ng-change="visualizzaGiornata(giorSelected)">
 				</select>
@@ -58,14 +60,14 @@
 					<table class="riepilogoTableContainer" id="{{infoPart.idPartita}}-{{infoPart.giornata}}">
 						<tbody>
 							<tr>
-								<td style="vertical-align: top;" ng-show="squadraCasa.length">
+								<td style="vertical-align: top; width: 20%" ng-show="squadraCasa.length">
 									<table class="panchinaCasa panchina" >
 										<tr>
 											<th colspan="3">
 												<img ng-src="images/panchina.png" class="logo"/>
 											</th>
 										</tr>
-										<tr ng-repeat="riservaCasa in squadraCasa" ng-if="riservaCasa.titolare != '0' && riservaCasa.titolare != '-1'">
+										<tr ng-repeat="riservaCasa in panchinaCasa" ng-if="riservaCasa.titolare != '0' && riservaCasa.titolare != '-1'">
 											<td>{{getAbbreviazioneRuolo(riservaCasa.ruoloGiocatore)}}</td>
 											<td>{{riservaCasa.nomeAbbreviato}}</td>
 											<td>{{riservaCasa.votoTotale}}</td>
@@ -75,7 +77,7 @@
 								<td colspan="2" ng-hide="squadraCasa.length" class="nonConsegnata"> 
 									Squadra non consegnata
 								</td>
-								<td style="border-radius: 35px; background: white;" ng-show="squadraCasa.length">
+								<td style="border-radius: 35px; background: white; width: 30%" ng-show="squadraCasa.length">
 									<table class="titolariCasa titolari">
 										<tr ng-repeat="titolareCasa in squadraCasa" ng-if="titolareCasa.titolare == '0'">
 											<td class="invform-{{getDescrizioneRuolo(titolareCasa.ruoloGiocatore).toLowerCase()}}">{{getAbbreviazioneRuolo(titolareCasa.ruoloGiocatore)}}</td>
@@ -87,7 +89,7 @@
 									</table>
 								</td>
 								<td></td>
-								<td style="border-radius:35px; background: white;" ng-show="squadraFuori.length">
+								<td style="border-radius:35px; background: white;width: 30%" ng-show="squadraFuori.length">
 									<table class="titolariFuori titolari">
 										<tr ng-repeat="titolareFuori in squadraFuori" ng-if="titolareFuori.titolare == '0'">
 											<td class="invform-{{getDescrizioneRuolo(titolareFuori.ruoloGiocatore).toLowerCase()}}">{{getAbbreviazioneRuolo(titolareFuori.ruoloGiocatore)}}</td>
@@ -101,14 +103,14 @@
 								<td colspan="2" ng-hide="squadraFuori.length" class="nonConsegnata"> 
 									Squadra non consegnata
 								</td>
-								<td style="vertical-align: top;" ng-show="squadraFuori.length">
+								<td style="vertical-align: top;width: 20%" ng-show="squadraFuori.length">
 									<table class="panchinaFuori panchina">
 										<tr>
 											<th colspan="3">
 												<img ng-src="images/panchina.png" class="logo"/>
 											</th>
 										</tr>
-										<tr ng-repeat="riservaFuori in squadraFuori" ng-if="riservaFuori.titolare != '0' && riservaFuori.titolare != '-1'">
+										<tr ng-repeat="riservaFuori in panchinaFuori" ng-if="riservaFuori.titolare != '0' && riservaFuori.titolare != '-1'">
 											<td>{{getAbbreviazioneRuolo(riservaFuori.ruoloGiocatore)}}</td>
 											<td>{{riservaFuori.nomeAbbreviato}}</td>
 											<td>{{riservaFuori.votoTotale}}</td>

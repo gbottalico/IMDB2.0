@@ -305,6 +305,7 @@ body {
 	font-family: "Helvetica Neue", Helvetica-, Arial, sans-serif;
   	font-size: 14px;
   	line-height: 1.42857;
+  	overflow: hidden;
 }
 .imdb-results__loading {
 	background: url('../images/pallone_loading.gif?1384796714')
@@ -908,6 +909,7 @@ table {
 
 .nonConsegnata{
 	text-align: center;
+	width: 50%;
 }
 
 .selectMobile{
