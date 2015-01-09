@@ -219,6 +219,7 @@
 		var nomi = [];
 		var foto = [];				
 		$('div[class*=campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + ']').hide();
+		$scope.titolari = $filter('orderBy')($scope.titolari, 'ruolo');
 		$scope.titolari.filter(function(tit) {
 			if (tit.ruolo == calciatore.ruolo) {
 				nomi.push(tit.nome.split(" ")[0]);
@@ -415,7 +416,7 @@
         	if (giornale == 'fantagazzetta') {
 	        	page = 'http://www.fantagazzetta.com/probabili-formazioni-serie-A#' + squadra.toUpperCase();	        	
         	}
-        	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" class="probabiliFanta" seamless="seamless" scrolling="auto"></iframe>')
+        	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" class="probabiliFanta" scrolling="auto" sandbox="allow-same-origin allow-scripts"></iframe>')
         		.dialog({
 	                 autoOpen: false,
 	                 modal: true,	                 
