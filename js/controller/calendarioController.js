@@ -129,9 +129,23 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 		return $scope.ruolo[idRuolo-1];
 	}
 
-	$scope.getAbbreviazioneRuolo = function(idRuolo) {
+	$scope.getAbbreviazioneRuolo = function(idRuolo, ruoloS) {
 		if (idRuolo != undefined) {
-			return $scope.ruolo[idRuolo-1].substring(0,1);
+			ruolo = $scope.ruolo[idRuolo-1].substring(0,1);
+			if (ruoloS > 4){
+				ruolo = ruolo +'R';
+			}
+			return ruolo;
+		}		
+	}
+	
+	$scope.getAbbreviazioneRuoloPanchina = function(idRuolo, ruoloS) {
+		if (idRuolo != undefined) {
+			ruolo = $scope.ruolo[idRuolo-1].substring(0,1);
+			if (ruoloS>-4 && ruoloS<4){
+				ruolo = ruolo +'S';
+			}
+			return ruolo;
 		}		
 	}
 
