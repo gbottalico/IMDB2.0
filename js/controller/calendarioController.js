@@ -133,17 +133,19 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 		if (idRuolo != undefined) {
 			ruolo = $scope.ruolo[idRuolo-1].substring(0,1);
 			if (ruoloS > 4){
-				ruolo = ruolo +'R';
+				ruolo = ruolo + 'r';
 			}
 			return ruolo;
+		} else {
+			return "X";
 		}		
 	}
 	
 	$scope.getAbbreviazioneRuoloPanchina = function(idRuolo, ruoloS) {
 		if (idRuolo != undefined) {
-			ruolo = $scope.ruolo[idRuolo-1].substring(0,1);
-			if (ruoloS>-4 && ruoloS<4){
-				ruolo = ruolo +'S';
+			ruolo = $scope.ruolo[idRuolo - 1].substring(0,1);
+			if (ruoloS > -5 && ruoloS < 0) {
+				ruolo = ruolo +'s';
 			}
 			return ruolo;
 		}		

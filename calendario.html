@@ -68,7 +68,7 @@
 											</th>
 										</tr>
 										<tr ng-repeat="riservaCasa in panchinaCasa" ng-if="riservaCasa.titolare != '0' && riservaCasa.titolare != '-1'">
-											<td>{{getAbbreviazioneRuoloPanchina(riservaCasa.ruoloGiocatore, riservaCasa.ruolo)}}</td>
+											<td ng-class="{'bad' : riservaCasa.ruolo > -5 && riservaCasa.ruolo < 0}">{{getAbbreviazioneRuoloPanchina(riservaCasa.ruoloGiocatore, riservaCasa.ruolo)}}</td>
 											<td>{{riservaCasa.nomeAbbreviato}}</td>
 											<td>{{riservaCasa.votoTotale}}</td>
 										</tr>
@@ -80,8 +80,8 @@
 								<td style="border-radius: 35px; background: white; width: 30%" ng-show="squadraCasa.length">
 									<table class="titolariCasa titolari">
 										<tr ng-repeat="titolareCasa in squadraCasa" ng-if="titolareCasa.titolare == '0'">
-											<td class="invform-{{getDescrizioneRuolo(titolareCasa.ruoloGiocatore).toLowerCase()}}">{{getAbbreviazioneRuolo(titolareCasa.ruoloGiocatore, titolareCasa.ruolo)}}</td>
-											<td>{{titolareCasa.nomeAbbreviato}}</td>
+											<td class="invform-{{getDescrizioneRuolo(titolareCasa.ruoloGiocatore).toLowerCase()}}">{{getAbbreviazioneRuolo(titolareCasa.ruoloGiocatore, titolareCasa.ruolo)}}</td>											
+											<td>{{titolareCasa.nomeAbbreviato.length > 1 ? titolareCasa.nomeAbbreviato : '-------------------'}}</td>
 											<td class="center">{{titolareCasa.voto}}</td>
 											<td class="center" ng-class="{'bad' : titolareCasa.bonusMalus < 0, 'good' : titolareCasa.bonusMalus > 0}">{{titolareCasa.bonusMalus}}</td>
 											<td class="center" ng-class="{'bad' : titolareCasa.votoTotale < 6, 'good' : titolareCasa.votoTotale >= 6}">{{titolareCasa.votoTotale}}</td>
@@ -93,7 +93,7 @@
 									<table class="titolariFuori titolari">
 										<tr ng-repeat="titolareFuori in squadraFuori" ng-if="titolareFuori.titolare == '0'">
 											<td class="invform-{{getDescrizioneRuolo(titolareFuori.ruoloGiocatore).toLowerCase()}}">{{getAbbreviazioneRuolo(titolareFuori.ruoloGiocatore, titolareFuori.ruolo)}}</td>
-											<td>{{titolareFuori.nomeAbbreviato}}</td>
+											<td>{{titolareFuori.nomeAbbreviato.length > 1 ? titolareFuori.nomeAbbreviato : '-------------------'}}</td>
 											<td class="center">{{titolareFuori.voto}}</td>
 											<td class="center" ng-class="{'bad' : titolareFuori.bonusMalus < 0, 'good' : titolareFuori.bonusMalus > 0}">{{titolareFuori.bonusMalus}}</td>
 											<td class="center" ng-class="{'bad' : titolareFuori.votoTotale < 6, 'good' : titolareFuori.votoTotale >= 6}">{{titolareFuori.votoTotale}}</td>
@@ -111,7 +111,7 @@
 											</th>
 										</tr>
 										<tr ng-repeat="riservaFuori in panchinaFuori" ng-if="riservaFuori.titolare != '0' && riservaFuori.titolare != '-1'">
-											<td>{{getAbbreviazioneRuoloPanchina(riservaFuori.ruoloGiocatore, riservaFuori.ruolo)}}</td>
+											<td ng-class="{'bad' : riservaFuori.ruolo > -5 && riservaFuori.ruolo < 0}">{{getAbbreviazioneRuoloPanchina(riservaFuori.ruoloGiocatore, riservaFuori.ruolo)}}</td>
 											<td>{{riservaFuori.nomeAbbreviato}}</td>
 											<td>{{riservaFuori.votoTotale}}</td>
 										</tr>
