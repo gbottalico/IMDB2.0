@@ -37,7 +37,7 @@
 					    </tr>
 					</thead>
 				    <tbody>
-					    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{portiere : calciatore.ruolo==1, difensore : calciatore.ruolo==2 , centrocampista : calciatore.ruolo==3 , attaccante : calciatore.ruolo==4 }">
+					    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{ 'portiere' : calciatore.ruolo == 1, 'difensore' : calciatore.ruolo == 2, 'centrocampista' : calciatore.ruolo == 3, 'attaccante' : calciatore.ruolo == 4 }">
 					      <td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.foto}}"></td>
 					      <td>{{calciatore.nome}}</td>		
 					      <td>{{calciatore.squadraDiA}}</td>	
