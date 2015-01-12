@@ -6,7 +6,7 @@ imdbFanta.controller('votiAssistCtrl', function($scope, $http) {
 			$('#voti').attr('src', 'images/voti.png');
 			$('#assist').attr('src', 'images/assist_base.png');
 			$('#frameSito').attr('src', 'http://www.pianetafantacalcio.it/Voti_Ufficiosi.asp');
-			$('#frameSito').css('width', $(window).width());
+			$('#frameSito').css('width', $(window).width());			
 		} else if (sito == 'assist') {
 			$('#assist').attr('src', 'images/assist.png');
 			$('#voti').attr('src', 'images/voti_base.png');

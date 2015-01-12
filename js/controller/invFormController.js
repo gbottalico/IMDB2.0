@@ -416,7 +416,7 @@
         	if (giornale == 'fantagazzetta') {
 	        	page = 'http://www.fantagazzetta.com/probabili-formazioni-serie-A#' + squadra.toUpperCase();	        	
         	}
-        	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" class="probabiliFanta" scrolling="auto" sandbox="allow-same-origin allow-scripts"></iframe>')
+        	$dialog.html('<iframe id="fgazzetta" style="border: 0px; " src="' + page + '" class="probabiliFanta" scrolling="auto"></iframe>')
         		.dialog({
 	                 autoOpen: false,
 	                 modal: true,	                 

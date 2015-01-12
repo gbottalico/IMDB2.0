@@ -283,10 +283,12 @@
 	.divVoti {
 		overflow: hidden;
 		max-height: 800px;
+		-webkit-overflow-scrolling:touch;
+		overflow-y: scroll;
 	}
 	.votiAssist {
 		width: 100%;
-		height: 800px;
+		height: 800px;		
 	}
 	.schedina td {
 		font: bold medium 'trebuchet MS', Arial, helvetica;
