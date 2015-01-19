@@ -24,7 +24,7 @@ class SchedinaBusiness {
 	public static function getSchedina() {
 		$data = new Spreadsheet_Excel_Reader();
 		$data->setOutputEncoding('CP1251'); // Set output Encoding.
-		$data->read('../schedina.xls');
+		$data->read(host . 'schedina.xls');
 		$celle = $data->sheets[0]['cells'];
 		error_reporting(E_ALL ^ E_NOTICE);
 		$squadreSchedina = array();
