@@ -1,7 +1,7 @@
 	imdbFanta.controller('HomeCtrl', function($scope, $http, $timeout) {
 
 	$scope.loading = true;
-
+	
 	$http.get('service/squadreService.php').success(function(data) {		
 		$scope.loading = false;
 		$scope.squadre = data;

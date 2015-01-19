@@ -1,5 +1,5 @@
 imdbFanta.controller('probabiliCtrl', function($scope, $http) {
-	$scope.loading = true;	
+	$scope.loading = true;		
 
 	$scope.caricaSito = function(sito) {
 		if (sito == 'gazzetta') {

@@ -7,7 +7,7 @@
 	$scope.loading = true;
 	$scope.loadingForm = false;
 	$scope.showSquadra = false;
-	$scope.inviabile = true;	
+	$scope.inviabile = true;		
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];	
 	$scope.moduloInserito = new Array(0,0,0,0);
 	$scope.moduliAmmessi = [new Array(1,3,4,3), new Array(1,3,5,2), new Array(1,3,6,1), new Array(1,4,3,3), new Array(1,4,4,2),

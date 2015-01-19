@@ -964,6 +964,8 @@ img {
 .divVoti {
 	overflow: hidden;
 	max-height: 540px;
+	-webkit-overflow-scrolling:touch;
+	overflow-y: scroll;
 }
 .votiAssist {
 	width: 100%;

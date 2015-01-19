@@ -1,5 +1,6 @@
 imdbFanta.controller('squadreCtrl', function($scope, $http) {
 	$scope.loading = true;
+	
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 
 	$http.get('service/squadreService.php').success(function(data) {

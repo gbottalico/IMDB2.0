@@ -1,5 +1,5 @@
 imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
-	$scope.loading = true;	
+	$scope.loading = true;		
 
 	$scope.initData = function() {
 		$http.get('service/squadreService.php').success(function(data) {		
