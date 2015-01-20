@@ -45,13 +45,14 @@ class OLERead {
     
     function read($sFileName){
         
-    	// check if file exist and is readable (Darko Miljanovic)
-    	if(!is_readable($sFileName)) {
+    	// check if file exist and is readable (Darko Miljanovic)        
+    	/*if(!is_readable($sFileName)) {
+            echo '1';
     		$this->error = 1;
     		return false;
-    	}
+    	}*/
     	
-    	$this->data = @file_get_contents($sFileName);
+    	$this->data = @file_get_contents($sFileName);        
     	if (!$this->data) { 
     		$this->error = 1; 
     		return false; 

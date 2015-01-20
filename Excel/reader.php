@@ -379,7 +379,7 @@ class Spreadsheet_Excel_Reader
     */
 
         $res = $this->_ole->read($sFileName);
-
+        
         // oops, something goes wrong (Darko Miljanovic)
         if($res === false) {
             // check error code

@@ -86,7 +86,7 @@
 						<tbody>
 							<tr data-ng-repeat="sched in schedina" class="center">
 								<td>{{getSquadraNameById(sched.idSquadra)}}</td>
-								<td data-ng-repeat="gior in sched.puntiGuadagnati" ng-class="{'red': gior.punti == 0, 'orange' : gior.punti == 2, 'yellow' : gior.punti == 4, 'green' : gior.punti == 6, 'darkgreen' : gior.punti == 8, 'ciano' : gior.punti == 10}">
+								<td data-ng-repeat="gior in sched.puntiGuadagnati" ng-class="{'red': gior.punti == 0, 'orange' : gior.punti == 2, 'yellow' : gior.punti == 4, 'green' : gior.punti == 6, 'darkgreen' : gior.punti == 8, 'ciano' : gior.punti == 15}">
 									{{gior.punti}}
 								</td>
 							</tr>							
