@@ -7,10 +7,12 @@
     display: none !important;
   }
   #wrapper {
-		width: 100%;
-		height: 100%;
-		margin: 0 auto;		
-	}
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;		
+	-webkit-overflow-scrolling:touch;
+	overflow-y: scroll;
+  }
 	.container td{
 		font: bold xx-small 'trebuchet MS', Arial, helvetica;
 	}
@@ -30,6 +32,7 @@
 		height: 70%;
 		text-align: center;
 		overflow: hidden;
+		overflow-y: auto;
 		width: 100%;
 		margin: 0 auto;
 		display: table;

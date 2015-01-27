@@ -467,12 +467,12 @@ body {
 
 .menu li:nth-child(8),.menu li:nth-child(8) .content,.menu li:nth-child(8) .close
 	{
-	background-color: #ffffff;
+	background-color: transparent;
 }
 
 .menu li:nth-child(9),.menu li:nth-child(9) .content,.menu li:nth-child(9) .close
 	{
-	background-color: #ff0000;
+	background-color: transparent;
 }
 
 /* -------------------------------- */
