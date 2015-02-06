@@ -46,10 +46,10 @@
 					</thead>
 				    <tbody>
 					    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{ 'portiere' : calciatore.ruolo == 1, 'difensore' : calciatore.ruolo == 2, 'centrocampista' : calciatore.ruolo == 3, 'attaccante' : calciatore.ruolo == 4 }">
-					      <td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.foto}}"></td>
+					      <td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.foto}}" err-src="images/misterx.gif"></td>
 					      <td>{{calciatore.nome}}</td>		
 					      <td>{{calciatore.squadraDiA}}</td>	
-					      <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}"></td>					      
+					      <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}" err-src="images/misterx.gif"></td>					      
 					      <td>{{calciatore.prezzo}}</td>
 					    </tr>
 				    </tbody>
