@@ -12,7 +12,7 @@
 	height: 100%;
 	margin: 0 auto;		
 	-webkit-overflow-scrolling:touch;
-	/*overflow-y: scroll;*/
+	overflow-y: scroll;
   }
 	.container td{
 		font: bold xx-small 'trebuchet MS', Arial, helvetica;

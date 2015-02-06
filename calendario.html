@@ -26,6 +26,7 @@
 </script>
 <body ng-controller="calendarioCtrl" ng-init="initCompetizione()">
 	<div id="wrapper" ng-swipe-left="swipeGiornata('piu')" ng-swipe-right="swipeGiornata('meno')">
+		<div class="imdb-results__loading2" data-ng-show="loading"></div>
 		<div class="imdb-results__loading" data-ng-show="loading"></div>
 		<div data-ng-hide="loading">
 			<div class="menuContainer">

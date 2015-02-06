@@ -26,6 +26,7 @@
 	</script>
 	<body ng-controller="votiAssistCtrl" data-ng-init="caricaSito('voti')">
 		<div id="wrapper">
+			<div class="imdb-results__loading2" data-ng-show="loading"></div>
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<div class="menuContainer center">
