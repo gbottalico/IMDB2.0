@@ -318,10 +318,10 @@ body {
 	width:60px;
 	position:absolute;
 	top:0px;
-	right:280px;
-	 -webkit-animation: myfirst1 2s; /* Chrome, Safari, Opera */
+	right:80px;
+	 -webkit-animation: myfirst1 3s; /* Chrome, Safari, Opera */
 	  -webkit-animation-iteration-count: infinite;
-    animation: myfirst1 2s;
+    animation: myfirst1 3s;
     animation-iteration-count: infinite;
 }
 .imdb-results__loading2 {
@@ -339,21 +339,21 @@ body {
 	position:absolute;
 	top:0px;
 	right:350px;
-	 -webkit-animation: myfirst2 2s; /* Chrome, Safari, Opera */
+	 -webkit-animation: myfirst2 3s; /* Chrome, Safari, Opera */
 	 -webkit-animation-iteration-count: infinite;
-    animation: myfirst2 2s;
+    animation: myfirst2 3s;
     animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes myfirst1 {
-   from {right: 280px;}
-   to {right: 670px;}
+   from {right: 80px;}
+   to {right: 710px;}
 }
 
 /* Standard syntax */
 @keyframes myfirst1 {
-    from {right: 280px;}
-   	to {right: 670px;}
+    from {right: 80px;}
+   	to {right: 710px;}
 }
 
 @-webkit-keyframes myfirst2 {
