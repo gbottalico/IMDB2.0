@@ -231,7 +231,7 @@
 				var ids = row.ids.split(',');
 				for (var i = 0; i < ids.length; i++) {						
 					//$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i] + ' > p').text(nomi[i]).css('margin-left', (nomi[i].length > 5 ? 3 - nomi[i].length : nomi[i].length));
-					$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i]).css("background-image", "url(" + foto[i] + ")");
+					$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i]).css("background-image", "url(" + foto[i] + "), url('images/misterx.gif')");
 					$('.campo-' + $scope.getDescrizioneRuolo(calciatore.ruolo).toLowerCase() + '-' + ids[i]).show();
 				}
 			}
@@ -326,7 +326,9 @@
 			$scope.loadingForm = false;
 			$scope.closeSchedinaDiv();
 			$('.imdb-overlay').show();
-			$('#divConferma').addClass('imdb-visible');			
+			$('#divConferma').addClass('imdb-visible');
+			//Schedina non piu richiesta
+			schedinaOk = true;			
 		} else if (schedinaOk) {
 			var destinatari = "";
 			angular.forEach($scope.squadre, function(sq) {

@@ -328,7 +328,7 @@ body {
 }
 
 .menuContainer {
-	overflow: auto;
+	overflow: hidden;
 }
 
 .menu {
