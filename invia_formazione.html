@@ -28,6 +28,7 @@
 	<body ng-controller="invFormCtrl">
 		<div class="imdb-overlay"></div>
 		<div id="wrapper">
+			<div class="imdb-results__loading2" data-ng-show="loading"></div>
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				<div class="menuContainer invform-loghi" ng-show="!rosa">

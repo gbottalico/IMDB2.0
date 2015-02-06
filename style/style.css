@@ -309,12 +309,28 @@ body {
 }
 .imdb-results__loading {
 	background: url('../images/pallone_loading.gif?1384796714')
-		no-repeat 50% 50%;
+		no-repeat 10% 50%;
 	-webkit-background-size: 64px 64px;
 	-moz-background-size: 64px 64px;
 	-o-background-size: 64px 64px;
 	background-size: 64px 64px;
 	height: 200px;
+	float: left;
+	overflow: auto;
+	width: 50%;	
+}
+.imdb-results__loading2 {
+	float: left;
+	text-align: right;
+	width: 50%;
+	overflow: auto;
+	background: url('../images/beer_loading.gif?1384796714')
+		no-repeat 90% 50%;
+	-webkit-background-size: 55px 55px;
+	-moz-background-size: 55px 55px;
+	-o-background-size: 55px 55px;
+	background-size: 55px 55px;
+	height: 190px;
 }
 
 .center {
