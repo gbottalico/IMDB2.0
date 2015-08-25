@@ -53,12 +53,12 @@
 						<tbody>
 							<tr ng-repeat="partita in infoGiornata" id="{{partita.idPartita}}" ng-click="caricaDettaglio(partita.idPartita, partita.giornata, partita.giocata, partita.idSquadraCasa, partita.idSquadraFuori, $event)">
 								<td style="text-align: center"><img class="logo"
-									ng-src="{{partita.logoCasa}}" /></td>
+									ng-src="{{partita.logoCasa}}" err-src="images/nologo.png" /></td>
 								<td>{{partita.squadraCasa}}</td>
 								<td>{{partita.golCasa}} - {{partita.golFuori}}</td>
 								<td>{{partita.squadraFuori}}</td>
 								<td style="text-align: center"><img class="logo"
-									ng-src="{{partita.logoFuori}}" /></td>
+									ng-src="{{partita.logoFuori}}" err-src="images/nologo.png" /></td>
 							</tr>
 						</tbody>
 					</table>

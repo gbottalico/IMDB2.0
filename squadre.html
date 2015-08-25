@@ -31,7 +31,7 @@
 			<div data-ng-hide="loading"> 
 <!-- 				<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select> -->
 				<div class="menuContainer">
-					<img class="logo menuItem" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="visualizzaSquadra(squadra.idSquadra)">
+					<img class="logo menuItem" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="{{squadra.squadra}}" ng-src="{{squadra.logo}}" err-src="images/nologo.png" ng-click="visualizzaSquadra(squadra.idSquadra)">
 					<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
 				</div>
 				<table class="container" data-ng-hide="!rosa">
@@ -49,7 +49,7 @@
 					      <td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.foto}}" err-src="images/misterx.gif"></td>
 					      <td>{{calciatore.nome}}</td>		
 					      <td>{{calciatore.squadraDiA}}</td>	
-					      <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}" err-src="images/misterx.gif"></td>					      
+					      <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}" err-src="images/nologo.png"></td>					      
 					      <td>{{calciatore.prezzo}}</td>
 					    </tr>
 				    </tbody>
