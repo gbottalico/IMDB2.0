@@ -29,6 +29,7 @@
 		var $nome;
 		var $logo;
 		var $presidente;
+		var $foto;
 		var $mail;
 		var $creditiResidui;
 		var $password;
@@ -55,6 +56,7 @@
 	                $rigaSq->nome = trim(str_replace('"',"",$riga[1]));	                
 	                $rigaSq->logo = ImdbUtils::getLogoImageUrl($rigaSq->nome);
 	                $rigaSq->presidente = str_replace('"',"",$riga[2]);
+	                $rigaSq->foto = ImdbUtils::getCoachImageUrl($rigaSq->nome);
 	                $rigaSq->mail = str_replace('"',"",$riga[6]);
 	                $rigaSq->creditiResidui = substr($riga[8], 0, strlen($riga[8]) - 2); 
 	                $rigaSq->password = ImdbUtils::getPassword($rigaSq->idSquadra);

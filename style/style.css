@@ -35,6 +35,23 @@
   .imdb-no-desktop {
     display: none !important;
   }
+  .fotoPres {
+  	float: right;
+  	margin-right: 250px;
+  }
+  .sqRiep {
+  	font: bold medium 'trebuchet MS', Arial, helvetica;
+  	float: right;
+  	position: absolute;
+  	top: 10px;
+  	left: 65%;
+  }
+  .logoAllenatore {
+  	height: 60px;
+  	position: absolute;
+  	top: 0;
+  	margin-left: 20px;
+  }
   /* INVIO FOMRAZIONE */
 	.logo {
 		height: 50px;		
@@ -279,8 +296,8 @@
 	.icon-invalid {	
 	  position: absolute;
 	  cursor: pointer;
-	  top: 50%;
-	  right: 40px;
+	  top: 30%;
+	  right: 15px;
 	  width: 15px;
 	  height: 15px;
 	  z-index: 3;

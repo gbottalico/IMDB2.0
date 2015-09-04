@@ -21,6 +21,7 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 		
 		if (infoSquadra.length != 0){
 			$scope.rosa = infoSquadra[0];
+			$('#fotoPresidente').attr("src", $scope.rosa.foto);
 		}
 		$('#squadra-'+squadraSelected).addClass('selected');
 	}

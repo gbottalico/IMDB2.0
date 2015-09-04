@@ -75,7 +75,7 @@
 												<img ng-src="images/panchina.png" class="logo"/>
 											</th>
 										</tr>
-										<tr ng-repeat="riservaCasa in panchinaCasa" ng-if="riservaCasa.titolare != '0' && riservaCasa.titolare != '-1'">
+										<tr ng-repeat="riservaCasa in panchinaCasa | limitTo: 18" ng-if="riservaCasa.titolare != '0' && riservaCasa.titolare != '-1'">
 											<td ng-class="{'bad' : riservaCasa.ruolo > -5 && riservaCasa.ruolo < 0}">{{getAbbreviazioneRuoloPanchina(riservaCasa.ruoloGiocatore, riservaCasa.ruolo)}}</td>
 											<td>{{riservaCasa.nomeAbbreviato}}</td>
 											<td>{{riservaCasa.votoTotale}}</td>
@@ -118,7 +118,7 @@
 												<img ng-src="images/panchina.png" class="logo"/>
 											</th>
 										</tr>
-										<tr ng-repeat="riservaFuori in panchinaFuori" ng-if="riservaFuori.titolare != '0' && riservaFuori.titolare != '-1'">
+										<tr ng-repeat="riservaFuori in panchinaFuori | limitTo: 18" ng-if="riservaFuori.titolare != '0' && riservaFuori.titolare != '-1'">
 											<td ng-class="{'bad' : riservaFuori.ruolo > -5 && riservaFuori.ruolo < 0}">{{getAbbreviazioneRuoloPanchina(riservaFuori.ruoloGiocatore, riservaFuori.ruolo)}}</td>
 											<td>{{riservaFuori.nomeAbbreviato}}</td>
 											<td>{{riservaFuori.votoTotale}}</td>

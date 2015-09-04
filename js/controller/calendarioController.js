@@ -1,4 +1,4 @@
-imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $timeout) {
+imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $timeout, $filter) {
 	$scope.loading = true;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];	
 
@@ -17,7 +17,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 			//recupero la prima giornata non giocata
 			$scope.giorSelected = $scope.calendarioComp.filter(function(row) {
 				if (row.giocata == '0') {
-					return true
+					return true;
 				} else {
 					return false;
 				}

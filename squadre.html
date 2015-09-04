@@ -31,8 +31,19 @@
 			<div data-ng-hide="loading"> 
 <!-- 				<select ng-model="squadraSelected" ng-change="visualizzaSquadra()" ng-options="squadra.idSquadra as squadra.nome for squadra in squadre"></select> -->
 				<div class="menuContainer">
-					<img class="logo menuItem" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="{{squadra.squadra}}" ng-src="{{squadra.logo}}" err-src="images/nologo.png" ng-click="visualizzaSquadra(squadra.idSquadra)">
+					<img class="logo menuItem" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" title="{{squadra.nome}}" ng-src="{{squadra.logo}}" err-src="images/nologo.png" ng-click="visualizzaSquadra(squadra.idSquadra)">
 					<img class="logo backHome"  onclick="window.location='index.html'" alt="" src="images/football.png">
+					<table class="sqRiep" data-ng-hide="!rosa">						
+						<tr>
+							<td style="color: white">Allenatore: {{rosa.presidente}}</td>
+							<td>
+								<img class="logoAllenatore" ng-src="{{rosa.foto}}" />
+							</td>
+						</tr>
+						<tr>
+							<td style="color: white">Crediti Residui: {{rosa.creditiResidui}}</td>
+						</tr>
+					</table>					
 				</div>
 				<table class="container" data-ng-hide="!rosa">
 					<thead>

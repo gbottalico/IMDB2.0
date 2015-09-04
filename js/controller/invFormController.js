@@ -247,8 +247,12 @@
 		var nomi = [];
 		$('div[class*=campo-riserva]').hide();
 		$scope.riserve = $filter('orderBy')($scope.riserve, 'ruolo');
-		$scope.riserve.filter(function(ris) {
-			nomi.push(ris.nome.split(" ")[0]);
+		$scope.riserve.filter(function(ris) {			
+			var cognome = ris.nome.split(" ")[0];
+			if (cognome == 'DE' || cognome == 'DI' || cognome == 'EL' || cognome == 'JUAN' || cognome == 'FLORO' || cognome == 'IAGO' || cognome == 'LUIZ' || cognome == 'ALEX') {
+				cognome += " " + ris.nome.split(" ")[1];
+			}			
+			nomi.push(cognome);
 		});		
 		for (var i = 0; i < $scope.riserve.length; i++) {
 			if ($('.maglia-panchina').width() == 20) { // Caso mobile

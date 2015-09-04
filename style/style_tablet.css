@@ -267,8 +267,8 @@
 	.icon-invalid {	
 	  position: absolute;
 	  cursor: pointer;
-	  top: 50%;
-	  right: 40px;
+	  top: 55%;
+	  right: 25px;
 	  width: 15px;
 	  height: 15px;
 	  z-index: 3;
@@ -294,3 +294,22 @@
 		font: bold medium 'trebuchet MS', Arial, helvetica;
 	}
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	.icon-invalid {	
+	  position: absolute;
+	  cursor: pointer;
+	  top: 55%;
+	  right: 25px;
+	  width: 15px;
+	  height: 15px;
+	  z-index: 3;
+	  background-position: 50% 50%;
+	  background-repeat: no-repeat;
+	  -webkit-background-size: 15px 15px;
+	  -moz-background-size: 15px 15px;
+	  -o-background-size: 15px 15px;
+	  background-size: 15px 15px;
+	  background-image: url('../images/field-invalid.png?1405069257');
+	}
+}	
