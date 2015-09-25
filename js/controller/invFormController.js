@@ -249,7 +249,7 @@
 		$scope.riserve = $filter('orderBy')($scope.riserve, 'ruolo');
 		$scope.riserve.filter(function(ris) {			
 			var cognome = ris.nome.split(" ")[0];
-			if (cognome == 'DE' || cognome == 'DI' || cognome == 'EL' || cognome == 'JUAN' || cognome == 'FLORO' || cognome == 'IAGO' || cognome == 'LUIZ' || cognome == 'ALEX') {
+			if (cognome == 'DE' || cognome == 'DI' || cognome == 'EL' || cognome == 'JUAN' || cognome == 'FLORO' || cognome == 'IAGO' || cognome == 'LUIZ' || cognome == 'ALEX' || cognome == 'MILINKOVIC') {
 				cognome += " " + ris.nome.split(" ")[1];
 			}			
 			nomi.push(cognome);

@@ -292,13 +292,13 @@ class ImdbUtils {
         public static function getNomeAbbreviato($nome) {
             $riga = explode(" ", $nome);
             $nomeAbbreviato = "";
-            for ($i = 0; $i < count($riga); $i++) {
-                if (ctype_upper(str_replace("'", "", $riga[$i]))) {
-                    $nomeAbbreviato .= $riga[$i] . ' ';
-                } else {
-                    $nomeAbbreviato .= ' ' . substr($riga[$i], 0, 1);
+            for ($i = 0; $i < count($riga); $i++) {                
+                if (ctype_upper(str_replace("'", "", $riga[$i])) || strpos($riga[$i], '-')) {                    
+                    $nomeAbbreviato .= $riga[$i] . ' ';                    
+                } else {                    
+                    $nomeAbbreviato .= ' ' . substr($riga[$i], 0, 1);                    
                 }                
-            }
+            }            
             return $nomeAbbreviato;
         }
 
