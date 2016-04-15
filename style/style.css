@@ -94,6 +94,7 @@
 	.label-maglia-panchina {
 		font-size: xx-small;
 		margin-top: 20px;
+		width: 80px;
 	}
 	.maglia-panchina {
 		background: url('../images/maglia.png') no-repeat;

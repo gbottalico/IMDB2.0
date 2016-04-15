@@ -111,7 +111,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 			});
 			
 			$scope.panchinaCasa = $scope.sortByKey($scope.panchinaCasa, 'titolare');
-			$scope.panchinaFuori = $scope.sortByKey($scope.panchinaFuori, 'titolare');
+			$scope.panchinaFuori = $scope.sortByKeys($scope.panchinaFuori, 'ruolo', 'titolare');
 			
 			$('.riepilogoContainer').css('position','absolute');
 			$('.riepilogoContainer').css('top',$('#'+idPartita).height()+$('#'+idPartita).offset().top);
@@ -171,6 +171,20 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 	    return array.sort(function(a, b) {
 	        var x = a[key]; var y = b[key];
 	        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+	    });
+	}
+
+	$scope.sortByKeys = function(array, key1, key2) {
+	    return array.sort(function(a, b) {
+	        var x1 = a[key1]; var y1 = b[key1];
+	        var x2 = a[key2]; var y2 = b[key2];
+	        if (x1 < y1) {
+	        	return -1;
+	        } else if (x1 > y1) {
+	        	return 1;
+	        } else {
+	        	return ((x2 < y2) ? -1 : ((x2 > y2) ? 1 : 0));
+	        }
 	    });
 	}
 });

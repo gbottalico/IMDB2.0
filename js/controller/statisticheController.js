@@ -20,11 +20,13 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 				$scope.seavessi = data;
 				$scope.generaSeAvessi();						
 				$scope.loading = false;
+				$scope.statistica = stat;
 			});
 		} else if (stat == 'schedina') {
 			$http.get('service/schedinaService.php').success(function(data) {			
 				$scope.schedina = data;
-				$scope.loading = false;							
+				$scope.loading = false;
+				$scope.statistica = stat;							
 			});			
 		} else if (stat == 'mercato') {
 			$http.get('service/giocatoriLiberiService.php').success(function(data) {			
@@ -35,10 +37,10 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 					bAutoWidth : false,
 					sScrollX: "100%"
 				});*/
-				$scope.loading = false;							
+				$scope.loading = false;
+				$scope.statistica = stat;							
 			});			
-		}
-		$scope.statistica = stat;		
+		}			
 	}
 
 	$scope.getSquadraNameById = function(idsquadra) {
