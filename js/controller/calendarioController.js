@@ -2,7 +2,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 	$scope.loading = true;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];	
 
-	$scope.initCompetizione =  function(){
+	$scope.initCompetizione =  function() {
 		$http.get('service/calendarioService.php').success(function(data) {
 			$scope.loading = false;
 			$scope.calendario = data;
