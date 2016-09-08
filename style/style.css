@@ -1030,7 +1030,7 @@ img {
 }
 .divVoti {
 	overflow: hidden;
-	max-height: 540px;
+	max-height: 800px;
 	-webkit-overflow-scrolling:touch;
 	overflow-y: scroll;
 }
