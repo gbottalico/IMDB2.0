@@ -35,10 +35,11 @@ imdbFanta.controller('votiAssistCtrl', function($scope, $http, $filter) {
 			}			
 			$('#frameSito').css('width', $(window).width());			
 			$('#frameSito').css('height', $(window).height());
-		} else if (sito == 'assist') {
+		} else if (sito == 'assist') {			
+			var currentYear = parseInt(new Date().getFullYear());
 			$('#assist').attr('src', 'images/assist.png');
 			$('#voti').attr('src', 'images/voti_base.png');
-			$('#frameSito').attr('src', 'http://www.gazzetta.it/calcio/fantanews/assist/serie-a-2016-17').attr('sandbox', 'allow-same-origin allow-scripts');
+			$('#frameSito').attr('src', 'http://www.gazzetta.it/calcio/fantanews/assist/serie-a-' + currentYear + '-' + (currentYear + 1)).attr('sandbox', 'allow-same-origin allow-scripts');
 			$('#frameSito').css('width', $(window).width());
 			$('#frameSito').css('height', $(window).height());
 		}
