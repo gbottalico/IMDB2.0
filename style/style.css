@@ -765,6 +765,7 @@ body {
 	margin: 0;
 	cursor: pointer;
 	padding: 0px 10px;
+	list-style: none;
 }
 #elencoGiornate li.selected {
 	color: red;
