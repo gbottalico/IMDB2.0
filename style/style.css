@@ -534,7 +534,8 @@ body {
 
 .menu li:nth-child(8),.menu li:nth-child(8) .content,.menu li:nth-child(8) .close
 	{
-	background-color: transparent;
+	background-color: #ffffff;
+	color: red;
 }
 
 .menu li:nth-child(9),.menu li:nth-child(9) .content,.menu li:nth-child(9) .close
@@ -1075,4 +1076,9 @@ img {
 }
 #giocatoriliberi td:nth-child(1), #giocatoriliberi td:nth-child(3), #giocatoriliberi td:nth-child(4), #giocatoriliberi td:nth-child(5) {
 	width: 15%;
+}
+
+.logoSquadraDst{
+	width: 10%;
+	cursor: pointer;
 }

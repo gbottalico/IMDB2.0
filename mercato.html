@@ -1,0 +1,106 @@
+<html ng-app="IMDB">
+	<head>
+		<meta http-equiv="cache-control" content="max-age=0">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="-1">
+		<meta http-equiv="expires" content="Tue, 01 Jan 1980 11:00:00 GMT">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" viewport="">
+		<title>IMDB</title>		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/angular.min.js"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>		
+		<script src="js/jquery-ui.js"></script>
+		<link rel="stylesheet" href="style/jquery-ui.structure.css">
+		<link rel="stylesheet" href="style/jquery-ui.theme.css">
+		<script src="js/interface.js"></script>
+		<script src="js/javacrypt.js"></script>
+		<script src="js/imdb.js"></script>	
+		<script src="js/controller/mercatoController.js"></script>	
+		<link rel="stylesheet" href="style/style_mobile.css">
+		<link rel="stylesheet" href="style/style_tablet.css">
+		<link rel="stylesheet" href="style/style.css">
+	</head>
+	<body ng-controller="invFormCtrl">
+		<div class="imdb-overlay"></div>
+		<div id="wrapper">
+			<div class="imdb-results__loading2" data-ng-show="loading"></div>
+			<div class="imdb-results__loading" data-ng-show="loading"></div>
+			<div data-ng-hide="loading">
+				<div class="menuContainer invform-loghi" ng-show="!rosa">
+					<img class="logoInv menuItemInv" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">
+					<img class="logo invform-btn" onclick="window.location='index.html'" alt="Torna alla home" src="images/football.png" />			
+				</div>
+				<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+					<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closePasswordDiv()"></div>
+					<h2 class="imdb-detail-overlay__title">{{squadraSelected.nome}}</h2>						
+					<div class="imdb-detail-overlay__content imdb-gutter-v">
+						<form>
+							<span class="imdb-left">Password: </span>
+							<input type="password" name="password" class="imdb-left imdb-password" autofocus tabindex="1" />
+							<input type="submit" value="Invia" data-ng-click="verificaPassword(squadraSelected.password)" class="imdb-right imdb-invia-btn" tabindex="2" />
+							<br />
+							<span class="imdb-error" data-ng-hide="inviabile">Password non valida</span>
+						</form>
+					</div>
+				</div>
+				
+				<div id="listaGiocatori" class="inv-rose imdb-no-mobile imdb-no-tablet">
+					<table class="invia-form-table" data-ng-hide="!rosa">
+						<thead>
+							<tr>
+							  <th></th>
+						      <th>Nome (Squadra)</th>	
+						      <th>MVt</th>
+						      <th>FMt</th>						      					     
+						      <th>Avv</th>
+							  <th></th>
+						    </tr>
+						</thead>
+					    <tbody>
+						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" >
+						      <td><img class="invform-logo" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
+						      <td data-ng-click="" style="cursor: pointer;">{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
+						      <td class="center">{{calciatore.mediaVoto}}</td>	
+						      <td class="center">{{calciatore.fantamediaVoto}}</td>						      
+						      <td class="center">{{calciatore.prossimoAvversario}}</td>						     
+						    </tr>
+					    </tbody>
+					</table>					
+				</div>
+				
+				<div class="inv-rose imdb-no-mobile imdb-no-tablet">
+					<div class="menuContainer">
+						<img ng-show="!squadraDstSelected" class="logoSquadraDst" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
+						<img ng-show="squadraDstSelected" class="logoSquadraDst" ng-click="squadraDstSelected = false; rosaDst = null;" alt="Cambia Squadra" src="images/football.png" />			
+					</div>
+					<table class="invia-form-table" data-ng-hide="!rosaDst">
+						<thead>
+							<tr>
+							  <th></th>
+						      <th>Nome (Squadra)</th>	
+						      <th>MVt</th>
+						      <th>FMt</th>						      					     
+						      <th>Avv</th>
+							  <th></th>
+						    </tr>
+						</thead>
+					    <tbody>
+						    <tr ng-repeat="calciatoreDst in rosaDst.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" >
+						      <td><img class="invform-logo" ng-src="{{calciatoreDst.squadraDiAfoto}}" /></td>
+						      <td data-ng-click="" style="cursor: pointer;">{{calciatoreDst.nomeAbbr}} ({{calciatoreDst.squadraDiA}})</td>		
+						      <td class="center">{{calciatoreDst.mediaVoto}}</td>	
+						      <td class="center">{{calciatoreDst.fantamediaVoto}}</td>						      
+						      <td class="center">{{calciatoreDst.prossimoAvversario}}</td>						     
+						    </tr>
+					    </tbody>
+					</table>		
+					
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

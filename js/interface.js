@@ -8,6 +8,7 @@ function initializeMenu(){
 	$('#menuVotiAssist').click(loadPageVoti);
 	$('#menuProbabili').click(loadPageProbabili);
 	$('#menuStatistiche').click(loadPageStats);
+	$('#menuMercato').click(loadPageMercato);
 }
 
 
@@ -37,6 +38,10 @@ function loadPageProbabili() {
 
 function loadPageStats() {
 	window.location = "statistiche.html";
+}
+
+function loadPageMercato() {
+	window.location = "mercato.html";
 }
 
 function formatNumber(n) {
