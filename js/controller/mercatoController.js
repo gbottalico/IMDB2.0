@@ -1,5 +1,5 @@
 
-	imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
+	imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
 
 	var pwdTest = 'testinvio';
 	$scope.loading = true;
@@ -11,10 +11,6 @@
 	$http.get('service/squadreService.php').success(function(data) {		
 		$scope.loading = false;
 		$scope.squadre = data;		
-	});
-
-	$http.get('service/termineService.php').success(function(data) {		
-		$scope.termine = data.trim();			
 	});
 
 	$http.get('service/prossimaService.php').success(function(data) {											
@@ -109,6 +105,19 @@
 			});
 		}
 		
+	}
+	
+	$scope.richiediScambio = function(){
+		//effettuo controlli ruolo
+		if ($('input[name=srcSelected][ruolo=1]:checked').length != $('input[name=dstSelected][ruolo=1]:checked').length  ||
+			$('input[name=srcSelected][ruolo=2]:checked').length != $('input[name=dstSelected][ruolo=2]:checked').length  ||
+			$('input[name=srcSelected][ruolo=3]:checked').length != $('input[name=dstSelected][ruolo=3]:checked').length  ||
+			$('input[name=srcSelected][ruolo=4]:checked').length != $('input[name=dstSelected][ruolo=4]:checked').length ){
+			alert ('I ruoli non coincidono');
+		}else{
+			//procedo con la richiesta di scambio
+			alert('procedo');
+		}
 	}
 
 	

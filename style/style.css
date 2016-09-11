@@ -74,6 +74,12 @@
 		height: 580px;
 		overflow: hidden;
 	}
+	.inv-roseMrc {
+		float: left;
+		width: 45%; 
+		overflow: hidden;
+		margin-right: 20px;
+	}
 	.campo {	
 		position: relative;
 		float: right;
@@ -1078,7 +1084,19 @@ img {
 	width: 15%;
 }
 
-.logoSquadraDst{
+.logoSquadraMrc{
 	width: 10%;
 	cursor: pointer;
+}
+.verticalLine {
+	 border-left: 1px solid #ff0000;
+	heigth: 100%;
+	float: left; 
+	height: 100%;
+	margin-right: 20px
+}
+.squadraMercato{
+	background-color: rgb(210, 211, 248);
+	margin: 5px;
+	line-height: 2;
 }
