@@ -487,7 +487,8 @@ class ImdbUtils {
                 }              
             }           
             return $giocatori;
-        }         
+        }
+                
 }
 
 ?>

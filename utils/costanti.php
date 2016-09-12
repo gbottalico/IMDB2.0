@@ -19,4 +19,8 @@
 	define('variabili_file', 'fcmVariabili.js');
 	define('seavessiavuto_file', 'incrociacalendari.js');
 	define('giocatori_liberi_file', 'fcmQueryQ14.js');
+	define('mysql_host', 'mysql.netsons.com');
+	define('mysql_user', 'vwebywxa_admin');
+	define('mysql_pwd', 'Imdb2016');
+	define('mysql_db', 'vwebywxa_imdb');
 ?>
