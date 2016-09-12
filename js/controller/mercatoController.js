@@ -7,6 +7,7 @@
 	$scope.showSquadra = false;
 	$scope.squadraDstSelected = false;
 	
+	
 
 	$http.get('service/squadreService.php').success(function(data) {		
 		$scope.loading = false;
@@ -90,6 +91,7 @@
 	
 	$scope.mostraRosa = function(squadraSelected){
 		$scope.squadraDstSelected = true;
+		$scope.squadraDst = squadraSelected;
 		var infoSquadra = $scope.squadre.filter(function(row) {
 			if (row.idSquadra == squadraSelected) {
 				return true;
@@ -109,14 +111,28 @@
 	
 	$scope.richiediScambio = function(){
 		//effettuo controlli ruolo
-		if ($('input[name=srcSelected][ruolo=1]:checked').length != $('input[name=dstSelected][ruolo=1]:checked').length  ||
+		if ($('input[name=srcSelected]:checked').length==0 || ($('input[name=srcSelected][ruolo=1]:checked').length != $('input[name=dstSelected][ruolo=1]:checked').length  ||
 			$('input[name=srcSelected][ruolo=2]:checked').length != $('input[name=dstSelected][ruolo=2]:checked').length  ||
 			$('input[name=srcSelected][ruolo=3]:checked').length != $('input[name=dstSelected][ruolo=3]:checked').length  ||
-			$('input[name=srcSelected][ruolo=4]:checked').length != $('input[name=dstSelected][ruolo=4]:checked').length ){
+			$('input[name=srcSelected][ruolo=4]:checked').length != $('input[name=dstSelected][ruolo=4]:checked').length)){
 			alert ('I ruoli non coincidono');
 		}else{
-			//procedo con la richiesta di scambio
-			alert('procedo');
+			$scope.scambio = {
+					'squadraSrc': $scope.squadraSelected.idSquadra,
+					'squadraDst': $scope.squadraDst,
+					'soldiDare' : $scope.srcMoney,
+					'soldiAvere': $scope.dstMoney,
+					'playerDare': [],
+					'playerAvere': []
+			}
+			$('input[name=srcSelected]:checked').each(function(){
+				$scope.scambio.playerDare.push($(this).val());
+			});
+			$('input[name=dstSelected]:checked').each(function(){
+				$scope.scambio.playerAvere.push($(this).val());
+			});
+			console.log($scope.scambio);
+			
 		}
 	}
 

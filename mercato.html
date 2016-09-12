@@ -56,13 +56,17 @@
 				</div>
 				<div class="inv-roseMrc imdb-no-mobile imdb-no-tablet" data-ng-hide="!rosa">
 					<div class="menuContainer">
-						<img  class="logoSquadraMrc" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
+						<img  class="logoSquadraMrc" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
 					</div>
 					<div ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" >
 			         	<input style="color:white" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" />{{calciatoreDst.nomeAbbr}}
 			         </div>			
 				</div>
-				<button ng-click="richiediScambio()">Richiedi Scambio</button>
+				<div style="text-align:center; color:white" ng-show="squadraSelected && squadraDst">
+					<input placeholder="Dare" type="text" ng-model="srcMoney"> 
+					<button ng-click="richiediScambio()">Richiedi Scambio</button>
+					<input placeholder="Avere" type="text" ng-model="dstMoney">
+				</div>
 			</div>
 		</div>
 	</body>
