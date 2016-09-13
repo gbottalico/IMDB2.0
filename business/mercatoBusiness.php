@@ -2,34 +2,49 @@
 
 <?php
 
+class RigaProposta {
+
+	var $idProposta;
+	var $squadraSrc;
+	var $squadraDst;
+	var $creditiSrc;
+	var $creditiDst;
+	var $giocatoriSrc;
+	var $giocatoriDst;				
+
+	function RigaGiocatore() {
+	}		
+}
+
 class MercatoBusiness {
 
 	/*
 	*	Inserisce una nuova proposta di scambio
 	*/
 	public static function insertProposta($idSquadraA, $idSquadraB, $creditiA, $creditiB, $giocatoriA, $giocatoriB) {
-	
-		//connection to the database
-		$conn = mysql_connect(mysql_host, mysql_user, mysql_pwd) 
-		 or die("Unable to connect to MySQL");		
+		
+		echo 'Giocatori Dare = ' . implode(",", $giocatoriA);
+		echo 'Giocatori Avere = ' . implode(",", $giocatoriB);
 
-		//select a database to work with
-		$selected = mysql_select_db(mysql_db, $conn) 
-		  or die("Could not select " . mysql_db . ": " . mysql_error());
+		//connection to the database
+		$conn = mysqli_connect(mysql_host, mysql_user, mysql_pwd, mysql_db);
+		if (!$conn) {
+    		die("Connection failed: " . mysqli_connect_error());
+		}
 
 		//execute the SQL query and return records
-		$sql = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, null)";
+		$sqlProposta = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, implode(',', $giocatoriA), implode(',', $giocatoriB), null)";
 
-		if (!mysql_query($sql, $conn)) {
-		  die('Error: ' . mysql_error());
+		if (!mysqli_query($conn, $sqlProposta)) {
+		  die('Error: ' . mysqli_error($conn));
+		} else {
+			$proposta_id = mysqli_insert_id($conn);
 		}
+
+		echo 'Creata proposta ' . $proposta_id;
 		
-		//fetch tha data from the database 
-		//while ($row = mysql_fetch_array($result)) {
-		//   echo "ID:".$row{'id_proposta'}."<br>";
-		//}
 		//close the connection
-		mysql_close($conn);	
+		mysqli_close($conn);			
 	}
 
 	/*
@@ -38,21 +53,55 @@ class MercatoBusiness {
 	public static function esitoProposta($idProposta, $esito) {
 	
 		//connection to the database
-		$conn = mysql_connect(mysql_host, mysql_user, mysql_pwd) 
-		 or die("Unable to connect to MySQL");		
-
-		//select a database to work with
-		$selected = mysql_select_db(mysql_db, $conn) 
-		  or die("Could not select " . mysql_db . ": " . mysql_error());
+		$conn = mysqli_connect(mysql_host, mysql_user, mysql_pwd, mysql_db);
+		if (!$conn) {
+    		die("Connection failed: " . mysqli_connect_error());
+		}				
 
 		//execute the SQL query and return records		
 		$sql = "UPDATE PROPOSTA SET esito = $esito WHERE id_proposta = $idProposta";
-		if (!mysql_query($sql, $conn)) {
-		  die('Error: ' . mysql_error());
+		if (!mysqli_query($conn, $sqlProposta)) {
+		  die('Error: ' . mysqli_error($conn));
 		}
 				
 		//close the connection
-		mysql_close($conn);	
+		mysqli_close($conn);	
+	}
+
+	/*
+	*	Recupera le proposte ricevute dalla squadra ancora in attesa di risposta (esito = null)
+	*/
+	public static function getProposteSquadra($idSquadra) {
+
+		$proposte = array();
+
+		//connection to the database
+		$conn = mysqli_connect(mysql_host, mysql_user, mysql_pwd, mysql_db);
+		if (!$conn) {
+    		die("Connection failed: " . mysqli_connect_error());
+		}
+
+		//execute the SQL query and return records		
+		$sql = "SELECT `ID_PROPOSTA`, `ID_SQUADRA_A`, `CREDITI_A`,`CREDITI_B`,`GIOCATORI_A`,`GIOCATORI_B` FROM `PROPOSTA` WHERE `ID_SQUADRA_B` = $idSquadra AND `ESITO` IS NULL";
+		$result = mysqli_query($conn, $sql);
+
+		//fetch tha data from the database 
+		while ($row = mysqli_fetch_assoc($result)) {
+			$rigaPr = new RigaProposta();
+			$rigaPr->idProposta = $row['ID_PROPOSTA'];	
+			$rigaPr->squadraSrc = $row['ID_SQUADRA_A'];
+			$rigaPr->squadraDst = $idSquadra;
+			$rigaPr->creditiA = $row['CREDITI_A'];
+			$rigaPr->creditiB = $row['CREDITI_B'];
+			$rigaPr->giocatoriA = $row['GIOCATORI_A'];
+			$rigaPr->giocatoriB = $row['GIOCATORI_B'];
+			array_push($proposte, $rigaPr);
+		}
+						
+		//close the connection
+		mysqli_close($conn);
+
+		return json_encode($proposte);					
 	}
 
 }	

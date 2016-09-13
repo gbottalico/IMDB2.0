@@ -24,6 +24,10 @@
 		});
 	});
 
+	$http.get('service/mercatoService.php?squadra=2').success(function(data) {
+		console.log('Data = ' + JSON.stringify(data));
+	});
+
 	/*
 	*	Apre il pannellino per l'inserimento della password della squadra selezionata. Se il termine di invio è scaduto, mostra un messaggio di errore
 	*/
@@ -114,25 +118,34 @@
 		if ($('input[name=srcSelected]:checked').length==0 || ($('input[name=srcSelected][ruolo=1]:checked').length != $('input[name=dstSelected][ruolo=1]:checked').length  ||
 			$('input[name=srcSelected][ruolo=2]:checked').length != $('input[name=dstSelected][ruolo=2]:checked').length  ||
 			$('input[name=srcSelected][ruolo=3]:checked').length != $('input[name=dstSelected][ruolo=3]:checked').length  ||
-			$('input[name=srcSelected][ruolo=4]:checked').length != $('input[name=dstSelected][ruolo=4]:checked').length)){
+			$('input[name=srcSelected][ruolo=4]:checked').length != $('input[name=dstSelected][ruolo=4]:checked').length)) {
 			alert ('I ruoli non coincidono');
-		}else{
+		} else {
 			$scope.scambio = {
-					'squadraSrc': $scope.squadraSelected.idSquadra,
-					'squadraDst': $scope.squadraDst,
-					'soldiDare' : $scope.srcMoney,
-					'soldiAvere': $scope.dstMoney,
-					'playerDare': [],
-					'playerAvere': []
+					'squadraSrc'  : $scope.squadraSelected.idSquadra,
+					'squadraDst'  : $scope.squadraDst,
+					'soldiDare'   : $scope.srcMoney ? $scope.srcMoney : 0,
+					'soldiAvere'  : $scope.dstMoney ? $scope.dstMoney : 0,
+					'playerDare'  : [],
+					'playerAvere' : [],
+					'azione'      : 'richiediScambio' 					
 			}
-			$('input[name=srcSelected]:checked').each(function(){
+			$('input[name=srcSelected]:checked').each(function() {
 				$scope.scambio.playerDare.push($(this).val());
 			});
-			$('input[name=dstSelected]:checked').each(function(){
+			$('input[name=dstSelected]:checked').each(function() {
 				$scope.scambio.playerAvere.push($(this).val());
 			});
 			console.log($scope.scambio);
-			
+			$http({
+				method : 'POST',
+				url : 'service/mercatoService.php',
+				data : $scope.scambio
+			}).then(function(data) {		
+				console.log('OK' + data.data);
+			}, function(data) {
+				console.log('KO' + data.data);
+			});
 		}
 	}
 
