@@ -31,7 +31,7 @@
 			<div class="imdb-results__loading" data-ng-show="loading"></div>
 			<div data-ng-hide="loading">
 				
-				<div class="inv-roseMrc imdb-no-mobile imdb-no-tablet">
+				<div class="inv-roseMrc">
 					<div class="menuContainer">
 						<img class="logoSquadraMrc" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">
 					</div>
@@ -52,11 +52,32 @@
 			         	<input style="color:white" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" />{{calciatore.nomeAbbr}}
 			         </div>			
 				</div>
+				
 				<div class="verticalLine">		
 				</div>
-				<div class="inv-roseMrc imdb-no-mobile imdb-no-tablet" data-ng-hide="!rosa">
+				
+				<div class="inv-roseMrc" data-ng-hide="!rosa">
 					<div class="menuContainer">
 						<img  class="logoSquadraMrc" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
+					</div>
+					<div ng-hide="proposte.length==0" >
+						<button ng-click="viewProposte = !viewProposte">Visualizza {{proposte.length}} Proposte</button>
+						<div ng-show="viewProposte">
+							<div ng-repeat="proposta in proposte" class="proposta">
+								<span>Proposta ricevuta da {{proposta.squadraDst}}</span>
+								<div>
+									<span ng-repeat="calciatoreSrc in proposta.giocatoriSrc">{{calciatoreSrc}}</span>
+								</div>
+								<div></div>
+								<div>
+									<span ng-repeat="calciatoreDst in proposta.giocatoriDst">{{calciatoreDst}}</span>
+								</div>
+								<div>
+									<button>Accetta</button>
+									<button>Rifiuta</button>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" >
 			         	<input style="color:white" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" />{{calciatoreDst.nomeAbbr}}

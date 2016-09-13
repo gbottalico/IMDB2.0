@@ -6,7 +6,7 @@
 	$scope.loadingForm = false;
 	$scope.showSquadra = false;
 	$scope.squadraDstSelected = false;
-	
+	$scope.viewProposte = false;
 	
 
 	$http.get('service/squadreService.php').success(function(data) {		
@@ -22,10 +22,6 @@
 				return false;
 			}
 		});
-	});
-
-	$http.get('service/mercatoService.php?squadra=2').success(function(data) {
-		console.log('Data = ' + JSON.stringify(data));
 	});
 
 	/*
@@ -46,6 +42,13 @@
 		$('#divPassword').removeClass('imdb-visible');			
 	}
 
+	$scope.verificaProposte = function(){
+		//$http.get('service/mercatoService.php?squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
+			//console.log('Data = ' + JSON.stringify(data));
+			$scope.proposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["125652", "15385", "136078", "123399"],"giocatoriDst":["9436", "13911", "125742", "135254"]}];
+		//	});
+	}
+	
 	$scope.visualizzaSquadra = function(squadraSelected) {		
 		$('.menuItemInv').removeClass('selected');
 		var infoSquadra = $scope.squadre.filter(function(row) {
@@ -63,7 +66,10 @@
 			});
 		}
 		$('#squadra-'+squadraSelected).addClass('selected');
+		$scope.verificaProposte();
 	}	
+	
+	
 
 	$scope.getDescrizioneRuolo = function(idRuolo) {
 		return $scope.ruolo[idRuolo-1];

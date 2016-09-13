@@ -1097,3 +1097,8 @@ img {
 	margin: 5px;
 	line-height: 2;
 }
+
+.proposta{
+	background-color:red;
+	color: white;
+}
