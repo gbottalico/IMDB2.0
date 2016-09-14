@@ -7,6 +7,7 @@
 	$scope.showSquadra = false;
 	$scope.squadraDstSelected = false;
 	$scope.viewProposte = false;
+	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 	
 
 	$http.get('service/squadreService.php').success(function(data) {		
@@ -35,7 +36,7 @@
 	$scope.verificaProposte = function() {
 		//$http.get('service/mercatoService.php?squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
 			//console.log('Data = ' + JSON.stringify(data));
-			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["125652", "15385", "136078", "123399"],"giocatoriDst":["9436", "13911", "125742", "135254"]}];
+			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
 			$scope.proposte = [];
 			var proposta = {};			
 			var giocatoriAvere = [];
@@ -56,21 +57,21 @@
 							return false;
 						}
 					});
-					giocatoriAvere.push(infoGioc);
+					giocatoriAvere.push(infoGioc[0]);
 				});
 				angular.forEach(prop.giocatoriDst, function(gioc) {
-					var infoGioc = infoSquadra[0].rosa.filter(function(row) {
+					var infoGioc = $scope.squadraSelected.rosa.filter(function(row) {
 						if (row.idFcm == gioc) {
 							return true;							
 						} else {
 							return false;
 						}
 					});
-					giocatoriDare.push(infoGioc);
+					giocatoriDare.push(infoGioc[0]);
 				});
 				proposta = {
 					idProposta : prop.idProposta,
-					squadraSrc : infoSquadra,
+					squadraSrc : infoSquadra[0],
 					squadraDst : $scope.squadraSelected,
 					creditiSrc : prop.creditiSrc,
 					creditiDst : prop.creditiDst,

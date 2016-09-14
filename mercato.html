@@ -64,13 +64,13 @@
 						<button ng-click="viewProposte = !viewProposte">Visualizza {{proposte.length}} Proposte</button>
 						<div ng-show="viewProposte">
 							<div ng-repeat="proposta in proposte" class="proposta">
-								<span>Proposta ricevuta da {{proposta.squadraDst.nome}}</span>
+								<span>Proposta ricevuta da {{proposta.squadraSrc.nome}}</span>
 								<div>
-									<span ng-repeat="calciatoreSrc in proposta.giocatoriSrc">{{calciatoreSrc.ruolo}} - {{calciatoreSrc.nomeAbbr}}</span>
+									<p ng-repeat="calciatoreSrc in proposta.giocatoriSrc">{{getAbbreviazioneRuolo(calciatoreSrc.ruolo)}} - {{calciatoreSrc.nomeAbbr}}</p>
 								</div>
 								<div></div>
 								<div>
-									<span ng-repeat="calciatoreDst in proposta.giocatoriDst">{{calciatoreDst.ruolo}} - {{calciatoreDst.nomeAbbr}}</span>
+									<p ng-repeat="calciatoreDst in proposta.giocatoriDst">{{getAbbreviazioneRuolo(calciatoreDst.ruolo)}} - {{calciatoreDst.nomeAbbr}}</p>
 								</div>
 								<div>
 									<button>Accetta</button>
