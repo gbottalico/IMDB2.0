@@ -48,7 +48,7 @@ class MercatoBusiness {
 	}
 
 	/*
-	*	Salva la risposta della proposta
+	*	Salva la risposta della proposta (0 = RIFIUTATA, 1 = ACCETTATA)
 	*/
 	public static function esitoProposta($idProposta, $esito) {
 	
@@ -63,6 +63,10 @@ class MercatoBusiness {
 		if (!mysqli_query($conn, $sqlProposta)) {
 		  die('Error: ' . mysqli_error($conn));
 		}
+
+		if ($esito == 1) {
+			// Rifiuto automaticamente tutte le altre proposte che contenevano qualcuno dei giocatori inclusi nello scambio appena accettato
+		}		
 				
 		//close the connection
 		mysqli_close($conn);	

@@ -16,7 +16,7 @@
 	});
 
 	/*
-	*	Apre il pannellino per l'inserimento della password della squadra selezionata. Se il termine di invio è scaduto, mostra un messaggio di errore
+	*	Apre il pannellino per l'inserimento della password della squadra selezionata.
 	*/
 	$scope.inserisciPassword = function(squadraSelected) {
 							
@@ -39,7 +39,7 @@
 	}
 
 	$scope.verificaProposte = function() {
-		//$http.get('service/mercatoService.php?squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
+		//$http.get('service/mercatoService.php?azione=getProposte&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
 			//console.log('Data = ' + JSON.stringify(data));
 			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
 			$scope.proposte = [];
@@ -134,6 +134,9 @@
 		}
 	}
 	
+	/*
+	*	Mostra la rosa della squadra clickata
+	*/
 	$scope.mostraRosa = function(squadraSelected){
 		$scope.squadraDstSelected = true;
 		$scope.squadraDst = squadraSelected;
@@ -154,6 +157,9 @@
 		
 	}
 	
+	/*
+	*	Richiede lo scambio
+	*/
 	$scope.richiediScambio = function() {
 		//effettuo controlli ruolo
 		if ($('input[name=srcSelected]:checked').length==0 || ($('input[name=srcSelected][ruolo=1]:checked').length != $('input[name=dstSelected][ruolo=1]:checked').length  ||
@@ -190,33 +196,129 @@
 		}
 	}
 	
-	$scope.accettaProposta = function(propostaId){
+	/*
+	*	Accetta la proposta selezionata
+	*/
+	$scope.accettaProposta = function(proposta){
 		$scope.closePropostaDiv();
+
+		var destinatari = "";
+		angular.forEach($scope.squadre, function(sq) {
+			destinatari += sq.mail + "; ";
+		});
+
+		var mailBody = "I club ufficializzano il seguente scambio:\n";
+		mailBody += proposta.squadraSrc.nome + " cede alla squadra " + proposta.squadraDst.nome + " i giocatori ";
+		angular.forEach(proposta.giocatoriSrc, function(gioc) {
+			mailBody += gioc.nomeAbbr + ', ';
+		});
+		mailBody = mailBody.substring(0, mailBody.length - 2) + "\n";
+		mailBody += proposta.squadraDst.nome + " cede alla squadra " + proposta.squadraSrc.nome + " i giocatori ";
+		angular.forEach(proposta.giocatoriDst, function(gioc) {
+			mailBody += gioc.nomeAbbr + ', ';
+		});
+		mailBody = mailBody.substring(0, mailBody.length - 2) + "\n";
+		if (proposta.creditiSrc > 0 || proposta.creditiDst > 0) {
+			if (proposta.creditiSrc > 0) {
+				mailBody += "Inoltre " + proposta.squadraSrc.nome + " paga alla squadra " + proposta.squadraDst.nome + " un totale di " + proposta.creditiSrc + " crediti come conguaglio\n";
+			} else {
+				mailBody += "Inoltre " + proposta.squadraDst.nome + " paga alla squadra " + proposta.squadraSrc.nome + " un totale di " + proposta.creditiDst + " crediti come conguaglio\n";
+			}
+		}
+
 		$.post('invform/sendmail.php', {
-			recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com',
-			subject : 'Scambio ',
-			body : 'Scambio proposta '+propostaId+ ' accettato',
+			recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //destinatari
+			subject : 'Scambio avvenuto tra ' + proposta.squadraSrc.nome + ' e ' + proposta.squadraDst.nome,
+			body : mailBody,
 			sender : 'mercato-fantacalcio@imdb.it'
 		})
 		.success(function(data) {
 			if (data != '') {
 				$('#confermaTitle').text('Errore Conferma scambio');					
-				$('#confermaText').text(data);
+				$('#confermaText').html(data);
 			} else {
-				$('#confermaTitle').text('Scambio');
-				$('#confermaText').addClass('success');
-				$('#confermaText').text('Scambio avvenuto con successo!');
+				$http.get('service/mercatoService.php?azione=accettaProposta&proposta=' + proposta.idProposta)
+				.success(function(data) {
+					if (data != '') {
+						$('#confermaTitle').text('Errore scambio');					
+						$('#confermaText').html(data);
+					} else {
+						$('#confermaTitle').text('Scambio');
+						$('#confermaText').addClass('success');
+						$('#confermaText').text('Scambio avvenuto con successo!');
+					}
+					$('.imdb-overlay').show();
+					$('#divConferma').addClass('imdb-visible');		
+				})
+				.error(function(data) {
+					console.error('FUCK!');
+				});				
 			}
 			$('.imdb-overlay').show();
 			$('#divConferma').addClass('imdb-visible');				
 		})
 		.error(function(data) {
 			console.error('FUCK!');
-		});		
+		});				
 	}
 	
-	$scope.rifiutaProposta = function(propostaId){
-		alert("proposta rifiutata");
+	/*
+	*	Gestisce il rifiuto di una proposta
+	*/
+	$scope.rifiutaProposta = function(proposta) {
+
+		var mailBody = "Il club " + proposta.squadraDst.nome + " ha rifiutato la tua proposta:\n";		
+		angular.forEach(proposta.giocatoriDst, function(gioc) {
+			mailBody += gioc.nomeAbbr + ', ';
+		});
+		if (proposta.creditiDst > 0) {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + proposta.creditiDst + " crediti per ";		
+		} else {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + " per ";
+		}		
+		angular.forEach(proposta.giocatoriSrc, function(gioc) {
+			mailBody += gioc.nomeAbbr + ', ';
+		});
+		if (proposta.creditiSrc > 0) {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + proposta.creditiSrc + " crediti.\n";		
+		} else {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
+		}	
+
+		$.post('invform/sendmail.php', {
+			recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraSrc.mail
+			subject : 'Scambio rifiutato da ' + proposta.squadraDst.nome,
+			body : mailBody,
+			sender : 'mercato-fantacalcio@imdb.it'
+		})
+		.success(function(data) {
+			if (data != '') {
+				$('#confermaTitle').text('Errore Conferma scambio');					
+				$('#confermaText').html(data);
+			} else {
+				$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
+				.success(function(data) {
+					if (data != '') {
+						$('#confermaTitle').text('Errore Rifiuto scambio');					
+						$('#confermaText').html(data);
+					} else {
+						$('#confermaTitle').text('Scambio');
+						$('#confermaText').addClass('success');
+						$('#confermaText').text('Scambio Rifiutato!');
+					}
+					$('.imdb-overlay').show();
+					$('#divConferma').addClass('imdb-visible');		
+				})
+				.error(function(data) {
+					console.error('FUCK!');
+				});				
+			}
+			$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');				
+		})
+		.error(function(data) {
+			console.error('FUCK!');
+		});	
 	}
 	
 	$scope.closeConfermaDiv = function() {
