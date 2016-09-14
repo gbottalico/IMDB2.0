@@ -32,6 +32,11 @@
 		$('.imdb-overlay').hide();
 		$('#divPassword').removeClass('imdb-visible');			
 	}
+	
+	$scope.closePropostaDiv = function() {
+		$('.imdb-overlay').hide();
+		$scope.viewProposte = !$scope.viewProposte;
+	}
 
 	$scope.verificaProposte = function() {
 		//$http.get('service/mercatoService.php?squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
@@ -183,6 +188,40 @@
 				console.log('KO' + data.data);
 			});
 		}
+	}
+	
+	$scope.accettaProposta = function(propostaId){
+		$scope.closePropostaDiv();
+		$.post('invform/sendmail.php', {
+			recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com',
+			subject : 'Scambio ',
+			body : 'Scambio proposta '+propostaId+ ' accettato',
+			sender : 'mercato-fantacalcio@imdb.it'
+		})
+		.success(function(data) {
+			if (data != '') {
+				$('#confermaTitle').text('Errore Conferma scambio');					
+				$('#confermaText').text(data);
+			} else {
+				$('#confermaTitle').text('Scambio');
+				$('#confermaText').addClass('success');
+				$('#confermaText').text('Scambio avvenuto con successo!');
+			}
+			$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');				
+		})
+		.error(function(data) {
+			console.error('FUCK!');
+		});		
+	}
+	
+	$scope.rifiutaProposta = function(propostaId){
+		alert("proposta rifiutata");
+	}
+	
+	$scope.closeConfermaDiv = function() {
+		$('.imdb-overlay').hide();
+		$('#divConferma').removeClass('imdb-visible');			
 	}
 
 });

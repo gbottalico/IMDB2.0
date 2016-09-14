@@ -62,19 +62,20 @@
 					</div>
 					<div ng-hide="proposte.length==0" >
 						<button ng-click="viewProposte = !viewProposte">Visualizza {{proposte.length}} Proposte</button>
-						<div ng-show="viewProposte">
-							<div ng-repeat="proposta in proposte" class="proposta">
-								<span>Proposta ricevuta da {{proposta.squadraSrc.nome}}</span>
-								<div>
+						<div ng-class="{'imdb-visible' : viewProposte}" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+							<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closePropostaDiv()"></div>
+							<div ng-repeat="proposta in proposte">
+								<div>Proposta ricevuta da {{proposta.squadraSrc.nome}}</div>
+								<div style="float:left; width:40%; text-align: left">
 									<p ng-repeat="calciatoreSrc in proposta.giocatoriSrc">{{getAbbreviazioneRuolo(calciatoreSrc.ruolo)}} - {{calciatoreSrc.nomeAbbr}}</p>
 								</div>
-								<div></div>
-								<div>
+								<div style="float:left; width:20%; text-align: left"></div>
+								<div style="float:left; width:40%; text-align: left">
 									<p ng-repeat="calciatoreDst in proposta.giocatoriDst">{{getAbbreviazioneRuolo(calciatoreDst.ruolo)}} - {{calciatoreDst.nomeAbbr}}</p>
 								</div>
 								<div>
-									<button>Accetta</button>
-									<button>Rifiuta</button>
+									<button ng-click="accettaProposta(proposta.idProposta)">Accetta</button>
+									<button ng-click="rifiutaProposta(proposta.idProposta)">Rifiuta</button>
 								</div>
 							</div>
 						</div>
@@ -88,6 +89,14 @@
 					<button ng-click="richiediScambio()">Richiedi Scambio</button>
 					<input placeholder="Avere" type="text" ng-model="dstMoney">
 				</div>
+				<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+					<div class="imdb-detail-overlay__close imdb-close-icon"
+						data-ng-click="closeConfermaDiv()"></div>
+					<h2 class="imdb-detail-overlay__title" id="confermaTitle"></h2>						
+					<div class="imdb-detail-overlay__content imdb-gutter-v">
+						<span class="imdb-singleerror" id="confermaText"></span>										
+					</div>
+				</div>	
 			</div>
 		</div>
 	</body>
