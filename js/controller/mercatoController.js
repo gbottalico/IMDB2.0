@@ -14,16 +14,6 @@
 		$scope.squadre = data;		
 	});
 
-	$http.get('service/prossimaService.php').success(function(data) {											
-		$scope.listaIncontri = data.filter(function(row) {
-			if (row.competizione == 'Campionato') {
-				return true;
-			} else {
-				return false;
-			}
-		});
-	});
-
 	/*
 	*	Apre il pannellino per l'inserimento della password della squadra selezionata. Se il termine di invio è scaduto, mostra un messaggio di errore
 	*/
@@ -42,10 +32,53 @@
 		$('#divPassword').removeClass('imdb-visible');			
 	}
 
-	$scope.verificaProposte = function(){
+	$scope.verificaProposte = function() {
 		//$http.get('service/mercatoService.php?squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
 			//console.log('Data = ' + JSON.stringify(data));
-			$scope.proposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["125652", "15385", "136078", "123399"],"giocatoriDst":["9436", "13911", "125742", "135254"]}];
+			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["125652", "15385", "136078", "123399"],"giocatoriDst":["9436", "13911", "125742", "135254"]}];
+			$scope.proposte = [];
+			var proposta = {};			
+			var giocatoriAvere = [];
+			var giocatoriDare = [];			
+			angular.forEach($scope.retProposte, function(prop) {
+				var infoSquadra = $scope.squadre.filter(function(row) {
+					if (row.idSquadra == prop.squadraSrc) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+				angular.forEach(prop.giocatoriSrc, function(gioc) {
+					var infoGioc = infoSquadra[0].rosa.filter(function(row) {
+						if (row.idFcm == gioc) {
+							return true;							
+						} else {
+							return false;
+						}
+					});
+					giocatoriAvere.push(infoGioc);
+				});
+				angular.forEach(prop.giocatoriDst, function(gioc) {
+					var infoGioc = infoSquadra[0].rosa.filter(function(row) {
+						if (row.idFcm == gioc) {
+							return true;							
+						} else {
+							return false;
+						}
+					});
+					giocatoriDare.push(infoGioc);
+				});
+				proposta = {
+					idProposta : prop.idProposta,
+					squadraSrc : infoSquadra,
+					squadraDst : $scope.squadraSelected,
+					creditiSrc : prop.creditiSrc,
+					creditiDst : prop.creditiDst,
+					giocatoriSrc : giocatoriAvere,
+					giocatoriDst : giocatoriDare		
+				};
+				$scope.proposte.push(proposta);				
+		});
 		//	});
 	}
 	
@@ -67,9 +100,7 @@
 		}
 		$('#squadra-'+squadraSelected).addClass('selected');
 		$scope.verificaProposte();
-	}	
-	
-	
+	}		
 
 	$scope.getDescrizioneRuolo = function(idRuolo) {
 		return $scope.ruolo[idRuolo-1];
@@ -77,9 +108,7 @@
 
 	$scope.getAbbreviazioneRuolo = function(idRuolo) {
 		return $scope.ruolo[idRuolo-1].substring(0,1);
-	}
-
-	
+	}	
 
 	/*
 	*	Verifica la correttezza della password
@@ -119,7 +148,7 @@
 		
 	}
 	
-	$scope.richiediScambio = function(){
+	$scope.richiediScambio = function() {
 		//effettuo controlli ruolo
 		if ($('input[name=srcSelected]:checked').length==0 || ($('input[name=srcSelected][ruolo=1]:checked').length != $('input[name=dstSelected][ruolo=1]:checked').length  ||
 			$('input[name=srcSelected][ruolo=2]:checked').length != $('input[name=dstSelected][ruolo=2]:checked').length  ||
@@ -154,7 +183,5 @@
 			});
 		}
 	}
-
-	
 
 });

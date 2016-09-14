@@ -13,13 +13,13 @@ imdbFanta.controller('squadreCtrl', function($scope, $http) {
 		$('.menuItem').removeClass('selected');
 		var infoSquadra = $scope.squadre.filter(function(row) {
 			if (row.idSquadra == squadraSelected) {
-				return true
+				return true;
 			} else {
 				return false;
 			}
 		});
 		
-		if (infoSquadra.length != 0){
+		if (infoSquadra.length != 0) {
 			$scope.rosa = infoSquadra[0];
 			$('#fotoPresidente').attr("src", $scope.rosa.foto);
 		}

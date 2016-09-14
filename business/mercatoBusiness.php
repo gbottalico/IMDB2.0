@@ -12,7 +12,7 @@ class RigaProposta {
 	var $giocatoriSrc;
 	var $giocatoriDst;				
 
-	function RigaGiocatore() {
+	function RigaProposta() {
 	}		
 }
 
