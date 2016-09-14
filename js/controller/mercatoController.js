@@ -177,19 +177,53 @@
 					'playerAvere' : [],
 					'azione'      : 'richiediScambio' 					
 			}
+			var mailBody = "Il club " + squadraDst.nome + " ti ha inviato la seguente proposta:\n";	
 			$('input[name=srcSelected]:checked').each(function() {
 				$scope.scambio.playerDare.push($(this).val());
+				mailBody += $(this).attr('nome') + ", ";
 			});
+			if ($scope.dstMoney && $scope.dstMoney > 0) {
+				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.dstMoney + " crediti per ";		
+			} else {
+				mailBody = mailBody.substring(0, mailBody.length - 2) + " per ";
+			}		
 			$('input[name=dstSelected]:checked').each(function() {
 				$scope.scambio.playerAvere.push($(this).val());
-			});
-			console.log($scope.scambio);
+				mailBody += $(this).attr('nome') + ", ";
+			});			
+			if ($scope.srcMoney && $scope.srcMoney > 0) {
+				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.srcMoney + " crediti.\n";		
+			} else {
+				mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
+			}	
+			console.log($scope.scambio);												
 			$http({
 				method : 'POST',
 				url : 'service/mercatoService.php',
 				data : $scope.scambio
 			}).then(function(data) {		
 				console.log('OK' + data.data);
+				$.post('invform/sendmail.php', {
+					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //squadraDst.mail
+					subject : 'Proposta di scambio da ' + squadraDst.nome,
+					body : mailBody,
+					sender : 'mercato-fantacalcio@imdb.it'
+				})
+				.success(function(data) {							
+					if (data != '') {
+						$('#confermaTitle').text('Errore Invio proposta');					
+						$('#confermaText').html(data);
+					} else {
+						$('#confermaTitle').text('Proposta');
+						$('#confermaText').addClass('success');
+						$('#confermaText').text('Proposta inviata!');
+					}
+					$('.imdb-overlay').show();
+					$('#divConferma').addClass('imdb-visible');		
+				})
+				.error(function(data) {
+					console.error('FUCK!');
+				});
 			}, function(data) {
 				console.log('KO' + data.data);
 			});
@@ -226,40 +260,38 @@
 			}
 		}
 
-		$.post('invform/sendmail.php', {
-			recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //destinatari
-			subject : 'Scambio avvenuto tra ' + proposta.squadraSrc.nome + ' e ' + proposta.squadraDst.nome,
-			body : mailBody,
-			sender : 'mercato-fantacalcio@imdb.it'
-		})
+		$http.get('service/mercatoService.php?azione=accettaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
 			if (data != '') {
-				$('#confermaTitle').text('Errore Conferma scambio');					
+				$('#confermaTitle').text('Errore scambio');					
 				$('#confermaText').html(data);
 			} else {
-				$http.get('service/mercatoService.php?azione=accettaProposta&proposta=' + proposta.idProposta)
+				$.post('invform/sendmail.php', {
+					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //destinatari
+					subject : 'Scambio avvenuto tra ' + proposta.squadraSrc.nome + ' e ' + proposta.squadraDst.nome,
+					body : mailBody,
+					sender : 'mercato-fantacalcio@imdb.it'
+				})
 				.success(function(data) {
 					if (data != '') {
-						$('#confermaTitle').text('Errore scambio');					
+						$('#confermaTitle').text('Errore Conferma scambio');					
 						$('#confermaText').html(data);
-					} else {
+					} else {										
 						$('#confermaTitle').text('Scambio');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Scambio avvenuto con successo!');
 					}
 					$('.imdb-overlay').show();
-					$('#divConferma').addClass('imdb-visible');		
+					$('#divConferma').addClass('imdb-visible');				
 				})
 				.error(function(data) {
 					console.error('FUCK!');
-				});				
-			}
-			$('.imdb-overlay').show();
-			$('#divConferma').addClass('imdb-visible');				
+				});		
+			}			
 		})
 		.error(function(data) {
 			console.error('FUCK!');
-		});				
+		});							
 	}
 	
 	/*
@@ -285,19 +317,19 @@
 			mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 		}	
 
-		$.post('invform/sendmail.php', {
-			recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraSrc.mail
-			subject : 'Scambio rifiutato da ' + proposta.squadraDst.nome,
-			body : mailBody,
-			sender : 'mercato-fantacalcio@imdb.it'
-		})
+		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
 			if (data != '') {
 				$('#confermaTitle').text('Errore Conferma scambio');					
 				$('#confermaText').html(data);
-			} else {
-				$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
-				.success(function(data) {
+			} else { 
+				$.post('invform/sendmail.php', {
+					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraSrc.mail
+					subject : 'Scambio rifiutato da ' + proposta.squadraDst.nome,
+					body : mailBody,
+					sender : 'mercato-fantacalcio@imdb.it'
+				})
+				.success(function(data) {							
 					if (data != '') {
 						$('#confermaTitle').text('Errore Rifiuto scambio');					
 						$('#confermaText').html(data);
@@ -312,13 +344,11 @@
 				.error(function(data) {
 					console.error('FUCK!');
 				});				
-			}
-			$('.imdb-overlay').show();
-			$('#divConferma').addClass('imdb-visible');				
+			}		
 		})
 		.error(function(data) {
 			console.error('FUCK!');
-		});	
+		});			
 	}
 	
 	$scope.closeConfermaDiv = function() {

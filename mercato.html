@@ -49,7 +49,7 @@
 						</div>
 					</div>
 			         <div ng-repeat="calciatore in rosa.rosa" class="squadraMercato" >
-			         	<input style="color:white" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" />{{calciatore.nomeAbbr}}
+			         	<input style="color:white" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatore.nomeAbbr}}
 			         </div>			
 				</div>
 				
@@ -81,7 +81,7 @@
 						</div>
 					</div>
 					<div ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" >
-			         	<input style="color:white" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" />{{calciatoreDst.nomeAbbr}}
+			         	<input style="color:white" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatoreDst.nomeAbbr}}
 			         </div>			
 				</div>
 				<div style="text-align:center; color:white" ng-show="squadraSelected && squadraDst">

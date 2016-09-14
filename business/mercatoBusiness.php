@@ -60,13 +60,17 @@ class MercatoBusiness {
 
 		//execute the SQL query and return records		
 		$sql = "UPDATE PROPOSTA SET esito = $esito WHERE id_proposta = $idProposta";
-		if (!mysqli_query($conn, $sqlProposta)) {
+		if (!mysqli_query($conn, $sql)) {
 		  die('Error: ' . mysqli_error($conn));
 		}
 
-		if ($esito == 1) {
+		/*if ($esito == 1) {
 			// Rifiuto automaticamente tutte le altre proposte che contenevano qualcuno dei giocatori inclusi nello scambio appena accettato
-		}		
+			$delSql = "UPDATE PROPOSTA SET esito = 0 WHERE ID_PROPOSTA <> $idProposta AND GIOCATORI_A LIKE '%%' OR GIOCATORI_B LIKE '%%'";
+			if (!mysqli_query($conn, $delSql)) {
+			  die('Error: ' . mysqli_error($conn));
+			}
+		}*/		
 				
 		//close the connection
 		mysqli_close($conn);	
