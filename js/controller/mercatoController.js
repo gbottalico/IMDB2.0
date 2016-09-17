@@ -8,7 +8,7 @@
 	$scope.squadraDstSelected = false;
 	$scope.viewProposte = false;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
-	
+	$scope.proposte = [];
 
 	$http.get('service/squadreService.php').success(function(data) {		
 		$scope.loading = false;
@@ -354,6 +354,15 @@
 	$scope.closeConfermaDiv = function() {
 		$('.imdb-overlay').hide();
 		$('#divConferma').removeClass('imdb-visible');			
+	}
+	
+	$scope.selezionaCalciatore = function(idPlayer, elm){
+		$('input[value='+idPlayer+']').prop('checked', !$('input[value='+idPlayer+']').is(':checked'));
+		if ($('input[value='+idPlayer+']').is(':checked')){
+			$('input[value='+idPlayer+']').parent().addClass('playerSelected');
+		}else{
+			$('input[value='+idPlayer+']').parent().removeClass('playerSelected');
+		}
 	}
 
 });

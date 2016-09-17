@@ -48,40 +48,42 @@
 							</form>
 						</div>
 					</div>
-			         <div ng-repeat="calciatore in rosa.rosa" class="squadraMercato" >
-			         	<input style="color:white" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatore.nomeAbbr}}
+			         <div ng-repeat="calciatore in rosa.rosa" class="squadraMercato"  ng-click="selezionaCalciatore({{calciatore.idFcm}})">
+			         	<input style="color:white; display:none" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatore.nomeAbbr}}
 			         </div>			
 				</div>
 				
 				<div class="verticalLine">		
+					<div ng-hide="proposte.length==0" >
+						<div class="propContainer" ng-click="viewProposte = !viewProposte">
+							<span class="numProposta">{{proposte.length}}</span>
+						 	<img class="imgProposta" src="images/scambio-icon.jpg"/>
+						 </div>
+						<div ng-class="{'imdb-visible' : viewProposte}" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+							<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closePropostaDiv()"></div>
+							<div ng-repeat="proposta in proposte" style="margin-top: 30;">
+								<div>Proposta ricevuta da {{proposta.squadraSrc.nome}}</div>
+								<div style="float:left; width:50%; text-align: left">
+									<p ng-repeat="calciatoreSrc in proposta.giocatoriSrc">{{getAbbreviazioneRuolo(calciatoreSrc.ruolo)}} - {{calciatoreSrc.nomeAbbr}}</p>
+								</div>
+								<div style="float:left; width:50%; text-align: right">
+									<p ng-repeat="calciatoreDst in proposta.giocatoriDst">{{getAbbreviazioneRuolo(calciatoreDst.ruolo)}} - {{calciatoreDst.nomeAbbr}}</p>
+								</div>
+								<div style="width:100%">
+									<img src="images/yes.jpg" style="width: 50px; cursor: pointer" ng-click="accettaProposta(proposta)"></img>
+									<img src="images/no.jpg" style="width: 50px; cursor: pointer" ng-click="rifiutaProposta(proposta)"></img>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				
 				<div class="inv-roseMrc" data-ng-hide="!rosa">
 					<div class="menuContainer">
 						<img  class="logoSquadraMrc" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
 					</div>
-					<div ng-hide="proposte.length==0" >
-						<button ng-click="viewProposte = !viewProposte">Visualizza {{proposte.length}} Proposte</button>
-						<div ng-class="{'imdb-visible' : viewProposte}" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
-							<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closePropostaDiv()"></div>
-							<div ng-repeat="proposta in proposte">
-								<div>Proposta ricevuta da {{proposta.squadraSrc.nome}}</div>
-								<div style="float:left; width:40%; text-align: left">
-									<p ng-repeat="calciatoreSrc in proposta.giocatoriSrc">{{getAbbreviazioneRuolo(calciatoreSrc.ruolo)}} - {{calciatoreSrc.nomeAbbr}}</p>
-								</div>
-								<div style="float:left; width:20%; text-align: left"></div>
-								<div style="float:left; width:40%; text-align: left">
-									<p ng-repeat="calciatoreDst in proposta.giocatoriDst">{{getAbbreviazioneRuolo(calciatoreDst.ruolo)}} - {{calciatoreDst.nomeAbbr}}</p>
-								</div>
-								<div>
-									<button ng-click="accettaProposta(proposta)">Accetta</button>
-									<button ng-click="rifiutaProposta(proposta)">Rifiuta</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" >
-			         	<input style="color:white" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatoreDst.nomeAbbr}}
+					<div ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatoreDst.idFcm}})">
+			         	<input style="color:white; display:none" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatoreDst.nomeAbbr}}
 			         </div>			
 				</div>
 				<div style="text-align:center; color:white" ng-show="squadraSelected && squadraDst">

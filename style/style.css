@@ -1,67 +1,67 @@
-@media (min-width: 992px) {  
-  .imdb-detail-overlay__content {
-    font-size: 20px;
-  }  
-  .imdb-detail-overlay__title h2 {
-    font-size: 50px;
-  }
-  .imdb-overlay-div {
-	width: 40% !important;
-  }
-  .itas-gutter {
-    padding: 30px;
-  }
-  .itas-gutter-h {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  .itas-gutter-v {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  input[type="password"], input[type="submit"] {
-	outline: none;
-	padding-left: 10px;
-  }
-  .imdb-password {
-	-webkit-border-radius: 10;
-	-moz-border-radius: 10;
-	-ms-border-radius: 10;
-	-o-border-radius: 10;
-	border-radius: 10;
-	height: 25px;
-	margin-left: 15px;
-  }
-  .imdb-no-desktop {
-    display: none !important;
-  }
-  .fotoPres {
-  	float: right;
-  	margin-right: 250px;
-  }
-  .sqRiep {
-  	font: bold medium 'trebuchet MS', Arial, helvetica;
-  	float: right;
-  	position: absolute;
-  	top: 10px;
-  	left: 65%;
-  }
-  .logoAllenatore {
-  	height: 60px;
-  	position: absolute;
-  	top: 0;
-  	margin-left: 20px;
-  }
-  /* INVIO FOMRAZIONE */
+@media ( min-width : 992px) {
+	.imdb-detail-overlay__content {
+		font-size: 20px;
+	}
+	.imdb-detail-overlay__title h2 {
+		font-size: 50px;
+	}
+	.imdb-overlay-div {
+		width: 40% !important;
+	}
+	.itas-gutter {
+		padding: 30px;
+	}
+	.itas-gutter-h {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.itas-gutter-v {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	input[type="password"], input[type="submit"] {
+		outline: none;
+		padding-left: 10px;
+	}
+	.imdb-password {
+		-webkit-border-radius: 10;
+		-moz-border-radius: 10;
+		-ms-border-radius: 10;
+		-o-border-radius: 10;
+		border-radius: 10;
+		height: 25px;
+		margin-left: 15px;
+	}
+	.imdb-no-desktop {
+		display: none !important;
+	}
+	.fotoPres {
+		float: right;
+		margin-right: 250px;
+	}
+	.sqRiep {
+		font: bold medium 'trebuchet MS', Arial, helvetica;
+		float: right;
+		position: absolute;
+		top: 10px;
+		left: 65%;
+	}
+	.logoAllenatore {
+		height: 60px;
+		position: absolute;
+		top: 0;
+		margin-left: 20px;
+	}
+	/* INVIO FOMRAZIONE */
 	.logo {
-		height: 50px;		
+		height: 50px;
 	}
 	.logoInv {
 		height: 65px !important;
 		cursor: pointer;
 	}
-	.menuItemInv {	
-		margin: 20px;	
+	.menuItemInv {
+		margin: 20px;
 	}
 	.menuItemInv.selected {
 		opacity: 1;
@@ -70,16 +70,16 @@
 	}
 	.inv-rose {
 		float: left;
-		width: 45%;	
+		width: 45%;
 		height: 580px;
 		overflow: hidden;
 	}
 	.inv-roseMrc {
 		float: left;
-		width: 45%; 
+		width: 45%;
 		overflow: hidden;
 	}
-	.campo {	
+	.campo {
 		position: relative;
 		float: right;
 		width: 425px;
@@ -242,7 +242,7 @@
 		border: 1px solid darkgrey;
 		font-weight: bold;
 		font-size: 17px;
-		text-transform: uppercase;	
+		text-transform: uppercase;
 		margin-right: 15%;
 		width: 20%;
 		height: 30px;
@@ -263,7 +263,7 @@
 		border-radius: 10;
 	}
 	.imdb-invia-btn:hover {
-		color: red;	
+		color: red;
 		border: 1px solid black;
 	}
 	.invform-riga {
@@ -299,96 +299,122 @@
 		border-radius: 7;
 		width: 75%;
 	}
-	.icon-invalid {	
-	  position: absolute;
-	  cursor: pointer;
-	  top: 30%;
-	  right: 15px;
-	  width: 15px;
-	  height: 15px;
-	  z-index: 3;
-	  background-position: 50% 50%;
-	  background-repeat: no-repeat;
-	  -webkit-background-size: 15px 15px;
-	  -moz-background-size: 15px 15px;
-	  -o-background-size: 15px 15px;
-	  background-size: 15px 15px;
-	  background-image: url('../images/field-invalid.png?1405069257');
+	.icon-invalid {
+		position: absolute;
+		cursor: pointer;
+		top: 30%;
+		right: 15px;
+		width: 15px;
+		height: 15px;
+		z-index: 3;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		-webkit-background-size: 15px 15px;
+		-moz-background-size: 15px 15px;
+		-o-background-size: 15px 15px;
+		background-size: 15px 15px;
+		background-image: url('../images/field-invalid.png?1405069257');
 	}
 	.schedina td {
 		font: bold large 'trebuchet MS', Arial, helvetica;
-	}	
+	}
 }
+
 html {
-  font-size: 62.5%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-size: 62.5%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 body {
 	background: url('../images/background.jpg');
 	font-family: "Helvetica Neue", Helvetica-, Arial, sans-serif;
-  	font-size: 14px;
-  	line-height: 1.42857;
+	font-size: 14px;
+	line-height: 1.42857;
 }
+
 .imdb-results__loading {
-	background: url('../images/pallone_loading.gif?1384796714')
-		no-repeat 50% 50%;
+	background: url('../images/pallone_loading.gif?1384796714') no-repeat
+		50% 50%;
 	-webkit-background-size: 64px 64px;
 	-moz-background-size: 64px 64px;
 	-o-background-size: 64px 64px;
 	background-size: 64px 64px;
 	height: 200px;
-	width:60px;
-	position:absolute;
-	top:0px;
-	right:80px;
-	 -webkit-animation: myfirst1 3s; /* Chrome, Safari, Opera */
-	  -webkit-animation-iteration-count: infinite;
-    animation: myfirst1 3s;
-    animation-iteration-count: infinite;
+	width: 60px;
+	position: absolute;
+	top: 0px;
+	right: 80px;
+	-webkit-animation: myfirst1 3s; /* Chrome, Safari, Opera */
+	-webkit-animation-iteration-count: infinite;
+	animation: myfirst1 3s;
+	animation-iteration-count: infinite;
 }
+
 .imdb-results__loading2 {
 	text-align: right;
 	width: 50%;
 	overflow: auto;
-	background: url('../images/beer_loading.gif?1384796714')
-		no-repeat 50% 50%;
+	background: url('../images/beer_loading.gif?1384796714') no-repeat 50%
+		50%;
 	-webkit-background-size: 55px 55px;
 	-moz-background-size: 55px 55px;
 	-o-background-size: 55px 55px;
 	background-size: 55px 55px;
 	height: 190px;
-	width:60px;
-	position:absolute;
-	top:0px;
-	right:350px;
-	 -webkit-animation: myfirst2 3s; /* Chrome, Safari, Opera */
-	 -webkit-animation-iteration-count: infinite;
-    animation: myfirst2 3s;
-    animation-iteration-count: infinite;
+	width: 60px;
+	position: absolute;
+	top: 0px;
+	right: 350px;
+	-webkit-animation: myfirst2 3s; /* Chrome, Safari, Opera */
+	-webkit-animation-iteration-count: infinite;
+	animation: myfirst2 3s;
+	animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes myfirst1 {
-   from {right: 80px;}
-   to {right: 710px;}
+@
+-webkit-keyframes myfirst1 {
+	from {right: 80px;
 }
 
-/* Standard syntax */
-@keyframes myfirst1 {
-    from {right: 80px;}
-   	to {right: 710px;}
+to {
+	right: 710px;
 }
 
-@-webkit-keyframes myfirst2 {
-   from {right: 350px;}
-   to {right: 750px;}
 }
 
 /* Standard syntax */
-@keyframes myfirst2 {
-    from {right: 350px;}
-   	to {right: 750px;}
+@
+keyframes myfirst1 {
+	from {right: 80px;
 }
 
+to {
+	right: 710px;
+}
+
+}
+@
+-webkit-keyframes myfirst2 {
+	from {right: 350px;
+}
+
+to {
+	right: 750px;
+}
+
+}
+
+/* Standard syntax */
+@
+keyframes myfirst2 {
+	from {right: 350px;
+}
+
+to {
+	right: 750px;
+}
+
+}
 .center {
 	text-align: center;
 }
@@ -412,7 +438,7 @@ body {
 	position: relative;
 }
 
-.menu:before,.menu:after {
+.menu:before, .menu:after {
 	content: "";
 	display: table;
 }
@@ -436,7 +462,7 @@ body {
 	color: #fff;
 }
 
-.menu li:hover,.menu li:focus {
+.menu li:hover, .menu li:focus {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
 		.2)), to(rgba(255, 255, 255, 0)));
 	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .2),
@@ -480,7 +506,7 @@ body {
 	transition: all .2s ease-out;
 }
 
-.menu li:hover::after,.menu li:focus::after {
+.menu li:hover::after, .menu li:focus::after {
 	font-size: 100px;
 	opacity: 1;
 }
@@ -490,60 +516,60 @@ body {
 }
 
 /* -------------------------------- */
-.menu li:nth-child(1),.menu li:nth-child(2),.menu li:nth-child(3) {
+.menu li:nth-child(1), .menu li:nth-child(2), .menu li:nth-child(3) {
 	margin-top: 0;
 }
 
-.menu li:nth-child(1),.menu li:nth-child(4),.menu li:nth-child(7) {
+.menu li:nth-child(1), .menu li:nth-child(4), .menu li:nth-child(7) {
 	margin-left: 0;
 }
 
 /* -------------------------------- */
-.menu li:nth-child(1),.menu li:nth-child(1) .content,.menu li:nth-child(1) .close
+.menu li:nth-child(1), .menu li:nth-child(1) .content, .menu li:nth-child(1) .close
 	{
 	background-color: #ff0000;
 }
 
-.menu li:nth-child(2),.menu li:nth-child(2) .content,.menu li:nth-child(2) .close
+.menu li:nth-child(2), .menu li:nth-child(2) .content, .menu li:nth-child(2) .close
 	{
 	background-color: #ffffff;
 	color: red;
 }
 
-.menu li:nth-child(3),.menu li:nth-child(3) .content,.menu li:nth-child(3) .close
+.menu li:nth-child(3), .menu li:nth-child(3) .content, .menu li:nth-child(3) .close
 	{
 	background-color: #ff0000;
 }
 
-.menu li:nth-child(4),.menu li:nth-child(4) .content,.menu li:nth-child(4) .close
+.menu li:nth-child(4), .menu li:nth-child(4) .content, .menu li:nth-child(4) .close
 	{
 	background-color: #ffffff;
 	color: red;
 }
 
-.menu li:nth-child(5),.menu li:nth-child(5) .content,.menu li:nth-child(5) .close
+.menu li:nth-child(5), .menu li:nth-child(5) .content, .menu li:nth-child(5) .close
 	{
 	background-color: #ff0000;
 }
 
-.menu li:nth-child(6),.menu li:nth-child(6) .content,.menu li:nth-child(6) .close
+.menu li:nth-child(6), .menu li:nth-child(6) .content, .menu li:nth-child(6) .close
 	{
 	background-color: #ffffff;
 	color: red;
 }
 
-.menu li:nth-child(7),.menu li:nth-child(7) .content,.menu li:nth-child(7) .close
+.menu li:nth-child(7), .menu li:nth-child(7) .content, .menu li:nth-child(7) .close
 	{
 	background-color: #ff0000;
 }
 
-.menu li:nth-child(8),.menu li:nth-child(8) .content,.menu li:nth-child(8) .close
+.menu li:nth-child(8), .menu li:nth-child(8) .content, .menu li:nth-child(8) .close
 	{
 	background-color: #ffffff;
 	color: red;
 }
 
-.menu li:nth-child(9),.menu li:nth-child(9) .content,.menu li:nth-child(9) .close
+.menu li:nth-child(9), .menu li:nth-child(9) .content, .menu li:nth-child(9) .close
 	{
 	background-color: transparent;
 }
@@ -583,13 +609,13 @@ body {
 	margin-left: -310px;
 }
 
-.menu li:nth-child(7) .content, /* 7,8,9 */ .menu li:nth-child(8) .content,.menu li:nth-child(9) .content
-	{
+.menu li:nth-child(7) .content, /* 7,8,9 */ .menu li:nth-child(8) .content,
+	.menu li:nth-child(9) .content {
 	bottom: 0;
 }
 
-.menu li:nth-child(4) .expanded, /* 4,5,6 */ .menu li:nth-child(5) .expanded,.menu li:nth-child(6) .expanded
-	{
+.menu li:nth-child(4) .expanded, /* 4,5,6 */ .menu li:nth-child(5) .expanded,
+	.menu li:nth-child(6) .expanded {
 	margin-top: -190px;
 	top: 50%;
 }
@@ -648,7 +674,7 @@ body {
 }
 
 #calendarioTable tr {
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .container th h1 {
@@ -669,7 +695,7 @@ body {
 	font: bold larger 'trebuchet MS', Arial, helvetica;
 }
 
-.container td,.container th {
+.container td, .container th {
 	padding: 5px;
 }
 
@@ -744,24 +770,29 @@ body {
 	color: #332E2E !important;
 	background-color: lightgrey !important;
 }
+
 .invia-form-table {
 	height: 100%;
 	width: 100%;
 	color: white;
-	background-color: #332E2E;	
+	background-color: #332E2E;
 }
+
 .invform-logo {
 	height: 20px;
 	cursor: pointer;
 }
+
 .invform-password-div {
 	position: absolute;
 	top: 600px;
 }
+
 #elencoGiornate ul {
 	overflow: auto;
 	padding: 0px;
 }
+
 #elencoGiornate li {
 	color: white;
 	float: left;
@@ -773,131 +804,151 @@ body {
 	padding: 0px 10px;
 	list-style: none;
 }
+
 #elencoGiornate li.selected {
 	color: red;
 }
+
 .riepilogoTableContainer {
 	width: 100%;
 	margin: 10px auto;
 	font: bold xx-small 'trebuchet MS', Arial, helvetica;
 }
+
 .riepilogoContainer {
 	background: rgb(234, 233, 233);
 	overflow: auto;
 }
+
 .riepilogoContainer td {
 	white-space: nowrap;
-	font-size: xx-small;	
+	font-size: xx-small;
 }
+
 .hidden {
 	display: none;
 }
+
 .imdb-overlay {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: url('../images/fill-000000-65.png?1384796714');
-  background: rgba(0, 0, 0, 0.65);
-  display: none;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url('../images/fill-000000-65.png?1384796714');
+	background: rgba(0, 0, 0, 0.65);
+	display: none;
 }
+
 .imdb-overlay.imdb-overlay-visible {
-  display: block;
+	display: block;
 }
+
 .imdb-detail-overlay {
-  position: absolute;
-  z-index: 2000;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: url('../images/fill-ffffff-90.png?1395068096');
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 13px;
-  display: none;
-  margin-top: 100px;
-  opacity: 0;
-  -webkit-transition: all 300ms ease-in-out;
-  transition: all 300ms ease-in-out;
-  -webkit-transition-property: opacity, margin-top;
-  transition-property: opacity, margin-top;
+	position: absolute;
+	z-index: 2000;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: url('../images/fill-ffffff-90.png?1395068096');
+	background: rgba(255, 255, 255, 0.9);
+	font-size: 13px;
+	display: none;
+	margin-top: 100px;
+	opacity: 0;
+	-webkit-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+	-webkit-transition-property: opacity, margin-top;
+	transition-property: opacity, margin-top;
 }
+
 .imdb-detail-overlay.imdb-visible {
-  margin-top: 0;
-  opacity: 1;
-  display: block;
+	margin-top: 0;
+	opacity: 1;
+	display: block;
 }
+
 .imdb-detail-overlay__close {
-  text-align: right;
+	text-align: right;
 }
-.imdb-detail-overlay__title { 
-  color: #363031;
-  font-family: "HelveticaNeueBlack", Arial, Helvetica, sans-serif;  
-  line-height: 1.5;
-  text-transform: uppercase;
-  font-size: x-large;
-  margin: 0;
-  margin-bottom: 20px;
-  display: block;
-  width: auto;
+
+.imdb-detail-overlay__title {
+	color: #363031;
+	font-family: "HelveticaNeueBlack", Arial, Helvetica, sans-serif;
+	line-height: 1.5;
+	text-transform: uppercase;
+	font-size: x-large;
+	margin: 0;
+	margin-bottom: 20px;
+	display: block;
+	width: auto;
 }
+
 .imdb-detail-overlay__content {
-  font-size: x-large;
+	font-size: x-large;
 }
+
 .imdb-close-icon {
-  font-size: x-large;
-  cursor: pointer;
-  color: #000;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  font-weight: 100;
-  line-height: 1;
-  float: right;
-  -webkit-font-smoothing: antialiased;
+	font-size: x-large;
+	cursor: pointer;
+	color: #000;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: normal;
+	font-weight: 100;
+	line-height: 1;
+	float: right;
+	-webkit-font-smoothing: antialiased;
 }
+
 .imdb-close-icon:before {
-  content: url('../images/close.png');
+	content: url('../images/close.png');
 }
+
 .imdb-left {
 	float: left;
 }
+
 .imdb-right {
 	float: right;
 }
-.imdb-overlay-div {	
+
+.imdb-overlay-div {
 	width: 92%;
 	top: 50%;
 	margin: 0 auto;
 	position: absolute;
 	text-align: center;
 }
+
 .imdb-error {
 	color: #a90433;
 	font-size: small;
 	text-transform: uppercase;
 	font-weight: bold;
 	float: left;
-	margin-left: 20%;	
+	margin-left: 20%;
 }
+
 .imdb-error.success {
-	color: #458630;	
+	color: #458630;
 }
 
 .imdb-gutter {
-  padding: 10px;
+	padding: 10px;
 }
 
 .imdb-gutter-h {
-  padding-left: 10px;
-  padding-right: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .imdb-gutter-v {
-  padding-top: 10px;
-  padding-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
+
 table {
 	border-collapse: collapse;
 	font: bold 1em 'trebuchet MS', Arial, helvetica;
@@ -910,7 +961,6 @@ table {
 	width: 90%;
 	margin: 0 auto;
 }
-
 
 .panchina td {
 	border-bottom: 1px solid black;
@@ -944,161 +994,219 @@ table {
 .riepilogoFuori {
 	
 }
+
 .invform-loghi {
 	width: 100%;
 	height: 100%;
 	text-align: center;
 }
+
 .schedina {
 	width: 90%;
 	margin: 10px;
 	outline: none;
 }
+
 .schedina-pron.selected {
 	background: url('../images/schedina_selected.png') !important;
 }
+
 .schedina-1 {
 	background: url('../images/schedina_1.png');
 	width: 15px;
 	height: 15px;
-	cursor: pointer;	
+	cursor: pointer;
 }
+
 .schedina-x {
 	background: url('../images/schedina_X.png');
 	width: 15px;
 	height: 15px;
-	cursor: pointer;	
+	cursor: pointer;
 }
+
 .schedina-2 {
 	background: url('../images/schedina_2.png');
 	width: 15px;
 	height: 15px;
-	cursor: pointer;	
+	cursor: pointer;
 }
 
-.closeButton{
-	float:right;
-	cursor:pointer;
+.closeButton {
+	float: right;
+	cursor: pointer;
 }
 
-.nonConsegnata{
+.nonConsegnata {
 	text-align: center;
 	width: 50%;
 }
 
-.selectMobile{
+.selectMobile {
 	display: none;
 }
+
 .imdb-singleerror {
 	color: #a90433;
 	font-size: 12px;
 	text-transform: uppercase;
-	font-weight: bold;	
+	font-weight: bold;
 }
+
 .imdb-singleerror.success {
-	color: #458630;	
+	color: #458630;
 }
+
 img {
 	border: 0;
 }
-.invform-portiere {	
-	color: #999900 !important;	
+
+.invform-portiere {
+	color: #999900 !important;
 }
 
-.invform-difensore {		
-	color: #336600 !important; 	
+.invform-difensore {
+	color: #336600 !important;
 }
 
 .invform-centrocampista {
-	color: #CC0000 !important;	
+	color: #CC0000 !important;
 }
 
-.invform-attaccante {	
-	color: #3300FF !important;	
+.invform-attaccante {
+	color: #3300FF !important;
 }
+
 .bad {
 	color: red;
 }
+
 .good {
 	color: green;
 }
+
 .center {
 	text-align: center;
 }
 
 #fgazzetta {
-    -ms-zoom: 0.9;
-    -moz-transform: scale(0.9);
-    -moz-transform-origin: 0 0;
-    -o-transform: scale(0.9);
-    -o-transform-origin: 0 0;
-    -webkit-transform: scale(0.9);
-    -webkit-transform-origin: 0 0;
+	-ms-zoom: 0.9;
+	-moz-transform: scale(0.9);
+	-moz-transform-origin: 0 0;
+	-o-transform: scale(0.9);
+	-o-transform-origin: 0 0;
+	-webkit-transform: scale(0.9);
+	-webkit-transform-origin: 0 0;
 }
+
 .divVoti {
 	overflow: hidden;
 	max-height: 800px;
-	-webkit-overflow-scrolling:touch;
+	-webkit-overflow-scrolling: touch;
 	overflow-y: scroll;
 }
+
 .votiAssist {
 	width: 100%;
 	height: 650px;
 }
+
 .white {
 	background-color: white !important;
 	color: black;
 }
+
 .red {
 	background-color: red;
 	color: black;
 }
+
 .green {
 	background-color: green;
 	color: black;
 }
+
 .yellow {
 	background-color: yellow;
 	color: black;
 }
+
 .orange {
 	background-color: orange;
 	color: black;
 }
+
 .darkgreen {
 	background-color: darkgreen;
 	color: black;
 }
+
 .ciano {
 	background-color: cyan;
 	color: black;
 }
+
 .titoloOrder td span {
 	cursor: pointer;
 }
+
 #giocatoriliberi td:nth-child(2) {
 	width: 40%;
 }
-#giocatoriliberi td:nth-child(1), #giocatoriliberi td:nth-child(3), #giocatoriliberi td:nth-child(4), #giocatoriliberi td:nth-child(5) {
+
+#giocatoriliberi td:nth-child(1), #giocatoriliberi td:nth-child(3),
+	#giocatoriliberi td:nth-child(4), #giocatoriliberi td:nth-child(5) {
 	width: 15%;
 }
 
-.logoSquadraMrc{
+.logoSquadraMrc {
 	width: 10%;
 	cursor: pointer;
 }
+
 .verticalLine {
 	float: left;
 	height: 100%;
-	width: 10%
+	width: 10%;
 }
-.squadraMercato{
+
+.squadraMercato {
 	background-color: rgb(210, 211, 248);
 	margin: 5px;
 	line-height: 2;
+	cursor:pointer;
 }
 
-.proposta{
-	background-color:red;
+.proposta {
+	background-color: red;
 	color: white;
+}
+
+.numProposta {
+	position: absolute;
+	top: -20;
+	left: -5;
+	color: red;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.imgProposta {
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+}
+
+.propContainer {
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+	margin-top: 60px;
+}
+
+.playerSelected {
+	background-color: green;
+	color: gold;
+	font-size: 1.2em
 }
