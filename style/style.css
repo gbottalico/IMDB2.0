@@ -1192,8 +1192,7 @@ img {
 }
 
 .imgProposta {
-	height: 50px;
-	width: 50px;
+	width: 100%;
 	cursor: pointer;
 }
 
@@ -1209,4 +1208,12 @@ img {
 	background-color: green;
 	color: gold;
 	font-size: 1.2em
+}
+
+.divProposte{
+	margin : 25px; 
+}
+
+.slick-prev, .slick-next {
+	background: #b11e1e!important;
 }

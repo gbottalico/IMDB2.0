@@ -41,7 +41,7 @@
 	$scope.verificaProposte = function() {
 		//$http.get('service/mercatoService.php?azione=getProposte&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
 			//console.log('Data = ' + JSON.stringify(data));
-			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
+			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]},{"idProposta":"9","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
 			$scope.proposte = [];
 			var proposta = {};			
 			var giocatoriAvere = [];
@@ -86,6 +86,19 @@
 				$scope.proposte.push(proposta);				
 		});
 		//	});
+//			$('.divProposte').slick();
+	}
+	
+	$scope.toggleViewProposte = function(){
+		$scope.viewProposte = !$scope.viewProposte;
+		setTimeout($scope.trasformaProposte, 500);
+	}
+	
+	$scope.trasformaProposte = function(){
+		$('.divProposte').slick({
+			dots: true,
+			infinite: false,
+		});
 	}
 	
 	$scope.visualizzaSquadra = function(squadraSelected) {		
