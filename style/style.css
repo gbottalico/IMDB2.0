@@ -1185,9 +1185,12 @@ img {
 
 .numProposta {
 	position: absolute;
-	top: -20;
+	/*top: -20;
 	left: -5;
-	color: red;
+	color: red;*/
+	top: -25;
+	left: 20;
+	color: yellow;
 	font-weight: bold;
 	font-size: 2em;
 }
