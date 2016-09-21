@@ -1206,7 +1206,7 @@ img {
 }
 
 .playerSelected {
-	background-color: green;
+	background-color: green !important;
 	color: gold;
 	font-size: 1.2em
 }

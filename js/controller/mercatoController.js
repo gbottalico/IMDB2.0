@@ -190,7 +190,7 @@
 					'playerAvere' : [],
 					'azione'      : 'richiediScambio' 					
 			}
-			var mailBody = "Il club " + squadraDst.nome + " ti ha inviato la seguente proposta:\n";	
+			var mailBody = "Il club " + $scope.squadraDst.nome + " ti ha inviato la seguente proposta:\n";	
 			$('input[name=srcSelected]:checked').each(function() {
 				$scope.scambio.playerDare.push($(this).val());
 				mailBody += $(this).attr('nome') + ", ";
@@ -218,7 +218,7 @@
 				console.log('OK' + data.data);
 				$.post('invform/sendmail.php', {
 					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //squadraDst.mail
-					subject : 'Proposta di scambio da ' + squadraDst.nome,
+					subject : 'Proposta di scambio da ' + $scope.squadraDst.nome,
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
 				})
@@ -426,12 +426,12 @@
 		$('#divConferma').removeClass('imdb-visible');			
 	}
 	
-	$scope.selezionaCalciatore = function(idPlayer, elm){
-		$('input[value='+idPlayer+']').prop('checked', !$('input[value='+idPlayer+']').is(':checked'));
-		if ($('input[value='+idPlayer+']').is(':checked')){
-			$('input[value='+idPlayer+']').parent().addClass('playerSelected');
-		}else{
-			$('input[value='+idPlayer+']').parent().removeClass('playerSelected');
+	$scope.selezionaCalciatore = function(idPlayer){
+		$('input[value=' + idPlayer + ']').prop('checked', !$('input[value=' + idPlayer + ']').is(':checked'));
+		if ($('input[value=' + idPlayer + ']').is(':checked')) {
+			$('input[value=' + idPlayer + ']').parent().parent().addClass('playerSelected');
+		} else {
+			$('input[value=' + idPlayer + ']').parent().parent().removeClass('playerSelected');
 		}
 	}
 

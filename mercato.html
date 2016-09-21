@@ -51,13 +51,33 @@
 							</form>
 						</div>
 					</div>
-			         <div ng-repeat="calciatore in rosa.rosa" class="squadraMercato"  ng-click="selezionaCalciatore({{calciatore.idFcm}})">
-			         	<input style="color:white; display:none" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatore.nomeAbbr}}
-			         </div>			
+					<br >
+					<table class="container" ng-show="rosa.rosa">
+						<thead>
+							<tr>
+							  <th></th>
+							  <th></th>
+						      <th>Nome</th>	
+						      <th>Squadra</th>
+						      <th></th>					      
+						      <th>Prezzo</th>					      	      
+						    </tr>
+						</thead>
+						<tbody>
+				        	<tr ng-repeat="calciatore in rosa.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatore.idFcm}})" ng-class="{ 'portiere' : calciatore.ruolo == 1, 'difensore' : calciatore.ruolo == 2, 'centrocampista' : calciatore.ruolo == 3, 'attaccante' : calciatore.ruolo == 4 }">
+				        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" /></td>
+				         		<td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.foto}}" err-src="images/misterx.gif"></td>
+							    <td>{{calciatore.nome}}</td>		
+							    <td>{{calciatore.squadraDiA}}</td>	
+							    <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}" err-src="images/nologo.png"></td>
+							    <td>{{calciatore.prezzo}}</td>
+				        	</tr>			
+				        </tbody>
+			        </table>
 				</div>
 				
 				<div class="verticalLine">		
-					<div ng-hide="proposte.length==0" >
+					<div ng-hide="proposte.length == 0" >
 						<div class="propContainer" ng-click="toggleViewProposte()">
 							<span class="numProposta">{{proposte.length}}</span>
 						 	<img class="imgProposta" src="images/scambio-icon.jpg"/>
@@ -94,9 +114,29 @@
 					<div class="menuContainer">
 						<img  class="logoSquadraMrc" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
 					</div>
-					<div ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatoreDst.idFcm}})">
-			         	<input style="color:white; display:none" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatoreDst.nomeAbbr}}
-			         </div>			
+					<br >
+					<table class="container" ng-show="rosaDst.rosa">
+						<thead>
+							<tr>
+							  <th></th>
+							  <th></th>
+						      <th>Nome</th>	
+						      <th>Squadra</th>
+						      <th></th>					      
+						      <th>Prezzo</th>					      	      
+						    </tr>
+						</thead>
+						<tbody>
+				        	<tr ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatoreDst.idFcm}})" ng-class="{ 'portiere' : calciatoreDst.ruolo == 1, 'difensore' : calciatoreDst.ruolo == 2, 'centrocampista' : calciatoreDst.ruolo == 3, 'attaccante' : calciatoreDst.ruolo == 4 }">
+				        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatoreDst.nomeAbbr}}" /></td>
+				         		<td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatoreDst.foto}}" err-src="images/misterx.gif"></td>
+							    <td>{{calciatoreDst.nome}}</td>		
+							    <td>{{calciatoreDst.squadraDiA}}</td>	
+							    <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatoreDst.squadraDiAfoto}}" err-src="images/nologo.png"></td>
+							    <td>{{calciatoreDst.prezzo}}</td>
+				        	</tr>			
+				        </tbody>
+			        </table>					
 				</div>
 				<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 					<div class="imdb-detail-overlay__close imdb-close-icon"
