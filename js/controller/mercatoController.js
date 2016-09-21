@@ -39,7 +39,7 @@
 	}
 
 	$scope.verificaProposte = function() {
-		//$http.get('service/mercatoService.php?azione=getProposte&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
+		//$http.get('service/mercatoService.php?azione=getProposteRicevute&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
 			//console.log('Data = ' + JSON.stringify(data));
 			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]},{"idProposta":"9","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
 			$scope.proposte = [];
@@ -350,6 +350,63 @@
 						$('#confermaTitle').text('Scambio');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Scambio Rifiutato!');
+					}
+					$('.imdb-overlay').show();
+					$('#divConferma').addClass('imdb-visible');		
+				})
+				.error(function(data) {
+					console.error('FUCK!');
+				});				
+			}		
+		})
+		.error(function(data) {
+			console.error('FUCK!');
+		});			
+	}
+
+	/*
+	*	Gestisce l'annullamento di una proposta
+	*/
+	$scope.annullaProposta = function(proposta) {
+
+		var mailBody = "Il club " + proposta.squadraSrc.nome + " ha annullato la sua proposta:\n";		
+		angular.forEach(proposta.giocatoriDst, function(gioc) {
+			mailBody += gioc.nomeAbbr + ', ';
+		});
+		if (proposta.creditiDst > 0) {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + proposta.creditiDst + " crediti per ";		
+		} else {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + " per ";
+		}		
+		angular.forEach(proposta.giocatoriSrc, function(gioc) {
+			mailBody += gioc.nomeAbbr + ', ';
+		});
+		if (proposta.creditiSrc > 0) {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + proposta.creditiSrc + " crediti.\n";		
+		} else {
+			mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
+		}	
+
+		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
+		.success(function(data) {
+			if (data != '') {
+				$('#confermaTitle').text('Errore Annullamento scambio');					
+				$('#confermaText').html(data);
+			} else { 
+				$.post('invform/sendmail.php', {
+					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraDst.mail
+					subject : 'Scambio annullato da ' + proposta.squadraSrc.nome,
+					body : mailBody,
+					sender : 'mercato-fantacalcio@imdb.it'
+				})
+				.success(function(data) {							
+					if (data != '') {
+						$('#confermaTitle').text('Errore Annullamento scambio');					
+						$('#confermaText').html(data);
+					} else {
+						$('#confermaTitle').text('Scambio');
+						$('#confermaText').addClass('success');
+						$('#confermaText').text('Scambio Annullato!');
 					}
 					$('.imdb-overlay').show();
 					$('#divConferma').addClass('imdb-visible');		

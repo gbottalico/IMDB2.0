@@ -7,9 +7,12 @@
 		MercatoBusiness::insertProposta($data->squadraSrc, $data->squadraDst, $data->soldiDare, $data->soldiAvere, $data->playerDare, $data->playerAvere); 
 	} else {
 		$azione = $_REQUEST['azione'];
-		if ($azione == 'getProposte') {
+		if ($azione == 'getProposteRicevute') {
 			$squadra = $_REQUEST['squadra'];
-			echo MercatoBusiness::getProposteSquadra($squadra);
+			echo MercatoBusiness::getProposteRicevute($squadra);
+		} else if ($azione == 'getProposteFatte') {
+			$squadra = $_REQUEST['squadra'];
+			echo MercatoBusiness::getProposteFatte($squadra);
 		} else {
 			$proposta = $_REQUEST['proposta'];
 			if ($azione == 'rifiutaProposta') {				
