@@ -179,7 +179,10 @@
 			$('input[name=srcSelected][ruolo=2]:checked').length != $('input[name=dstSelected][ruolo=2]:checked').length  ||
 			$('input[name=srcSelected][ruolo=3]:checked').length != $('input[name=dstSelected][ruolo=3]:checked').length  ||
 			$('input[name=srcSelected][ruolo=4]:checked').length != $('input[name=dstSelected][ruolo=4]:checked').length)) {
-			alert ('I ruoli non coincidono');
+			$('#confermaTitle').text('Attenzione');					
+			$('#confermaText').html("Impossibile completare la richiesta. I ruoli selezionati non coincidono");	
+			$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');				
 		} else {
 			$scope.scambio = {
 					'squadraSrc'  : $scope.squadraSelected.idSquadra,
@@ -278,6 +281,8 @@
 			if (data != '') {
 				$('#confermaTitle').text('Errore scambio');					
 				$('#confermaText').html(data);
+				$('.imdb-overlay').show();
+				$('#divConferma').addClass('imdb-visible');		
 			} else {
 				$.post('invform/sendmail.php', {
 					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //destinatari
@@ -335,6 +340,8 @@
 			if (data != '') {
 				$('#confermaTitle').text('Errore Conferma scambio');					
 				$('#confermaText').html(data);
+				$('.imdb-overlay').show();
+				$('#divConferma').addClass('imdb-visible');		
 			} else { 
 				$.post('invform/sendmail.php', {
 					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraSrc.mail
@@ -392,6 +399,8 @@
 			if (data != '') {
 				$('#confermaTitle').text('Errore Annullamento scambio');					
 				$('#confermaText').html(data);
+				$('.imdb-overlay').show();
+				$('#divConferma').addClass('imdb-visible');		
 			} else { 
 				$.post('invform/sendmail.php', {
 					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraDst.mail
