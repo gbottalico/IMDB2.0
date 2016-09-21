@@ -91,7 +91,7 @@
 	
 	$scope.toggleViewProposte = function(){
 		$scope.viewProposte = !$scope.viewProposte;
-		setTimeout($scope.trasformaProposte, 500);
+		setTimeout($scope.trasformaProposte, 100);
 	}
 	
 	$scope.trasformaProposte = function(){

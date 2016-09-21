@@ -83,6 +83,11 @@
 							</div>
 						</div>
 					</div>
+					<div style="text-align:center; color:white; margin-top:50px" ng-show="squadraSelected && squadraDst">
+						<input class="money" placeholder="Dare" type="text" ng-model="srcMoney"> <img src="images/right.png" class="moneyArrow"/>
+						<img src="images/change.png" ng-click="richiediScambio()" style="width:50px; display: block; margin: 0 auto"/>
+						<img src="images/left.png" class="moneyArrow"/><input class="money" placeholder="Avere" type="text" ng-model="dstMoney">
+					</div>
 				</div>
 				
 				<div class="inv-roseMrc" data-ng-hide="!rosa">
@@ -92,11 +97,6 @@
 					<div ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatoreDst.idFcm}})">
 			         	<input style="color:white; display:none" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatore.nomeAbbr}}" />{{calciatoreDst.nomeAbbr}}
 			         </div>			
-				</div>
-				<div style="text-align:center; color:white" ng-show="squadraSelected && squadraDst">
-					<input placeholder="Dare" type="text" ng-model="srcMoney"> 
-					<button ng-click="richiediScambio()">Richiedi Scambio</button>
-					<input placeholder="Avere" type="text" ng-model="dstMoney">
 				</div>
 				<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 					<div class="imdb-detail-overlay__close imdb-close-icon"

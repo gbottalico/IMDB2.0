@@ -1175,6 +1175,7 @@ img {
 	margin: 5px;
 	line-height: 2;
 	cursor:pointer;
+	padding: 10px;
 }
 
 .proposta {
@@ -1216,4 +1217,16 @@ img {
 
 .slick-prev, .slick-next {
 	background: #b11e1e!important;
+}
+
+.money{
+	height: 40px;
+    width: 50%;
+    font-size: 16px;
+    text-align: center;
+}
+
+.moneyArrow{
+	width: 25px;
+	vertical-align: middle;
 }
