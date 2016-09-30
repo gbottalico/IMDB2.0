@@ -26,9 +26,8 @@
 		$scope.squadraSelected = squadraSelected;
 		$scope.rosa = null;
 		$scope.rosaDst = null;
-		$scope.squadraDst = null;
-		$scope.srcMoney = 0;
-		$scope.dstMoney = 0;
+		$scope.squadraDst = null;	
+		$scope.resetPage();	
 		$('.imdb-overlay').show();
 	}
 
@@ -40,6 +39,15 @@
 	$scope.closePropostaDiv = function() {
 		$('.imdb-overlay').hide();
 		$scope.viewProposte = !$scope.viewProposte;
+	}
+
+	$scope.resetPage = function() {
+		$scope.srcMoney = 0;
+		$scope.dstMoney = 0;
+		$('input[name=srcSelected]').attr('checked', '');
+		$('input[name=dstSelected]').attr('checked', '');
+		$('input[name=srcSelected]').parent().parent().removeClass('playerSelected');
+		$('input[name=dstSelected]').parent().parent().removeClass('playerSelected');
 	}
 
 	$scope.verificaProposte = function() {
@@ -102,12 +110,13 @@
 		});
 	}
 	
-	$scope.toggleViewProposte = function(){
+	$scope.toggleViewProposte = function() {
 		$scope.viewProposte = !$scope.viewProposte;
 		setTimeout($scope.trasformaProposte, 100);
 	}
 	
-	$scope.trasformaProposte = function(){
+	$scope.trasformaProposte = function() {		
+		$('.imdb-overlay').toggle();
 		$('.divProposte').slick({
 			dots: true,
 			infinite: false,
@@ -244,8 +253,7 @@
 						$('#confermaTitle').text('Proposta Inviata');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Proposta inviata con successo!');
-						$scope.srcMoney = 0;
-						$scope.dstMoney = 0;
+						$scope.resetPage();
 					}
 					$('.imdb-overlay').show();
 					$('#divConferma').addClass('imdb-visible');		
@@ -349,7 +357,7 @@
 		} else {
 			mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 		}	
-		var destinatari = proposta.squadraDst.mail + "; "	+ $scope.squadraSrc.mail;	
+		var destinatari = proposta.squadraDst.mail + "; "	+ proposta.squadraSrc.mail;	
 		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
 			if (data.trim() != '') {				
