@@ -1177,6 +1177,10 @@ img {
 	cursor: pointer;
 }
 
+.propLogo {
+	height: 50px;
+}
+
 .propContainer {
 	position: relative;
 	text-align: center;

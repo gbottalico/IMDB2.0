@@ -46,7 +46,7 @@
 		$scope.proposte = [];
 		$http.get('service/mercatoService.php?azione=getProposteRicevute&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
 			console.log('Data = ' + JSON.stringify(data));			
-			//$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]},{"idProposta":"9","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
+			//$scope.retProposte = [{"idProposta":"18","squadraSrc":"7","squadraDst":"2","creditiSrc":null,"creditiDst":null,"giocatoriSrc":null,"giocatoriDst":null,"creditiA":"0","creditiB":"2","giocatoriA":"141652,1570","giocatoriB":"15018,9459"}];
 			$scope.retProposte = data;						
 			angular.forEach($scope.retProposte, function(prop) {
 				var proposta = {};			
@@ -100,7 +100,6 @@
 				$scope.proposte.push(proposta);				
 			});
 		});
-//			$('.divProposte').slick();
 	}
 	
 	$scope.toggleViewProposte = function(){
@@ -223,7 +222,8 @@
 			} else {
 				mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 			}	
-			console.log($scope.scambio);												
+			console.log($scope.scambio);
+			var destinatari = $scope.squadraDst.mail + "; "	+ $scope.squadraSelected.mail;											
 			$http({
 				method : 'POST',
 				url : 'service/mercatoService.php',
@@ -231,7 +231,7 @@
 			}).then(function(data) {		
 				console.log('OK' + data.data);
 				$.post('invform/sendmail.php', {
-					recipient : 'luca.angelini85@gmail.com', //$scope.squadraDst.mail
+					recipient : destinatari,
 					subject : 'Proposta di scambio da ' + $scope.squadraSelected.nome,
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
@@ -241,9 +241,9 @@
 						$('#confermaTitle').text('Errore Invio proposta');					
 						$('#confermaText').html(data);
 					} else {
-						$('#confermaTitle').text('Proposta');
+						$('#confermaTitle').text('Proposta Inviata');
 						$('#confermaText').addClass('success');
-						$('#confermaText').text('Proposta inviata!');
+						$('#confermaText').text('Proposta inviata con successo!');
 						$scope.srcMoney = 0;
 						$scope.dstMoney = 0;
 					}
@@ -298,7 +298,7 @@
 				$('#divConferma').addClass('imdb-visible');		
 			} else {
 				$.post('invform/sendmail.php', {
-					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //destinatari
+					recipient : destinatari,
 					subject : 'Scambio avvenuto tra ' + proposta.squadraSrc.nome + ' e ' + proposta.squadraDst.nome,
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
@@ -349,7 +349,7 @@
 		} else {
 			mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 		}	
-
+		var destinatari = proposta.squadraDst.mail + "; "	+ $scope.squadraSrc.mail;	
 		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
 			if (data.trim() != '') {				
@@ -359,7 +359,7 @@
 				$('#divConferma').addClass('imdb-visible');		
 			} else { 
 				$.post('invform/sendmail.php', {
-					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraSrc.mail
+					recipient : destinatari,
 					subject : 'Scambio rifiutato da ' + proposta.squadraDst.nome,
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
@@ -409,6 +409,7 @@
 		} else {
 			mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 		}	
+		var destinatari = proposta.squadraDst.mail + "; "	+ $scope.squadraSrc.mail;	
 
 		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
@@ -419,7 +420,7 @@
 				$('#divConferma').addClass('imdb-visible');		
 			} else { 
 				$.post('invform/sendmail.php', {
-					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //proposta.squadraDst.mail
+					recipient : destinatari,
 					subject : 'Scambio annullato da ' + proposta.squadraSrc.nome,
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
