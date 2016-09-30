@@ -371,50 +371,27 @@ body {
 	animation-iteration-count: infinite;
 }
 
-@
--webkit-keyframes myfirst1 {
-	from {right: 80px;
-}
-
-to {
-	right: 710px;
-}
-
+@-webkit-keyframes myfirst1 {
+	from {right: 80px;}
+	to {right: 710px;}
 }
 
 /* Standard syntax */
-@
-keyframes myfirst1 {
-	from {right: 80px;
+@keyframes myfirst1 {
+	from {right: 80px;}
+	to {right: 710px;}
 }
-
-to {
-	right: 710px;
-}
-
-}
-@
--webkit-keyframes myfirst2 {
-	from {right: 350px;
-}
-
-to {
-	right: 750px;
-}
-
+@-webkit-keyframes myfirst2 {
+	from {right: 350px;}
+	to {right: 750px;}
 }
 
 /* Standard syntax */
-@
-keyframes myfirst2 {
-	from {right: 350px;
+@keyframes myfirst2 {
+	from {right: 350px;}
+	to {right: 750px;}
 }
 
-to {
-	right: 750px;
-}
-
-}
 .center {
 	text-align: center;
 }

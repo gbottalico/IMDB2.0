@@ -1,7 +1,6 @@
 
 	imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
-
-	var pwdTest = 'testinvio';
+	
 	$scope.loading = true;
 	$scope.loadingForm = false;
 	$scope.showSquadra = false;
@@ -149,11 +148,8 @@
 	*/
 	$scope.verificaPassword = function(originale) {
 		var pwdInserita = $('input[name=password]').val();		
-		var crypted = Javacrypt.crypt("jd", pwdInserita);
-		if (pwdInserita == pwdTest) {
-			$scope.invioFake = true;
-		}
-		if (!$scope.invioFake && crypted[0] != originale) {			
+		var crypted = Javacrypt.crypt("jd", pwdInserita);		
+		if (crypted[0] != originale) {			
 			$scope.inviabile = false;
 		} else {	
 			$scope.inviabile = true;		
