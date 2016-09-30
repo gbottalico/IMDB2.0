@@ -37,6 +37,7 @@
 				<div class="inv-roseMrc">
 					<div class="menuContainer">
 						<img class="logoSquadraMrc" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">
+						<img class="logo backHome"  onclick="window.location='index.html'" alt="Torna alla homepage" src="images/football.png" style="position: absolute; top: 15px; left: 48%;">
 					</div>
 					<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 						<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closePasswordDiv()"></div>
@@ -121,7 +122,7 @@
 							</div>
 						</div>
 					</div>
-					<div style="text-align:center; color:white; margin-top:50px" ng-show="squadraSelected && squadraDst">
+					<div style="text-align: center; color: white; margin-top: 100px" ng-show="squadraSelected && squadraDst">
 						<input class="money" placeholder="Dare" type="text" ng-model="srcMoney"> <img src="images/right.png" class="moneyArrow"/>
 						<img src="images/change.png" ng-click="richiediScambio()" style="width: 50px; display: block; margin: 0 auto; cursor: pointer;" title="Richiedi scambio" />
 						<img src="images/left.png" class="moneyArrow"/><input class="money" placeholder="Avere" type="text" ng-model="dstMoney">

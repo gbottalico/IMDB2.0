@@ -223,7 +223,7 @@
 				mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 			}	
 			console.log($scope.scambio);
-			var destinatari = $scope.squadraDst.mail + "; "	+ $scope.squadraSelected.mail;											
+			var destinatari = $scope.rosaDst.mail + "; "	+ $scope.squadraSelected.mail;											
 			$http({
 				method : 'POST',
 				url : 'service/mercatoService.php',
