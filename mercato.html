@@ -89,7 +89,7 @@
 						        <div ng-repeat="proposta in proposte">
 						        	<div style="font-size: x-large; margin-bottom: 15px;">Proposta ricevuta da <b style="color: #a90433;">{{proposta.squadraSrc.nome}}</b></div>
 									<div style="float: left; width: 50%; text-align: left; margin-bottom: 20px">
-										<table style="width: 95%">																						
+										<table style="width: 95%; color: white">																						
 								        	<tr ng-repeat="calciatoreSrc in proposta.giocatoriSrc track by $index" ng-class="{ 'portiere' : calciatoreSrc.ruolo == 1, 'difensore' : calciatoreSrc.ruolo == 2, 'centrocampista' : calciatoreSrc.ruolo == 3, 'attaccante' : calciatoreSrc.ruolo == 4 }">									        		
 								         		<td  style="text-align:center"><img class="propLogo" alt="" ng-src="{{calciatoreSrc.foto}}" err-src="images/misterx.gif"></td>
 											    <td>{{calciatoreSrc.nomeAbbr}}</td>													    
@@ -101,7 +101,7 @@
 										<!--<p ng-repeat="calciatoreSrc in proposta.giocatoriSrc track by $index">{{getAbbreviazioneRuolo(calciatoreSrc.ruolo)}} - {{calciatoreSrc.nomeAbbr}}</p>-->
 									</div>
 									<div style="float: left; width: 50%; text-align: right; margin-bottom: 20px">
-										<table style="width: 95%">																						
+										<table style="width: 95%; color: white">																						
 								        	<tr ng-repeat="calciatoreDst in proposta.giocatoriDst track by $index" ng-class="{ 'portiere' : calciatoreDst.ruolo == 1, 'difensore' : calciatoreDst.ruolo == 2, 'centrocampista' : calciatoreDst.ruolo == 3, 'attaccante' : calciatoreDst.ruolo == 4 }">									        		
 								         		<td  style="text-align:center"><img class="propLogo" alt="" ng-src="{{calciatoreDst.foto}}" err-src="images/misterx.gif"></td>
 											    <td>{{calciatoreDst.nomeAbbr}}</td>													    
