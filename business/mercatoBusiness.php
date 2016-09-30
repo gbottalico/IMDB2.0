@@ -33,7 +33,7 @@ class MercatoBusiness {
 		}
 
 		//execute the SQL query and return records
-		$sqlProposta = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, implode(',', $giocatoriA), implode(',', $giocatoriB), null)";
+		$sqlProposta = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, " . implode(',', $giocatoriA) . ", " . implode(',', $giocatoriB) . ", null)";
 
 		if (!mysqli_query($conn, $sqlProposta)) {
 		  die('Error: ' . mysqli_error($conn));
@@ -71,14 +71,14 @@ class MercatoBusiness {
 			while ($row = mysqli_fetch_assoc($selRes)) {
 				$giocA = explode(",", $row['GIOCATORI_A']);
 				$giocB = explode(",", $row['GIOCATORI_B']);
-				foreach ($giocA as $key => $value) {
-					$delSql = "UPDATE PROPOSTA SET ESITO = 0 WHERE ID_PROPOSTA <> $idProposta AND ESITO <> 0 AND (GIOCATORI_A LIKE '%," . $value . "%' OR GIOCATORI_B LIKE '%," . $value . "%' OR GIOCATORI_A LIKE '%" . $value . ",%' OR GIOCATORI_B LIKE '%" . $value . ",%' OR GIOCATORI_A = $value OR GIOCATORI_B = $value)";
+				foreach ($giocA as $value) {
+					$delSql = "UPDATE PROPOSTA SET ESITO = 0 WHERE ID_PROPOSTA <> $idProposta AND ESITO IS NULL AND (GIOCATORI_A LIKE '%," . $value . "%' OR GIOCATORI_B LIKE '%," . $value . "%' OR GIOCATORI_A LIKE '%" . $value . ",%' OR GIOCATORI_B LIKE '%" . $value . ",%' OR GIOCATORI_A = $value OR GIOCATORI_B = $value)";
 					if (!mysqli_query($conn, $delSql)) {
 					  die('Error: ' . mysqli_error($conn));
 					}
 				}
-				foreach ($giocB as $key => $value) {
-					$delSql = "UPDATE PROPOSTA SET ESITO = 0 WHERE ID_PROPOSTA <> $idProposta AND ESITO <> 0 AND (GIOCATORI_A LIKE '%," . $value . "%' OR GIOCATORI_B LIKE '%," . $value . "%' OR GIOCATORI_A LIKE '%" . $value . ",%' OR GIOCATORI_B LIKE '%" . $value . ",%' OR GIOCATORI_A = $value OR GIOCATORI_B = $value)";
+				foreach ($giocB as $value) {
+					$delSql = "UPDATE PROPOSTA SET ESITO = 0 WHERE ID_PROPOSTA <> $idProposta AND ESITO IS NULL AND (GIOCATORI_A LIKE '%," . $value . "%' OR GIOCATORI_B LIKE '%," . $value . "%' OR GIOCATORI_A LIKE '%" . $value . ",%' OR GIOCATORI_B LIKE '%" . $value . ",%' OR GIOCATORI_A = $value OR GIOCATORI_B = $value)";
 					if (!mysqli_query($conn, $delSql)) {
 					  die('Error: ' . mysqli_error($conn));
 					}
@@ -87,7 +87,8 @@ class MercatoBusiness {
 		}		
 				
 		//close the connection
-		mysqli_close($conn);	
+		mysqli_close($conn);
+		return "";	
 	}
 
 	/*

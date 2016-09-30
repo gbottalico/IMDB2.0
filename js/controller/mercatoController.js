@@ -19,12 +19,17 @@
 	*	Apre il pannellino per l'inserimento della password della squadra selezionata.
 	*/
 	$scope.inserisciPassword = function(squadraSelected) {
-							
+
+									
 		$('#divPassword').addClass('imdb-visible');
 		$scope.inviabile = true;
 		$('input[name=password]').val('');
 		$scope.squadraSelected = squadraSelected;
-		
+		$scope.rosa = null;
+		$scope.rosaDst = null;
+		$scope.squadraDst = null;
+		$scope.srcMoney = 0;
+		$scope.dstMoney = 0;
 		$('.imdb-overlay').show();
 	}
 
@@ -39,14 +44,16 @@
 	}
 
 	$scope.verificaProposte = function() {
-		//$http.get('service/mercatoService.php?azione=getProposteRicevute&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
-			//console.log('Data = ' + JSON.stringify(data));
-			$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]},{"idProposta":"9","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
-			$scope.proposte = [];
-			var proposta = {};			
-			var giocatoriAvere = [];
-			var giocatoriDare = [];			
+		$scope.proposte = [];
+		$http.get('service/mercatoService.php?azione=getProposteRicevute&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
+			console.log('Data = ' + JSON.stringify(data));			
+			//$scope.retProposte = [{"idProposta":"8","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]},{"idProposta":"9","squadraSrc":"3","squadraDst":"4","creditiSrc":"10","creditiDst":"20","giocatoriSrc":["10928", "123399", "135307", "142552"],"giocatoriDst":["13899", "136646", "10903", "118863"]}];
+			$scope.retProposte = data;						
 			angular.forEach($scope.retProposte, function(prop) {
+				var proposta = {};			
+				var giocatoriAvere = [];
+				var giocatoriDare = [];			
+				
 				var infoSquadra = $scope.squadre.filter(function(row) {
 					if (row.idSquadra == prop.squadraSrc) {
 						return true;
@@ -54,7 +61,9 @@
 						return false;
 					}
 				});
-				angular.forEach(prop.giocatoriSrc, function(gioc) {
+
+				var giocatoriSrc = prop.giocatoriA.split(",");
+				angular.forEach(giocatoriSrc, function(gioc) {
 					var infoGioc = infoSquadra[0].rosa.filter(function(row) {
 						if (row.idFcm == gioc) {
 							return true;							
@@ -62,9 +71,13 @@
 							return false;
 						}
 					});
-					giocatoriAvere.push(infoGioc[0]);
+					if (infoGioc.length) {
+						giocatoriAvere.push(infoGioc[0]);
+					}					
 				});
-				angular.forEach(prop.giocatoriDst, function(gioc) {
+
+				var giocatoriDst = prop.giocatoriB.split(",");
+				angular.forEach(giocatoriDst, function(gioc) {
 					var infoGioc = $scope.squadraSelected.rosa.filter(function(row) {
 						if (row.idFcm == gioc) {
 							return true;							
@@ -72,20 +85,22 @@
 							return false;
 						}
 					});
-					giocatoriDare.push(infoGioc[0]);
+					if (infoGioc.length) {
+						giocatoriDare.push(infoGioc[0]);
+					}					
 				});
 				proposta = {
 					idProposta : prop.idProposta,
 					squadraSrc : infoSquadra[0],
 					squadraDst : $scope.squadraSelected,
-					creditiSrc : prop.creditiSrc,
-					creditiDst : prop.creditiDst,
+					creditiSrc : prop.creditiA,
+					creditiDst : prop.creditiB,
 					giocatoriSrc : giocatoriAvere,
 					giocatoriDst : giocatoriDare		
 				};
 				$scope.proposte.push(proposta);				
+			});
 		});
-		//	});
 //			$('.divProposte').slick();
 	}
 	
@@ -193,7 +208,7 @@
 					'playerAvere' : [],
 					'azione'      : 'richiediScambio' 					
 			}
-			var mailBody = "Il club " + $scope.squadraDst.nome + " ti ha inviato la seguente proposta:\n";	
+			var mailBody = "Il club " + $scope.squadraSelected.nome + " ti ha inviato la seguente proposta:\n";	
 			$('input[name=srcSelected]:checked').each(function() {
 				$scope.scambio.playerDare.push($(this).val());
 				mailBody += $(this).attr('nome') + ", ";
@@ -220,8 +235,8 @@
 			}).then(function(data) {		
 				console.log('OK' + data.data);
 				$.post('invform/sendmail.php', {
-					recipient : 'bottalico.gi@gmail.com; luca.angelini85@gmail.com', //squadraDst.mail
-					subject : 'Proposta di scambio da ' + $scope.squadraDst.nome,
+					recipient : 'luca.angelini85@gmail.com', //$scope.squadraDst.mail
+					subject : 'Proposta di scambio da ' + $scope.squadraSelected.nome,
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
 				})
@@ -233,6 +248,8 @@
 						$('#confermaTitle').text('Proposta');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Proposta inviata!');
+						$scope.srcMoney = 0;
+						$scope.dstMoney = 0;
 					}
 					$('.imdb-overlay').show();
 					$('#divConferma').addClass('imdb-visible');		
@@ -278,7 +295,7 @@
 
 		$http.get('service/mercatoService.php?azione=accettaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
-			if (data != '') {
+			if (data.trim() != '') {				
 				$('#confermaTitle').text('Errore scambio');					
 				$('#confermaText').html(data);
 				$('.imdb-overlay').show();
@@ -290,14 +307,15 @@
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
 				})
-				.success(function(data) {
-					if (data != '') {
+				.success(function(data) {					
+					if (data.trim() != '') {						
 						$('#confermaTitle').text('Errore Conferma scambio');					
 						$('#confermaText').html(data);
 					} else {										
 						$('#confermaTitle').text('Scambio');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Scambio avvenuto con successo!');
+						$scope.verificaProposte();
 					}
 					$('.imdb-overlay').show();
 					$('#divConferma').addClass('imdb-visible');				
@@ -316,7 +334,8 @@
 	*	Gestisce il rifiuto di una proposta
 	*/
 	$scope.rifiutaProposta = function(proposta) {
-
+		
+		$scope.closePropostaDiv();
 		var mailBody = "Il club " + proposta.squadraDst.nome + " ha rifiutato la tua proposta:\n";		
 		angular.forEach(proposta.giocatoriDst, function(gioc) {
 			mailBody += gioc.nomeAbbr + ', ';
@@ -337,7 +356,7 @@
 
 		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
-			if (data != '') {
+			if (data.trim() != '') {				
 				$('#confermaTitle').text('Errore Conferma scambio');					
 				$('#confermaText').html(data);
 				$('.imdb-overlay').show();
@@ -349,25 +368,26 @@
 					body : mailBody,
 					sender : 'mercato-fantacalcio@imdb.it'
 				})
-				.success(function(data) {							
-					if (data != '') {
-						$('#confermaTitle').text('Errore Rifiuto scambio');					
+				.success(function(data) {								
+					if (data.trim() != '') {					
+						$('#confermaTitle').text('Errore Rifiuto scambio');										
 						$('#confermaText').html(data);
-					} else {
+					} else {						
 						$('#confermaTitle').text('Scambio');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Scambio Rifiutato!');
+						$scope.verificaProposte();
 					}
 					$('.imdb-overlay').show();
-					$('#divConferma').addClass('imdb-visible');		
+					$('#divConferma').addClass('imdb-visible');							
 				})
 				.error(function(data) {
-					console.error('FUCK!');
+					console.error('FUCK!');					
 				});				
 			}		
 		})
 		.error(function(data) {
-			console.error('FUCK!');
+			console.error('FUCK!');			
 		});			
 	}
 
@@ -396,7 +416,7 @@
 
 		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
-			if (data != '') {
+			if (data.trim() != '') {
 				$('#confermaTitle').text('Errore Annullamento scambio');					
 				$('#confermaText').html(data);
 				$('.imdb-overlay').show();
