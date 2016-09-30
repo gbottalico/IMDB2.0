@@ -141,15 +141,15 @@ class MercatoBusiness {
 		}
 
 		//execute the SQL query and return records		
-		$sql = "SELECT `ID_PROPOSTA`, `ID_SQUADRA_A`, `CREDITI_A`,`CREDITI_B`,`GIOCATORI_A`,`GIOCATORI_B` FROM `PROPOSTA` WHERE `ID_SQUADRA_A` = $idSquadra AND `ESITO` IS NULL";
+		$sql = "SELECT `ID_PROPOSTA`, `ID_SQUADRA_B`, `CREDITI_A`,`CREDITI_B`,`GIOCATORI_A`,`GIOCATORI_B` FROM `PROPOSTA` WHERE `ID_SQUADRA_A` = $idSquadra AND `ESITO` IS NULL";
 		$result = mysqli_query($conn, $sql);
 
 		//fetch tha data from the database 
 		while ($row = mysqli_fetch_assoc($result)) {
 			$rigaPr = new RigaProposta();
 			$rigaPr->idProposta = $row['ID_PROPOSTA'];	
-			$rigaPr->squadraSrc = $row['ID_SQUADRA_A'];
-			$rigaPr->squadraDst = $idSquadra;
+			$rigaPr->squadraSrc = $idSquadra;
+			$rigaPr->squadraDst = $row['ID_SQUADRA_B'];
 			$rigaPr->creditiA = $row['CREDITI_A'];
 			$rigaPr->creditiB = $row['CREDITI_B'];
 			$rigaPr->giocatoriA = $row['GIOCATORI_A'];

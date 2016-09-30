@@ -87,7 +87,7 @@
 							<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closePropostaDiv()"></div>
 							<div class="divProposte">
 						        <div ng-repeat="proposta in proposte">
-						        	<div style="font-size: x-large; margin-bottom: 15px;">Proposta ricevuta da <b style="color: #a90433;">{{proposta.squadraSrc.nome}}</b></div>
+						        	<div style="font-size: x-large; margin-bottom: 15px;">Proposta {{proposta.ricevuta ? 'ricevuta da ' : 'inviata a '}} <b style="color: #a90433;">{{proposta.ricevuta ? proposta.squadraSrc.nome : proposta.squadraDst.nome}}</b></div>
 									<div style="float: left; width: 50%; text-align: left; margin-bottom: 20px">
 										<table style="width: 95%; color: white">																						
 								        	<tr ng-repeat="calciatoreSrc in proposta.giocatoriSrc track by $index" ng-class="{ 'portiere' : calciatoreSrc.ruolo == 1, 'difensore' : calciatoreSrc.ruolo == 2, 'centrocampista' : calciatoreSrc.ruolo == 3, 'attaccante' : calciatoreSrc.ruolo == 4 }">									        		
@@ -113,9 +113,12 @@
 										<!--<p ng-repeat="calciatoreDst in proposta.giocatoriDst track by $index">{{getAbbreviazioneRuolo(calciatoreDst.ruolo)}} - {{calciatoreDst.nomeAbbr}}</p>-->
 									</div>
 									<div style="width:100%; float:left">
-										<div>
+										<div ng-show="proposta.ricevuta">
 											<img src="images/yes.jpg" style="width: 50px; cursor: pointer; display: -webkit-inline-box; margin-right: 30px" ng-click="accettaProposta(proposta)"></img>
 											<img src="images/no.jpg" style="width: 50px; cursor: pointer; display: -webkit-inline-box;" ng-click="rifiutaProposta(proposta)"></img>
+										</div>
+										<div ng-hide="proposta.ricevuta">
+											<img src="images/no.jpg" style="width: 50px; cursor: pointer; display: -webkit-inline-box;" ng-click="annullaProposta(proposta)"></img>
 										</div>
 									</div>
 						        </div>

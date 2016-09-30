@@ -52,9 +52,10 @@
 
 	$scope.verificaProposte = function() {
 		$scope.proposte = [];
+
+		// Proposte ricevute
 		$http.get('service/mercatoService.php?azione=getProposteRicevute&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
-			console.log('Data = ' + JSON.stringify(data));			
-			//$scope.retProposte = [{"idProposta":"18","squadraSrc":"7","squadraDst":"2","creditiSrc":null,"creditiDst":null,"giocatoriSrc":null,"giocatoriDst":null,"creditiA":"0","creditiB":"2","giocatoriA":"141652,1570","giocatoriB":"15018,9459"}];
+			console.log('Proposte Ricevute = ' + JSON.stringify(data));						
 			$scope.retProposte = data;						
 			angular.forEach($scope.retProposte, function(prop) {
 				var proposta = {};			
@@ -103,7 +104,66 @@
 					creditiSrc : prop.creditiA,
 					creditiDst : prop.creditiB,
 					giocatoriSrc : giocatoriAvere,
-					giocatoriDst : giocatoriDare		
+					giocatoriDst : giocatoriDare,
+					ricevuta	 : true		
+				};
+				$scope.proposte.push(proposta);				
+			});
+		});
+
+		// Proposte inviate
+		$http.get('service/mercatoService.php?azione=getProposteFatte&squadra='+$scope.squadraSelected.idSquadra).success(function(data) {
+			console.log('Proposte Fatte = ' + JSON.stringify(data));			
+			$scope.retProposte = data;						
+			angular.forEach($scope.retProposte, function(prop) {
+				var proposta = {};			
+				var giocatoriAvere = [];
+				var giocatoriDare = [];			
+				
+				var infoSquadra = $scope.squadre.filter(function(row) {
+					if (row.idSquadra == prop.squadraDst) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+
+				var giocatoriSrc = prop.giocatoriA.split(",");
+				angular.forEach(giocatoriSrc, function(gioc) {
+					var infoGioc = $scope.squadraSelected.rosa.filter(function(row) {
+						if (row.idFcm == gioc) {
+							return true;							
+						} else {
+							return false;
+						}
+					});
+					if (infoGioc.length) {
+						giocatoriDare.push(infoGioc[0]);
+					}					
+				});
+
+				var giocatoriDst = prop.giocatoriB.split(",");
+				angular.forEach(giocatoriDst, function(gioc) {
+					var infoGioc = infoSquadra[0].rosa.filter(function(row) {
+						if (row.idFcm == gioc) {
+							return true;							
+						} else {
+							return false;
+						}
+					});
+					if (infoGioc.length) {
+						giocatoriAvere.push(infoGioc[0]);
+					}					
+				});
+				proposta = {
+					idProposta : prop.idProposta,
+					squadraSrc : $scope.squadraSelected,
+					squadraDst : infoSquadra[0],
+					creditiSrc : prop.creditiA,
+					creditiDst : prop.creditiB,
+					giocatoriSrc : giocatoriDare,
+					giocatoriDst : giocatoriAvere,
+					ricevuta	 : false		
 				};
 				$scope.proposte.push(proposta);				
 			});
@@ -316,7 +376,7 @@
 						$('#confermaTitle').text('Errore Conferma scambio');					
 						$('#confermaText').html(data);
 					} else {										
-						$('#confermaTitle').text('Scambio');
+						$('#confermaTitle').text('Scambio Confermato');
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Scambio avvenuto con successo!');
 						$scope.verificaProposte();
@@ -377,9 +437,9 @@
 						$('#confermaTitle').text('Errore Rifiuto scambio');										
 						$('#confermaText').html(data);
 					} else {						
-						$('#confermaTitle').text('Scambio');
+						$('#confermaTitle').text('Scambio Rifiutato');
 						$('#confermaText').addClass('success');
-						$('#confermaText').text('Scambio Rifiutato!');
+						$('#confermaText').text('Scambio Rifiutato con successo!');
 						$scope.verificaProposte();
 					}
 					$('.imdb-overlay').show();
@@ -400,6 +460,7 @@
 	*/
 	$scope.annullaProposta = function(proposta) {
 
+		$scope.closePropostaDiv();
 		var mailBody = "Il club " + proposta.squadraSrc.nome + " ha annullato la sua proposta:\n";		
 		angular.forEach(proposta.giocatoriDst, function(gioc) {
 			mailBody += gioc.nomeAbbr + ', ';
@@ -417,7 +478,7 @@
 		} else {
 			mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 		}	
-		var destinatari = proposta.squadraDst.mail + "; "	+ $scope.squadraSrc.mail;	
+		var destinatari = proposta.squadraDst.mail + "; "	+ proposta.squadraSrc.mail;	
 
 		$http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
 		.success(function(data) {
@@ -438,9 +499,10 @@
 						$('#confermaTitle').text('Errore Annullamento scambio');					
 						$('#confermaText').html(data);
 					} else {
-						$('#confermaTitle').text('Scambio');
+						$('#confermaTitle').text('Scambio annullato');
 						$('#confermaText').addClass('success');
-						$('#confermaText').text('Scambio Annullato!');
+						$('#confermaText').text('Scambio Annullato con successo!');
+						$scope.verificaProposte();
 					}
 					$('.imdb-overlay').show();
 					$('#divConferma').addClass('imdb-visible');		
