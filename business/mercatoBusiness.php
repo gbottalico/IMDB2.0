@@ -33,7 +33,7 @@ class MercatoBusiness {
 		}
 
 		//execute the SQL query and return records
-		$sqlProposta = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, " . implode(',', $giocatoriA) . ", " . implode(',', $giocatoriB) . ", null)";
+		$sqlProposta = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, '" . implode(',', $giocatoriA) . "', '" . implode(',', $giocatoriB) . "', null)";
 
 		if (!mysqli_query($conn, $sqlProposta)) {
 		  die('Error: ' . mysqli_error($conn));

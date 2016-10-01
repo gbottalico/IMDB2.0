@@ -44,8 +44,8 @@
 	$scope.resetPage = function() {
 		$scope.srcMoney = 0;
 		$scope.dstMoney = 0;
-		$('input[name=srcSelected]').attr('checked', '');
-		$('input[name=dstSelected]').attr('checked', '');
+		$('input[name=srcSelected]').attr('checked', false);
+		$('input[name=dstSelected]').attr('checked', false);
 		$('input[name=srcSelected]').parent().parent().removeClass('playerSelected');
 		$('input[name=dstSelected]').parent().parent().removeClass('playerSelected');
 	}
@@ -314,6 +314,7 @@
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Proposta inviata con successo!');
 						$scope.resetPage();
+						$scope.verificaProposte();
 					}
 					$('.imdb-overlay').show();
 					$('#divConferma').addClass('imdb-visible');		
