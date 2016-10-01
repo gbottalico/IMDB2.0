@@ -1,20 +1,93 @@
-@media (max-width: 767px) {	
-
-  #calendarioTable .logo{
-  	height: 30px!important;
-  }
-  
-  .imdb-no-mobile {
-    display: none !important;
-  }
-  #wrapper {
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;		
-	-webkit-overflow-scrolling:touch;
-	/*overflow-y: scroll;*/
-  }
-	.container td{
+@media (max-width:767px) {
+	.mrcDareAvereDiv {
+		text-align: center;
+		color: white;
+		margin-top: 20px;
+		margin-left: 20px;
+		position: absolute;
+	}
+	.moneyArrow {
+		-ms-transform: rotate(90deg); /* IE 9 */
+		-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+		transform: rotate(90deg);
+	}
+	.verticalLine {
+		width: 100%;
+	}
+	.money {
+		height: 30px;
+		width: 20%;
+		font-size: medium;
+		text-align: center;
+	}
+	.richiediScambio {
+		width: 40px;
+		margin: 0 auto;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	.logoSquadraMrc {
+		width: 10%;
+		cursor: pointer;
+	}
+	.numProposta {
+		color: yellow;
+		font-weight: bold;
+		font-size: 1.5em;
+		vertical-align: super;
+		margin-right: -15px;
+	}
+	.marginTop90 {
+		margin-top: 90px;
+	}
+	.imgProposta {
+		width: 50px;
+		cursor: pointer;
+	}
+	.propLogo {
+		height: 25px;
+	}
+	.tabelleTdFontSize {
+		font-size: xx-small;
+	}
+	.propContainer {
+		position: absolute;
+		margin-top: 10px;
+	}
+	.titoloProposta {
+		font-size: large;
+		margin-bottom: 15px;
+	}
+	.divProposta {
+		float: left;
+		width: 50%;
+		margin-bottom: 20px;
+	}
+	.tabellaProposta {
+		width: 98%;
+		color: white;
+	}
+	.tabellaProposta td {
+		font-size: xx-small;
+	}
+	.bottoniProposta {
+		width: 30px;
+		cursor: pointer;
+		display: -webkit-inline-box !important;
+	}
+	#calendarioTable .logo {
+		height: 30px !important;
+	}
+	.imdb-no-mobile {
+		display: none !important;
+	}
+	#wrapper {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		-webkit-overflow-scrolling: touch;	/*overflow-y: scroll;*/
+	}
+	.container td {
 		font: bold xx-small 'trebuchet MS', Arial, helvetica;
 	}
 	li {
@@ -32,18 +105,15 @@
 	.container {
 		height: 70%;
 		text-align: center;
-		overflow: hidden;	
+		overflow: hidden;
 		width: 100%;
 		margin: 0 auto;
-		display: table;
-		/*padding: 0 0 8em 0;*/
+		display: table;		/*padding: 0 0 8em 0;*/
 		color: white;
 	}
-	
-	#elencoGiornate ul{
+	#elencoGiornate ul {
 		display: none;
 	}
-	
 	.selectMobile {
 		display: block;
 		height: 50px;
@@ -51,15 +121,15 @@
 		width: 100%;
 		padding-left: 48%;
 	}
-	.campo {	
-		position: relative;	
+	.campo {
+		position: relative;
 		width: 315px;
 		height: 250px;
 		background: url('../images/campo-mobile.jpg') no-repeat;
-		background-size: 100% 100%;	
+		background-size: 100% 100%;
 	}
-	.inv-rose {		
-		width: 315px;	
+	.inv-rose {
+		width: 315px;
 		height: 325px;
 		overflow: hidden;
 		overflow-y: auto;
@@ -69,8 +139,8 @@
 		height: 75px;
 		cursor: pointer;
 	}
-	.menuItemInv {	
-		margin: 10px;	
+	.menuItemInv {
+		margin: 10px;
 	}
 	.menuItemInv.selected {
 		opacity: 1;
@@ -90,7 +160,7 @@
 		font-size: xx-small;
 		margin-top: 10px;
 		color: white;
-		font-weight: bold;	
+		font-weight: bold;
 		-webkit-transform: rotate(270deg);
 	}
 	.maglia-panchina {
@@ -98,7 +168,7 @@
 		background-size: 20px 20px;
 		position: absolute;
 		width: 20px;
-		height: 20px;		
+		height: 20px;
 	}
 	.label-maglia {
 		font-size: small;
@@ -107,12 +177,12 @@
 	.menuSquadre {
 		float: left;
 		cursor: pointer;
-	}	
+	}
 	.schedina-btn {
 		margin-left: 60%;
 	}
 	input[type="password"], input[type="submit"] {
-		outline: none;		
+		outline: none;
 	}
 	.imdb-password {
 		-webkit-border-radius: 10;
@@ -122,14 +192,14 @@
 		border-radius: 10;
 		height: 20px;
 		margin-left: 5px;
-    }
-    .imdb-invia-btn {
+	}
+	.imdb-invia-btn {
 		display: block;
 		color: black;
 		border: 1px solid darkgrey;
 		font-weight: bold;
 		font-size: small;
-		text-transform: uppercase;	
+		text-transform: uppercase;
 		margin-right: 5%;
 		width: 20%;
 		height: 20px;
@@ -150,7 +220,7 @@
 		border-radius: 10;
 	}
 	.imdb-invia-btn:hover {
-		color: red;	
+		color: red;
 		border: 1px solid black;
 	}
 	.invform-riga {
@@ -161,9 +231,9 @@
 		font-weight: bold;
 	}
 	.invia-form-table th, .invia-form-table td {
-		font-size: smaller;
+		font-size: xx-small;
+		text-align: center;
 	}
-
 	.campo-portiere-1 {
 		top: 115px;
 		left: 0px;
@@ -284,6 +354,7 @@
 		font-size: x-large;
 		margin-top: 50px;
 	}
+
 	/*#frameSito {
 		 -ms-zoom: 0.8;
 	    -moz-transform: scale(0.8);
@@ -292,7 +363,7 @@
 	    -o-transform-origin: 0 0;
 	    -webkit-transform: scale(0.8);
 	    -webkit-transform-origin: 0 0;
-	}*/	
+	}*/
 	.searchInput {
 		outline: none;
 		font-size: 12px;
@@ -303,21 +374,21 @@
 		border-radius: 7;
 		width: 100%;
 	}
-	.icon-invalid {	
-	  position: absolute;
-	  cursor: pointer;
-	  top: 50%;
-	  right: 10px;
-	  width: 10px;
-	  height: 10px;
-	  z-index: 3;
-	  background-position: 50% 50%;
-	  background-repeat: no-repeat;
-	  -webkit-background-size: 10px 10px;
-	  -moz-background-size: 10px 10px;
-	  -o-background-size: 10px 10px;
-	  background-size: 10px 10px;
-	  background-image: url('../images/field-invalid.png?1405069257');
+	.icon-invalid {
+		position: absolute;
+		cursor: pointer;
+		top: 50%;
+		right: 10px;
+		width: 10px;
+		height: 10px;
+		z-index: 3;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		-webkit-background-size: 10px 10px;
+		-moz-background-size: 10px 10px;
+		-o-background-size: 10px 10px;
+		background-size: 10px 10px;
+		background-image: url('../images/field-invalid.png?1405069257');
 	}
 	.schedina td {
 		font: bold small 'trebuchet MS', Arial, helvetica;

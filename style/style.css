@@ -1,4 +1,84 @@
-@media ( min-width : 992px) {
+@media (min-width:992px) {
+	.mrcDareAvereDiv {
+		text-align: center;
+		color: white;
+		margin-top: 100px
+	}
+	.mrcBackHome {
+		position: absolute;
+		top: 15px;
+		left: 48%;
+	}
+	.verticalLine {
+		float: left;
+		height: 100%;
+		width: 10%;
+	}
+	.money {
+		height: 40px;
+		width: 50%;
+		font-size: 16px;
+		text-align: center;
+	}
+	.richiediScambio {
+		width: 50px;
+		display: block;
+		margin: 0 auto;
+		cursor: pointer;
+	}
+	.logoSquadraMrc {
+		width: 9%;
+		cursor: pointer;
+	}
+	.numProposta {
+		position: absolute;	/*top: -20;
+								left: -5;
+								color: red;*/
+		top: -25;
+		left: 10;
+		color: yellow;
+		font-weight: bold;
+		font-size: 2em;
+	}
+	.imgProposta {
+		width: 100%;
+		cursor: pointer;
+		height: 70px;
+	}
+	.propLogo {
+		height: 50px;
+	}
+	.tabelleTdFontSize {
+		font-size: small;
+	}
+	.propContainer {
+		position: relative;
+		text-align: center;
+		margin: 0 auto;
+		width: 50%;
+		margin-top: 110px;
+	}
+	.titoloProposta {
+		font-size: x-large;
+		margin-bottom: 15px;
+	}
+	.divProposta {
+		float: left;
+		width: 50%;
+		margin-bottom: 20px;
+	}
+	.tabellaProposta {
+		width: 95%;
+		color: white;
+	}
+	.tabellaProposta td {
+		font-size: small;
+	}
+	.bottoniProposta {
+		width: 50px;
+		cursor: pointer;
+		display: -webkit-inline-box !important;
+	}
 	.imdb-detail-overlay__content {
 		font-size: 20px;
 	}
@@ -52,6 +132,7 @@
 		top: 0;
 		margin-left: 20px;
 	}
+
 	/* INVIO FOMRAZIONE */
 	.logo {
 		height: 50px;
@@ -275,6 +356,7 @@
 	}
 	.invia-form-table th {
 		font-size: x-small;
+		text-align: center;
 	}
 	.invform-scadenza {
 		text-align: center;
@@ -319,22 +401,19 @@
 		font: bold large 'trebuchet MS', Arial, helvetica;
 	}
 }
-
 html {
 	font-size: 62.5%;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
 body {
 	background: url('../images/background.jpg');
 	font-family: "Helvetica Neue", Helvetica-, Arial, sans-serif;
 	font-size: 14px;
 	line-height: 1.42857;
 }
-
 .imdb-results__loading {
 	background: url('../images/pallone_loading.gif?1384796714') no-repeat
-		50% 50%;
+	50% 50%;
 	-webkit-background-size: 64px 64px;
 	-moz-background-size: 64px 64px;
 	-o-background-size: 64px 64px;
@@ -349,13 +428,12 @@ body {
 	animation: myfirst1 3s;
 	animation-iteration-count: infinite;
 }
-
 .imdb-results__loading2 {
 	text-align: right;
 	width: 50%;
 	overflow: auto;
 	background: url('../images/beer_loading.gif?1384796714') no-repeat 50%
-		50%;
+	50%;
 	-webkit-background-size: 55px 55px;
 	-moz-background-size: 55px 55px;
 	-o-background-size: 55px 55px;
@@ -370,42 +448,59 @@ body {
 	animation: myfirst2 3s;
 	animation-iteration-count: infinite;
 }
-
 @-webkit-keyframes myfirst1 {
-	from {right: 80px;}
-	to {right: 710px;}
+	from {
+		right: 80px;
+	}
+	to {
+		right: 710px;
+	}
 }
 
 /* Standard syntax */
 @keyframes myfirst1 {
-	from {right: 80px;}
-	to {right: 710px;}
+	from {
+		right: 80px;
+	}
+	to {
+		right: 710px;
+	}
 }
 @-webkit-keyframes myfirst2 {
-	from {right: 350px;}
-	to {right: 750px;}
+	from {
+		right: 350px;
+	}
+	to {
+		right: 750px;
+	}
 }
 
 /* Standard syntax */
 @keyframes myfirst2 {
-	from {right: 350px;}
-	to {right: 750px;}
+	from {
+		right: 350px;
+	}
+	to {
+		right: 750px;
+	}
 }
-
 .center {
 	text-align: center;
 }
-
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
 #wrapper {
 	width: 90%;
 	height: 100%;
 	margin: 0 auto;
 }
-
 .menuContainer {
 	overflow: auto;
 }
-
 .menu {
 	margin: 0 auto;
 	-webkit-padding-start: 0px;
@@ -414,16 +509,13 @@ body {
 	border-radius: 10px;
 	position: relative;
 }
-
 .menu:before, .menu:after {
 	content: "";
 	display: table;
 }
-
 .menu:after {
 	clear: both;
 }
-
 .menu {
 	zoom: 1;
 }
@@ -438,35 +530,25 @@ body {
 	margin: 5px 0 0 5px;
 	color: #fff;
 }
-
 .menu li:hover, .menu li:focus {
-	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
-		.2)), to(rgba(255, 255, 255, 0)));
-	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .2),
-		rgba(255, 255, 255, 0));
-	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, .2),
-		rgba(255, 255, 255, 0));
-	background-image: -ms-linear-gradient(top, rgba(255, 255, 255, .2),
-		rgba(255, 255, 255, 0));
-	background-image: -o-linear-gradient(top, rgba(255, 255, 255, .2),
-		rgba(255, 255, 255, 0));
-	background-image: linear-gradient(top, rgba(255, 255, 255, .2),
-		rgba(255, 255, 255, 0));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, .2)), to(rgba(255, 255, 255, 0)));
+	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0));
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0));
+	background-image: -ms-linear-gradient(top, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0));
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0));
+	background-image: linear-gradient(top, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0));
 }
-
 .menu .cover {
 	z-index: 2;
 }
-
 .menu .cover:focus {
 	outline: 0;
 }
 
 /* -------------------------------- */
 .menu li::after {
-	background:
-		url("http://imalatidelbari.netsons.org/img/I_Malati_Del_Bari.gif")
-		no-repeat 0 0;
+	background: url("http://imalatidelbari.netsons.org/img/I_Malati_Del_Bari.gif")
+	no-repeat 0 0;
 	content: "";
 	background-size: 100%;
 	height: 100px;
@@ -482,12 +564,10 @@ body {
 	-o-transition: all .2s ease-out;
 	transition: all .2s ease-out;
 }
-
 .menu li:hover::after, .menu li:focus::after {
 	font-size: 100px;
 	opacity: 1;
 }
-
 .menu .cover::after {
 	z-index: -1;
 }
@@ -496,58 +576,40 @@ body {
 .menu li:nth-child(1), .menu li:nth-child(2), .menu li:nth-child(3) {
 	margin-top: 0;
 }
-
 .menu li:nth-child(1), .menu li:nth-child(4), .menu li:nth-child(7) {
 	margin-left: 0;
 }
 
 /* -------------------------------- */
-.menu li:nth-child(1), .menu li:nth-child(1) .content, .menu li:nth-child(1) .close
-	{
+.menu li:nth-child(1), .menu li:nth-child(1) .content, .menu li:nth-child(1) .close {
 	background-color: #ff0000;
 }
-
-.menu li:nth-child(2), .menu li:nth-child(2) .content, .menu li:nth-child(2) .close
-	{
+.menu li:nth-child(2), .menu li:nth-child(2) .content, .menu li:nth-child(2) .close {
 	background-color: #ffffff;
 	color: red;
 }
-
-.menu li:nth-child(3), .menu li:nth-child(3) .content, .menu li:nth-child(3) .close
-	{
+.menu li:nth-child(3), .menu li:nth-child(3) .content, .menu li:nth-child(3) .close {
 	background-color: #ff0000;
 }
-
-.menu li:nth-child(4), .menu li:nth-child(4) .content, .menu li:nth-child(4) .close
-	{
+.menu li:nth-child(4), .menu li:nth-child(4) .content, .menu li:nth-child(4) .close {
 	background-color: #ffffff;
 	color: red;
 }
-
-.menu li:nth-child(5), .menu li:nth-child(5) .content, .menu li:nth-child(5) .close
-	{
+.menu li:nth-child(5), .menu li:nth-child(5) .content, .menu li:nth-child(5) .close {
 	background-color: #ff0000;
 }
-
-.menu li:nth-child(6), .menu li:nth-child(6) .content, .menu li:nth-child(6) .close
-	{
+.menu li:nth-child(6), .menu li:nth-child(6) .content, .menu li:nth-child(6) .close {
 	background-color: #ffffff;
 	color: red;
 }
-
-.menu li:nth-child(7), .menu li:nth-child(7) .content, .menu li:nth-child(7) .close
-	{
+.menu li:nth-child(7), .menu li:nth-child(7) .content, .menu li:nth-child(7) .close {
 	background-color: #ff0000;
 }
-
-.menu li:nth-child(8), .menu li:nth-child(8) .content, .menu li:nth-child(8) .close
-	{
+.menu li:nth-child(8), .menu li:nth-child(8) .content, .menu li:nth-child(8) .close {
 	background-color: #ffffff;
 	color: red;
 }
-
-.menu li:nth-child(9), .menu li:nth-child(9) .content, .menu li:nth-child(9) .close
-	{
+.menu li:nth-child(9), .menu li:nth-child(9) .content, .menu li:nth-child(9) .close {
 	background-color: transparent;
 }
 
@@ -559,15 +621,13 @@ body {
 	font: 12px Arial, Helvetica;
 	position: absolute;
 	height: 120px;
-	width: 200px;
-	/* Ideally: height: 100%; width: 100%; but works at it should just in FF */
+	width: 200px;	/* Ideally: height: 100%; width: 100%; but works at it should just in FF */
 	-webkit-transition: all .3s ease-out;
 	-moz-transition: all .3s ease-out;
 	-ms-transition: all .3s ease-out;
 	-o-transition: all .3s ease-out;
 	transition: all .3s ease-out;
 }
-
 .menu .expanded {
 	opacity: .95;
 	display: block\9;
@@ -576,23 +636,27 @@ body {
 	height: 300px;
 	width: 540px; /* Cover the entire area */
 }
+.menu li:nth-child(3n) .content {
 
-.menu li:nth-child(3n) .content { /* 3,6,9 */
+	/* 3,6,9 */
 	right: 0;
 }
+.menu li:nth-child(3n-1) .expanded {
 
-.menu li:nth-child(3n-1) .expanded { /* 2,5,8 */
+	/* 2,5,8 */
 	left: 50%;
 	margin-left: -310px;
 }
+.menu li:nth-child(7) .content,
 
-.menu li:nth-child(7) .content, /* 7,8,9 */ .menu li:nth-child(8) .content,
-	.menu li:nth-child(9) .content {
+/* 7,8,9 */
+.menu li:nth-child(8) .content, .menu li:nth-child(9) .content {
 	bottom: 0;
 }
+.menu li:nth-child(4) .expanded,
 
-.menu li:nth-child(4) .expanded, /* 4,5,6 */ .menu li:nth-child(5) .expanded,
-	.menu li:nth-child(6) .expanded {
+/* 4,5,6 */
+.menu li:nth-child(5) .expanded, .menu li:nth-child(6) .expanded {
 	margin-top: -190px;
 	top: 50%;
 }
@@ -605,7 +669,6 @@ body {
 	text-align: center;
 	font: italic bold 1em/120px 'trebuchet MS', Arial, helvetica;
 }
-
 .menu li:hover .title {
 	opacity: .7;
 }
@@ -627,7 +690,6 @@ body {
 	-webkit-border-radius: 40px;
 	border-radius: 40px;
 }
-
 .menu .cover .close {
 	display: block;
 }
@@ -636,42 +698,34 @@ body {
 .class_table {
 	text-align: center;
 }
-
 .logo {
 	height: 50px;
 	cursor: pointer;
 }
-
 #calendarioTable {
 	text-align: center !important;
 }
-
 #calendarioTable td {
 	color: white !important;
 }
-
 #calendarioTable tr {
 	cursor: pointer;
 }
-
 .container th h1 {
 	font-weight: bold;
 	font-size: x-small;
 	text-align: left;
 	color: #185875;
 }
-
 .container td {
 	font: bold medium 'trebuchet MS', Arial, helvetica;
 	-webkit-box-shadow: 0 2px 2px -2px #0E1119;
 	-moz-box-shadow: 0 2px 2px -2px #0E1119;
 	box-shadow: 0 2px 2px -2px #0E1119;
 }
-
 .container th {
 	font: bold larger 'trebuchet MS', Arial, helvetica;
 }
-
 .container td, .container th {
 	padding: 5px;
 }
@@ -681,26 +735,21 @@ body {
 .portiere {
 	background-color: rgb(121, 165, 233) !important;
 }
-
 .difensore {
 	background-color: rgb(79, 128, 204) !important;
 }
-
 .centrocampista {
 	background-color: rgb(52, 64, 209) !important;
 }
-
 .attaccante {
 	background-color: rgb(0, 0, 156) !important;
 }
-
 .container {
 	text-align: left;
 	overflow: hidden;
 	width: 100%;
 	margin: 0 auto;
-	display: table;
-	/*padding: 0 0 8em 0;*/
+	display: table;	/*padding: 0 0 8em 0;*/
 	color: white
 }
 
@@ -713,69 +762,56 @@ body {
 .container tr:nth-child(even) {
 	background-color: #2C3446;
 }
-
 .container th {
 	background-color: #1F2739;
 }
-
 .container td:first-child {
 	color: #FB667A;
 }
-
 .container tr:hover {
 	background-color: #464A52;
 	-webkit-box-shadow: 0 6px 6px -6px #0E1119;
 	-moz-box-shadow: 0 6px 6px -6px #0E1119;
 	box-shadow: 0 6px 6px -6px #0E1119;
 }
-
 .menuItem {
 	float: left;
 	margin: 10px;
 	opacity: .7;
 }
-
 .menuItem.selected {
 	opacity: 1;
 	margin: 0;
 	height: 70px;
 }
-
 .backHome {
 	margin: 10px;
 }
-
 .imdb-disabled {
 	color: #332E2E !important;
 	background-color: lightgrey !important;
 }
-
 .invia-form-table {
 	height: 100%;
 	width: 100%;
 	color: white;
 	background-color: #332E2E;
 }
-
 .invform-logo {
 	height: 20px;
 	cursor: pointer;
 }
-
 .invform-password-div {
 	position: absolute;
 	top: 600px;
 }
-
 #elencoGiornate ul {
 	overflow: auto;
 	padding: 0px;
 }
-
 #elencoGiornate li {
 	color: white;
-	float: left;
-	/*background: gray;*/
+	float: left;	/*background: gray;*/
 	border: 1px solid;
 	text-align: center;
 	margin: 0;
@@ -783,31 +819,25 @@ body {
 	padding: 0px 10px;
 	list-style: none;
 }
-
 #elencoGiornate li.selected {
 	color: red;
 }
-
 .riepilogoTableContainer {
 	width: 100%;
 	margin: 10px auto;
 	font: bold xx-small 'trebuchet MS', Arial, helvetica;
 }
-
 .riepilogoContainer {
 	background: rgb(234, 233, 233);
 	overflow: auto;
 }
-
 .riepilogoContainer td {
 	white-space: nowrap;
 	font-size: xx-small;
 }
-
 .hidden {
 	display: none;
 }
-
 .imdb-overlay {
 	position: fixed;
 	z-index: 1000;
@@ -819,11 +849,9 @@ body {
 	background: rgba(0, 0, 0, 0.65);
 	display: none;
 }
-
 .imdb-overlay.imdb-overlay-visible {
 	display: block;
 }
-
 .imdb-detail-overlay {
 	position: absolute;
 	z-index: 2000;
@@ -841,17 +869,14 @@ body {
 	-webkit-transition-property: opacity, margin-top;
 	transition-property: opacity, margin-top;
 }
-
 .imdb-detail-overlay.imdb-visible {
 	margin-top: 0;
 	opacity: 1;
 	display: block;
 }
-
 .imdb-detail-overlay__close {
 	text-align: right;
 }
-
 .imdb-detail-overlay__title {
 	color: #363031;
 	font-family: "HelveticaNeueBlack", Arial, Helvetica, sans-serif;
@@ -863,11 +888,9 @@ body {
 	display: block;
 	width: auto;
 }
-
 .imdb-detail-overlay__content {
 	font-size: x-large;
 }
-
 .imdb-close-icon {
 	font-size: x-large;
 	cursor: pointer;
@@ -880,19 +903,15 @@ body {
 	float: right;
 	-webkit-font-smoothing: antialiased;
 }
-
 .imdb-close-icon:before {
 	content: url('../images/close.png');
 }
-
 .imdb-left {
 	float: left;
 }
-
 .imdb-right {
 	float: right;
 }
-
 .imdb-overlay-div {
 	width: 92%;
 	top: 50%;
@@ -900,7 +919,6 @@ body {
 	position: absolute;
 	text-align: center;
 }
-
 .imdb-error {
 	color: #a90433;
 	font-size: small;
@@ -909,25 +927,20 @@ body {
 	float: left;
 	margin-left: 20%;
 }
-
 .imdb-error.success {
 	color: #458630;
 }
-
 .imdb-gutter {
 	padding: 10px;
 }
-
 .imdb-gutter-h {
 	padding-left: 10px;
 	padding-right: 10px;
 }
-
 .imdb-gutter-v {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-
 table {
 	border-collapse: collapse;
 	font: bold 1em 'trebuchet MS', Arial, helvetica;
@@ -935,139 +948,110 @@ table {
 	-moz-box-shadow: 0 2px 2px -2px #0E1119;
 	box-shadow: 0 2px 2px -2px #0E1119;
 }
-
 .panchina {
 	width: 90%;
 	margin: 0 auto;
 }
-
 .panchina td {
 	border-bottom: 1px solid black;
 	padding: 5px;
 }
-
 .titolari {
 	width: 80%;
 	margin: 0 auto;
 }
-
 .titolari td {
 	border-bottom: 1px solid black;
 	padding: 5px;
 }
-
 .riepilogo {
 	width: 80%;
 	margin: 0 auto;
 }
-
 .riepilogo td {
 	border-bottom: 1px solid black;
 	padding: 5px;
 }
-
 .riepilogoCasa {
 	text-align: right;
 }
-
 .riepilogoFuori {
-	
 }
-
 .invform-loghi {
 	width: 100%;
 	height: 100%;
 	text-align: center;
 }
-
 .schedina {
 	width: 90%;
 	margin: 10px;
 	outline: none;
 }
-
 .schedina-pron.selected {
 	background: url('../images/schedina_selected.png') !important;
 }
-
 .schedina-1 {
 	background: url('../images/schedina_1.png');
 	width: 15px;
 	height: 15px;
 	cursor: pointer;
 }
-
 .schedina-x {
 	background: url('../images/schedina_X.png');
 	width: 15px;
 	height: 15px;
 	cursor: pointer;
 }
-
 .schedina-2 {
 	background: url('../images/schedina_2.png');
 	width: 15px;
 	height: 15px;
 	cursor: pointer;
 }
-
 .closeButton {
 	float: right;
 	cursor: pointer;
 }
-
 .nonConsegnata {
 	text-align: center;
 	width: 50%;
 }
-
 .selectMobile {
 	display: none;
 }
-
 .imdb-singleerror {
 	color: #a90433;
 	font-size: 12px;
 	text-transform: uppercase;
 	font-weight: bold;
 }
-
 .imdb-singleerror.success {
 	color: #458630;
 }
-
 img {
 	border: 0;
 }
-
 .invform-portiere {
 	color: #999900 !important;
 }
-
 .invform-difensore {
 	color: #336600 !important;
 }
-
 .invform-centrocampista {
 	color: #CC0000 !important;
 }
-
 .invform-attaccante {
 	color: #3300FF !important;
 }
-
 .bad {
 	color: red;
 }
-
 .good {
 	color: green;
 }
-
 .center {
 	text-align: center;
 }
-
 #fgazzetta {
 	-ms-zoom: 0.9;
 	-moz-transform: scale(0.9);
@@ -1077,144 +1061,78 @@ img {
 	-webkit-transform: scale(0.9);
 	-webkit-transform-origin: 0 0;
 }
-
 .divVoti {
 	overflow: hidden;
 	max-height: 800px;
 	-webkit-overflow-scrolling: touch;
 	overflow-y: scroll;
 }
-
 .votiAssist {
 	width: 100%;
 	height: 650px;
 }
-
 .white {
 	background-color: white !important;
 	color: black;
 }
-
 .red {
 	background-color: red;
 	color: black;
 }
-
 .green {
 	background-color: green;
 	color: black;
 }
-
 .yellow {
 	background-color: yellow;
 	color: black;
 }
-
 .orange {
 	background-color: orange;
 	color: black;
 }
-
 .darkgreen {
 	background-color: darkgreen;
 	color: black;
 }
-
 .ciano {
 	background-color: cyan;
 	color: black;
 }
-
 .titoloOrder td span {
 	cursor: pointer;
 }
-
 #giocatoriliberi td:nth-child(2) {
 	width: 40%;
 }
-
-#giocatoriliberi td:nth-child(1), #giocatoriliberi td:nth-child(3),
-	#giocatoriliberi td:nth-child(4), #giocatoriliberi td:nth-child(5) {
+#giocatoriliberi td:nth-child(1), #giocatoriliberi td:nth-child(3), #giocatoriliberi td:nth-child(4), #giocatoriliberi td:nth-child(5) {
 	width: 15%;
-}
-
-.logoSquadraMrc {
-	width: 9%;
-	cursor: pointer;
 }
 .logoSquadraMrc.selected {
 	filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
 	-webkit-filter: grayscale(1);
 }
-
-.verticalLine {
-	float: left;
-	height: 100%;
-	width: 10%;
-}
-
 .squadraMercato {
 	background-color: rgb(210, 211, 248);
 	margin: 5px;
 	line-height: 2;
-	cursor:pointer;
+	cursor: pointer;
 	padding: 10px;
 }
-
 .proposta {
 	background-color: red;
 	color: white;
 }
-
-.numProposta {
-	position: absolute;
-	/*top: -20;
-	left: -5;
-	color: red;*/
-	top: -25;
-	left: 20;
-	color: yellow;
-	font-weight: bold;
-	font-size: 2em;
-}
-
-.imgProposta {
-	width: 100%;
-	cursor: pointer;
-}
-
-.propLogo {
-	height: 50px;
-}
-
-.propContainer {
-	position: relative;
-	text-align: center;
-	margin: 0 auto;
-	width: 50%;
-	margin-top: 110px;
-}
-
 .playerSelected {
 	background-color: green !important;
-	color: gold;	
+	color: gold;
 }
-
 .divProposte {
-	margin : 25px; 
+	margin: 25px;
 }
-
 .slick-prev, .slick-next {
-	background: #b11e1e!important;
+	background: #b11e1e !important;
 }
-
-.money {
-	height: 40px;
-    width: 50%;
-    font-size: 16px;
-    text-align: center;
-}
-
 .moneyArrow {
 	width: 25px;
 	vertical-align: middle;

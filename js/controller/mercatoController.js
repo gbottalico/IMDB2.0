@@ -48,6 +48,8 @@
 		$('input[name=dstSelected]').attr('checked', false);
 		$('input[name=srcSelected]').parent().parent().removeClass('playerSelected');
 		$('input[name=dstSelected]').parent().parent().removeClass('playerSelected');
+		$('.sqSrc').removeClass('selected');
+		$('.sqDst').removeClass('selected');
 	}
 
 	$scope.verificaProposte = function() {

@@ -1,12 +1,90 @@
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width:768px) and (max-width:991px) {
+	.mrcDareAvereDiv {
+		text-align: center;
+		color: white;
+		margin-top: 100px
+	}
+	.mrcBackHome {
+		position: absolute;
+		top: 15px;
+		left: 48%;
+	}
+	.verticalLine {
+		float: left;
+		height: 100%;
+		width: 10%;
+	}
+	.money {
+		height: 40px;
+		width: 50%;
+		font-size: 16px;
+		text-align: center;
+	}
+	.richiediScambio {
+		width: 50px;
+		display: block;
+		margin: 0 auto;
+		cursor: pointer;
+	}
+	.logoSquadraMrc {
+		width: 9%;
+		cursor: pointer;
+	}
+	.numProposta {
+		position: absolute;	/*top: -20;
+								left: -5;
+								color: red;*/
+		top: -25;
+		left: 20;
+		color: yellow;
+		font-weight: bold;
+		font-size: 2em;
+	}
+	.imgProposta {
+		width: 100%;
+		cursor: pointer;
+		height: 70px;
+	}
+	.propLogo {
+		height: 50px;
+	}
+	.tabelleTdFontSize {
+		font-size: small;
+	}
+	.propContainer {
+		position: relative;
+		text-align: center;
+		margin: 0 auto;
+		width: 50%;
+		margin-top: 110px;
+	}
+	.titoloProposta {
+		font-size: x-large;
+		margin-bottom: 15px;
+	}
+	.divProposta {
+		float: left;
+		width: 50%;
+		margin-bottom: 20px;
+	}
+	.tabellaProposta {
+		width: 95%;
+		color: white;
+	}
+	.tabellaProposta td {
+		font-size: small;
+	}
+	.bottoniProposta {
+		width: 50px;
+		cursor: pointer;
+		display: -webkit-inline-box !important;
+	}
 	.imdb-detail-overlay__title {
 		font-size: 30px;
 	}
-
 	.imdb-detail-overlay__content {
 		font-size: 16px;
 	}
-
 	.imdb-detail-overlay__title h2 {
 		font-size: 40px;
 	}
@@ -24,20 +102,21 @@
 	.imdb-no-tablet {
 		display: none !important;
 	}
-  	/* INVIO FORMAZIONE */	
-	.inv-rose {		
-		width: 630px;	
+
+	/* INVIO FORMAZIONE */
+	.inv-rose {
+		width: 630px;
 		height: 350px;
 		overflow: hidden;
 		overflow-y: auto;
 		margin-bottom: 40px;
 	}
-	.campo {	
-		position: relative;	
+	.campo {
+		position: relative;
 		width: 630px;
 		height: 350px;
 		background: url('../images/campo-mobile.jpg') no-repeat;
-		background-size: 100% 100%;	
+		background-size: 100% 100%;
 	}
 	.maglia {
 		background: url('../images/maglia.png') no-repeat;
@@ -198,7 +277,7 @@
 		border: 1px solid darkgrey;
 		font-weight: bold;
 		font-size: 17px;
-		text-transform: uppercase;	
+		text-transform: uppercase;
 		margin-right: 15%;
 		width: 20%;
 		height: 30px;
@@ -219,7 +298,7 @@
 		border-radius: 10;
 	}
 	.imdb-invia-btn:hover {
-		color: red;	
+		color: red;
 		border: 1px solid black;
 	}
 	.imdb-password {
@@ -230,7 +309,7 @@
 		border-radius: 10;
 		height: 35px;
 		margin-left: 15px;
-	 }
+	}
 	.invform-riga {
 		font-family: Verdana, Arial, Helvetica, sans-serif;
 		font-size: x-small;
@@ -240,6 +319,7 @@
 	}
 	.invia-form-table th {
 		font-size: x-small;
+		text-align: center;
 	}
 	.invform-scadenza {
 		text-align: center;
@@ -264,52 +344,51 @@
 		border-radius: 7;
 		width: 75%;
 	}
-	.icon-invalid {	
-	  position: absolute;
-	  cursor: pointer;
-	  top: 55%;
-	  right: 25px;
-	  width: 15px;
-	  height: 15px;
-	  z-index: 3;
-	  background-position: 50% 50%;
-	  background-repeat: no-repeat;
-	  -webkit-background-size: 15px 15px;
-	  -moz-background-size: 15px 15px;
-	  -o-background-size: 15px 15px;
-	  background-size: 15px 15px;
-	  background-image: url('../images/field-invalid.png?1405069257');
+	.icon-invalid {
+		position: absolute;
+		cursor: pointer;
+		top: 55%;
+		right: 25px;
+		width: 15px;
+		height: 15px;
+		z-index: 3;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		-webkit-background-size: 15px 15px;
+		-moz-background-size: 15px 15px;
+		-o-background-size: 15px 15px;
+		background-size: 15px 15px;
+		background-image: url('../images/field-invalid.png?1405069257');
 	}
 	.divVoti {
 		overflow: hidden;
 		max-height: 800px;
-		-webkit-overflow-scrolling:touch;
+		-webkit-overflow-scrolling: touch;
 		overflow-y: scroll;
 	}
 	.votiAssist {
 		width: 100%;
-		height: 800px;		
+		height: 800px;
 	}
 	.schedina td {
 		font: bold medium 'trebuchet MS', Arial, helvetica;
 	}
 }
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-	.icon-invalid {	
-	  position: absolute;
-	  cursor: pointer;
-	  top: 55%;
-	  right: 25px;
-	  width: 15px;
-	  height: 15px;
-	  z-index: 3;
-	  background-position: 50% 50%;
-	  background-repeat: no-repeat;
-	  -webkit-background-size: 15px 15px;
-	  -moz-background-size: 15px 15px;
-	  -o-background-size: 15px 15px;
-	  background-size: 15px 15px;
-	  background-image: url('../images/field-invalid.png?1405069257');
+@media only screen and (min-width:768px) and (max-width:1024px) {
+	.icon-invalid {
+		position: absolute;
+		cursor: pointer;
+		top: 55%;
+		right: 25px;
+		width: 15px;
+		height: 15px;
+		z-index: 3;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		-webkit-background-size: 15px 15px;
+		-moz-background-size: 15px 15px;
+		-o-background-size: 15px 15px;
+		background-size: 15px 15px;
+		background-image: url('../images/field-invalid.png?1405069257');
 	}
-}	
+}
