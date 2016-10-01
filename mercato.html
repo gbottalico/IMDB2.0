@@ -95,9 +95,9 @@
 				
 				<div class="verticalLine">		
 					<div ng-hide="proposte.length == 0">
-						<div class="propContainer" ng-click="toggleViewProposte()">
+						<div class="propContainer">
 							<span class="numProposta">{{proposte.length}}</span>
-						 	<img class="imgProposta" src="images/proposte.png"/>
+						 	<img class="imgProposta" ng-click="toggleViewProposte()" src="images/proposte.png"/>
 						 </div>
 						<div ng-class="{'imdb-visible' : viewProposte}" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 							<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closePropostaDiv()"></div>
@@ -147,7 +147,7 @@
 					</div>
 				</div>
 
-				<div class="inv-roseMrc" data-ng-hide="!rosa" ng-class="{'marginTop90' : squadraSelected && squadraDst}">
+				<div class="inv-roseMrc" data-ng-hide="!rosa" ng-class="{'marginTop90' : (squadraSelected && squadraDst) || proposte.length}">
 					<div class="menuContainer" style="text-align: center;">
 						<img  class="logoSquadraMrc sqDst" id="squadraDst-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
 					</div>
