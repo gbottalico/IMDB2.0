@@ -184,7 +184,7 @@
 	}
 	
 	$scope.visualizzaSquadra = function(squadraSelected) {		
-		$('.menuItemInv').removeClass('selected');
+		$('.sqSrc').removeClass('selected');
 		var infoSquadra = $scope.squadre.filter(function(row) {
 			if (row.idSquadra == squadraSelected) {
 				return true;
@@ -199,7 +199,7 @@
 				cal.pos = -1;
 			});
 		}
-		$('#squadra-'+squadraSelected).addClass('selected');
+		$('#squadraSrc-' + squadraSelected).addClass('selected');
 		$scope.verificaProposte();
 	}		
 
@@ -229,7 +229,8 @@
 	/*
 	*	Mostra la rosa della squadra clickata
 	*/
-	$scope.mostraRosa = function(squadraSelected){
+	$scope.mostraRosa = function(squadraSelected) {
+		$('.sqDst').removeClass('selected');
 		$scope.squadraDstSelected = true;
 		$scope.squadraDst = squadraSelected;
 		var infoSquadra = $scope.squadre.filter(function(row) {
@@ -246,7 +247,7 @@
 				cal.pos = -1;
 			});
 		}
-		
+		$('#squadraDst-' + squadraSelected).addClass('selected');
 	}
 	
 	/*

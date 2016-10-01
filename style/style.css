@@ -675,7 +675,9 @@ body {
 .container td, .container th {
 	padding: 5px;
 }
-
+.containerMrc td, .containerMrc th {
+	font-size: small !important;
+}
 .portiere {
 	background-color: rgb(121, 165, 233) !important;
 }
@@ -1140,6 +1142,10 @@ img {
 	width: 9%;
 	cursor: pointer;
 }
+.logoSquadraMrc.selected {
+	filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+	-webkit-filter: grayscale(1);
+}
 
 .verticalLine {
 	float: left;
@@ -1191,11 +1197,10 @@ img {
 
 .playerSelected {
 	background-color: green !important;
-	color: gold;
-	font-size: 1.2em
+	color: gold;	
 }
 
-.divProposte{
+.divProposte {
 	margin : 25px; 
 }
 
@@ -1203,14 +1208,14 @@ img {
 	background: #b11e1e!important;
 }
 
-.money{
+.money {
 	height: 40px;
     width: 50%;
     font-size: 16px;
     text-align: center;
 }
 
-.moneyArrow{
+.moneyArrow {
 	width: 25px;
 	vertical-align: middle;
 }

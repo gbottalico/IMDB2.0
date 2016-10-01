@@ -160,9 +160,10 @@
 		background-color: white;
 		font-weight: bold;
 	}
-	.invia-form-table th {
-		font-size: xx-small;
+	.invia-form-table th, .invia-form-table td {
+		font-size: smaller;
 	}
+
 	.campo-portiere-1 {
 		top: 115px;
 		left: 0px;

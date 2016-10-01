@@ -35,8 +35,8 @@
 			<div data-ng-hide="loading">
 				
 				<div class="inv-roseMrc">
-					<div class="menuContainer">
-						<img class="logoSquadraMrc" ng-class="{selected : $index==-1}" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">
+					<div class="menuContainer" style="text-align: center;">
+						<img class="logoSquadraMrc sqSrc" ng-class="{selected : $index==-1}" id="squadraSrc-{{squadra.idSquadra}}" ng-repeat="squadra in squadre" alt="" ng-src="{{squadra.logo}}" ng-click="inserisciPassword(squadra)">
 						<img class="logo backHome"  onclick="window.location='index.html'" alt="Torna alla homepage" src="images/football.png" style="position: absolute; top: 15px; left: 48%;">
 					</div>
 					<div id="divPassword" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
@@ -53,28 +53,44 @@
 						</div>
 					</div>
 					<br >
-					<table class="container" ng-show="rosa.rosa">
-						<thead>
-							<tr>
-							  <th></th>
-							  <th></th>
-						      <th>Nome</th>	
-						      <th>Squadra</th>
-						      <th></th>					      
-						      <th>Prezzo</th>					      	      
-						    </tr>
-						</thead>
-						<tbody>
-				        	<tr ng-repeat="calciatore in rosa.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatore.idFcm}})" ng-class="{ 'portiere' : calciatore.ruolo == 1, 'difensore' : calciatore.ruolo == 2, 'centrocampista' : calciatore.ruolo == 3, 'attaccante' : calciatore.ruolo == 4 }">
-				        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" /></td>
-				         		<td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.foto}}" err-src="images/misterx.gif"></td>
-							    <td>{{calciatore.nome}}</td>		
-							    <td>{{calciatore.squadraDiA}}</td>	
-							    <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}" err-src="images/nologo.png"></td>
-							    <td>{{calciatore.prezzo}}</td>
-				        	</tr>			
-				        </tbody>
-			        </table>
+					<div id="rosaSquadraSrcNoMobile" class="imdb-no-mobile" ng-show="rosa.rosa">
+						<table class="container containerMrc">
+							<thead>
+								<tr>
+								  <th></th>
+								  <th></th>
+							      <th>Nome</th>	
+							      <th>Squadra</th>
+							      <th></th>					      
+							      <th>Prezzo</th>					      	      
+							    </tr>
+							</thead>
+							<tbody>
+					        	<tr ng-repeat="calciatore in rosa.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatore.idFcm}})" ng-class="{ 'portiere' : calciatore.ruolo == 1, 'difensore' : calciatore.ruolo == 2, 'centrocampista' : calciatore.ruolo == 3, 'attaccante' : calciatore.ruolo == 4 }">
+					        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" /></td>
+					         		<td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.foto}}" err-src="images/misterx.gif"></td>
+								    <td>{{calciatore.nome}}</td>		
+								    <td>{{calciatore.squadraDiA}}</td>	
+								    <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}" err-src="images/nologo.png"></td>
+								    <td>{{calciatore.prezzo}}</td>
+					        	</tr>			
+					        </tbody>
+				        </table>
+					</div>
+					<div id="rosaSquadraSrcMobile" class="inv-rose imdb-no-desktop imdb-no-tablet" ng-show="rosa.rosa">
+						<table class="invia-form-table">							
+							<tbody>
+					        	<tr ng-repeat="calciatore in rosa.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatore.idFcm}})" ng-class="{ 'portiere' : calciatore.ruolo == 1, 'difensore' : calciatore.ruolo == 2, 'centrocampista' : calciatore.ruolo == 3, 'attaccante' : calciatore.ruolo == 4 }">
+					        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatore.ruolo}}" name="srcSelected" value="{{calciatore.idFcm}}" nome="{{calciatore.nomeAbbr}}" /></td>
+					         		<td  style="text-align:center"><img class="invform-logo" alt="" ng-src="{{calciatore.foto}}" err-src="images/misterx.gif"></td>
+								    <td class="center">{{calciatore.nomeAbbr}}</td>		
+								    <!--<td class="center">{{calciatore.squadraDiA}}</td>-->
+								    <td style="text-align:center"><img class="invform-logo" alt="" ng-src="{{calciatore.squadraDiAfoto}}" err-src="images/nologo.png"></td>
+								    <td>{{calciatore.prezzo}}</td>
+					        	</tr>			
+					        </tbody>
+				        </table>
+				     </div>
 				</div>
 				
 				<div class="verticalLine">		
@@ -131,35 +147,50 @@
 						<img src="images/left.png" class="moneyArrow"/><input class="money" placeholder="Avere" type="text" ng-model="dstMoney">
 					</div>
 				</div>
-				
+
 				<div class="inv-roseMrc" data-ng-hide="!rosa">
-					<div class="menuContainer">
-						<img  class="logoSquadraMrc" id="squadra-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
+					<div class="menuContainer" style="text-align: center;">
+						<img  class="logoSquadraMrc sqDst" id="squadraDst-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
 					</div>
 					<br >
-					<table class="container" ng-show="rosaDst.rosa">
-						<thead>
-							<tr>
-							  <th></th>
-							  <th></th>
-						      <th>Nome</th>	
-						      <th>Squadra</th>
-						      <th></th>					      
-						      <th>Prezzo</th>					      	      
-						    </tr>
-						</thead>
-						<tbody>
-				        	<tr ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatoreDst.idFcm}})" ng-class="{ 'portiere' : calciatoreDst.ruolo == 1, 'difensore' : calciatoreDst.ruolo == 2, 'centrocampista' : calciatoreDst.ruolo == 3, 'attaccante' : calciatoreDst.ruolo == 4 }">
-				        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatoreDst.nomeAbbr}}" /></td>
-				         		<td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatoreDst.foto}}" err-src="images/misterx.gif"></td>
-							    <td>{{calciatoreDst.nome}}</td>		
-							    <td>{{calciatoreDst.squadraDiA}}</td>	
-							    <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatoreDst.squadraDiAfoto}}" err-src="images/nologo.png"></td>
-							    <td>{{calciatoreDst.prezzo}}</td>
-				        	</tr>			
-				        </tbody>
-			        </table>					
-				</div>
+					<div id="rosaSquadraDstNoMobile" class="imdb-no-mobile" ng-show="rosaDst.rosa">
+						<table class="container containerMrc">					
+							<thead>
+								<tr>
+								  <th></th>
+								  <th></th>
+							      <th>Nome</th>	
+							      <th>Squadra</th>
+							      <th></th>					      
+							      <th>Prezzo</th>					      	      
+							    </tr>
+							</thead>
+							<tbody>
+					        	<tr ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatoreDst.idFcm}})" ng-class="{ 'portiere' : calciatoreDst.ruolo == 1, 'difensore' : calciatoreDst.ruolo == 2, 'centrocampista' : calciatoreDst.ruolo == 3, 'attaccante' : calciatoreDst.ruolo == 4 }">
+					        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatoreDst.nomeAbbr}}" /></td>
+					         		<td  style="text-align:center"><img class="logo" alt="" ng-src="{{calciatoreDst.foto}}" err-src="images/misterx.gif"></td>
+								    <td>{{calciatoreDst.nome}}</td>		
+								    <td>{{calciatoreDst.squadraDiA}}</td>	
+								    <td style="text-align:center"><img class="logo" alt="" ng-src="{{calciatoreDst.squadraDiAfoto}}" err-src="images/nologo.png"></td>
+								    <td>{{calciatoreDst.prezzo}}</td>
+					        	</tr>			
+					        </tbody>
+			        	</table>	
+			        </div>
+			        <div id="rosaSquadraDstMobile" class="inv-rose imdb-no-desktop imdb-no-tablet" ng-show="rosaDst.rosa">
+						<table class="invia-form-table">
+							<tbody>
+					        	<tr ng-repeat="calciatoreDst in rosaDst.rosa" class="squadraMercato" ng-click="selezionaCalciatore({{calciatoreDst.idFcm}})" ng-class="{ 'portiere' : calciatoreDst.ruolo == 1, 'difensore' : calciatoreDst.ruolo == 2, 'centrocampista' : calciatoreDst.ruolo == 3, 'attaccante' : calciatoreDst.ruolo == 4 }">
+					        		<td><input style="color:white; display:none" type="checkbox" ruolo="{{calciatoreDst.ruolo}}" name="dstSelected" value="{{calciatoreDst.idFcm}}" nome="{{calciatoreDst.nomeAbbr}}" /></td>
+					         		<td  style="text-align:center"><img class="invform-logo" alt="" ng-src="{{calciatoreDst.foto}}" err-src="images/misterx.gif"></td>
+								    <td>{{calciatoreDst.nomeAbbr}}</td>		
+								    <!--<td>{{calciatoreDst.squadraDiA}}</td>-->
+								    <td style="text-align:center"><img class="invform-logo" alt="" ng-src="{{calciatoreDst.squadraDiAfoto}}" err-src="images/nologo.png"></td>
+								    <td>{{calciatoreDst.prezzo}}</td>
+					        	</tr>			
+					        </tbody>
+			        	</table>				
+					</div>
 				<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 					<div class="imdb-detail-overlay__close imdb-close-icon"
 						data-ng-click="closeConfermaDiv()"></div>
