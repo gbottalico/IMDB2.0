@@ -94,7 +94,7 @@
 				</div>
 				
 				<div class="verticalLine">		
-					<div ng-hide="proposte.length == 0" >
+					<div ng-hide="proposte.length == 0">
 						<div class="propContainer" ng-click="toggleViewProposte()">
 							<span class="numProposta">{{proposte.length}}</span>
 						 	<img class="imgProposta" src="images/proposte.png"/>
@@ -147,7 +147,7 @@
 					</div>
 				</div>
 
-				<div class="inv-roseMrc" data-ng-hide="!rosa" ng-class="{'marginTop90': proposte.length}">
+				<div class="inv-roseMrc" data-ng-hide="!rosa" ng-class="{'marginTop90' : squadraSelected && squadraDst}">
 					<div class="menuContainer" style="text-align: center;">
 						<img  class="logoSquadraMrc sqDst" id="squadraDst-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
 					</div>
