@@ -141,7 +141,7 @@
 					<div class="mrcDareAvereDiv" ng-show="squadraSelected && squadraDst">
 						<img src="images/right.png" class="moneyArrow"/>
 						<input class="money" placeholder="Dare" type="text" ng-model="srcMoney">
-						<img src="images/change.png" ng-click="richiediScambio()" class="richiediScambio" title="Richiedi scambio" />
+						<input type="button" ng-click="richiediScambio()" class="richiediScambio" title="Richiedi scambio" ng-disabled="disabilitaScambio">	
 						<input class="money" placeholder="Avere" type="text" ng-model="dstMoney">
 						<img src="images/left.png" class="moneyArrow"/>
 					</div>

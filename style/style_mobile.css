@@ -20,7 +20,11 @@
 		font-size: medium;
 		text-align: center;
 	}
-	.richiediScambio {
+	.richiediScambio {					
+		background: transparent url('../images/change.png') no-repeat center top;
+		border: none;
+		background-size: contain;
+		height: 40px;
 		width: 40px;
 		margin: 0 auto;
 		cursor: pointer;

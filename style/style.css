@@ -25,6 +25,10 @@
 		display: block;
 		margin: 0 auto;
 		cursor: pointer;
+		background: transparent url('../images/change.png') no-repeat center top;
+		border: none;
+		background-size: contain;
+		height: 50px;
 	}
 	.logoSquadraMrc {
 		width: 9%;
@@ -32,8 +36,8 @@
 	}
 	.numProposta {
 		position: absolute;	/*top: -20;
-								left: -5;
-								color: red;*/
+										left: -5;
+										color: red;*/
 		top: -25;
 		left: 10;
 		color: yellow;
@@ -1136,4 +1140,9 @@ img {
 .moneyArrow {
 	width: 25px;
 	vertical-align: middle;
+}
+.richiediScambio:disabled {
+	filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+	-webkit-filter: grayscale(1);
+	cursor: default;
 }

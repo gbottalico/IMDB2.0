@@ -8,6 +8,7 @@
 	$scope.viewProposte = false;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
 	$scope.proposte = [];
+	$scope.disabilitaScambio = false;
 
 	$http.get('service/squadreService.php').success(function(data) {		
 		$scope.loading = false;
@@ -50,6 +51,7 @@
 		$('input[name=dstSelected]').parent().parent().removeClass('playerSelected');
 		$('.sqSrc').removeClass('selected');
 		$('.sqDst').removeClass('selected');
+		$scope.disabilitaScambio = false;
 	}
 
 	$scope.verificaProposte = function() {
@@ -255,7 +257,7 @@
 	/*
 	*	Richiede lo scambio
 	*/
-	$scope.richiediScambio = function() {
+	$scope.richiediScambio = function() {		
 		//effettuo controlli ruolo
 		if ($('input[name=srcSelected]:checked').length==0 || ($('input[name=srcSelected][ruolo=1]:checked').length != $('input[name=dstSelected][ruolo=1]:checked').length  ||
 			$('input[name=srcSelected][ruolo=2]:checked').length != $('input[name=dstSelected][ruolo=2]:checked').length  ||
@@ -266,6 +268,7 @@
 			$('.imdb-overlay').show();
 			$('#divConferma').addClass('imdb-visible');				
 		} else {
+			$scope.disabilitaScambio = true;
 			$scope.scambio = {
 					'squadraSrc'  : $scope.squadraSelected.idSquadra,
 					'squadraDst'  : $scope.squadraDst,

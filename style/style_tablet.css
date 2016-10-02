@@ -25,6 +25,10 @@
 		display: block;
 		margin: 0 auto;
 		cursor: pointer;
+		background: transparent url('../images/change.png') no-repeat center top;
+		border: none;
+		background-size: contain;
+		height: 50px;
 	}
 	.logoSquadraMrc {
 		width: 9%;
@@ -32,8 +36,8 @@
 	}
 	.numProposta {
 		position: absolute;	/*top: -20;
-								left: -5;
-								color: red;*/
+										left: -5;
+										color: red;*/
 		top: -25;
 		left: 20;
 		color: yellow;
