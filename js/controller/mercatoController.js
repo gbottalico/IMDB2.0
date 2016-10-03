@@ -40,6 +40,7 @@
 	$scope.closePropostaDiv = function() {
 		$('.imdb-overlay').hide();
 		$scope.viewProposte = !$scope.viewProposte;
+		$('.divProposte').slick('unslick');
 	}
 
 	$scope.resetPage = function() {
@@ -176,15 +177,17 @@
 	
 	$scope.toggleViewProposte = function() {
 		$scope.viewProposte = !$scope.viewProposte;
-		setTimeout($scope.trasformaProposte, 100);
+		$scope.trasformaProposte();
 	}
 	
-	$scope.trasformaProposte = function() {		
-		$('.imdb-overlay').toggle();
-		$('.divProposte').slick({
-			dots: true,
-			infinite: false,
-		});
+	$scope.trasformaProposte = function() {						
+		$timeout(function() {
+			$('.divProposte').slick({
+				dots: true,
+				infinite: false			
+			});	
+			$('.imdb-overlay').toggle();
+		});	
 	}
 	
 	$scope.visualizzaSquadra = function(squadraSelected) {		

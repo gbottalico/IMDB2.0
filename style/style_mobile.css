@@ -20,7 +20,7 @@
 		font-size: medium;
 		text-align: center;
 	}
-	.richiediScambio {					
+	.richiediScambio {
 		background: transparent url('../images/change.png') no-repeat center top;
 		border: none;
 		background-size: contain;
@@ -396,5 +396,12 @@
 	}
 	.schedina td {
 		font: bold small 'trebuchet MS', Arial, helvetica;
+	}
+	.riepilogoContainer td {		
+		font-size: xx-small !important;
+	}
+	.slick-dots {
+		display: flex !important;
+		left: 15%;
 	}
 }

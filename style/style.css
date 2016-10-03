@@ -837,7 +837,7 @@ body {
 }
 .riepilogoContainer td {
 	white-space: nowrap;
-	font-size: xx-small;
+	font-size: small;
 }
 .hidden {
 	display: none;
@@ -1135,7 +1135,10 @@ img {
 	margin: 25px;
 }
 .slick-prev, .slick-next {
-	background: #b11e1e !important;
+	background: #5f574d !important;
+}
+.slick-disabled {
+	display: none !important;
 }
 .moneyArrow {
 	width: 25px;
