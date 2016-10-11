@@ -288,8 +288,8 @@
 					mailBody += $(this).attr('nome') + ", ";
 				}				
 			});
-			if ($scope.dstMoney && $scope.dstMoney > 0) {
-				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.dstMoney + " crediti per ";		
+			if ($scope.srcMoney && $scope.srcMoney > 0) {
+				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.srcMoney + " crediti per ";		
 			} else {
 				mailBody = mailBody.substring(0, mailBody.length - 2) + " per ";
 			}		
@@ -299,8 +299,8 @@
 					mailBody += $(this).attr('nome') + ", ";
 				}
 			});			
-			if ($scope.srcMoney && $scope.srcMoney > 0) {
-				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.srcMoney + " crediti.\n";		
+			if ($scope.dstMoney && $scope.dstMoney > 0) {
+				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.dstMoney + " crediti.\n";		
 			} else {
 				mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
 			}	
