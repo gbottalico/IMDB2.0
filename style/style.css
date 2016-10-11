@@ -1149,3 +1149,9 @@ img {
 	-webkit-filter: grayscale(1);
 	cursor: default;
 }
+input:invalid {
+  outline: 2px solid red;
+}
+input:focus:invalid {
+  color: red;
+}

@@ -140,9 +140,9 @@
 					</div>
 					<div class="mrcDareAvereDiv" ng-show="squadraSelected && squadraDst">
 						<img src="images/right.png" class="moneyArrow"/>
-						<input class="money" placeholder="Dare" type="text" ng-model="srcMoney">
+						<input class="money" placeholder="Dare" type="number" ng-model="srcMoney" ng-disabled="dstMoney && dstMoney > 0" min="0" max="{{squadraSelected.creditiResidui}}" ng-keyup="checkMoney()">
 						<input type="button" ng-click="richiediScambio()" class="richiediScambio" title="Richiedi scambio" ng-disabled="disabilitaScambio">	
-						<input class="money" placeholder="Avere" type="text" ng-model="dstMoney">
+						<input class="money" placeholder="Avere" type="number" ng-model="dstMoney" ng-disabled="srcMoney && srcMoney > 0" min="0" max="{{rosaDst.creditiResidui}}" ng-keyup="checkMoney()">
 						<img src="images/left.png" class="moneyArrow"/>
 					</div>
 				</div>
