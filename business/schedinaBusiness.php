@@ -8,7 +8,7 @@ class RigaSchedina {
 	var $punti;
 }
 
-class RigaSquadra {
+class RigaSq {
 	var $idSquadra;	
 	var $puntiGuadagnati;
 	var $creditiResidui;
@@ -35,7 +35,7 @@ class SchedinaBusiness {
 		$rigaTotale = 191;		
 		$countSquadra = 1;
 		while ($j < 44) {
-			$squadra = new RigaSquadra();
+			$squadra = new RigaSq();
 			$squadra->idSquadra = $countSquadra;
 			$squadra->creditiResidui = $celle[$rigaResidui][(4*($countSquadra - 1) + 7)];
 			$squadra->creditiAcquisiti = $celle[$rigaAcquisiti][(4*($countSquadra - 1) + 7)];
@@ -55,6 +55,28 @@ class SchedinaBusiness {
 			$i = 12;
 		}		
         return json_encode($squadreSchedina);
+	}
+
+	/*
+	*	Recupera i crediti totali di una squadra
+	*/
+	public static function getSchedinaSquadra($idSquadra) {
+		$data = new Spreadsheet_Excel_Reader();
+		$data->setOutputEncoding('CP1251'); // Set output Encoding.
+		$data->read(host . 'schedina.xls');
+		$celle = $data->sheets[0]['cells'];
+		error_reporting(E_ALL ^ E_NOTICE);			
+		$j = 7;		
+		$rigaTotale = 191;		
+		$countSquadra = 1;
+		while ($j < 44) {
+			if ($countSquadra == $idSquadra) {
+				return $celle[$rigaTotale][(4*($countSquadra - 1) + 7)];
+			}			
+			$countSquadra++;
+			$j = $j + 4;			
+		}		
+        return "";
 	}
 }
 

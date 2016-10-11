@@ -1,4 +1,4 @@
-<?php require (__DIR__.'/../utils/utils.php') ?>
+<?php require (__DIR__.'/schedinaBusiness.php') ?>
 
 <?php
 	
@@ -58,8 +58,8 @@
 	                $rigaSq->presidente = str_replace('"',"",$riga[2]);
 	                $rigaSq->foto = ImdbUtils::getCoachImageUrl($rigaSq->nome);
 	                $rigaSq->mail = str_replace('"',"",$riga[6]);
-	                $rigaSq->creditiResidui = substr($riga[8], 0, strlen($riga[8]) - 2); 
-	                $rigaSq->password = ImdbUtils::getPassword($rigaSq->idSquadra);
+	                $rigaSq->creditiResidui = SchedinaBusiness::getSchedinaSquadra($rigaSq->idSquadra); //substr($riga[8], 0, strlen($riga[8]) - 2); 
+	                $rigaSq->password = ImdbUtils::getPassword($rigaSq->idSquadra);	                
 	                array_push($squadre, $rigaSq);
 	            } else if (strpos($line,']=new R(') !== false) {
 	            	$riga = explode(",", $line);

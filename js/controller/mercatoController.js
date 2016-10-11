@@ -8,6 +8,7 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
     $scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
     $scope.proposte = [];
     $scope.disabilitaScambio = false;
+    $scope.creditiReali = 0;
 
     $scope.checkMoney = function() {
         if (document.querySelectorAll('.money:invalid').length > 0) {
