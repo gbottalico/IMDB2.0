@@ -283,8 +283,10 @@
 			}
 			var mailBody = "Il club " + $scope.squadraSelected.nome + " ti ha inviato la seguente proposta:\n";	
 			$('input[name=srcSelected]:checked').each(function() {
-				$scope.scambio.playerDare.push($(this).val());
-				mailBody += $(this).attr('nome') + ", ";
+				if ($scope.scambio.playerDare.indexOf($(this).val()) == -1) {
+					$scope.scambio.playerDare.push($(this).val());
+					mailBody += $(this).attr('nome') + ", ";
+				}				
 			});
 			if ($scope.dstMoney && $scope.dstMoney > 0) {
 				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.dstMoney + " crediti per ";		
@@ -292,8 +294,10 @@
 				mailBody = mailBody.substring(0, mailBody.length - 2) + " per ";
 			}		
 			$('input[name=dstSelected]:checked').each(function() {
-				$scope.scambio.playerAvere.push($(this).val());
-				mailBody += $(this).attr('nome') + ", ";
+				if ($scope.scambio.playerAvere.indexOf($(this).val()) == -1) {
+					$scope.scambio.playerAvere.push($(this).val());
+					mailBody += $(this).attr('nome') + ", ";
+				}
 			});			
 			if ($scope.srcMoney && $scope.srcMoney > 0) {
 				mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.srcMoney + " crediti.\n";		
