@@ -3,7 +3,7 @@
 		text-align: center;
 		color: white;
 		margin-top: 20px;
-		margin-left: 20px;
+		margin-left: 20%;
 		position: absolute;
 	}
 	.moneyArrow {
@@ -17,7 +17,7 @@
 	.money {
 		height: 30px;
 		width: 20%;
-		font-size: medium;
+		font-size: small;
 		text-align: center;
 	}
 	.richiediScambio {
