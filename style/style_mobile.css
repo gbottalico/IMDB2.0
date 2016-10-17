@@ -44,6 +44,9 @@
 	.marginTop90 {
 		margin-top: 90px;
 	}
+	.marginTop130 {
+		margin-top: 130px;
+	}
 	.imgProposta {
 		width: 50px;
 		cursor: pointer;
@@ -403,5 +406,15 @@
 	.slick-dots {
 		display: flex !important;
 		left: 15%;
+	}
+	.mercatoComunicazioni {
+		position: absolute;
+	    float: left;
+	    top: 20%;
+	    left: 10%;
+	    width: 80%;
+	    height: 100%;
+	    margin-top: 40px;
+	    resize: none;
 	}
 }

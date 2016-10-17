@@ -27,8 +27,6 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
      *	Apre il pannellino per l'inserimento della password della squadra selezionata.
      */
     $scope.inserisciPassword = function(squadraSelected) {
-
-
         $('#divPassword').addClass('imdb-visible');
         $scope.inviabile = true;
         $('input[name=password]').val('');
@@ -54,6 +52,7 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
     $scope.resetPage = function() {
         $scope.srcMoney = null;
         $scope.dstMoney = null;
+        $scope.comunicazioni = null;
         $('input[name=srcSelected]').attr('checked', false);
         $('input[name=dstSelected]').attr('checked', false);
         $('input[name=srcSelected]').parent().parent().removeClass('playerSelected');
@@ -287,6 +286,7 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
                 'soldiAvere': $scope.dstMoney ? $scope.dstMoney : 0,
                 'playerDare': [],
                 'playerAvere': [],
+                'messaggio' : $scope.comunicazioni,
                 'azione': 'richiediScambio'
             }
             var mailBody = "Il club " + $scope.squadraSelected.nome + " ti ha inviato la seguente proposta:\n";
@@ -311,6 +311,9 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
                 mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + $scope.dstMoney + " crediti.\n";
             } else {
                 mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
+            }
+            if ($scope.comunicazioni) {
+                mailBody += "\nTi scrive inoltre:\n" + $scope.comunicazioni;
             }
             console.log($scope.scambio);
             var destinatari = $scope.rosaDst.mail + "; " + $scope.squadraSelected.mail;

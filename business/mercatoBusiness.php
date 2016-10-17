@@ -21,10 +21,11 @@ class MercatoBusiness {
 	/*
 	*	Inserisce una nuova proposta di scambio
 	*/
-	public static function insertProposta($idSquadraA, $idSquadraB, $creditiA, $creditiB, $giocatoriA, $giocatoriB) {
+	public static function insertProposta($idSquadraA, $idSquadraB, $creditiA, $creditiB, $giocatoriA, $giocatoriB, $messaggio) {
 		
 		echo 'Giocatori Dare = ' . implode(",", $giocatoriA);
 		echo 'Giocatori Avere = ' . implode(",", $giocatoriB);
+		echo 'Messaggio ' . $messaggio;
 
 		//connection to the database
 		$conn = mysqli_connect(mysql_host, mysql_user, mysql_pwd, mysql_db);
@@ -33,7 +34,7 @@ class MercatoBusiness {
 		}
 
 		//execute the SQL query and return records
-		$sqlProposta = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, '" . implode(',', $giocatoriA) . "', '" . implode(',', $giocatoriB) . "', null)";
+		$sqlProposta = "INSERT INTO PROPOSTA VALUES (null, $idSquadraA, $idSquadraB, $creditiA, $creditiB, '" . implode(',', $giocatoriA) . "', '" . implode(',', $giocatoriB) . "', '" . $messaggio . "', null)";
 
 		if (!mysqli_query($conn, $sqlProposta)) {
 		  die('Error: ' . mysqli_error($conn));

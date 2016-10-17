@@ -4,13 +4,11 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 	$scope.initData = function() {
 		$http.get('service/squadreService.php').success(function(data) {		
 			$scope.squadre = data;
-		});
-
-		$http.get('service/classificaService.php').success(function(data) {		
-			$scope.classifica = data;
-		});
-
-		$scope.loading = false;
+			$http.get('service/classificaService.php').success(function(data) {		
+				$scope.classifica = data;
+				$scope.loading = false;
+			});					
+		});		
 	}
 
 	$scope.caricaStat = function(stat) {
@@ -40,7 +38,11 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 				$scope.loading = false;
 				$scope.statistica = stat;							
 			});			
-		}			
+		} else if (stat == 'statisticheSquadra') {						
+			$('#frameSito').attr('src', 'http://imalatidelbari.netsons.org/statistichesq/statistichesqNew.htm?Fsq=1');			
+			$scope.loading = false;
+			$scope.statistica = stat;	
+		}
 	}
 
 	$scope.getSquadraNameById = function(idsquadra) {
@@ -57,6 +59,10 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 				return true;
 			}
 		})[0].punti);
+	}
+
+	$scope.chooseStatisticheSquadra = function(idsquadra) {
+		$('#frameSito').attr('src', 'http://imalatidelbari.netsons.org/statistichesq/statistichesqNew.htm?Fsq=' + idsquadra);
 	}
 
 	$scope.generaSeAvessi = function() {

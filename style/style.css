@@ -404,6 +404,15 @@
 	.schedina td {
 		font: bold large 'trebuchet MS', Arial, helvetica;
 	}
+	.marginLeft200 {
+		margin-left: 200px;
+	}
+	.mercatoComunicazioni {
+		margin: 20px 0px;
+    	height: 20%;
+    	width: 90%;
+    	resize: none;
+	}
 }
 html {
 	font-size: 62.5%;

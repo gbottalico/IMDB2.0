@@ -33,6 +33,7 @@
 					<img class="logo backHome" id="voti" ng-click="caricaStat('seavessiavuto')" alt="Se Avessi Avuto" ng-src="images/calendarioincrociato.png">					
 					<img class="logo backHome" id="schedina" ng-click="caricaStat('schedina')" alt="Schedina" ng-src="images/schedina.png">
 					<img class="logo backHome" id="mercato" ng-click="caricaStat('mercato')" alt="Giocatori liberi" ng-src="images/mercato.png">
+					<img class="logo backHome imdb-no-mobile" id="statSquadra" ng-click="caricaStat('statisticheSquadra')" alt="Statistiche Squadra" ng-src="images/squadre.png">
 					<img class="logo backHome" onclick="window.location='index.html'" alt="" src="images/football.png">
 				</div>				
 				<div ng-show="statistica == 'seavessiavuto'">
@@ -138,6 +139,18 @@
 							</tr>
 						</tbody>
 					</table>
+				</div>
+				<div data-ng-show="statistica == 'statisticheSquadra'">
+					<table class="imdb-left marginLeft200">
+						<tr ng-repeat="squadra in squadre">
+							<td>
+								<img class="logo menuItem" ng-class="{selected : $index==0}" id="squadra-{{squadra.idSquadra}}" title="{{squadra.nome}}" ng-src="{{squadra.logo}}" err-src="images/nologo.png" ng-click="chooseStatisticheSquadra(squadra.idSquadra)">
+							</td>						
+						</tr>
+					</table>
+					<div class="center" style="overflow: hidden; max-height: 800px;">				
+						<iframe id="frameSito" style="border: 0px;" class="votiAssist" scrolling="no"></iframe>
+					</div>
 				</div>
 			</div>
 		</div>

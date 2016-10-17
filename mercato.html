@@ -139,15 +139,16 @@
 						</div>
 					</div>
 					<div class="mrcDareAvereDiv" ng-show="squadraSelected && squadraDst">
-						<img src="images/right.png" class="moneyArrow"/>
+						<img src="images/right.png" class="moneyArrow"/>												
 						<input class="money" placeholder="Dare" type="number" ng-model="srcMoney" ng-disabled="dstMoney && dstMoney > 0" min="0" max="{{squadraSelected.creditiResidui}}" ng-keyup="checkMoney()">
 						<input type="button" ng-click="richiediScambio()" class="richiediScambio" title="Richiedi scambio" ng-disabled="disabilitaScambio">	
-						<input class="money" placeholder="Avere" type="number" ng-model="dstMoney" ng-disabled="srcMoney && srcMoney > 0" min="0" max="{{rosaDst.creditiResidui}}" ng-keyup="checkMoney()">
+						<input class="money" placeholder="Avere" type="number" ng-model="dstMoney" ng-disabled="srcMoney && srcMoney > 0" min="0" max="{{rosaDst.creditiResidui}}" ng-keyup="checkMoney()">						
 						<img src="images/left.png" class="moneyArrow"/>
+						<textarea rows="6" cols="10" class="mercatoComunicazioni" placeholder="Note/Comunicazioni" ng-model="comunicazioni" maxlength="500"></textarea>
 					</div>
 				</div>
 
-				<div class="inv-roseMrc" data-ng-hide="!rosa" ng-class="{'marginTop90' : (squadraSelected && squadraDst) || proposte.length}">
+				<div class="inv-roseMrc" data-ng-hide="!rosa" ng-class="{'marginTop130' : (squadraSelected && squadraDst) || proposte.length}">
 					<div class="menuContainer" style="text-align: center;">
 						<img  class="logoSquadraMrc sqDst" id="squadraDst-{{squadra.idSquadra}}" ng-repeat="squadra in squadre | filter:{ idSquadra: '!' + squadraSelected.idSquadra}" alt="" ng-src="{{squadra.logo}}" ng-click="mostraRosa(squadra.idSquadra)">
 					</div>

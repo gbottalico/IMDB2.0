@@ -4,7 +4,7 @@
 	$post = file_get_contents('php://input');
 	$data = json_decode($post);
 	if ($data && $data->azione == 'richiediScambio') {
-		MercatoBusiness::insertProposta($data->squadraSrc, $data->squadraDst, $data->soldiDare, $data->soldiAvere, $data->playerDare, $data->playerAvere); 
+		MercatoBusiness::insertProposta($data->squadraSrc, $data->squadraDst, $data->soldiDare, $data->soldiAvere, $data->playerDare, $data->playerAvere, $data->messaggio); 
 	} else {
 		$azione = $_REQUEST['azione'];
 		if ($azione == 'getProposteRicevute') {
