@@ -313,7 +313,7 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
                 mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
             }
             if ($scope.comunicazioni) {
-                mailBody += "\nTi scrive inoltre:\n" + $scope.comunicazioni;
+                mailBody += "\nNote:\n" + $scope.comunicazioni;
             }
             console.log($scope.scambio);
             var destinatari = $scope.rosaDst.mail + "; " + $scope.squadraSelected.mail;
