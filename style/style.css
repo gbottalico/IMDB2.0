@@ -482,12 +482,12 @@
 		margin-left: 200px;
 	}
 
-	.mercatoComunicazioni {
+	.mercatoComunicazioni, .mercatoRifiuto {
 		margin: 20px 0px;
 		height: 20%;
 		width: 90%;
 		resize: none;
-	}
+	}	
 
 	/* Fantamister */
 	#bestm {
