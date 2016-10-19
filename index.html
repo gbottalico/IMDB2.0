@@ -17,6 +17,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>
 		<script src="js/interface.js"></script>
 		<script src="js/imdb.js"></script>		
+		<script src="js/controller/homeController.js"></script>
 		<link rel="stylesheet" href="style/style.css">	
 		<link rel="stylesheet" href="style/style_mobile.css">
 		<link rel="stylesheet" href="style/style_tablet.css">		
@@ -53,6 +54,20 @@
 			    </li>
 			    <li tabindex="1"> 
 			      <span class="title" id="menuMercato">MERCATO</span>
+			    </li>
+			    <li tabindex="1" class="imdb-no-mobile" ng-controller="HomeCtrl" ng-show="finito">			    	
+                	<table style="float: left; margin-left: 10%;">
+                  		<tr>
+                    		<td background="http://imalatidelbari.netsons.org/img/tt.png">
+                    			<div id="bestm"><img ng-src="{{top}}" height='75px' /></div>
+                    			<div id="topm"><img src="http://imalatidelbari.netsons.org/img/topm.png"></div>
+                  			</td>                  			                		                  		
+              				<td background="http://imalatidelbari.netsons.org/img/tt.png">              					
+                  				<div id="peggm"><img ng-src="{{flop}}" height='75px' /></div>
+                  				<div id="flopm"><img src="http://imalatidelbari.netsons.org/img/flopm.png"></div>
+                			</td>
+              			</tr>
+              		</table>
 			    </li>
 			</ul>						   
 	  	</div>

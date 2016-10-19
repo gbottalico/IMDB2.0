@@ -49,10 +49,19 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
         $('.divProposte').slick('unslick');
     }
 
+    $scope.closeMessaggioDiv = function() {
+        $scope.propostaDaRifiutare = null;
+        $scope.motivazione = null;
+        $('.imdb-overlay').hide();        
+        $('#divMessaggio').removeClass('imdb-visible');
+    }
+
     $scope.resetPage = function() {
         $scope.srcMoney = null;
         $scope.dstMoney = null;
         $scope.comunicazioni = null;
+        $scope.motivazione = null;
+        $scope.propostaDaRifiutare = null;
         $('input[name=srcSelected]').attr('checked', false);
         $('input[name=dstSelected]').attr('checked', false);
         $('input[name=srcSelected]').parent().parent().removeClass('playerSelected');
@@ -286,7 +295,7 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
                 'soldiAvere': $scope.dstMoney ? $scope.dstMoney : 0,
                 'playerDare': [],
                 'playerAvere': [],
-                'messaggio' : $scope.comunicazioni,
+                'messaggio': $scope.comunicazioni,
                 'azione': 'richiediScambio'
             }
             var mailBody = "Il club " + $scope.squadraSelected.nome + " ti ha inviato la seguente proposta:\n";
@@ -422,8 +431,9 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
     /*
      *	Gestisce il rifiuto di una proposta
      */
-    $scope.rifiutaProposta = function(proposta) {
+    $scope.rifiutaProposta = function() {
 
+        var proposta = $scope.propostaDaRifiutare;        
         $scope.closePropostaDiv();
         var mailBody = "Il club " + proposta.squadraDst.nome + " ha rifiutato la tua proposta:\n";
         angular.forEach(proposta.giocatoriDst, function(gioc) {
@@ -441,6 +451,9 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
             mailBody = mailBody.substring(0, mailBody.length - 2) + " più " + proposta.creditiSrc + " crediti.\n";
         } else {
             mailBody = mailBody.substring(0, mailBody.length - 2) + ".\n";
+        }
+        if ($scope.motivazione) {
+            mailBody += "Messaggio:\n" + $scope.motivazione + "\n";
         }
         var destinatari = proposta.squadraDst.mail + "; " + proposta.squadraSrc.mail;
         $http.get('service/mercatoService.php?azione=rifiutaProposta&proposta=' + proposta.idProposta)
@@ -478,6 +491,7 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
             .error(function(data) {
                 console.error('FUCK!');
             });
+        $scope.closeMessaggioDiv();        
     }
 
     /*
@@ -554,6 +568,13 @@ imdbFanta.controller('mercatoCtrl', function($scope, $http, $timeout, $filter) {
         } else {
             $('input[value=' + idPlayer + ']').parent().parent().removeClass('playerSelected');
         }
+    }
+
+    $scope.apriPannelloMessaggio = function(proposta) {
+        $scope.closePropostaDiv();
+        $('#divMessaggio').addClass('imdb-visible');
+        $('.imdb-overlay').show();       
+        $scope.propostaDaRifiutare = proposta; 
     }
 
 });

@@ -488,7 +488,32 @@ class ImdbUtils {
             }           
             return $giocatori;
         }
-                
+
+        /*
+        *   Recupera il TopMister di giornata
+        */
+        public static function getTopMister() {
+            $lines = file(host . fantam_folder . str_replace('XXX', (self::getProssimaGiornata() - 1), fantamister_file));            
+            foreach($lines as $line_num => $line) {
+                if (strpos($line,'a[1]') !== false) {                
+                     $riga = explode(",", $line);                                                               
+                     return substr($riga[0], strpos($riga[0], '(') + 2, strlen(substr($riga[0] , strpos($riga[0], '(') + 2)) - 1);
+                }              
+            }   
+        }
+        
+        /*
+        *   Recupera il FlopMister di giornata
+        */
+        public static function getFlopMister() {
+            $lines = file(host . fantam_folder . str_replace('XXX', (self::getProssimaGiornata() - 1), fantamister_file));            
+            foreach($lines as $line_num => $line) {
+                if (strpos($line,'a[10]') !== false) {                
+                     $riga = explode(",", $line);
+                     return substr($riga[0], strpos($riga[0], '(') + 2, strlen(substr($riga[0] , strpos($riga[0], '(') + 2)) - 1);
+                }              
+            }   
+        }       
 }
 
 ?>

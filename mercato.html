@@ -128,12 +128,12 @@
 									<div style="width:100%; float:left">
 										<div ng-show="proposta.ricevuta">
 											<img src="images/yes.jpg" class="bottoniProposta" style="margin-right: 30px" ng-click="accettaProposta(proposta)"></img>
-											<img src="images/no.jpg" class="bottoniProposta" ng-click="rifiutaProposta(proposta)"></img>
+											<img src="images/no.jpg" class="bottoniProposta" ng-click="apriPannelloMessaggio(proposta)"></img>
 										</div>
 										<div ng-hide="proposta.ricevuta">
 											<img src="images/no.jpg" class="bottoniProposta" ng-click="annullaProposta(proposta)"></img>
 										</div>
-									</div>
+									</div>									
 						        </div>
 							</div>
 						</div>
@@ -191,14 +191,21 @@
 					        </tbody>
 			        	</table>				
 					</div>
-				<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
-					<div class="imdb-detail-overlay__close imdb-close-icon"
-						data-ng-click="closeConfermaDiv()"></div>
-					<h2 class="imdb-detail-overlay__title" id="confermaTitle"></h2>						
-					<div class="imdb-detail-overlay__content imdb-gutter-v">
-						<span class="imdb-singleerror" id="confermaText"></span>										
+					<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+						<div class="imdb-detail-overlay__close imdb-close-icon"
+							data-ng-click="closeConfermaDiv()"></div>
+						<h2 class="imdb-detail-overlay__title" id="confermaTitle"></h2>						
+						<div class="imdb-detail-overlay__content imdb-gutter-v">
+							<span class="imdb-singleerror" id="confermaText"></span>										
+						</div>
 					</div>
-				</div>	
+					<div id="divMessaggio" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
+						<div class="imdb-detail-overlay__close imdb-close-icon"	data-ng-click="closeMessaggioDiv()"></div>
+						<h2 class="imdb-detail-overlay__title" id="messaggioTitle">Motivo rifiuto</h2>
+						<textarea rows="6" cols="10" class="mercatoComunicazioni" placeholder="Note/Comunicazioni" ng-model="motivazione" maxlength="500"></textarea>
+						<input type="submit" value="Invia" data-ng-click="rifiutaProposta()" class="imdb-invia-btn imdb-center" tabindex="2" />
+					</div>						
+				</div>
 			</div>
 		</div>
 	</body>

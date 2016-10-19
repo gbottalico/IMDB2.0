@@ -1,6 +1,7 @@
 	imdbFanta.controller('HomeCtrl', function($scope, $http, $timeout) {
 
-	$scope.loading = true;
+	$scope.finito = false;
+	/*$scope.loading = true;
 	
 	$http.get('service/squadreService.php').success(function(data) {		
 		$scope.loading = false;
@@ -29,5 +30,13 @@
 			$scope.rosa = infoSquadra[0];
 		}
 		$('#squadra-'+squadraSelected).addClass('selected');
-	}		
+	}*/
+
+	$http.get('service/fantamisterService.php?tipo=top').success(function(data) {				
+		$scope.top = "http://imalatidelbari.netsons.org/img/allenatori/" + data + ".png";
+		$http.get('service/fantamisterService.php?tipo=flop').success(function(data2) {				
+			$scope.flop = "http://imalatidelbari.netsons.org/img/allenatori/" + data2 + ".png";
+			$scope.finito = true;
+		});	
+	});		
 });
