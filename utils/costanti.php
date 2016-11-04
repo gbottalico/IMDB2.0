@@ -25,4 +25,5 @@
 	define('mysql_user', 'vwebywxa_admin');
 	define('mysql_pwd', 'Imdb2016');
 	define('mysql_db', 'vwebywxa_imdb');
+	define('voti_file', 'http://pianetafantacalcio.it/Voti-Ufficiali-Excel.asp?giornataScelta=');
 ?>
