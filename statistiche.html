@@ -123,10 +123,10 @@
 									<input ng-model="search" class="searchInput" id="search-svincolati">
 									<label for="search-svincolati" class="icon-invalid" ng-show="search.length" ng-click="search = ''" class="pointer"></label>									
 								</td>
-								<td><span ng-click="reverse=!reverse; orderSvincolati('nome', reverse)">Nome</span></td>
-								<td><span ng-click="reverse=!reverse; orderSvincolati('squadra', reverse)">Squadra</span></td>
-								<td><span ng-click="reverse=!reverse; orderSvincolati('ruolo', reverse)">Ruolo</span></td>								
-								<td><span ng-click="reverse=!reverse; orderSvincolati('fmld', reverse)">FMld</span></td>
+								<td><span ng-click="reverseNome=!reverseNome; orderSvincolati('nome', reverseNome)">Nome</span></td>
+								<td><span ng-click="reverseSquadra=!reverseSquadra; orderSvincolati('squadra', reverseSquadra)">Squadra</span></td>
+								<td><span ng-click="reverseRuolo=!reverseRuolo; orderSvincolati('ruolo', reverseRuolo)">Ruolo</span></td>								
+								<td><span ng-click="reverseFmld=!reverseFmld; orderSvincolati('fmld', reverseFmld)">FMld</span></td>
 							</tr>
 						</thead>
 						<tbody>

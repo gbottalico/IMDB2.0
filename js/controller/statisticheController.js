@@ -1,5 +1,8 @@
 imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
-	$scope.loading = true;		
+	$scope.loading = true;
+
+	$scope.filtroAttuale;
+	$scope.reverseAttuale;
 
 	$scope.initData = function() {
 		$http.get('service/squadreService.php').success(function(data) {		
@@ -114,6 +117,12 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 	}
 
 	$scope.orderSvincolati = function(predicate, reverse) {
-    	$scope.svincolati = $filter('orderBy')($scope.svincolati, predicate, reverse);
+		if ($scope.filtroAttuale) {
+			$scope.svincolati = $filter('orderBy')($scope.svincolati, [$scope.filtroAttuale, predicate], [$scope.reverseAttuale, reverse]);
+		} else {
+			$scope.svincolati = $filter('orderBy')($scope.svincolati, predicate, reverse);			
+		}
+		$scope.filtroAttuale = predicate;
+		$scope.reverseAttuale = reverse;		    
   	};
 });
