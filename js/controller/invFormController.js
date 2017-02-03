@@ -8,6 +8,7 @@
 	$scope.loadingForm = false;
 	$scope.showSquadra = false;
 	$scope.inviabile = true;		
+	$scope.needSchedina = false;
 	$scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];	
 	$scope.moduloInserito = new Array(0,0,0,0);
 	$scope.moduliAmmessi = [new Array(1,3,4,3), new Array(1,3,5,2), new Array(1,3,6,1), new Array(1,4,3,3), new Array(1,4,4,2),
@@ -287,8 +288,12 @@
 	*/
 	$scope.inserisciSchedina = function() {
 		if ($scope.titolari.length == 11 && $scope.riserve.length == 7) {
-    		$('.imdb-overlay').show();
-			$('#divSchedina').addClass('imdb-visible');
+			if ($scope.needSchedina) {
+				$('.imdb-overlay').show();
+				$('#divSchedina').addClass('imdb-visible');
+			} else {
+				$scope.inviaFormazione();
+			} 		
 
     	} else {
     		$('.imdb-overlay').show();
@@ -309,20 +314,25 @@
 		var sqCasa;
 		var sqFuori;
 		var schedinaMail = "";
-		angular.forEach($scope.listaIncontri, function(inc) {
-			var idSch = $('.schedina-pron.' + inc.idPartita + '.selected').attr('id');
-			if (idSch == undefined) {
-				schedinaOk = false;
-			} else {
-				inc.pronostico = idSch.replace(inc.idPartita + '-', '');
-				schedinaMail += inc.squadraCasa + " - " + inc.squadraFuori + "   " + inc.pronostico + "\n";
-				if (inc.idSquadraCasa == $scope.squadraSelected.idSquadra || inc.idSquadraFuori == $scope.squadraSelected.idSquadra) {
-					idIncontro = inc.idPartita;
-					sqCasa = inc.squadraCasa;
-					sqFuori = inc.squadraFuori;
+		if ($scope.needSchedina) {
+			angular.forEach($scope.listaIncontri, function(inc) {
+				var idSch = $('.schedina-pron.' + inc.idPartita + '.selected').attr('id');
+				if (idSch == undefined) {
+					schedinaOk = false;
+				} else {
+					inc.pronostico = idSch.replace(inc.idPartita + '-', '');
+					schedinaMail += inc.squadraCasa + " - " + inc.squadraFuori + "   " + inc.pronostico + "\n";
+					if (inc.idSquadraCasa == $scope.squadraSelected.idSquadra || inc.idSquadraFuori == $scope.squadraSelected.idSquadra) {
+						idIncontro = inc.idPartita;
+						sqCasa = inc.squadraCasa;
+						sqFuori = inc.squadraFuori;
+					}
 				}
-			}
-		});
+			});
+		} else {			
+			schedinaOk = true;			
+		}
+
 		if ($scope.invioFake) {
 			$scope.inviabile = false;
 			$('#confermaTitle').text('Invio formazione TEST');					
