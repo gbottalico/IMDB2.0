@@ -13,10 +13,8 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>
 		<script src="js/jquery-ui.js"></script>
-		<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 		<link rel="stylesheet" href="style/jquery-ui.structure.css">
 		<link rel="stylesheet" href="style/jquery-ui.theme.css">		
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">	
 		<script src="js/interface.js"></script>
 		<script src="js/imdb.js"></script>		
 		<link rel="stylesheet" href="style/style.css">	
@@ -26,7 +24,6 @@
 	<script type="text/javascript">
 		document.write('<scr'+'ipt src="js/controller/statisticheController.js"?' + Math.random() + '"></scr'+'ipt>');
 	</script>
-
 	<body ng-controller="statisticheCtrl" data-ng-init="initData()">
 		<div id="wrapper">
 			<div class="imdb-results__loading2" data-ng-show="loading"></div>
@@ -117,9 +114,9 @@
 						</tr>
 					</table>
 				</div>
-				<div data-ng-show="statistica == 'mercato'">-				
-					<table class="container display" id="giocatoriliberi">
-						<!--<thead>
+				<div data-ng-show="statistica == 'mercato'">
+					<table class="container" id="giocatoriliberi">
+						<thead>
 							<tr class="center titoloOrder">
 								<td style="position: relative">
 									<span>Cerca </span>									
@@ -131,25 +128,16 @@
 								<td><span ng-click="reverseRuolo=!reverseRuolo; orderSvincolati('ruolo', reverseRuolo)">Ruolo</span></td>								
 								<td><span ng-click="reverseFmld=!reverseFmld; orderSvincolati('fmld', reverseFmld)">FMld</span></td>
 							</tr>
-						</thead>-->
-						<thead>
-							<tr class="center titoloOrder">
-								<th>&nbsp;</th>
-								<th>Nome</th>
-								<th>Squadra</th>
-								<th>Ruolo</th>								
-								<th>FMld</th>
-							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="gioc in svincolati" class="center" ng-class="{ 'portiere' : gioc.ruolo == 'P', 'difensore' : gioc.ruolo == 'D', 'centrocampista' : gioc.ruolo == 'C', 'attaccante' : gioc.ruolo == 'A' }">
+							<tr data-ng-repeat="gioc in svincolati | filter:search" class="center" ng-class="{ 'portiere' : gioc.ruolo == 'P', 'difensore' : gioc.ruolo == 'D', 'centrocampista' : gioc.ruolo == 'C', 'attaccante' : gioc.ruolo == 'A' }">
 								<td><img ng-src="{{gioc.foto}}" class="logo" err-src="images/misterx.gif"/></td>
 								<td>{{gioc.nome}}</td>
 								<td>{{gioc.squadra}}</td>
 								<td>{{gioc.ruolo}}</td>
 								<td>{{gioc.fmld}}</td>
 							</tr>
-						</tbody>						
+						</tbody>
 					</table>
 				</div>
 				<div data-ng-show="statistica == 'statisticheSquadra'">
