@@ -4,12 +4,12 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 	$scope.filtroAttuale;
 	$scope.reverseAttuale;
 
-	$scope.initData = function() {
+	$scope.initData = function() {		
 		$http.get('service/squadreService.php').success(function(data) {		
 			$scope.squadre = data;
 			$http.get('service/classificaService.php').success(function(data) {		
 				$scope.classifica = data;
-				$scope.loading = false;
+				$scope.loading = false;				
 			});					
 		});		
 	}
@@ -31,15 +31,46 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 			});			
 		} else if (stat == 'mercato') {
 			$http.get('service/giocatoriLiberiService.php').success(function(data) {			
-				$scope.svincolati = data;
-				/*$('#giocatoriliberi').dataTable({
-					bDestroy : true,
-					sPaginationType : "full_numbers",
-					bAutoWidth : false,
-					sScrollX: "100%"
-				});*/
+				$scope.svincolati = data;				
 				$scope.loading = false;
-				$scope.statistica = stat;							
+				$scope.statistica = stat;
+
+				// Aggiungo il filtro sulle colonne Nome, Squadra  (1, 2)
+			$('#giocatoriliberi thead th:nth-child(2), #giocatoriliberi thead th:nth-child(3)').each( function () {
+		        var title = $(this).text();
+		        $(this).html('<span style="margin-right: 20px;">' + title + '</span><input type="text" placeholder="Filtra ' + title + '" />');
+		    } );
+			
+			// Creo la dataTable
+			var table = $('#giocatoriliberi').DataTable({
+				"order": [[1, "asc"]],
+				"aoColumnDefs" : [ {
+						"bSortable" : false,
+						"aTargets" : [ 0 ]
+					}],					
+				"bPaginate": false,		
+		        "bLengthChange": false,
+		        "bFilter": true,
+		        "bInfo": false,
+		        "bAutoWidth": false		        
+			});
+			
+			// Gestisco la ricerca sul filtro
+			table.columns().eq(0).each(function(colIdx) {
+			    $('input', table.column(colIdx).header()).on('keyup change', function() {
+			    	table
+			            .column(colIdx)
+			            .search(this.value)
+			            .draw();
+			    });
+			 
+			    $('input', table.column(colIdx).header()).on('click', function(e) {
+			        e.stopPropagation();
+			    });
+			});
+			
+			// Nascondo la ricerca generale
+			$('#giocatoriliberi_filter').hide();		
 			});			
 		} else if (stat == 'statisticheSquadra') {						
 			$('#frameSito').attr('src', 'http://imalatidelbari.netsons.org/statistichesq/statistichesqNew.htm?Fsq=1');			
