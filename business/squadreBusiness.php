@@ -32,6 +32,7 @@
 		var $foto;
 		var $mail;
 		var $creditiResidui;
+		var $creditiTotali;
 		var $password;
 		var $rosa;		
 
@@ -58,7 +59,10 @@
 	                $rigaSq->presidente = str_replace('"',"",$riga[2]);
 	                $rigaSq->foto = ImdbUtils::getCoachImageUrl($rigaSq->nome);
 	                $rigaSq->mail = str_replace('"',"",$riga[6]);
-	                $rigaSq->creditiResidui = SchedinaBusiness::getSchedinaSquadra($rigaSq->idSquadra); //substr($riga[8], 0, strlen($riga[8]) - 2); 
+	                $creditiResiduiSquadra = substr($riga[8], 0, strlen($riga[8]) - 2);
+	                $creditiAcquisitiSquadra = SchedinaBusiness::getSchedinaSquadra($rigaSq->idSquadra); 
+	                $rigaSq->creditiResidui = $creditiResiduiSquadra;
+	                $rigaSq->creditiTotali =  $creditiResiduiSquadra + $creditiAcquisitiSquadra; 
 	                $rigaSq->password = ImdbUtils::getPassword($rigaSq->idSquadra);	                
 	                array_push($squadre, $rigaSq);
 	            } else if (strpos($line,']=new R(') !== false) {

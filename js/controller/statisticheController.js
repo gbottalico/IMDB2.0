@@ -26,6 +26,14 @@ imdbFanta.controller('statisticheCtrl', function($scope, $http, $filter) {
 		} else if (stat == 'schedina') {
 			$http.get('service/schedinaService.php').success(function(data) {			
 				$scope.schedina = data;
+				angular.forEach($scope.squadre, function(s) {
+					angular.forEach($scope.schedina, function(sch) {
+						if (sch.idSquadra == s.idSquadra) {
+							sch.creditiResidui = s.creditiResidui;
+							sch.totaleCrediti = parseInt(sch.creditiAcquisiti) + parseInt(s.creditiResidui);
+						}
+					});
+				});
 				$scope.loading = false;
 				$scope.statistica = stat;							
 			});			

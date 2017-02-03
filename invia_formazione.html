@@ -45,7 +45,7 @@
 							<span class="imdb-error" data-ng-hide="inviabile">Password non valida</span>
 						</form>
 					</div>
-				</div>
+				</div>					
 				<div id="divSchedina" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
 					<div class="imdb-detail-overlay__close imdb-close-icon"
 						data-ng-click="closeSchedinaDiv()"></div>
@@ -69,10 +69,10 @@
 					</div>
 				</div>
 				<div id="divConferma" class="imdb-detail-overlay imdb-gutter imdb-overlay-div">
-					<div class="imdb-detail-overlay__close imdb-close-icon"
-						data-ng-click="closeConfermaDiv()"></div>
-					<h2 class="imdb-detail-overlay__title" id="confermaTitle"></h2>						
-					<div class="imdb-detail-overlay__content imdb-gutter-v">
+					<div class="imdb-detail-overlay__close imdb-close-icon" data-ng-click="closeConfermaDiv()"></div>
+					<h2 class="imdb-detail-overlay__title" id="confermaTitle"></h2>	
+					<div class="imdb-results__loading" data-ng-show="!needSchedina && loadingForm"></div>					
+					<div class="imdb-detail-overlay__content imdb-gutter-v" data-ng-show="!loadingForm && !needSchedina">
 						<span class="imdb-singleerror" id="confermaText"></span>										
 					</div>
 				</div>				

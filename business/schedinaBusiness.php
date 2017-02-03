@@ -29,19 +29,19 @@ class SchedinaBusiness {
 		error_reporting(E_ALL ^ E_NOTICE);
 		$squadreSchedina = array();
 		$i = 12;
-		$j = 7;
-		$rigaResidui = 189;
-		$rigaAcquisiti = 190;
-		$rigaTotale = 191;		
+		$j = 6;
+		//$rigaResidui = 189;
+		$rigaAcquisiti = 153;
+		//$rigaTotale = 191;		
 		$countSquadra = 1;
 		while ($j < 44) {
 			$squadra = new RigaSq();
 			$squadra->idSquadra = $countSquadra;
-			$squadra->creditiResidui = $celle[$rigaResidui][(4*($countSquadra - 1) + 7)];
-			$squadra->creditiAcquisiti = $celle[$rigaAcquisiti][(4*($countSquadra - 1) + 7)];
-			$squadra->totaleCrediti = $celle[$rigaTotale][(4*($countSquadra - 1) + 7)];
+			//$squadra->creditiResidui = $celle[$rigaResidui][(4*($countSquadra - 1) + 7)];
+			$squadra->creditiAcquisiti = $celle[$rigaAcquisiti][(4*($countSquadra - 1) + 6)];
+			//$squadra->totaleCrediti = $celle[$rigaTotale][(4*($countSquadra - 1) + 7)];
 			$arrayPunti = array();		
-			while ($i < 186) {				
+			while ($i < 144) {				
 				$rigaPunti = new RigaSchedina();
 				$rigaPunti->giornata = $celle[$i][1];
 				$rigaPunti->punti = $celle[$i][$j];
@@ -66,12 +66,12 @@ class SchedinaBusiness {
 		$data->read(host . 'schedina.xls');
 		$celle = $data->sheets[0]['cells'];
 		error_reporting(E_ALL ^ E_NOTICE);			
-		$j = 7;		
-		$rigaTotale = 191;		
+		$j = 6;				
+		$rigaAcquisiti = 153; //$rigaTotale = 191;
 		$countSquadra = 1;
 		while ($j < 44) {
 			if ($countSquadra == $idSquadra) {
-				return $celle[$rigaTotale][(4*($countSquadra - 1) + 7)];
+				return $celle[$rigaAcquisiti][(4*($countSquadra - 1) + 6)];
 			}			
 			$countSquadra++;
 			$j = $j + 4;			

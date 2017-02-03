@@ -307,7 +307,7 @@
 	*	Invia la formazione
 	*/
 	$scope.inviaFormazione = function() {
-		$scope.loadingForm = true;
+		$scope.loadingForm = true;		
 		var schedinaOk = true;
 		$scope.inviabile = true;
 		var idIncontro = 0;
@@ -329,8 +329,12 @@
 					}
 				}
 			});
-		} else {			
+		} else {
 			schedinaOk = true;			
+			$('#confermaTitle').text('Invio Formazione');
+			$('#confermaText').text('');
+			$('.imdb-overlay').show();
+			$('#divConferma').addClass('imdb-visible');
 		}
 
 		if ($scope.invioFake) {
@@ -390,10 +394,14 @@
 						$('#confermaText').addClass('success');
 						$('#confermaText').text('Formazione inviata con successo!');
 					}
-					$scope.loadingForm = false;				
-					$scope.closeSchedinaDiv();
-					$('.imdb-overlay').show();
-					$('#divConferma').addClass('imdb-visible');				
+					$timeout(function() {
+						$scope.loadingForm = false;
+					});
+					if ($scope.needSchedina) {	
+						$scope.closeSchedinaDiv();					
+						$('.imdb-overlay').show();
+						$('#divConferma').addClass('imdb-visible');				
+					}					
 				})
 				.error(function(data) {
 					console.error('FUCK!');
