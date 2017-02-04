@@ -384,6 +384,13 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
             $('#confermaText').text('');
             $('.imdb-overlay').show();
             $('#divConferma').addClass('imdb-visible');
+            angular.forEach($scope.listaIncontri, function(inc) {            	                    
+                if (inc.idSquadraCasa == $scope.squadraSelected.idSquadra || inc.idSquadraFuori == $scope.squadraSelected.idSquadra) {
+                    idIncontro = inc.idPartita;
+                    sqCasa = inc.squadraCasa;
+                    sqFuori = inc.squadraFuori;
+                }
+            });
         }
 
         if ($scope.invioFake) {
