@@ -1,9 +1,9 @@
-.gc.calciatore .nome {
+.nome {
 	display: none;
 }
-.gc.calciatore .foto {
+.foto {
 	margin-bottom: 20px;
 }
-.gc.calciatore .stato {
+.stato {
 	padding-left: 20px;
 }

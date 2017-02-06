@@ -102,6 +102,14 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
         });
     });
 
+    $.ajax({
+        url: 'http://www.fantaformazione.com/fantacalcio.calendari/probabili/Home.htm',
+        type: 'GET',
+        success: function(res) {
+            $scope.listaPartite = res.responseText;
+        }
+    });
+
     /*
      *	Apre il pannellino per l'inserimento della password della squadra selezionata. Se il termine di invio è scaduto, mostra un messaggio di errore
      */
@@ -384,7 +392,7 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
             $('#confermaText').text('');
             $('.imdb-overlay').show();
             $('#divConferma').addClass('imdb-visible');
-            angular.forEach($scope.listaIncontri, function(inc) {            	                    
+            angular.forEach($scope.listaIncontri, function(inc) {
                 if (inc.idSquadraCasa == $scope.squadraSelected.idSquadra || inc.idSquadraFuori == $scope.squadraSelected.idSquadra) {
                     idIncontro = inc.idPartita;
                     sqCasa = inc.squadraCasa;
@@ -510,34 +518,65 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
                 });
             $dialog.dialog('open');
         } else {
+            var listaSquadre = $($scope.listaPartite).find('span.probabili-team');
+            var incontro;
+            angular.forEach(listaSquadre, function(s) {
+                if (squadra == s.textContent.trim()) {
+                    var toggleA = $(s.parentElement).attr('onclick');
+                    incontro = toggleA.replace("return toggleProbabili('", '').replace("')", '');
+                }
+            });
             $.ajax({
-                url: 'http://www.fantaformazione.com/ajax.php?&id=Home&action[fantacalcio.calciatori]=probabiliJSON&mod_fantacalcio[id]=1&id_calendario=' + 1367,
+                url: 'http://www.fantaformazione.com/ajax.php?&id=Home&action[fantacalcio.calciatori]=probabiliJSON&mod_fantacalcio[id]=1&id_calendario=' + incontro,
                 type: 'GET',
                 success: function(res) {
-                    var text = res.responseText;                    
+                    var text = res.responseText;
+                    var contenuto = "",
+                        nomeGiocatoreDaCercare = "";
                     var htmlStart = '<html><head><link href="http://www.fantaformazione.com/modules/app/fantacalcio/views/fantacalcio.css?1076689080" rel="stylesheet" type="text/css">' +
                         '<link rel="stylesheet" href="http://www.fantaformazione.com/js/libs/inuit.css" type="text/css" media="screen"> ' +
-                        '<link href="http://www.fantaformazione.com/js/libs/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">' + 
-                        '<link rel="stylesheet" href="style/custom.css">' +'</head>';
-                        var inizio = text.indexOf('<div class="gc calciatore">');
-                    var fine = text.indexOf('<div class="gc calciatore">', inizio + 1);
-                    var content = text.substring(inizio, fine).replace("background-image:url('files", "background-image:url('http://www.fantaformazione.com/files");                    
-                    $dialog.html(htmlStart + content + '</html>').dialog({
-                        autoOpen: false,
-                        modal: true,
-                        width: 400,
-                        height: 230,
-                        scroll: true,
-                        draggable: true,
-                        resizable: false,
-                        title: "Titolarità " + nomeGiocatore.toUpperCase() + " (" + squadra.toUpperCase() + ")",
-                        close: function(event, ui) {
-                        	$(this).dialog('destroy').remove()
+                        '<link href="http://www.fantaformazione.com/js/libs/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">' +
+                        '<link rel="stylesheet" href="style/custom.css">' + '</head>';
+                    var allGiocatori = $(text).find('.gc.calciatore');
+                    angular.forEach(nomeGiocatore.split(' '), function(s) {
+                        if (s.length > 1) {
+                            nomeGiocatoreDaCercare += s.toLowerCase() + " ";
                         }
                     });
-                    $dialog.dialog('open');
+                    angular.forEach(allGiocatori, function(g) {
+                        if ($(g).find('.nome').text().trim().toLowerCase() == nomeGiocatoreDaCercare.trim()) {
+                            contenuto = g;
+                        }
+                    });
+                    //var inizio = text.indexOf('<div class="gc calciatore">');
+                    //var fine = text.indexOf('<div class="gc calciatore">', inizio + 1);
+                    if (contenuto == "") {
+                        console.log(nomeGiocatoreDaCercare + " non trovato, verificare i dati");                        
+                    } else {
+                        var content = contenuto.innerHTML.replace("background-image:url('files", "background-image:url('http://www.fantaformazione.com/files");
+                        $dialog.html(htmlStart + content + '</html>').dialog({
+                            autoOpen: false,
+                            modal: true,
+                            width: 400,
+                            height: 230,
+                            scroll: true,
+                            draggable: true,
+                            resizable: false,
+                            title: "Titolarità " + nomeGiocatore.toUpperCase() + " (" + squadra.toUpperCase() + ")",
+                            close: function(event, ui) {
+                                $(this).dialog('destroy').remove()
+                            }
+                        });
+                        $dialog.dialog('open');
+                    }
                 }
             });
         }
+    }
+
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
     }
 });
