@@ -1,4 +1,11 @@
 @media (max-width:767px) {
+	.dialogTitolarita {
+		width: 250px !important;
+		height: 160px !important;
+	}
+	.ui-dialog .ui-dialog-titlebar {
+		font-size: x-small;
+	}
 	.mrcDareAvereDiv {
 		text-align: center;
 		color: white;

@@ -544,21 +544,19 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
                         }
                     });
                     angular.forEach(allGiocatori, function(g) {
-                        if ($(g).find('.nome').text().trim().toLowerCase() == nomeGiocatoreDaCercare.trim()) {
+                        if ($(g).find('.nome').text().trim().toLowerCase().indexOf(nomeGiocatoreDaCercare.trim()) > -1) {
                             contenuto = g;
                         }
                     });
-                    //var inizio = text.indexOf('<div class="gc calciatore">');
-                    //var fine = text.indexOf('<div class="gc calciatore">', inizio + 1);
                     if (contenuto == "") {
                         console.log(nomeGiocatoreDaCercare + " non trovato, verificare i dati");                        
                     } else {
                         var content = contenuto.innerHTML.replace("background-image:url('files", "background-image:url('http://www.fantaformazione.com/files");
+                        $(contenuto).find('.dettaglio').remove();                        
                         $dialog.html(htmlStart + content + '</html>').dialog({
                             autoOpen: false,
                             modal: true,
-                            width: 400,
-                            height: 230,
+                            dialogClass: "dialogTitolarita",
                             scroll: true,
                             draggable: true,
                             resizable: false,

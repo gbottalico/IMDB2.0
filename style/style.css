@@ -1,4 +1,8 @@
 @media (min-width:992px) {
+	.dialogTitolarita {
+		width: 400px !important;
+		height: 230px !important;
+	}
 	.mrcDareAvereDiv {
 		text-align: center;
 		color: white;

@@ -1,9 +1,18 @@
 .nome {
 	display: none;
 }
-.foto {
-	margin-bottom: 20px;
-}
 .stato {
 	padding-left: 20px;
+}
+@media (min-width:992px) {
+	.foto {
+		margin-bottom: 20px;
+		margin-top: 15px;
+	}
+}
+@media (max-width:767px) {
+	.foto {
+		margin-bottom: 20px;
+		margin-top: 10px;
+	}
 }
