@@ -1,4 +1,18 @@
 @media (max-width:767px) {
+	.stato-cell {
+		float: left;
+		width: 20%;
+	}
+	.stato-cell>div {
+	    border-radius: 15px;
+	    line-height: 20px;
+	    max-height: 20px;
+	    min-width: 20px;
+	    text-align: center;	    
+	}
+	.stato-cell>div span {
+		display: none;
+	}
 	.dialogTitolarita {
 		width: 250px !important;
 		height: 160px !important;
@@ -245,7 +259,7 @@
 		font-weight: bold;
 	}
 	.invia-form-table th, .invia-form-table td {
-		font-size: xx-small;
+		font-size: smaller;
 		text-align: center;
 	}
 	.campo-portiere-1 {

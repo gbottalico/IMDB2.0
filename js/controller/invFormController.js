@@ -1,4 +1,4 @@
-imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
+imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $sce) {
 
     var pwdTest = 'testinvio';
     $scope.invioFake = false;
@@ -82,10 +82,19 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
 
     $scope.titolari = [];
     $scope.riserve = [];
+    $scope.listaGiocatoriTitolarita = [];
 
-    $http.get('service/squadreService.php').success(function(data) {
-        $scope.loading = false;
-        $scope.squadre = data;
+    $.ajax({
+        url: 'http://www.fantaformazione.com/fantacalcio.calendari/probabili/Home.htm',
+        type: 'GET',
+        success: function(res) {
+            $http.get('service/squadreService.php').success(function(data) {
+                $scope.loading = false;
+                $scope.squadre = data;
+            });
+            $scope.listaPartite = res.responseText;
+            $scope.caricaListaGiocatoriTitolarita();
+        }
     });
 
     $http.get('service/termineService.php').success(function(data) {
@@ -100,14 +109,6 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
                 return false;
             }
         });
-    });
-
-    $.ajax({
-        url: 'http://www.fantaformazione.com/fantacalcio.calendari/probabili/Home.htm',
-        type: 'GET',
-        success: function(res) {
-            $scope.listaPartite = res.responseText;
-        }
     });
 
     /*
@@ -164,6 +165,7 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
             });
         }
         $('#squadra-' + squadraSelected).addClass('selected');
+        $scope.caricaTitolarita($scope.rosa.rosa);
     }
 
     $scope.getDescrizioneRuolo = function(idRuolo) {
@@ -518,57 +520,41 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
                 });
             $dialog.dialog('open');
         } else {
-            var listaSquadre = $($scope.listaPartite).find('span.probabili-team');
-            var incontro;
-            angular.forEach(listaSquadre, function(s) {
-                if (squadra == s.textContent.trim()) {
-                    var toggleA = $(s.parentElement).attr('onclick');
-                    incontro = toggleA.replace("return toggleProbabili('", '').replace("')", '');
+            var contenuto = "",
+                nomeGiocatoreDaCercare = "";
+            var htmlStart = '<html><head><link href="http://www.fantaformazione.com/modules/app/fantacalcio/views/fantacalcio.css?1076689080" rel="stylesheet" type="text/css">' +
+                '<link rel="stylesheet" href="http://www.fantaformazione.com/js/libs/inuit.css" type="text/css" media="screen"> ' +
+                '<link href="http://www.fantaformazione.com/js/libs/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">' +
+                '<link rel="stylesheet" href="style/custom.css">' + '</head>';
+            angular.forEach(nomeGiocatore.split(' '), function(s) {
+                if (s.length > 1) {
+                    nomeGiocatoreDaCercare += s.toLowerCase() + " ";
                 }
             });
-            $.ajax({
-                url: 'http://www.fantaformazione.com/ajax.php?&id=Home&action[fantacalcio.calciatori]=probabiliJSON&mod_fantacalcio[id]=1&id_calendario=' + incontro,
-                type: 'GET',
-                success: function(res) {
-                    var text = res.responseText;
-                    var contenuto = "",
-                        nomeGiocatoreDaCercare = "";
-                    var htmlStart = '<html><head><link href="http://www.fantaformazione.com/modules/app/fantacalcio/views/fantacalcio.css?1076689080" rel="stylesheet" type="text/css">' +
-                        '<link rel="stylesheet" href="http://www.fantaformazione.com/js/libs/inuit.css" type="text/css" media="screen"> ' +
-                        '<link href="http://www.fantaformazione.com/js/libs/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">' +
-                        '<link rel="stylesheet" href="style/custom.css">' + '</head>';
-                    var allGiocatori = $(text).find('.gc.calciatore');
-                    angular.forEach(nomeGiocatore.split(' '), function(s) {
-                        if (s.length > 1) {
-                            nomeGiocatoreDaCercare += s.toLowerCase() + " ";
-                        }
-                    });
-                    angular.forEach(allGiocatori, function(g) {
-                        if ($(g).find('.nome').text().trim().toLowerCase().indexOf(nomeGiocatoreDaCercare.trim()) > -1) {
-                            contenuto = g;
-                        }
-                    });
-                    if (contenuto == "") {
-                        console.log(nomeGiocatoreDaCercare + " non trovato, verificare i dati");                        
-                    } else {
-                        var content = contenuto.innerHTML.replace("background-image:url('files", "background-image:url('http://www.fantaformazione.com/files");
-                        $(contenuto).find('.dettaglio').remove();                        
-                        $dialog.html(htmlStart + content + '</html>').dialog({
-                            autoOpen: false,
-                            modal: true,
-                            dialogClass: "dialogTitolarita",
-                            scroll: true,
-                            draggable: true,
-                            resizable: false,
-                            title: "Titolarità " + nomeGiocatore.toUpperCase() + " (" + squadra.toUpperCase() + ")",
-                            close: function(event, ui) {
-                                $(this).dialog('destroy').remove()
-                            }
-                        });
-                        $dialog.dialog('open');
+            angular.forEach($scope.listaGiocatoriTitolarita, function(g) {
+                if ($(g).find('.nome').text().trim().toLowerCase().indexOf(nomeGiocatoreDaCercare.trim()) > -1) {
+                    contenuto = g;
+                }
+            });
+            if (contenuto == "") {
+                console.log(nomeGiocatoreDaCercare + " non trovato, verificare i dati");
+            } else {
+                var content = contenuto.innerHTML.replace("background-image:url('files", "background-image:url('http://www.fantaformazione.com/files");
+                $(contenuto).find('.dettaglio').remove();
+                $dialog.html(htmlStart + content + '</html>').dialog({
+                    autoOpen: false,
+                    modal: true,
+                    dialogClass: "dialogTitolarita",
+                    scroll: true,
+                    draggable: true,
+                    resizable: false,
+                    title: "Titolarità " + nomeGiocatore.toUpperCase() + " (" + squadra.toUpperCase() + ")",
+                    close: function(event, ui) {
+                        $(this).dialog('destroy').remove()
                     }
-                }
-            });
+                });
+                $dialog.dialog('open');
+            }
         }
     }
 
@@ -576,5 +562,50 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter) {
         return str.replace(/\w\S*/g, function(txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
+    }
+
+    /*
+     *   Carica la lista di giocatori da FantaFormazione e li inserisce in un array
+     */
+    $scope.caricaListaGiocatoriTitolarita = function() {
+
+        var incontriCaricati = [];
+        var listaSquadre = $($scope.listaPartite).find('span.probabili-team');
+        var incontro;
+        angular.forEach(listaSquadre, function(s) {
+            var toggleA = $(s.parentElement).attr('onclick');
+            var incontroId = toggleA.replace("return toggleProbabili('", '').replace("')", '');
+            if (incontriCaricati.indexOf(incontroId) == -1) {
+                incontriCaricati.push(incontroId);
+                $.ajax({
+                    url: 'http://www.fantaformazione.com/ajax.php?&id=Home&action[fantacalcio.calciatori]=probabiliJSON&mod_fantacalcio[id]=1&id_calendario=' + incontroId,
+                    type: 'GET',
+                    success: function(res) {
+                        var allGiocatori = $(res.responseText).find('.gc.calciatore');
+                        angular.forEach(allGiocatori, function(g) {
+                            $scope.listaGiocatoriTitolarita.push(g);
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    $scope.caricaTitolarita = function(rosa) {
+        for (var i = 0; i < rosa.length; i++) {
+            var nomeGiocatore = rosa[i].nomeAbbr;
+            var nomeGiocatoreDaCercare = "";
+            angular.forEach(nomeGiocatore.split(' '), function(s) {
+                if (s.length > 1) {
+                    nomeGiocatoreDaCercare += s.toLowerCase() + " ";
+                }
+            });
+            for (var ll = 0; ll < $scope.listaGiocatoriTitolarita.length; ll++) {
+                if ($($scope.listaGiocatoriTitolarita[ll]).find('.nome').text().trim().toLowerCase().indexOf(nomeGiocatoreDaCercare.trim()) > -1) {
+                    rosa[i].statoTitolarita = $sce.trustAsHtml($($scope.listaGiocatoriTitolarita[ll]).find('.stato')[0].outerHTML);
+                    break;
+                }
+            }
+        }
     }
 });

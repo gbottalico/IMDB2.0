@@ -11,7 +11,8 @@
 		<title>IMDB</title>		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/angular.min.js"></script>		
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-touch.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.js"></script>
 		<script src="js/jquery-ui.js"></script>
 		<link rel="stylesheet" href="style/jquery-ui.structure.css">
 		<link rel="stylesheet" href="style/jquery-ui.theme.css">
@@ -150,8 +151,8 @@
 						      <th>Nome (Squadra)</th>	
 						      <th>MVt</th>
 						      <th>FMt</th>						      					     
-						      <th>Avv</th>
-							  <th></th>
+						      <th>Avv</th>							  
+							  <th>Titolarita</th>
 						    </tr>
 						</thead>
 					    <tbody>
@@ -161,7 +162,8 @@
 						      <td class="center">{{calciatore.mediaVoto}}</td>	
 						      <td class="center">{{calciatore.fantamediaVoto}}</td>						      
 						      <td class="center">{{calciatore.prossimoAvversario}}</td>						     
-							  <td style="text-align: right"><!--<img class="invform-logo" ng-src="images/fantagazzetta.png" ng-click="probabili(calciatore.squadraDiA, 'fantagazzetta', calciatore.nomeAbbr)" /><img class="invform-logo" ng-src="images/gazzetta.jpg" ng-click="probabili(calciatore.squadraDiA, 'gazzetta', calciatore.nomeAbbr)" />--><img class="invform-logo" ng-src="images/fantaformazione.png" ng-click="probabili(calciatore.squadraDiA, 'fanta', calciatore.nomeAbbr)" /></td>
+							  <!--<td style="text-align: right"><!--<img class="invform-logo" ng-src="images/fantagazzetta.png" ng-click="probabili(calciatore.squadraDiA, 'fantagazzetta', calciatore.nomeAbbr)" /><img class="invform-logo" ng-src="images/gazzetta.jpg" ng-click="probabili(calciatore.squadraDiA, 'gazzetta', calciatore.nomeAbbr)" /><img class="invform-logo" ng-src="images/fantaformazione.png" ng-click="probabili(calciatore.squadraDiA, 'fanta', calciatore.nomeAbbr)" /></td>-->
+							  <td class="center" ng-show="calciatore.statoTitolarita" ng-bind-html="calciatore.statoTitolarita"></td>
 						    </tr>
 					    </tbody>
 					</table>					
@@ -171,20 +173,22 @@
 						<thead>
 							<tr>
 							  <th></th>
-						      <th>Nome (Squadra)</th>	
+						      <th>Nome</th>	
 						      <th>MVt</th>
 						      <th>FMt</th>						      					     
-						      <th>Avv</th>						      
+						      <th>Avv</th>
+						      <th>Titolarità</th>						      
 						    </tr>
 						</thead>
 					    <tbody>
 						    <tr ng-repeat="calciatore in rosa.rosa" ng-class="{'imdb-disabled' : calciatore.disabled }" data-ng-click="clickGiocatore(calciatore)" 	style="cursor: pointer;" class="invform-riga invform-{{getDescrizioneRuolo(calciatore.ruolo).toLowerCase()}}">
 						      <td><img class="invform-logo" ng-src="{{calciatore.squadraDiAfoto}}" /></td>
-						      <td>{{calciatore.nomeAbbr}} ({{calciatore.squadraDiA}})</td>		
+						      <td>{{calciatore.nomeAbbr}}</td>		
 						      <td class="center">{{calciatore.mediaVoto}}</td>	
 						      <td class="center">{{calciatore.fantamediaVoto}}</td>						      
 						      <td class="center">{{calciatore.prossimoAvversario}}</td>
-						      <td style="text-align: right"><!--<img class="invform-logo" ng-src="images/fantagazzetta.png" ng-click="probabili(calciatore.squadraDiA, 'fantagazzetta', calciatore.nomeAbbr)" /><img class="invform-logo" ng-src="images/gazzetta.jpg" ng-click="probabili(calciatore.squadraDiA, 'gazzetta', calciatore.nomeAbbr)" />--><img class="invform-logo" ng-src="images/fantaformazione.png" ng-click="probabili(calciatore.squadraDiA, 'fanta', calciatore.nomeAbbr)" /></td>						      
+						      <!--<td style="text-align: right"><!--<img class="invform-logo" ng-src="images/fantagazzetta.png" ng-click="probabili(calciatore.squadraDiA, 'fantagazzetta', calciatore.nomeAbbr)" /><img class="invform-logo" ng-src="images/gazzetta.jpg" ng-click="probabili(calciatore.squadraDiA, 'gazzetta', calciatore.nomeAbbr)" /><img class="invform-logo" ng-src="images/fantaformazione.png" ng-click="probabili(calciatore.squadraDiA, 'fanta', calciatore.nomeAbbr)" /></td>-->
+						      <td class="center" ng-show="calciatore.statoTitolarita" ng-bind-html="calciatore.statoTitolarita"></td>						      
 						    </tr>
 					    </tbody>
 					</table>					

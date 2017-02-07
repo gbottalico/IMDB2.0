@@ -1,4 +1,18 @@
 @media (min-width:992px) {
+	.stato-cell {
+		float: left;
+		width: 20%;
+	}
+	.stato-cell>div {
+	    border-radius: 15px;
+	    line-height: 20px;
+	    max-height: 20px;
+	    min-width: 25px;
+	    text-align: center;
+	}
+	.stato-cell>div span {
+		display: none;
+	}
 	.dialogTitolarita {
 		width: 400px !important;
 		height: 230px !important;

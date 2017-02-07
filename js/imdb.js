@@ -1,4 +1,4 @@
-var imdbFanta = angular.module('IMDB', ['ngTouch']);
+var imdbFanta = angular.module('IMDB', ['ngTouch', 'ngSanitize']);
 (function (angular, imdbFanta) {
   'use strict';
   imdbFanta.factory('scrollPageTo', function () {
