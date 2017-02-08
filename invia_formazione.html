@@ -18,12 +18,14 @@
 		<link rel="stylesheet" href="style/jquery-ui.theme.css">
 		<script src="js/interface.js"></script>
 		<script src="js/javacrypt.js"></script>
-		<script src="js/imdb.js"></script>	
-		<script src="js/controller/invFormController.js"></script>	
-		<link rel="stylesheet" href="style/style_mobile.css">
-		<link rel="stylesheet" href="style/style_tablet.css">
-		<link rel="stylesheet" href="style/style.css">		
+		<script src="js/imdb.js"></script>			
 	</head>
+	<script type="text/javascript">
+		document.write('<scr'+'ipt src="js/controller/invFormController.js"?' + Math.random() + '"></scr'+'ipt>');
+		document.write('<link rel="stylesheet" href="style/style_mobile.css?' + Math.random() + '">');
+		document.write('<link rel="stylesheet" href="style/style_tablet.css?' + Math.random() + '">');
+		document.write('<link rel="stylesheet" href="style/style.css?' + Math.random() + '">');
+	</script>
 	<body ng-controller="invFormCtrl">
 		<script type="text/javascript">
 			 jQuery.ajax = (function(_ajax) {

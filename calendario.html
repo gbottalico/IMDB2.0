@@ -18,12 +18,12 @@
 	<link rel="stylesheet" href="style/jquery-ui.theme.css">
 	<script src="js/interface.js"></script>
 	<script src="js/imdb.js"></script>	
-	<link rel="stylesheet" href="style/style.css">
-	<link rel="stylesheet" href="style/style_mobile.css">
-	<link rel="stylesheet" href="style/style_tablet.css">	
 </head>
 <script type="text/javascript">
 	document.write('<scr' + 'ipt src="js/controller/calendarioController.js"?' + Math.random() + '"></scr' + 'ipt>');
+	document.write('<link rel="stylesheet" href="style/style_mobile.css?' + Math.random() + '">');
+	document.write('<link rel="stylesheet" href="style/style_tablet.css?' + Math.random() + '">');
+	document.write('<link rel="stylesheet" href="style/style.css?' + Math.random() + '">');
 </script>
 <body ng-controller="calendarioCtrl" ng-init="initCompetizione()">
 	<div id="wrapper" ng-swipe-left="swipeGiornata('piu')" ng-swipe-right="swipeGiornata('meno')">
