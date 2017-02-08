@@ -591,6 +591,9 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
         });
     }
 
+    /*
+     *   Cicla sulla rosa selezionata e aggiunge il dettaglio della titolarità sul json del calciatore
+     */
     $scope.caricaTitolarita = function(rosa) {
         for (var i = 0; i < rosa.length; i++) {
             var nomeGiocatore = rosa[i].nomeAbbr;
@@ -600,9 +603,12 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
                     nomeGiocatoreDaCercare += s.toLowerCase() + " ";
                 }
             });
-            for (var ll = 0; ll < $scope.listaGiocatoriTitolarita.length; ll++) {
-                if ($($scope.listaGiocatoriTitolarita[ll]).find('.nome').text().trim().toLowerCase().indexOf(nomeGiocatoreDaCercare.trim()) > -1) {
-                    rosa[i].statoTitolarita = $sce.trustAsHtml($($scope.listaGiocatoriTitolarita[ll]).find('.stato')[0].outerHTML);
+            for (var lt = 0; lt < $scope.listaGiocatoriTitolarita.length; lt++) {
+                var divFantagazzetta = $($scope.listaGiocatoriTitolarita[lt]).find('.stato-cell')[0];
+                var squadraFg = $(divFantagazzetta).find('a').attr('href').substring($(divFantagazzetta).find('a').attr('href').indexOf('#') + 1).toLowerCase();
+                // Trovo il giocatore se: il nome da cercare è contenuto nel testo del <div class="nome"> e se la squadra è uguale a quella relativa al giocatore
+                if ($($scope.listaGiocatoriTitolarita[lt]).find('.nome').text().trim().toLowerCase().indexOf(nomeGiocatoreDaCercare.trim()) > -1 && rosa[i].squadraDiA.toLowerCase() == squadraFg) {
+                    rosa[i].statoTitolarita = $sce.trustAsHtml($($scope.listaGiocatoriTitolarita[lt]).find('.stato')[0].outerHTML);
                     break;
                 }
             }
