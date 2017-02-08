@@ -92,7 +92,7 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
                 $scope.loading = false;
                 $scope.squadre = data;
             });
-            $scope.listaPartite = res.responseText;
+            $scope.listaPartite = res.responseText.split('src="imgs/').join('src="http://www.fantaformazione.com/imgs/').split('src="modules/').join('src="http://www.fantaformazione.com/modules/').split('src="templates/').join('src="http://www.fantaformazione.com/templates/');
             $scope.caricaListaGiocatoriTitolarita();
         }
     });
