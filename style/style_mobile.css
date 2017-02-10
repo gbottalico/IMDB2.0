@@ -4,11 +4,11 @@
 		width: 20%;
 	}
 	.stato-cell>div {
-	    border-radius: 15px;
-	    line-height: 20px;
-	    max-height: 20px;
-	    min-width: 20px;
-	    text-align: center;	    
+		border-radius: 15px;
+		line-height: 20px;
+		max-height: 20px;
+		min-width: 20px;
+		text-align: center;
 	}
 	.stato-cell>div span {
 		display: none;
@@ -138,6 +138,12 @@
 		margin: 0 auto;
 		display: table;		/*padding: 0 0 8em 0;*/
 		color: white;
+	}
+	.container th h1 {
+		font-size: smaller;
+	}
+	.container th {
+		font: bold x-small 'trebuchet MS', Arial, helvetica;
 	}
 	#elencoGiornate ul {
 		display: none;
@@ -421,8 +427,8 @@
 	.schedina td {
 		font: bold small 'trebuchet MS', Arial, helvetica;
 	}
-	.riepilogoContainer td {		
-		font-size: xx-small !important;
+	.riepilogoContainer td {
+		font-size: smaller !important;
 	}
 	.slick-dots {
 		display: flex !important;
@@ -430,13 +436,13 @@
 	}
 	.mercatoComunicazioni {
 		position: absolute;
-	    float: left;
-	    top: 20%;
-	    left: 10%;
-	    width: 80%;
-	    height: 100%;
-	    margin-top: 40px;
-	    resize: none;
+		float: left;
+		top: 20%;
+		left: 10%;
+		width: 80%;
+		height: 100%;
+		margin-top: 40px;
+		resize: none;
 	}
 	.mercatoRifiuto {
 		margin-bottom: 20px;
