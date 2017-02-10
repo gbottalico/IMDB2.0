@@ -110,7 +110,7 @@ imdbFanta.controller('calendarioCtrl', function($scope, $http, scrollPageTo, $ti
 				}
 			});
 			
-			$scope.panchinaCasa = $scope.sortByKey($scope.panchinaCasa, 'ruolo', 'titolare');
+			$scope.panchinaCasa = $scope.sortByKeys($scope.panchinaCasa, 'ruolo', 'titolare');
 			$scope.panchinaFuori = $scope.sortByKeys($scope.panchinaFuori, 'ruolo', 'titolare');
 			
 			$('.riepilogoContainer').css('position','absolute');
