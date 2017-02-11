@@ -116,7 +116,7 @@
 		-webkit-overflow-scrolling: touch;	/*overflow-y: scroll;*/
 	}
 	.container td {
-		font: bold xx-small 'trebuchet MS', Arial, helvetica;
+		font: bold x-small 'trebuchet MS', Arial, helvetica;
 	}
 	li {
 		width: 100% !important;
@@ -428,7 +428,7 @@
 		font: bold small 'trebuchet MS', Arial, helvetica;
 	}
 	.riepilogoContainer td {
-		font-size: smaller !important;
+		font-size: x-small !important;
 	}
 	.slick-dots {
 		display: flex !important;
@@ -449,5 +449,14 @@
 		height: 20%;
 		width: 90%;
 		resize: none;
+	}
+	.logo {
+		height: 35px;
+	}
+	.logoAllenatore {
+		height: 45px;
+	}
+	.menuItem.selected {
+		height: 55px;
 	}
 }
