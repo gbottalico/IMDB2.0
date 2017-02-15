@@ -87,13 +87,12 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
     $.ajax({
         url: 'http://www.fantaformazione.com/fantacalcio.calendari/probabili/Home.htm',
         type: 'GET',
-        success: function(res) {
-            $http.get('service/squadreService.php').success(function(data) {
-                $scope.loading = false;
+        success: function(res) {            
+            $http.get('service/squadreService.php').success(function(data) {                
                 $scope.squadre = data;
-            });
+            });     
             $scope.listaPartite = res.responseText.split('src="imgs/').join('src="http://www.fantaformazione.com/imgs/').split('src="modules/').join('src="http://www.fantaformazione.com/modules/').split('src="templates/').join('src="http://www.fantaformazione.com/templates/');
-            $scope.caricaListaGiocatoriTitolarita();
+            $scope.caricaListaGiocatoriTitolarita();       
         }
     });
 
@@ -572,13 +571,14 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
         var incontriCaricati = [];
         var listaSquadre = $($scope.listaPartite).find('span.probabili-team');
         var incontro;
-        angular.forEach(listaSquadre, function(s) {
+        for (var i = 0; i < listaSquadre.length; i++) {
+            var s = listaSquadre[i];
             var toggleA = $(s.parentElement).attr('onclick');
             var incontroId = toggleA.replace("return toggleProbabili('", '').replace("')", '');
             if (incontriCaricati.indexOf(incontroId) == -1) {
                 incontriCaricati.push(incontroId);
                 $.ajax({
-                    url: 'http://www.fantaformazione.com/ajax.php?&id=Home&action[fantacalcio.calciatori]=probabiliJSON&mod_fantacalcio[id]=1&id_calendario=' + incontroId,
+                    url: 'http://www.fantaformazione.com/ajax.php?&id=Home&action[fantacalcio.calciatori]=probabiliJSON&mod_fantacalcio[id]=1&id_calendario=' + incontroId,                                       
                     type: 'GET',
                     success: function(res) {
                         var allGiocatori = $(res.responseText).find('.gc.calciatore');
@@ -588,7 +588,8 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
                     }
                 });
             }
-        });
+        }
+        $scope.loading = false;
     }
 
     /*
