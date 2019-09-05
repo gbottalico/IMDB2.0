@@ -77,7 +77,7 @@ class CalendarioBusiness {
     /*
     *   Popolo la prossima giornata
     */
-    public static function getProssimaGiornata() {
+    /*public static function getProssimaGiornata() {
         $calendario = array();
         $lines = file(host . js_folder . calendario_file);
         $prossima = ImdbUtils::getProssimaGiornata();
@@ -115,7 +115,37 @@ class CalendarioBusiness {
             }              
         }
         return json_encode($calendario);
-    }
+    }*/
+
+    public static function getProssimaGiornata() {
+        
+		$calendario = array();
+
+		//connection to the database
+		$conn = mysqli_connect(mysql_host, mysql_user, mysql_pwd, mysql_db);
+		if (!$conn) {
+    		die("Connection failed: " . mysqli_connect_error());
+		}
+
+		//execute the SQL query and return records		
+		$sql = "SELECT ID_PARTITA, ID_GIORNATA, SQUADRA_CASA, SQUADRA_TRAS FROM CALENDARIO order by ID_GIORNATA, ID_PARTITA";
+		$result = mysqli_query($conn, $sql);
+
+		//fetch tha data from the database 
+		while ($row = mysqli_fetch_assoc($result)) {
+			$rigaCal = new RigaCalendario();
+            $rigaCal->idGiornata = $row['ID_GIORNATA'];
+            $rigaCal->idPartita = $row['ID_PARTITA'];
+            $rigaCal->squadraCasa = $row['SQUADRA_CASA'];
+            $rigaCal->squadraFuori = $row['SQUADRA_TRAS'];
+            array_push($calendario, $rigaCal);
+		}
+						
+		//close the connection
+		mysqli_close($conn);
+
+		return json_encode($calendario);					
+	}
 }	
 
 ?>

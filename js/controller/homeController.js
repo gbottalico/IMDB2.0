@@ -32,11 +32,11 @@
 		$('#squadra-'+squadraSelected).addClass('selected');
 	}*/
 
-	$http.get('service/fantamisterService.php?tipo=top').success(function(data) {				
+	/*$http.get('service/fantamisterService.php?tipo=top').success(function(data) {				
 		$scope.top = "http://imalatidelbari.netsons.org/img/allenatori/" + data + ".png";
 		$http.get('service/fantamisterService.php?tipo=flop').success(function(data2) {				
 			$scope.flop = "http://imalatidelbari.netsons.org/img/allenatori/" + data2 + ".png";
 			$scope.finito = true;
 		});	
-	});		
+	});*/		
 });

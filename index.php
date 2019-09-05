@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <html ng-app="IMDB">
 	<head>
 		<meta http-equiv="cache-control" content="max-age=0">
@@ -25,38 +29,45 @@
 		
 		<script type="text/javascript">
 			$(function(){
-				initializeMenu();
+				//initializeMenu();
+				<?php
+					if (array_key_exists("utente", $_SESSION)) {
+						echo	"window.location = \"schedina.php\"";
+					}else{
+						echo	"window.location = \"login.html\"";
+					}
+				?>
 			})
 		</script>
 	</head>
 	<body>		
 		<div id="wrapper">
-			<ul class="menu">
-				<li tabindex="1" class="">
+			<!--<ul class="menu">
+				<li tabindex="1" class="" style="display: none">
 			      <span class="title" id="menuClassifica">CLASSIFICA</span> 
 			    </li>
-			    <li tabindex="1" class="">
+			    <li tabindex="1" class="" style="display: none">
 			      <span class="title" id="menuSquadre">ROSE</span> 
 			    </li>
 			    <li tabindex="1" class="">
-			      <span class="title" id="menuInvForm">INVIO FORMAZIONE</span> 
+			      <span class="title" id="menuInvForm">SCHEDINA</span> 
 			    </li>
-			    <li tabindex="1" class="">
-			      <span class="title" id="menuCalendario">CALENDARIO</span> 
+			    <li tabindex="1" class="" style="display: none">
+			      <span class="title" id="menuCalendario" style="display: none">CALENDARIO</span> 
 			    </li>
-			    <li tabindex="1"> 
-			      <span class="title" id="menuProbabili">PROBABILI FORMAZIONI</span>
+			    <li tabindex="1" style="display: none"> 
+			      <span class="title" id="menuProbabili" style="display: none">PROBABILI FORMAZIONI</span>
 			    </li>
-			    <li tabindex="1"> 
-			      <span class="title" id="menuVotiAssist">VOTI E ASSIST</span>
+			    <li tabindex="1" style="display: none"> 
+			      <span class="title" id="menuVotiAssist" style="display: none">VOTI E ASSIST</span>
 			    </li>
 			    <li tabindex="1"> 
 			      <span class="title" id="menuStatistiche">STATISTICHE</span>
 			    </li>
-			    <li tabindex="1"> 
-			      <span class="title" id="menuMercato">MERCATO</span>
+			    <li tabindex="1" style="display: none">  
+			      <span class="title" id="menuMercato" style="display: none">MERCATO</span>
 			    </li>
-			    <li tabindex="1" class="imdb-no-mobile" ng-controller="HomeCtrl" ng-show="finito">			    	
+			    <li tabindex="1" class="imdb-no-mobile" ng-controller="HomeCtrl" ng-show="finito"> 			    	
                 	<table style="float: left; margin-left: 10%;">
                   		<tr>
                     		<td background="http://imalatidelbari.netsons.org/img/tt.png">
@@ -71,7 +82,7 @@
               		</table>
 			    </li>
 			</ul>						   
-	  	</div>
+	  	</div>-->
 	
 	</body>
 </html>

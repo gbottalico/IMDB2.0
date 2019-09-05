@@ -9,6 +9,7 @@ function initializeMenu(){
 	$('#menuProbabili').click(loadPageProbabili);
 	$('#menuStatistiche').click(loadPageStats);
 	$('#menuMercato').click(loadPageMercato);
+
 }
 
 
@@ -25,7 +26,8 @@ function loadPageCalendario(){
 }
 
 function loadPageInvForm(){
-	window.location = "invia_formazione.html";
+	//window.location = "invia_formazione.html";
+	window.location = "schedina.html"
 }
 
 function loadPageVoti() {
