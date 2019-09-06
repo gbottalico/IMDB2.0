@@ -78,6 +78,11 @@ class SchedinaBusiness {
 		}		
         return "";
 	}
+
+	public static function saveSchedina($schedina) {
+		return json_encode($schedina);
+	}
+
 }
 
 ?>

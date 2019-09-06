@@ -118,11 +118,11 @@
 	.container td {
 		font: bold x-small 'trebuchet MS', Arial, helvetica;
 	}
-	li {
+	/*li {
 		width: 100% !important;
 		height: 20% !important;
 		margin: 2px 0px !important;
-	}
+	}*/
 	.menu .title {
 		position: absolute;
 		height: 100%;
@@ -424,8 +424,13 @@
 		background-size: 10px 10px;
 		background-image: url('../images/field-invalid.png?1405069257');
 	}
+
+	.schedina {
+		outline: none;
+	}
 	.schedina td {
-		font: bold small 'trebuchet MS', Arial, helvetica;
+		font: bold x-small 'trebuchet MS', Arial, helvetica;
+		width: 33%;
 	}
 	.riepilogoContainer td {
 		font-size: x-small !important;
@@ -458,5 +463,12 @@
 	}
 	.menuItem.selected {
 		height: 55px;
+	}
+	.ui-tabs .ui-tabs-nav {
+		margin: 0;
+		padding: .2em .2em 0;
+		overflow: auto;
+		display: flex;
+		overflow-x: scroll;
 	}
 }

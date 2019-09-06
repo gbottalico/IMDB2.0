@@ -1483,7 +1483,7 @@ input:focus:invalid {
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  /*background: #FFFFFF;*/
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -1568,3 +1568,23 @@ div#infoUser {
     text-align: right;
     color: white;
 }
+
+.scadenza{
+	color: black;
+    font-weight: bold;
+    text-align: right;
+}
+.save {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #4CAF50;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+  }

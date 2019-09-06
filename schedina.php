@@ -52,17 +52,33 @@ session_start();
                                     <a href="#tabs-{{incontro.idGiornata}}">{{incontro.idGiornata}}</a>
                                 </li>
                             </ul>
-                            <div ng-repeat="incontro in listaIncontri | unique:'idGiornata'" id="tabs-{{incontro.idGiornata}}" style="background-color: wheat;">
+							<div ng-repeat="incontro in listaIncontri | unique:'idGiornata'" id="tabs-{{incontro.idGiornata}}" style="background-color: wheat;">
+								<div class="scadenza" data-ng-show="incontro.idGiornata == giornataCorrente.idGiornata">
+									<p style="float:right">SCADENZA: {{giornataCorrente.scadenza}}<p>
+									<p style="float:left; color: red" data-ng-show="invioScaduto">STATO: SCADUTO</p>
+									<p style="float:left; color: green" data-ng-hide="invioScaduto">STATO: IN CORSO</p>
+								</div>
+								
                                 <table class="schedina">
                                     <tr ng-repeat="incontroGiornata in listaIncontri | filter:{ idGiornata: incontro.idGiornata }:true">
                                         <td style="text-align: right">{{incontroGiornata.squadraCasa}}</td>
-                                        <td style="text-align: center">
-                                                <img class="schedina-pron schedina-1 {{incontroGiornata.idPartita}}" id="{{incontroGiornata.idPartita}}-1" ng-click="pronostico(incontroGiornata.idPartita, '1')">&nbsp;
-                                                <img class="schedina-pron schedina-X {{incontroGiornata.idPartita}}" id="{{incontroGiornata.idPartita}}-X" ng-click="pronostico(incontroGiornata.idPartita, 'X')">&nbsp;
-                                                <img class="schedina-pron schedina-2 {{incontroGiornata.idPartita}}" id="{{incontroGiornata.idPartita}}-2" ng-click="pronostico(incontroGiornata.idPartita, '2')">
+										<td style="text-align: center" data-ng-show="!invioScaduto && incontro.idGiornata == giornataCorrente.idGiornata">
+												<img class="schedina-pron schedina-1 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '1' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-1" ng-click="pronostico(incontroGiornata.idPartita, '1')">&nbsp;
+                                                <img class="schedina-pron schedina-X {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == 'X' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-X" ng-click="pronostico(incontroGiornata.idPartita, 'X')">&nbsp;
+                                                <img class="schedina-pron schedina-2 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '2' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-2" ng-click="pronostico(incontroGiornata.idPartita, '2')">
+										 </td>
+										 <td style="text-align: center; opacity: .5;" data-ng-show="invioScaduto || incontro.idGiornata != giornataCorrente.idGiornata">
+												<img class="schedina-pron schedina-1 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '1' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-1" >&nbsp;
+                                                <img class="schedina-pron schedina-X {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == 'X' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-X">&nbsp;
+                                                <img class="schedina-pron schedina-2 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '2' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-2">
                                          </td>
                                         <td >{{incontroGiornata.squadraFuori}}</td>
-                                    </tr>
+									</tr>
+									<tr data-ng-show="!invioScaduto && incontro.idGiornata == giornataCorrente.idGiornata">
+										<td></td>
+										<td style="text-align: center"><button class="save" ng-disabled="!invioEnabled" data-ng-click="inviaSchedina()">SALVA</button></td>
+										<td></td>
+									</tr>	
                                 </table>
                             </div>
             </div>

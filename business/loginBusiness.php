@@ -27,7 +27,7 @@ class LoginBusiness {
 		}
 
 		//execute the SQL query and return records		
-        $sql = "SELECT * FROM SQUADRA WHERE lower(USERNAME) = lower('$user') and lower(PASSWORD) = lower('$pwd')";
+        $sql = "SELECT * FROM squadra WHERE lower(USERNAME) = lower('$user') and lower(PASSWORD) = lower('$pwd')";
 		if ($result = mysqli_query($conn, $sql)){
             $num_rows = mysqli_num_rows($result);
             if ($num_rows > 0){ 
@@ -37,6 +37,7 @@ class LoginBusiness {
                 $squadra->idSquadra = $row['ID_SQUADRA'];
                 $squadra->nome = $row['NOME'];
                 $squadra->crediti = $row['CREDITI'];
+                $_SESSION["idSquadra"] = $squadra->idSquadra;
                 $_SESSION["utente"] = $squadra->nome;
                 $_SESSION["crediti"] = $squadra->crediti;
                 //close the connection
