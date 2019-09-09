@@ -52,11 +52,19 @@ session_start();
                                     <a href="#tabs-{{incontro.idGiornata}}">{{incontro.idGiornata}}</a>
                                 </li>
                             </ul>
+							
 							<div ng-repeat="incontro in listaIncontri | unique:'idGiornata'" id="tabs-{{incontro.idGiornata}}" style="background-color: wheat;">
-								<div class="scadenza" data-ng-show="incontro.idGiornata == giornataCorrente.idGiornata">
-									<p style="float:right">SCADENZA: {{giornataCorrente.scadenza}}<p>
-									<p style="float:left; color: red" data-ng-show="invioScaduto">STATO: SCADUTO</p>
-									<p style="float:left; color: green" data-ng-hide="invioScaduto">STATO: IN CORSO</p>
+								<div class="scadenza" >
+									<p data-ng-show="incontro.idGiornata == giornataCorrente.idGiornata">SCADENZA: {{giornataCorrente.scadenza}}<p>
+									<p style="color: red" data-ng-show=" incontro.idGiornata == giornataCorrente.idGiornata && invioScaduto">STATO: SCADUTO</p>
+									<p style="color: green" data-ng-show="incontro.idGiornata == giornataCorrente.idGiornata && !invioScaduto">STATO: IN CORSO</p>
+									<?php
+										if ($_SESSION["is_admin"] == "S"){
+									?>
+										<p data-ng-click="apriGestione(incontro.idGiornata, listaIncontri)">Gestisci</p>
+									<?php
+										}
+									?>
 								</div>
 								
                                 <table class="schedina">

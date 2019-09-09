@@ -73,4 +73,8 @@ imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, 
         });
     }
 
+    $scope.apriGestione = function(giornataSelected, listaIncontri){
+        alert(giornataSelected);
+    }
+
 });

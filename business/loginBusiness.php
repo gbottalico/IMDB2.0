@@ -8,7 +8,7 @@ class Squadra {
 
     var $idSquadra;
 	var $nome;
-	var $crediti;
+    var $crediti;
     
 
 	function Squadra() {		
@@ -40,6 +40,8 @@ class LoginBusiness {
                 $_SESSION["idSquadra"] = $squadra->idSquadra;
                 $_SESSION["utente"] = $squadra->nome;
                 $_SESSION["crediti"] = $squadra->crediti;
+                $_SESSION["is_admin"] = $row['IS_ADMIN'];
+                
                 //close the connection
                 mysqli_close($conn);
                 return "OK";

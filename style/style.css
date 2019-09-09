@@ -1588,3 +1588,7 @@ div#infoUser {
 	transition: all 0.3 ease;
 	cursor: pointer;
   }
+
+  .scadenza p{
+	  margin: 0px;
+  }
