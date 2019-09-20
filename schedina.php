@@ -61,7 +61,7 @@ session_start();
 									<?php
 										if ($_SESSION["is_admin"] == "S"){
 									?>
-										<p data-ng-click="inserisciRisultato(incontro.idGiornata)">Inserisci Risultati</p>
+										<p style="cursor:pointer"  data-ng-if="incontro.idGiornata <= giornataCorrente.idGiornata" data-ng-click="inserisciRisultato(incontro.idGiornata)">Inserisci Risultati</p>
 										<input type="checkbox" data-ng-disabled="incontro.idGiornata == giornataCorrente.idGiornata" data-ng-checked="incontro.idGiornata == giornataCorrente.idGiornata" data-ng-click="chiediScadenza(incontro.idGiornata)"/>Corrente<br/>
 									<?php
 										}
@@ -72,11 +72,15 @@ session_start();
                                     <tr ng-repeat="incontroGiornata in listaIncontri | filter:{ idGiornata: incontro.idGiornata }:true">
                                         <td style="text-align: right">{{incontroGiornata.squadraCasa}}</td>
 										<td style="text-align: center" data-ng-show="!invioScaduto && incontro.idGiornata == giornataCorrente.idGiornata">
+												<img data-ng-if="incontroGiornata.risultato" class="schedina-ok" data-ng-show="incontroGiornata.risultato == incontroGiornata.risultato_ins" src="images/ok.png"/>
+												<img data-ng-if="incontroGiornata.risultato" class="schedina-ok" data-ng-show="incontroGiornata.risultato != incontroGiornata.risultato_ins" src="images/ko.png"/>
 												<img class="schedina-pron schedina-1 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '1' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-1" ng-click="pronostico(incontroGiornata.idPartita, '1')">&nbsp;
                                                 <img class="schedina-pron schedina-X {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == 'X' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-X" ng-click="pronostico(incontroGiornata.idPartita, 'X')">&nbsp;
                                                 <img class="schedina-pron schedina-2 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '2' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-2" ng-click="pronostico(incontroGiornata.idPartita, '2')">
 										 </td>
 										 <td style="text-align: center; opacity: .5;" data-ng-show="invioScaduto || incontro.idGiornata != giornataCorrente.idGiornata">
+												<img data-ng-if="incontroGiornata.risultato" class="schedina-ok" data-ng-show="incontroGiornata.risultato == incontroGiornata.risultato_ins" src="images/ok.png"/>
+												<img data-ng-if="incontroGiornata.risultato" class="schedina-ok" data-ng-show="incontroGiornata.risultato != incontroGiornata.risultato_ins" src="images/ko.png"/>
 												<img class="schedina-pron schedina-1 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '1' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-1" >&nbsp;
                                                 <img class="schedina-pron schedina-X {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == 'X' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-X">&nbsp;
                                                 <img class="schedina-pron schedina-2 {{incontroGiornata.idPartita}}" ng-class="incontroGiornata.risultato_ins == '2' ? 'selected' : ''" id="{{incontroGiornata.idPartita}}-2">
@@ -89,7 +93,7 @@ session_start();
 										<td></td>
 									</tr>	
                                 </table>
-								<table class="schedina" data-ng-show="inserimentoRisultati">
+								<table class="schedina" data-ng-if="incontro.idGiornata <= giornataCorrente.idGiornata" data-ng-show="inserimentoRisultati">
                                     <tr ng-repeat="incontroGiornata in listaIncontri | filter:{ idGiornata: incontro.idGiornata }:true">
                                         <td style="text-align: right">{{incontroGiornata.squadraCasa}}</td>
 										<td style="text-align: center">
@@ -101,7 +105,10 @@ session_start();
 									</tr>
 									<tr>
 										<td></td>
-										<td style="text-align: center"><button class="save" ng-disabled="!salvaEnabled" data-ng-click="inviaRisultatiEsatti(incontro.idGiornata)">SALVA E CALCOLA</button></td>
+										<td style="text-align: center">
+											<button class="save"  data-ng-click="inviaRisultatiEsatti(incontro.idGiornata)">SALVA E CALCOLA</button>
+											<button class="save"  data-ng-click="chiudi()">ANNULLA</button>
+										</td>
 										<td></td>
 									</tr>	
                                 </table>

@@ -1,6 +1,7 @@
 <?php require (__DIR__.'/../business/newSchedinaBusiness.php') ?>
 
 <?php 
+ error_log("sono qui");
 $azione = $_REQUEST['azione'];
 if ($azione == 'saveSchedina') {
     echo NewSchedinaBusiness::saveSchedina($_POST['idGiornata'], $_POST['schedina']);

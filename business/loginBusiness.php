@@ -31,12 +31,19 @@ class LoginBusiness {
 		if ($result = mysqli_query($conn, $sql)){
             $num_rows = mysqli_num_rows($result);
             if ($num_rows > 0){ 
+
                 //fetch tha data from the database 
                 $row = mysqli_fetch_assoc($result);
                 $squadra = new Squadra();
                 $squadra->idSquadra = $row['ID_SQUADRA'];
                 $squadra->nome = $row['NOME'];
                 $squadra->crediti = $row['CREDITI'];
+                $sql2 = "SELECT sum(CREDITI) as CRED FROM  crediti WHERE ID_SQUADRA = $squadra->idSquadra";
+                $result2 = mysqli_query($conn, $sql2);
+
+                while ($row2 = mysqli_fetch_assoc($result2)) { 
+                    $squadra->crediti = $squadra->crediti + $row2['CRED'];
+                }
                 $_SESSION["idSquadra"] = $squadra->idSquadra;
                 $_SESSION["utente"] = $squadra->nome;
                 $_SESSION["crediti"] = $squadra->crediti;

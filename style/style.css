@@ -1587,8 +1587,13 @@ div#infoUser {
 	-webkit-transition: all 0.3 ease;
 	transition: all 0.3 ease;
 	cursor: pointer;
+	margin-bottom: 2;
   }
 
   .scadenza p{
 	  margin: 0px;
+  }
+
+  .schedina-ok{
+	  width: 15px;
   }

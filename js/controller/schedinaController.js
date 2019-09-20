@@ -27,8 +27,11 @@ imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, 
             $scope.listaIncontri = data;
             $scope.initializeSchedina($scope.listaIncontri.filter((par) => par.idGiornata == $scope.giornataCorrente.idGiornata));
             setTimeout(function(){ 
-                $( "#tabs" ).tabs({active: $scope.giornataCorrente.idGiornata - 1});
-                //All'on select impostare inserimento risultato a false
+                $( "#tabs" ).tabs({
+                    active: $scope.giornataCorrente.idGiornata - 1,
+                    activate: $scope.cambiaTab,
+                });
+                
                 $( "#tabs" ).show();
                  }
             , 1500);
@@ -36,6 +39,16 @@ imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, 
         });
     });
     
+
+    $scope.cambiaTab = function(){
+        
+        $scope.salvaEnabled=false;
+        $scope.risultati = [];
+        $scope.invioEnabled = false;
+        $scope.salvaEnabled=false;
+        $scope.inserimentoRisultati=false;
+        
+    }
     
 
     $scope.initializeSchedina = function(incontri){
@@ -80,25 +93,46 @@ imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, 
     }
 
     $scope.inviaRisultatiEsatti = function(giornata) {
-        $.post('service/saveSchedinaService.php?azione=saveRisultati', {
-            risultati: $scope.risultati,
-            idGiornata : giornata
-        }).success(function(data) {
-            if (data.trim()=='OK'){
-                alert("Risultati inserita con successo");
-            }else{
-                alert("Errore durante l'inserimento dei risultati");
-            }
-           
-        });
+        if ($scope.risultati.length == 5){
+            $.post('service/saveSchedinaService.php?azione=saveRisultati', {
+                risultati: $scope.risultati,
+                idGiornata : giornata
+            }).success(function(data) {
+                if (data.trim()=='OK'){
+                    alert("Risultati inserita con successo");
+                    window.location = "schedina.php";
+                }else{
+                    alert("Errore durante l'inserimento dei risultati");
+                }
+            
+            });
+        }else{
+            alert ("Inserisci prima tutti i risultati");
+        }
     }
 
-    $scope.apriGestione = function(giornataSelected, listaIncontri){
-        alert(giornataSelected);
-    }
-
+   
     $scope.inserisciRisultato = function(giornataSelected){
+        for(i=0; i<=36; i++){
+            if (i+1!=giornataSelected){
+                $("#tabs").tabs( "disable", i );
+
+            }
+        }
+        $scope.initializeRisultati($scope.listaIncontri.filter((par) => par.idGiornata == giornataSelected));
         $scope.inserimentoRisultati = true;
+    }
+
+    $scope.chiudi = function(giornataSelected){
+        window.location="schedina.php";
+    }
+
+    $scope.initializeRisultati = function(incontri){
+        for (i=0; i<= incontri.length-1; i++){
+            if (incontri[i].risultato_ins != null){
+                $scope.risultatoEsatto (incontri[i].idPartita, incontri[i].risultato);
+            }
+        }
     }
 
     /*
