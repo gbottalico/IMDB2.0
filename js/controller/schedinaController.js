@@ -1,6 +1,6 @@
 imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, $sce) {
 
-    
+
     $scope.loading = true;
     $scope.loadingForm = false;
     $scope.giornataCorrente = null;
@@ -8,10 +8,10 @@ imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, 
     $scope.schedina = [];
     $scope.risultati = [];
     $scope.invioEnabled = false;
-    $scope.inserimentoRisultati=false;
-    $scope.salvaEnabled=false;
-    $scope.scadenzaInvio="";
-    $scope.newGiornataCorrente="";
+    $scope.inserimentoRisultati = false;
+    $scope.salvaEnabled = false;
+    $scope.scadenzaInvio = "";
+    $scope.newGiornataCorrente = "";
 
     $http.get('service/giornataCorrenteService.php').success(function(data) {
         $scope.giornataCorrente = data;
@@ -26,96 +26,95 @@ imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, 
         $http.get('service/prossimaService.php').success(function(data) {
             $scope.listaIncontri = data;
             $scope.initializeSchedina($scope.listaIncontri.filter((par) => par.idGiornata == $scope.giornataCorrente.idGiornata));
-            setTimeout(function(){ 
-                $( "#tabs" ).tabs({
+            setTimeout(function() {
+                $("#tabs").tabs({
                     active: $scope.giornataCorrente.idGiornata - 1,
                     activate: $scope.cambiaTab,
                 });
-                
-                $( "#tabs" ).show();
-                 }
-            , 1500);
-           
+
+                $("#tabs").show();
+            }, 1500);
+
         });
     });
-    
 
-    $scope.cambiaTab = function(){
-        
-        $scope.salvaEnabled=false;
+
+    $scope.cambiaTab = function() {
+
+        $scope.salvaEnabled = false;
         $scope.risultati = [];
         $scope.invioEnabled = false;
-        $scope.salvaEnabled=false;
-        $scope.inserimentoRisultati=false;
-        
-    }
-    
+        $scope.salvaEnabled = false;
+        $scope.inserimentoRisultati = false;
 
-    $scope.initializeSchedina = function(incontri){
-        for (i=0; i<= incontri.length-1; i++){
-            if (incontri[i].risultato_ins != null){
-                $scope.pronostico (incontri[i].idPartita, incontri[i].risultato_ins);
+    }
+
+
+    $scope.initializeSchedina = function(incontri) {
+        for (i = 0; i <= incontri.length - 1; i++) {
+            if (incontri[i].risultato_ins != null) {
+                $scope.pronostico(incontri[i].idPartita, incontri[i].risultato_ins);
             }
         }
     }
 
     /*
-     *	Seleziona il pronostico per la partita 
+     *  Seleziona il pronostico per la partita 
      */
     $scope.pronostico = function(idPartita, pronostico) {
         $('.' + idPartita).removeClass('selected');
         $('#' + idPartita + '-' + pronostico).addClass('selected');
         partita = {};
-        partita.idPartita =  idPartita;
+        partita.idPartita = idPartita;
         partita.pronostico = pronostico;
         $scope.schedina = $scope.schedina.filter((par) => par.idPartita != idPartita);
         $scope.schedina.push(partita);
-        if ($scope.schedina.length == 5){
+        if ($scope.schedina.length == 5) {
             $scope.invioEnabled = true;
         }
     }
 
     /*
-     *	Seleziona il pronostico per la partita 
+     *  Seleziona il pronostico per la partita 
      */
     $scope.inviaSchedina = function() {
         $.post('service/saveSchedinaService.php?azione=saveSchedina', {
             schedina: $scope.schedina,
-            idGiornata : $scope.giornataCorrente.idGiornata
+            idGiornata: $scope.giornataCorrente.idGiornata
         }).success(function(data) {
-            if (data.trim()=='OK'){
+            if (data.trim() == 'OK') {
                 alert("Schedina inserita con successo");
-            }else{
+            } else {
                 alert("Errore durante l'inserimento della schedina");
             }
-           
+
         });
     }
 
     $scope.inviaRisultatiEsatti = function(giornata) {
-        if ($scope.risultati.length == 5){
+        if ($scope.risultati.length == 5) {
             $.post('service/saveSchedinaService.php?azione=saveRisultati', {
                 risultati: $scope.risultati,
-                idGiornata : giornata
+                idGiornata: giornata
             }).success(function(data) {
-                if (data.trim()=='OK'){
+                if (data.trim() == 'OK') {
                     alert("Risultati inserita con successo");
                     window.location = "schedina.php";
-                }else{
+                } else {
                     alert("Errore durante l'inserimento dei risultati");
                 }
-            
+
             });
-        }else{
-            alert ("Inserisci prima tutti i risultati");
+        } else {
+            alert("Inserisci prima tutti i risultati");
         }
     }
 
-   
-    $scope.inserisciRisultato = function(giornataSelected){
-        for(i=0; i<=36; i++){
-            if (i+1!=giornataSelected){
-                $("#tabs").tabs( "disable", i );
+
+    $scope.inserisciRisultato = function(giornataSelected) {
+        for (i = 0; i <= 36; i++) {
+            if (i + 1 != giornataSelected) {
+                $("#tabs").tabs("disable", i);
 
             }
         }
@@ -123,56 +122,56 @@ imdbFanta.controller('schedinaCtrl', function($scope, $http, $timeout, $filter, 
         $scope.inserimentoRisultati = true;
     }
 
-    $scope.chiudi = function(giornataSelected){
-        window.location="schedina.php";
+    $scope.chiudi = function(giornataSelected) {
+        window.location = "schedina.php";
     }
 
-    $scope.initializeRisultati = function(incontri){
-        for (i=0; i<= incontri.length-1; i++){
-            if (incontri[i].risultato_ins != null){
-                $scope.risultatoEsatto (incontri[i].idPartita, incontri[i].risultato);
+    $scope.initializeRisultati = function(incontri) {
+        for (i = 0; i <= incontri.length - 1; i++) {
+            if (incontri[i].risultato_ins != null) {
+                $scope.risultatoEsatto(incontri[i].idPartita, incontri[i].risultato);
             }
         }
     }
 
     /*
-     *	Seleziona il pronostico per la partita 
+     *  Seleziona il pronostico per la partita 
      */
     $scope.risultatoEsatto = function(idPartita, risultato) {
         $('.esatto-' + idPartita).removeClass('selected');
         $('#esatto-' + idPartita + '-' + risultato).addClass('selected');
         partita = {};
-        partita.idPartita =  idPartita;
+        partita.idPartita = idPartita;
         partita.risultato = risultato;
         $scope.risultati = $scope.risultati.filter((par) => par.idPartita != idPartita);
         $scope.risultati.push(partita);
-        if ($scope.risultati.length == 5){
+        if ($scope.risultati.length == 5) {
             $scope.salvaEnabled = true;
         }
     }
 
     $scope.chiediScadenza = function(idGiornata) {
         $scope.newGiornataCorrente = idGiornata;
-        $dialog=$('#dialogScadenza');       
+        $dialog = $('#dialogScadenza');
         $dialog.dialog({
-                autoOpen: false,
-                modal: true,
-                width: 200,
-                height: 200,
-                scroll: false,
-                draggable: true,
-                resizable: false,
-                title: "Scadenza invio"
-            });
+            autoOpen: false,
+            modal: true,
+            width: 200,
+            height: 200,
+            scroll: false,
+            draggable: true,
+            resizable: false,
+            title: "Scadenza invio"
+        });
         $dialog.dialog('open');
-        
+
     }
 
     $scope.salvaCorrente = function() {
-        $.get('service/saveSchedinaService.php?azione=saveCorrente&idGiornata='+$scope.newGiornataCorrente+'&scadenza='+$scope.scadenzaInvio).success(function(data) {
-            if (data.trim()=='OK'){
+        $.get('service/saveSchedinaService.php?azione=saveCorrente&idGiornata=' + $scope.newGiornataCorrente + '&scadenza=' + $scope.scadenzaInvio).success(function(data) {
+            if (data.trim() == 'OK') {
                 window.location = "schedina.php";
-            }else{
+            } else {
                 alert("Errore durante l'inserimento della schedina");
             }
         });

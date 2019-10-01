@@ -8,8 +8,8 @@ class Squadra {
 
     var $idSquadra;
 	var $nome;
-    var $crediti;
-    
+    var $creditiIniziali;
+    var $creditiSchedina;
 
 	function Squadra() {		
 	}
@@ -37,16 +37,17 @@ class LoginBusiness {
                 $squadra = new Squadra();
                 $squadra->idSquadra = $row['ID_SQUADRA'];
                 $squadra->nome = $row['NOME'];
-                $squadra->crediti = $row['CREDITI'];
+                $squadra->creditiIniziali = $row['CREDITI'];
                 $sql2 = "SELECT sum(CREDITI) as CRED FROM  crediti WHERE ID_SQUADRA = $squadra->idSquadra";
                 $result2 = mysqli_query($conn, $sql2);
 
                 while ($row2 = mysqli_fetch_assoc($result2)) { 
-                    $squadra->crediti = $squadra->crediti + $row2['CRED'];
+                    $squadra->creditiSchedina = $row2['CRED'];
                 }
                 $_SESSION["idSquadra"] = $squadra->idSquadra;
                 $_SESSION["utente"] = $squadra->nome;
-                $_SESSION["crediti"] = $squadra->crediti;
+                $_SESSION["creditiIniziali"] = $squadra->creditiIniziali;
+                $_SESSION["creditiSchedina"] = $squadra->creditiSchedina;
                 $_SESSION["is_admin"] = $row['IS_ADMIN'];
                 
                 //close the connection

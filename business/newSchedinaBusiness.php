@@ -115,6 +115,9 @@ class NewSchedinaBusiness {
                  $result2 = mysqli_query($conn, $calcolaCreditiSql);
                  while ($row2 = mysqli_fetch_assoc($result2)) {
                     $cr =  $row2['CREDITI'];
+                    if ($cr == 10) {
+                        $cr = 15;
+                    }
                     $insertCreditiSquadra="insert into crediti values ($idGiornata, $idSq, $cr)";
                     mysqli_query($conn, $insertCreditiSquadra);
                 }

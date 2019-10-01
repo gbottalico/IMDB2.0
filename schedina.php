@@ -42,7 +42,8 @@ session_start();
 					<div id="infoUser">
 						<?php
 							echo "<p>SQUADRA: " . $_SESSION["utente"] ."</p>";
-							echo "<p>CREDITI: " . $_SESSION["crediti"] ."</p>";
+							echo "<p>CREDITI INIZIALI: " . $_SESSION["creditiIniziali"] ."</p>";
+							echo "<p>CREDITI SCHEDINA: " . $_SESSION["creditiSchedina"] ."</p>";
 						?>
 						<p onclick="logout()" style="cursor:pointer">Logout</p>
 					</div>

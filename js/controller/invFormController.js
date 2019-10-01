@@ -7,7 +7,7 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
     $scope.loadingForm = false;
     $scope.showSquadra = false;
     $scope.inviabile = true;
-    $scope.needSchedina = false;
+    $scope.needSchedina = true;
     $scope.ruolo = ['Portiere', 'Difensore', 'Centrocampista', 'Attaccante'];
     $scope.moduloInserito = new Array(0, 0, 0, 0);
     $scope.moduliAmmessi = [new Array(1, 3, 4, 3), new Array(1, 3, 5, 2), new Array(1, 3, 6, 1), new Array(1, 4, 3, 3), new Array(1, 4, 4, 2),
@@ -84,20 +84,26 @@ imdbFanta.controller('invFormCtrl', function($scope, $http, $timeout, $filter, $
     $scope.riserve = [];
     $scope.listaGiocatoriTitolarita = [];
 
-    $.ajax({
+    /*$.ajax({
         url: 'http://www.fantaformazione.com/fantacalcio.calendari/probabili/Home.htm',
         type: 'GET',
         success: function(res) {            
-            $http.get('service/squadreService.php').success(function(data) {                
+            */$http.get('service/squadreService.php').success(function(data) {                
                 $scope.squadre = data;
+                $scope.loading = false;
             });     
-            $scope.listaPartite = res.responseText.split('src="imgs/').join('src="http://www.fantaformazione.com/imgs/').split('src="modules/').join('src="http://www.fantaformazione.com/modules/').split('src="templates/').join('src="http://www.fantaformazione.com/templates/');
+            /*$scope.listaPartite = res.responseText.split('src="imgs/').join('src="http://www.fantaformazione.com/imgs/').split('src="modules/').join('src="http://www.fantaformazione.com/modules/').split('src="templates/').join('src="http://www.fantaformazione.com/templates/');
             $scope.caricaListaGiocatoriTitolarita();       
         }
-    });
+    });*/
 
     $http.get('service/termineService.php').success(function(data) {
-        $scope.termine = data.trim();
+        // TODO decommentare quando il sito torna attivo
+        //$scope.termine = data.trim();
+        var currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + 1);
+        currentDate = $.datepicker.formatDate('dd/mm/yy', currentDate);
+        $scope.termine = currentDate;
     });
 
     $http.get('service/prossimaService.php').success(function(data) {
